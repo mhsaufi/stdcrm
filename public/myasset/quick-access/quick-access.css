@@ -1,0 +1,101 @@
+#quick_access_section {
+    position: fixed;
+    bottom: 0;
+    min-width: 80%;
+    height: 8%;
+    margin: 0.05vh 10%!important;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    border-top: 0.05em solid #d4af37;
+    padding: 0.7% 2%;
+}
+
+    #add_t {
+        width: 15%;
+        font-size: 15px;
+        cursor: pointer;
+    }
+
+    #add_t_icon {
+        opacity: 0.4;
+        margin-right: 20px;
+    }
+
+    #add_t_text {
+        opacity: 0;
+        margin-left: -100px;
+    }
+
+    #add_t:hover #add_t_icon {
+        opacity: 0.8;
+        animation: slideOut 0.2s;
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes slideOut {
+        from {margin-left: 0; }
+        to {margin-left: -5px; }
+    }
+
+    #add_t:hover #add_t_text {
+        animation: slideIn 0.2s;
+        animation-fill-mode: forwards;  
+    }
+
+    @keyframes slideIn {
+        from {opacity: 0;margin-left: -80px; }
+        to {opacity: 0.8;margin-left: -15px; }
+    }
+
+    #close_add_t {
+        opacity: 0.5;
+        cursor: pointer;
+    }
+
+    #close_add_t:hover{
+        opacity: 0.8;
+    }
+
+    #inbox_icon {
+        height: 20px;
+        width: 20px;
+        padding: 4px 5px;
+        margin-left: 20px;
+        opacity: 0.4;
+        color: black;
+    }
+
+    .inbox_sliding_text {
+        opacity: 0;
+        margin-left: -70px;
+    }
+
+    .inbox_static_text {
+        opacity: 0.4;
+        margin-left: 2px;
+    }
+
+    #inbox:hover #inbox_icon {
+        opacity: 1;
+    }
+
+    #inbox:hover .inbox_static_text{
+        opacity: 1;
+    }
+
+    #inbox:hover .inbox_sliding_text{
+        animation: slideInMail 0.2s;
+        animation-fill-mode: forwards; 
+    }
+
+    .new_inbox {
+        background: #ec7063;
+        border-radius: 50%;
+        color: white!important;
+    }
+
+     @keyframes slideInMail {
+        from {opacity: 0;margin-left: -80px; }
+        to {opacity: 0.8;margin-left: 2px; }
+    }
