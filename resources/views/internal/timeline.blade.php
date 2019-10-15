@@ -348,11 +348,43 @@
       }
 
       .vendors-tcard {
-        padding: 10px 20px;
+        position: relative;
+        padding: 8px 20px;
         border: 0.05em solid #cfd8dc;
         border-radius: 2px;
         width: 100%;
+        min-height: 28%;
         margin-bottom: 5px;
+        cursor: pointer;
+      }
+
+      .vendors-tcard:hover {
+        -moz-box-shadow: 0 0 1px #888;
+        -webkit-box-shadow: 0 0 1px#888;
+        box-shadow: 0 0 1px #888;
+      }
+
+      .vendors-tcard-name {
+        position: absolute;
+        margin-right: 0;
+        -webkit-transition: margin-right 0.2s, opacity 0.2s;
+      }
+
+      .vendors-tcard:hover  .vendors-tcard-name {
+        margin-right: -15%;
+        opacity: 0;
+      }
+
+      .vendors-tcard-add-contact {
+        position: absolute;
+        opacity: 0;
+        margin-left: -11%;
+        -webkit-transition: margin-left 0.2s, opacity 0.3s
+      }
+
+      .vendors-tcard:hover .vendors-tcard-add-contact {
+        margin-left: 0;
+        opacity: 1;
       }
 
       .vendors-tcard-disable {
@@ -515,7 +547,7 @@
         <!-- ========= Notification sidebar ==================  -->
 
         <div class="row">
-          <div class="col-md-3 std-timeline-sidebar">
+          <div class="col-md-3 std-timeline-sidebar" style="padding-bottom: 100px;">
             
             <div style="padding: 8px 15px;max-height: 50vh;overflow: auto;">
               <span style="opacity: 0.7;"><i class="fas fa-bell" style="margin-right: 10px;"></i> Timeline Notification</span>
@@ -555,16 +587,16 @@
 
 
             <div class="std-timeline-banner-transaction">
-              <p><i class="fas fa-exchange-alt" style="margin-right: 10px;"></i> Transaction</p>
+              <p style="opacity: 0.8;"><i class="fas fa-exchange-alt" style="margin-right: 10px;"></i> Transaction</p>
               <table id="transaction_table">
                 <tr>
                   <td>Type</td><td style="text-align: right;">Amount (MYR)</td>
                 </tr>
                 <tr>
-                  <td>Payable</td><td style="text-align: right;color: green;font-weight: bold;">{{ $payment_data['total_payable'] }}</td>
+                  <td><i class="fas fa-sort-amount-up-alt"></i> <b>Payable</b></td><td style="text-align: right;color: green;font-weight: bold;">{{ $payment_data['total_payable'] }}</td>
                 </tr>
                 <tr>
-                  <td>Receivable</td><td style="text-align: right;color: red;font-weight: bold;">{{ $payment_data['total_receivable'] }}</td>
+                  <td><i class="fas fa-sort-amount-down-alt"></i> <b>Receivable</b></td><td style="text-align: right;color: red;font-weight: bold;">{{ $payment_data['total_receivable'] }}</td>
                 </tr>
               </table>
             </div>
@@ -580,8 +612,9 @@
 
                 @if($data_event['user_id'] != 0)
 
-                  <div class="vendors-tcard" onclick="addContact('{{ $data_event['client']['name'] }}','{{ $data_event['client']['id'] }}')">
-                    {{ $data_event['client']['name'] }}
+                  <div class="vendors-tcard" onclick="addContactClient('{{ $data_event['client']['name'] }}','{{ $data_event['client']['id'] }}')">
+                    <div class="vendors-tcard-name">{{ $data_event['client']['name'] }}</div>
+                    <div class="vendors-tcard-add-contact"><i class="fas fa-plus"></i> Add as contact</div>
                   </div>
 
                 @endif
@@ -596,8 +629,9 @@
 
                 @else
 
-                  <div class="vendors-tcard" onclick="addContact('{{ $vendor['vendor']['company_id'] }}','{{ $vendor['vendor']['company_name'] }}')">
-                    {{ $vendor['vendor']['company_name'] }}
+                  <div class="vendors-tcard" onclick="addContactVendor('{{ $vendor['vendor']['company_id'] }}','{{ $vendor['vendor']['company_name'] }}')">
+                    <div class="vendors-tcard-name">{{ $vendor['vendor']['company_name'] }}</div>
+                    <div class="vendors-tcard-add-contact"><i class="fas fa-plus"></i> Add as contact</div>
                   </div>
 
                 @endif
@@ -827,7 +861,24 @@
       </div>
     </div>
 
-    <!-- Edit timeline poppup -->
+    <!-- Add Contact poppup -->
+    <div id="add_contact_form_container">
+      <div id="add_contact_form">
+        <div style="display: flex;flex-direction: row;justify-content: space-between;padding-bottom: 10px;border-bottom: 0.05em solid #d4af37;">
+          <div>Add Contact</div>
+          <div style="opacity: 0.8;cursor: pointer;" id="close_add_contact"><i class="fas fa-times"></i></div>
+        </div>
+        <div id="add_contact_form_content">
+          <span id="prompt"></span><button class="std-btn-plain" style="margin-top: 15px;cursor: pointer;" id="add_contact">Add</button>
+          <input type="hidden" name="" id="contact_id" />
+          <input type="hidden" name="" id="contact_type" />          
+        </div>
+      </div>
+      <div id="add_contact_form_added">
+        <div><div>Contact successfully added</div></div>
+      </div>
+    </div>
+    
 
     <div id="edit_timeline">
       <div style="width: 100%;position: relative;">
@@ -1214,6 +1265,7 @@
 
         url = APP_URL + '/tdetail';
         var self = '{{ Auth::user()->id }}';
+        var token = '{{ csrf_token() }}';
 
         $.post(url,{_token:token,tid:id},function(result){
 
@@ -1351,6 +1403,52 @@
           location.reload();
 
         });
+      }
+
+      function addContactClient(name, id){
+
+        $('#add_contact_form_container').fadeToggle('fast');
+
+        $('#prompt').html("Add <b>" + name + "</b> as your potential client?");
+        $('#contact_id').val(id);
+        $('#contact_type').val('client');
+      }
+
+      function addContactVendor(id, name){
+
+        $('#add_contact_form_container').fadeToggle('fast');
+
+        $('#prompt').html("Add <b>" + name + "</b> as your potential partner?");
+        $('#contact_id').val(id);
+        $('#contact_type').val('company');
+      }
+
+      $('#close_add_contact').click(function(){
+        $('#add_contact_form_container').fadeToggle('fast');
+      });
+
+      $('#add_contact').click(function(){
+
+        var contact_id = $('#contact_id').val();
+        var contact_type = $('#contact_type').val();
+
+        url = APP_URL + '/addcontact';
+        token = '{{ csrf_token() }}';
+
+        $.post(url,{_token:token,contact_type:contact_type,contact_id:contact_id},function(){
+            $('#add_contact_form').fadeToggle('fast');
+            $('#add_contact_form_added').fadeToggle('fast');
+
+            setTimeout(swap, 1500);
+        });
+
+        
+      });
+
+      function swap(){
+        $('#add_contact_form_container').fadeToggle('fast');
+        $('#add_contact_form_added').fadeToggle('fast');
+        $('#add_contact_form').fadeToggle('fast');
       }
 
     </script>

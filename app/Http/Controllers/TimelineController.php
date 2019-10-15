@@ -423,7 +423,7 @@ class TimelineController extends Controller
 
                 if($user_data['role_id'] == '4' || $user_data['role_id'] == '5'){
 
-                    $real_data[$i]['owner'] = "Client";
+                    $real_data[$i]['owner'] = $user_data['name'];
 
                 }else{
 

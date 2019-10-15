@@ -133,6 +133,9 @@ Route::post('/listphoto', 'GalleryController@listPhotoJSON');
 Route::post('/newlogo', 'GalleryController@newLogo');
 Route::post('/newdp','GalleryController@newDP');
 
+Route::get('/contact','ContactController@index')->middleware('auth');
+Route::post('/addcontact','ContactController@addContact');
+
 Route::get('company/{id}/{filename}', function ($id,$filename)
 {
     return Storage::get('gallery/company/'.$id.'/'.$filename);
