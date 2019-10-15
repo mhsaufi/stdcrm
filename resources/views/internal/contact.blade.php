@@ -71,7 +71,7 @@
 			left: 0;
 			width: 100%;
 			height: 100%;
-			background: green;	
+			/*background: green;	*/
 			display: none;	
 		}
 
@@ -81,7 +81,17 @@
 			left: 0;
 			width: 100%;
 			height: 100%;
-			background: blue;	
+			/*background: blue;	*/
+		}
+
+		.contact_table {
+			width: 100%;
+		}
+
+		.contact_table th, .contact_table td{
+			padding: 5px 10px;
+			border: 0.05em solid #dcdcdc;
+			font-size: 10px;
 		}
 
 	 </style>
@@ -103,9 +113,30 @@
     				<div class="tab_contact" id="client_tab"><span>Clients</span><span><i class="fas fa-caret-right"></i></span></div>
     				<div class="tab_contact" id="partner_tab"><span>Partners</span></div>
     			</div>
-    			<div class="col-lg-10 col-md-10 col-sm-12 replacable_content" style="background: blue;">
+    			<div class="col-lg-10 col-md-10 col-sm-12 replacable_content">
     				<div id="container_client">
-    					HAHAHAHAHAAA
+    					<table class="contact_table">
+    						<thead>
+    							<tr>
+    								<th></th>
+	    							<th>Name</th>
+	    							<th>Email</th>
+	    							<th>Phone</th>
+	    							<th>Status</th>
+    							</tr>
+    						</thead>
+    						<tbody>
+    							@foreach($users as $user)
+    							<tr>
+    								<td></td>
+    								<td>{{ $user['fullname'] }}</td>
+    								<td>{{ $user['email'] }}</td>
+    								<td>{{ $user['phone'] }}</td>
+    								<td></td>
+    							</tr>
+    							@endforeach
+    						</tbody>
+    					</table>
     				</div>
     				<div id="container_vendor">
     					HUHUHUHUHUHUHUH
