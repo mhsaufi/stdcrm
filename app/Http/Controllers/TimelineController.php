@@ -12,6 +12,7 @@ use App\WEvent;
 use App\WEventTimeline;
 use App\WEventVendors;
 use App\Template;
+use App\Http\Controllers\CRMController;
 use Carbon\Carbon;
 
 class TimelineController extends Controller
@@ -82,14 +83,14 @@ class TimelineController extends Controller
 
         foreach($data_vendors as $dv){
 
-            if($dv['vendor']['company_id'] <> Auth::user()->company_id){
+            // if($dv['vendor']['company_id'] <> Auth::user()->company_id){
 
                 $d_vendors[$i]['id'] = $dv['vendor']['company_id'];
                 $d_vendors[$i]['name'] = $dv['vendor']['company_name'];
                 $d_vendors[$i]['_id'] = $dv['vendor']['company_id'];
 
                 $i++;
-            }
+            // }
         }
 
         if($data_event['user_id'] <> 0){
@@ -195,12 +196,21 @@ class TimelineController extends Controller
 
         //--------------------------------------------------
 
+        //info payment
+
+        $crm = new CRMController;
+
+        $payment_data = $crm->transactionGeneralInfo($we_id);
+
+        //--------------------------------------------------
+
     	return view('internal.timeline', 
-            compact('data_event','d_vendors','data_vendors','data_noti','categories','vendors_users','all_users_data','all_company_data','package_data'));
+            compact('data_event','d_vendors','data_vendors','data_noti','categories','vendors_users','all_users_data','all_company_data','package_data','payment_data'));
     }
 
     public function createTimeline(Request $request){
 
+        $payment = $request->input('payment');
         $category = $request->input('category');
         $datetime = $request->input('datetime');
         $user = $request->input('user');
@@ -217,6 +227,7 @@ class TimelineController extends Controller
         $wevent_timeline->we_id = $we_id;
         $wevent_timeline->wet_subject = $subject;
         $wevent_timeline->wet_owner = Auth::user()->id;
+        $wevent_timeline->wet_payment = $payment;
         $wevent_timeline->user_id = $user;
         $wevent_timeline->tc_id = $category;
         $wevent_timeline->ts_id = '1';
@@ -322,6 +333,7 @@ class TimelineController extends Controller
     		$real_data[$i]['we_title'] = $data['event']['we_title'];
     		$real_data[$i]['we_date'] = $new_date;
     		$real_data[$i]['we_venue'] = $data['event']['we_venue'];
+            $real_data[$i]['wet_payment'] = $data['wet_payment'];
 
     		$i++;
     	}
@@ -333,30 +345,43 @@ class TimelineController extends Controller
 
         $we_id = $request->input('we_id');
         $vid = $request->input('vid');
+        $filter = $request->input('filter');
 
         // call all timeline by given event_id
         $timeline = new WEventTimeline;
 
         if($vid <> null){
 
-            if($vid == 'all'){
+            if($vid == 'all'){ // no filter specified
 
                 $datas = $timeline->where('we_id',$we_id)->get();
 
-            }elseif($vid == 0){
+            }elseif($vid == 0){ // client is selected
 
                 $wevent = new WEvent;
                 $ev = $wevent->where('we_id',$we_id)->first();
 
-                $datas = $timeline->where('we_id',$we_id)->where(function($query){
+                if($filter == 'owner'){ // if selected client is owner of the timeline
 
-                    $query->where('wet_owner',Auth::user()->id)->orWhere('user_id',Auth::user()->id);
+                    $datas = $timeline->where('we_id',$we_id)->where('wet_owner',$ev['user_id'])->get();
 
-                })->get();
+                }else{
+
+                    $datas = $timeline->where('we_id',$we_id)->where('user_id',$ev['user_id'])->get();
+
+                }
 
             }else{
 
-                $datas = $timeline->where('we_id',$we_id)->where('wet_owner',$vid)->get();
+                if($filter == 'owner'){ // if selected vendor is owner of the timeline
+
+                    $datas = $timeline->where('we_id',$we_id)->where('wet_owner',$vid)->get();
+
+                }else{
+
+                    $datas = $timeline->where('we_id',$we_id)->where('user_id',$vid)->get();
+
+                }
             }
 
         }else{
@@ -440,7 +465,8 @@ class TimelineController extends Controller
             $real_data[$i]['time'] = $data['wet_datetime'];
             $real_data[$i]['header'] = $data['category']['tc_title'];
             $real_data[$i]['status'] = $data['ts_id'];
-            $real_data[$i]['body'][0] = ['tag'=>'p','content'=>$data['wet_subject']];
+            $real_data[$i]['payment'] = $data['wet_payment'];
+            $real_data[$i]['body'][0] = ['tag'=>'div','content'=>$data['wet_subject']];
 
             $i++;
         }

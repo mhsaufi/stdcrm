@@ -170,6 +170,31 @@ ul, ol {
   100% { transform: rotate(360deg); }
 }
 
+.booking_info {
+  width: 60%;
+  /*border: 0.05em solid #dcdcdc;*/
+  padding: 5px 5px;
+  margin-bottom: 50px;
+}
+
+.booking_info th, .booking_info td {
+  padding: 10px 15px;
+  border: 0.05em solid #dcdcdc;
+}
+
+#boxshadow::after {
+  content: '';
+  position: absolute;
+  z-index: -1; /* hide shadow behind image */
+  -webkit-box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);        
+  width: 70%; 
+  left: 15%; /* one half of the remaining 30% */
+  height: 100px;
+  bottom: 0;
+}
+
 #create_event_form {
   position: fixed;
   top: 50%;
@@ -216,31 +241,6 @@ ul, ol {
   box-shadow: 0 0  30px #888;
   z-index: 99;
   border-radius: 5px;
-}
-
-.booking_info {
-  width: 60%;
-  /*border: 0.05em solid #dcdcdc;*/
-  padding: 5px 5px;
-  margin-bottom: 50px;
-}
-
-.booking_info th, .booking_info td {
-  padding: 10px 15px;
-  border: 0.05em solid #dcdcdc;
-}
-
-#boxshadow::after {
-  content: '';
-  position: absolute;
-  z-index: -1; /* hide shadow behind image */
-  -webkit-box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);        
-  width: 70%; 
-  left: 15%; /* one half of the remaining 30% */
-  height: 100px;
-  bottom: 0;
 }
 
 .company_logo {
@@ -553,6 +553,7 @@ ul, ol {
   width: 100%;
   height: 30px;
   font-size: 20px;
+  cursor: pointer;
 }
 
 .form_switch:hover {
@@ -655,6 +656,16 @@ ul, ol {
 
 .btn_style i {
   margin-right: 10px;
+}
+
+#transaction_table {
+  width: 100%;
+  border-top: 0.05em solid #dcdcdc;
+  opacity: 0.6;
+}
+
+#transaction_table td, #transaction_table th {
+  padding: 5px 5px;
 }
 
 

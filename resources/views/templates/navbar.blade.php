@@ -13,10 +13,6 @@
                 <a class="nav-link black" href="{{ url('/listvendor') }}">Vendors</a>
               </li>
 
-              <!-- <li class="nav-item">
-                <a class="nav-link black" href="{{ url('/planner') }}">Wedding Planners</a>
-              </li> -->
-
               <li class="nav-item">
                 <a class="nav-link black" href="{{ url('/packages') }}">
                   Packages
@@ -35,6 +31,18 @@
                             
               @if (Route::has('login'))                
                   @auth
+
+                    @if(Auth::user()->role_id == 3)
+
+                    <li class="nav-item">
+                      <a class="nav-link black" href="{{ url('/packages') }}">
+                        <i class="fas fa-address-book"></i>  
+                        Contact
+                      </a>
+                    </li>    
+
+                    @endif
+
                     <li class="nav-item">
                       <a class="nav-link black" href="{{ url('/home') }}">
                         <i class="fas fa-columns"></i>

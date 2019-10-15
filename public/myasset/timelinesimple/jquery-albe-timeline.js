@@ -84,8 +84,6 @@
 				var ePaneltitleFlex = $('<div>').text(element.header + " : " + element.owner);
 				var ePaneltitleFlex2 = $('<div>').text("Assigned to : " + element.assignto);
 
-				// ePaneltitleFlex.append(ePaneltitleFlex2);
-
 				// custom added
 				ePaneltitle.append(ePaneltitleFlex);
 				ePaneltitle.append(ePaneltitleFlex2);
@@ -114,7 +112,13 @@
 					e.html(value2.content);
 
 				ePanelBody.append(e);
+
 			});
+
+			if(element.status == 2 && element.payment != 0){
+
+				ePanelBody.append('<div style="color:green;"><i class="fas fa-sort-amount-up-alt"></i></div>');
+			}
 
 			ePanel.append(ePanelBody);
 

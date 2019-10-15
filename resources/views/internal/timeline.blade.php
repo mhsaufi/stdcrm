@@ -208,7 +208,7 @@
 
       .std-timeline-banner {
         position: relative;
-        height: 150px!important;
+        min-height: 150px!important;
         background: #ffff;        
         padding: 20px 20px;
         border-radius: 5px;
@@ -256,9 +256,20 @@
         justify-content: space-between;
       }
 
+      .std-timeline-banner-transaction {
+        width: 100%;
+        padding: 10px 14px;
+        /*background: green;*/
+        display: flex;
+        flex-direction: column;
+        font-family: Optima, Segoe, Segoe UI, Candara, Calibri, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 20px;
+        margin-bottom: 15px;
+      }
+
       .std-timeline-banner-info {
         width: 100%;
         padding: 20px 20px;
+        font-size: 14px;
       }
 
       .std-timeline-sidebar {
@@ -268,6 +279,9 @@
         -moz-box-shadow: 0 0 5px #888;
         -webkit-box-shadow: 0 0 5px#888;
         box-shadow: 0 0 2px #888;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
       }
 
       .std-timeline {
@@ -290,6 +304,9 @@
         margin-left: 20px;
         margin-top: 15px;
         cursor: pointer;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
       }
 
       .std-timeline-body:hover {
@@ -312,25 +329,36 @@
       }
 
       .notification-tcard-header {
-        border-radius: 2px;
-        padding: 10px 10px;
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
+        padding: 6px 10px;
         color: #fff;
         font-weight: bold;
+        font-size: 12px;
       }
 
       .notification-tcard-content {
         background: #fff;
         border-radius: 2px;
-        padding: 10px 10px;
+        padding: 6px 10px;
         padding-bottom: 35px;
         border: 0.05em solid #cfd8dc;
         margin-bottom: 10px;
-        /*min-height: 80px;*/
+        font-size: 12px;
       }
 
       .vendors-tcard {
         padding: 10px 20px;
         border: 0.05em solid #cfd8dc;
+        border-radius: 2px;
+        width: 100%;
+        margin-bottom: 5px;
+      }
+
+      .vendors-tcard-disable {
+        padding: 10px 20px;
+        border: 0.05em solid #f7f7f7;
+        background: #f7f7f7;
         border-radius: 2px;
         width: 100%;
         margin-bottom: 5px;
@@ -462,22 +490,21 @@
             </div>
             <div id="edit-icon"><i class="fas fa-ellipsis-h"></i></div>
           </div>
-          <hr>
           <div class="std-timeline-banner-info">
-            <div class="row">
-              <div class="col-md-2">
+            <div style="display: flex;flex-direction: row;justify-content: space-between;">
+              <div>
                 <i class="far fa-calendar-alt"></i><span style="margin-left: 20px;">{{ $data_event['we_date'] }}</span>
               </div>
-              <div class="col-md-2">
+              <div>
                 <i class="far fa-clock"></i><span style="margin-left: 20px;">{{ $data_event['we_time1'] }} - {{ $data_event['we_time2'] }}</span>
               </div>
-              <div class="col-md-3">
+              <div>
                 <i class="fas fa-map-marker-alt"></i><span style="margin-left: 20px;">{{ $data_event['we_venue'] }}</span>
               </div>
-              <div class="col-md-3">
+              <div>
                 <i class="fas fa-folder-open"></i><span style="margin-left: 20px;">{{ $data_event['package']['package_title'] }}</span>
               </div>
-              <div class="col-md-2">
+              <div>
                 <i class="fas fa-dollar-sign"></i><span style="margin-left: 20px;">MYR {{ $data_event['package']['package_price'] }}</span>
               </div>
             </div>
@@ -490,7 +517,7 @@
         <div class="row">
           <div class="col-md-3 std-timeline-sidebar">
             
-            <div class="row" style="padding: 8px 20px;max-height: 50vh;overflow: auto;">
+            <div style="padding: 8px 15px;max-height: 50vh;overflow: auto;">
               <span style="opacity: 0.7;"><i class="fas fa-bell" style="margin-right: 10px;"></i> Timeline Notification</span>
               <hr><br>
 
@@ -507,7 +534,6 @@
                 {{ $noti['assigned'] }} : {{ $noti['category']['tc_title'] }}</div>
                 <div class="notification-tcard-content">
                   {{ $noti['wet_subject'] }}
-                  <br>
                   <br>
 
                   @if($noti['ts_id'] == 1)
@@ -526,20 +552,35 @@
 
               @endforeach
             </div>
-            <hr>
+
+
+            <div class="std-timeline-banner-transaction">
+              <p><i class="fas fa-exchange-alt" style="margin-right: 10px;"></i> Transaction</p>
+              <table id="transaction_table">
+                <tr>
+                  <td>Type</td><td style="text-align: right;">Amount (MYR)</td>
+                </tr>
+                <tr>
+                  <td>Payable</td><td style="text-align: right;color: green;font-weight: bold;">{{ $payment_data['total_payable'] }}</td>
+                </tr>
+                <tr>
+                  <td>Receivable</td><td style="text-align: right;color: red;font-weight: bold;">{{ $payment_data['total_receivable'] }}</td>
+                </tr>
+              </table>
+            </div>
 
             <!-- ========= Event Vendors sidebar ==============  -->
 
-            <div class="row" style="padding: 10px 20px;">
+            <div style="padding: 10px 10px;">
               <div style="display: flex;flex-direction: row;justify-content: space-between;width: 100%;">
                 <div style="opacity: 0.7;"><i class="fas fa-users" style="margin-right: 10px;"></i> Event Vendors</div>
                 <div class="plus_btn" id="add_vendors_btn"><i class="fas fa-plus"></i></div>
               </div>
-              <hr><br>
+              <hr>
 
                 @if($data_event['user_id'] != 0)
 
-                  <div class="vendors-tcard">
+                  <div class="vendors-tcard" onclick="addContact('{{ $data_event['client']['name'] }}','{{ $data_event['client']['id'] }}')">
                     {{ $data_event['client']['name'] }}
                   </div>
 
@@ -547,9 +588,19 @@
 
                 @foreach($data_vendors as $vendor)
 
-                  <div class="vendors-tcard">
+                @if($vendor['company_id'] == $data_event['company_id'])
+
+                  <div class="vendors-tcard-disable">
                     {{ $vendor['vendor']['company_name'] }}
                   </div>
+
+                @else
+
+                  <div class="vendors-tcard" onclick="addContact('{{ $vendor['vendor']['company_id'] }}','{{ $vendor['vendor']['company_name'] }}')">
+                    {{ $vendor['vendor']['company_name'] }}
+                  </div>
+
+                @endif
 
                 @endforeach
 
@@ -559,17 +610,15 @@
         <!-- ======== ADD TImeline form -->
 
           <div class="col-md-9" style="padding-right: 0!important;padding-left: 5px!important;">
-            <div id="std-timeline-header"></div>
             <div class="std-timeline">
               @if($data_event['user_id'] != 0)              
                 <div class="form_switch" id="form-switch">
                   <div><i class="fas fa-angle-down" id="arrow_icon"></i><span id="form-switch-text">View timeline form</span></div>
                 </div>
-                <br><br>
                 @endif
               <div id="std_timline_form">
                 
-                <div style="width: 100%;display: flex;justify-content: space-between;">
+                <div style="width: 100%;display: flex;justify-content: space-between;margin-top: 15px;">
 
                   <div style="margin-bottom: 15px;">
                     <label>Category </label>
@@ -630,25 +679,34 @@
                   <textarea id="editor"></textarea>
                 </div>
                 <br>
-                
-                <div style="width: 100%;display: flex;justify-content: space-between;">
-                  <input type="file" name="meetingFile">                
-
-                  <button id="add-timeline-btn">Add Timeline</button>
+                <div style="width: 100%;display: flex;justify-content: space-between;margin-top: 10px;">
+                  <div style="display: flex;justify-content: flex-start;align-items: center;">
+                      <div>
+                        <input type="checkbox" name="involve_payment" id="involve_payment">
+                        <span style="margin-left: 10px;margin-right: 15px;">Include Payment</span>
+                      </div>
+                      <div id="payment_input">
+                        <span style="font-weight: bold;">MYR</span> <input type="text" name="payment_amount" class="date_form" id="payment">
+                      </div>
+                  </div>
+                  <div>
+                      <button id="add-timeline-btn">Add Timeline</button>
+                  </div>
                 </div>
-                <br>
               </div>
-              <br>
               <hr>
-              <div class="row">
-                <div class="row">
-                  <select style="margin-left: 30px;height: 30px;width: 200px;padding-left: 10px;" id="select_vendor">
-                    <option value="all">All</option>
-                    @foreach($d_vendors as $vendor)
-                      <option value="{{ $vendor['id'] }}">{{ $vendor['name'] }}</option>
-                    @endforeach
-                  </select>
+              <div class="row" style="display: flex;flex-direction: row;justify-content: flex-start;align-items: center;">
+                <select style="margin-left: 30px;height: 30px;width: 200px;padding-left: 10px;" id="select_vendor">
+                  <option value="all">All</option>
+                  @foreach($d_vendors as $vendor)
+                    <option value="{{ $vendor['id'] }}">{{ $vendor['name'] }}</option>
+                  @endforeach
+                </select>
+                <div style="margin-left: 15px;">
+                  <input type="radio" name="filter_type" value="owner" id="radio_1" class="filter_type_radio"> Assigner &nbsp&nbsp&nbsp
+                  <input type="radio" name="filter_type" value="assignto" class="filter_type_radio"> Assigned To
                 </div>
+              </div>
               <div id="myTimeline"></div>
 
               </div>
@@ -865,6 +923,8 @@
 
         globalNotification();
 
+        $("#radio_1").prop("checked", true);
+
         $('#edit_info,.close-action-icon,#cancel_button1').click(function(){
 
           $("#std-timeline-banner-option-popup").fadeOut('fast');
@@ -872,6 +932,15 @@
           $('#package').val('{{ $data_event["package_id"] }}');
 
         });
+
+        if($('#involve_payment').is(':checked')){
+            
+          $('#payment_input').fadeToggle('fast');
+
+        }else{
+          
+          $('#payment_input').fadeToggle('fast');
+        }
 
         $('#okey_update').click(function(){
 
@@ -955,6 +1024,19 @@
           });
         });
 
+        $('#involve_payment').change(function(){
+
+          if($(this).is(':checked')){
+            
+            $('#payment_input').fadeToggle('fast');
+
+          }else{
+            
+            $('#payment_input').fadeToggle('fast');
+          }
+
+        });
+
         var data;
         url = APP_URL + '/load_u';
         var we_id = '{{ $data_event["we_id"] }}';
@@ -994,11 +1076,12 @@
           placeholder: {multiple:true},
         });
 
-        $('#select_vendor').change(function(){
+        $('#select_vendor, .filter_type_radio').change(function(){
 
           var selectedVendor = $(this).children("option:selected").val();
+          var selectedFilter = $('input[name=filter_type]:checked').val(); 
 
-          $.post(url,{'we_id':we_id,'vid':selectedVendor},function(result){
+          $.post(url,{we_id:we_id,vid:selectedVendor,filter:selectedFilter},function(result){
 
             if(JSON.parse(result).length == 0){
 
@@ -1059,10 +1142,11 @@
           var datetime = $('#date_t').val();
           var subject = $('#subject').val();
           var content = $('#editor').summernote('code');
+          var payment = $('#payment').val();
           var url = APP_URL + '/send_t';
           var we_id = "{{ $data_event['we_id'] }}";
 
-          $.post(url,{category:category,user:user,subject:subject,datetime:datetime,content:content,_token:token,we_id:we_id},function(result){
+          $.post(url,{category:category,user:user,subject:subject,datetime:datetime,content:content,payment:payment,_token:token,we_id:we_id},function(result){
             location.reload();
           });
         });

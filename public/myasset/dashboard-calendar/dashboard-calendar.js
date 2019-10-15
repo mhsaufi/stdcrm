@@ -31,6 +31,17 @@ $.post(url,function(result){
         if(val.status != '2'){
 
           string += '<span style="color:red"><i class="fas fa-exclamation-circle"></i></span>';
+
+        }else{
+
+          if(val.wet_payment == 0){
+             
+
+          }else{
+
+            string += '<span style="color:green"><i class="fas fa-sort-amount-up-alt"></i></span>';
+          }
+
         }
 
 
@@ -92,7 +103,17 @@ $('#plus').click(function(){
           if(val.status != '2'){
 
             string += '<span style="color:red"><i class="fas fa-exclamation-circle"></i></span>';
+          }else{
+
+          if(val.wet_payment == 0){
+             
+
+          }else{
+
+            string += '<span style="color:green"><i class="fas fa-sort-amount-up-alt"></i></span>';
           }
+
+        }
 
 
           string += '</div>';
@@ -150,7 +171,17 @@ $('#minus').click(function(){
           if(val.status != '2'){
 
             string += '<span style="color:red"><i class="fas fa-exclamation-circle"></i></span>';
+          }else{
+
+          if(val.wet_payment == 0){
+             
+
+          }else{
+
+            string += '<span style="color:green"><i class="fas fa-sort-amount-up-alt"></i></span>';
           }
+
+        }
 
 
           string += '</div>';
