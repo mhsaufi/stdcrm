@@ -664,11 +664,53 @@ ul, ol {
   width: 70%;
   background: #fff;
   border-radius: 5px;
-  padding: 15px 15px;
+  padding: 20px 25px;
   -moz-box-shadow: 0 0 30px #888;
   -webkit-box-shadow: 0 0 30px #888;
   box-shadow: 0 0 30px #888;
   margin-bottom: 15%;
+}
+
+#end_event_container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background: rgba(255,255,255,0.8);
+  z-index: 999;
+  display: none;
+}
+
+#end_event_form {
+  position: absolute;
+  height: 50%;
+  top: 20%;
+  width: 60%;
+  left: 20%;
+  background: white;
+  -moz-box-shadow: 0 0 30px #888;
+  -webkit-box-shadow: 0 0 30px #888;
+  box-shadow: 0 0 30px #888;
+  border-radius: 10px;
+  padding: 5px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+#end_event_form > #end_event_header {
+  width: 100%;
+  padding: 15px 0;
+  border-bottom: 0.05em solid #d4af37;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#end_event_form > #end_event_content {
+  width: 100%;
+  padding: 15px 0;
 }
 
 #close_tdetail {

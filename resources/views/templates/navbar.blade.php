@@ -35,6 +35,13 @@
                     @if(Auth::user()->role_id == 3)
 
                     <li class="nav-item">
+                      <a class="nav-link black" href="{{ url('/insider') }}">
+                        <i class="fas fa-sitemap"></i> 
+                        Insider
+                      </a>
+                    </li>
+
+                    <li class="nav-item">
                       <a class="nav-link black" href="{{ url('/contact') }}">
                         <i class="fas fa-address-book"></i>  
                         Contact
