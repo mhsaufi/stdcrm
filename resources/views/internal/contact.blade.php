@@ -91,9 +91,17 @@
 		.contact_table th, .contact_table td{
 			padding: 5px 10px;
 			border: 0.05em solid #dcdcdc;
-			font-size: 10px;
+			font-size: 12px;
 		}
 
+		.action_icon {
+			opacity: 0.5;
+			cursor: pointer;
+		}
+
+		.action_icon:hover {
+			opacity: 0.8;
+		}
 	 </style>
 
 </head>
@@ -118,11 +126,12 @@
     					<table class="contact_table">
     						<thead>
     							<tr>
-    								<th></th>
-	    							<th>Name</th>
-	    							<th>Email</th>
-	    							<th>Phone</th>
-	    							<th>Status</th>
+    								<th style="width: 1%;"></th>
+	    							<th style="width: 15%;">Name</th>
+	    							<th style="width: 15%;">Email</th>
+	    							<th style="width: 10%;">Phone</th>
+	    							<th style="width: 5%;">Status</th>
+	    							<th style="width: 15%;text-align: center;">Action</th>
     							</tr>
     						</thead>
     						<tbody>
@@ -132,14 +141,50 @@
     								<td>{{ $user['fullname'] }}</td>
     								<td>{{ $user['email'] }}</td>
     								<td>{{ $user['phone'] }}</td>
-    								<td></td>
+    								@if($user['status'] == '1')
+    								<td style="background: #7dcea0;color: #fff;">CURRENT</td>
+    								@else
+    								<td style="background: #f7dc6f;color: #fff;">PAST</td>
+    								@endif
+    								<td>
+    									<div style="width: 100%;display: flex;flex-direction: row;justify-content: space-around;">
+    										<div class="action_icon"><i class="fas fa-search-plus"></i></div>
+    										<div class="action_icon"><i class="fas fa-link"></i></div>
+    										<div class="action_icon"><i class="fas fa-volume-mute"></i></div>
+    									</div>
+    								</td>
     							</tr>
     							@endforeach
     						</tbody>
     					</table>
     				</div>
     				<div id="container_vendor">
-    					HUHUHUHUHUHUHUH
+    					<table class="contact_table">
+    						<thead>
+    							<tr>
+    								<th style="width: 1%;"></th>
+	    							<th style="width: 15%;">Company</th>
+	    							<th style="width: 5%;">Contact</th>
+	    							<th style="width: 10%;">Mail</th>
+	    							<th style="width: 10%;">PIC</th>
+	    							<th style="width: 15%;">PIC Email</th>
+	    							<th style="width: 15%;">PIC Email Contact</th>
+    							</tr>
+    						</thead>
+    						<tbody>
+    							@foreach($companies as $c)
+    							<tr>
+    								<td></td>
+    								<td>{{ $c['company_name'] }}</td>
+    								<td>{{ $c['company_contact'] }}</td>
+    								<td>{{ $c['company_email'] }}</td>
+    								<td>{{ $c['user']['name'] }}</td>
+    								<td>{{ $c['user']['email'] }}</td>
+    								<td>{{ $c['user']['phone'] }}</td>
+    							</tr>
+    							@endforeach
+    						</tbody>
+    					</table>
     				</div>
     			</div>
     		</div>

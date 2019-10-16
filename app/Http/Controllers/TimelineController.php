@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Company;
+use App\CompanyContact;
 use App\CompanyPackage;
 use App\TimelineCategory;
 use App\User;
@@ -81,21 +82,46 @@ class TimelineController extends Controller
 
         $i = 0;
 
+        $contact_check = new CompanyContact;
+
         foreach($data_vendors as $dv){
 
-            // if($dv['vendor']['company_id'] <> Auth::user()->company_id){
+                $count = $contact_check->where('contact_id',$dv['vendor']['company_id'])
+                                        ->where('contact_type','1')->count();
+
+                if($count == 0){
+
+                    $data_vendors[$i]['contact'] = 'no';
+
+                }else{
+
+                    $data_vendors[$i]['contact'] = 'yes';
+
+                }
 
                 $d_vendors[$i]['id'] = $dv['vendor']['company_id'];
                 $d_vendors[$i]['name'] = $dv['vendor']['company_name'];
                 $d_vendors[$i]['_id'] = $dv['vendor']['company_id'];
 
                 $i++;
-            // }
         }
 
         if($data_event['user_id'] <> 0){
 
             $user = $all_users->where('id',$data_event['user_id'])->first();
+
+            $count = $contact_check->where('contact_id',$data_event['user_id'])
+                                        ->where('contact_type','2')->count();
+
+            if($count == 0){
+
+                $data_event['user_is_contact'] = 'no';
+
+            }else{
+
+                $data_event['user_is_contact'] = 'yes';
+
+            }
 
             $d_vendors[$i+1]['id'] = 0;
             $d_vendors[$i+1]['name'] = $user['name'];
