@@ -531,6 +531,7 @@ class TimelineController extends Controller
         $content = $request->input('content');
         $we_id = $request->input('we_id');
         $subject = $request->input('subject');
+        $payment = $request->input('payment');
 
         $dt = Carbon::createFromFormat('d-m-Y H:i A', $datetime);
 
@@ -538,7 +539,7 @@ class TimelineController extends Controller
 
         $udpate = $timeline
                     ->where('wet_id', $we_id)
-                    ->update(['wet_subject'=>$subject,'wet_desc'=>base64_encode($content),'wet_datetime'=>$dt->format('Y-m-d H:i:s'),'user_id'=>$user,'tc_id'=>$category,'ts_id'=>1]);
+                    ->update(['wet_subject'=>$subject,'wet_payment' => $payment,'wet_desc'=>base64_encode($content),'wet_datetime'=>$dt->format('Y-m-d H:i:s'),'user_id'=>$user,'tc_id'=>$category,'ts_id'=>1]);
 
         return "Status 200 Ok";
     }

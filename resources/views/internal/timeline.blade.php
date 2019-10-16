@@ -867,10 +867,11 @@
         </div>
       </div>
       <div style="display: flex;flex-direction: row;justify-content: space-between;padding: 15px 0;">
-        <div><i class="far fa-clock"></i> <span style="font-style: italic;" id="datetime"></span></div>
-        <div><i class="fas fa-user-alt"></i> <span style="font-style: italic;" id="user"></span></div>
+        <div><i class="far fa-clock"></i>&nbsp&nbsp <span style="font-style: italic;" id="datetime"></span></div>
+        <div><i class="fas fa-user-alt"></i>&nbsp&nbsp <span style="font-style: italic;" id="user"></span></div>
+        <div style="color: green;" id="payment_element"><i class="fas fa-sort-amount-up-alt"></i>&nbsp&nbsp <span style="font-style: italic;" id="payment_value"></span></div>
         <div id="print_btn_section">
-          <a href="" id="print_btn" target="_blank"><i class="fas fa-print"></i> Print </a>
+          <a href="" id="print_btn" target="_blank"><i class="fas fa-print"></i>&nbsp&nbsp Print </a>
         </div>
       </div>
       <br>
@@ -979,13 +980,32 @@
       </div>
       <br>
       <div style="width: 100%;display: flex;justify-content: space-between;margin-top: 10px;">
-        <input type="file" name="meetingFile">                
+        <div style="display: flex;justify-content: flex-start;align-items: center;">
+            <div>
+              <input type="checkbox" name="involve_payment" id="involve_payment_edit">
+              <span style="margin-left: 10px;margin-right: 15px;">Include Payment</span>
+            </div>
+            <div id="payment_input_edit">
+              <span style="font-weight: bold;">MYR</span> <input type="text" name="payment_amount" class="date_form" id="payment_edit">
+            </div>
+        </div>                
         <div>
           <button id="add-timeline-btn" style="background: red;" onclick="deleteTimeline()">DELETE</button>
           <button id="add-timeline-btn" style="background: green;" onclick="updateTimeline()">UPDATE</button>
         </div>
       </div>
       <br>
+    </div>
+
+    <!-- Add Contact poppup -->
+
+    <div id="end_event_container">
+      <div id="end_event_form">
+        <div id="end_event_header"><div>End Event</div><div id="close_end_event" style="cursor: pointer;"><i class="fas fa-times"></i></div></div>
+        <div id="end_event_content">
+          
+        </div>
+      </div>
     </div>
 
     @include('templates.footer')
@@ -1025,6 +1045,15 @@
         }else{
           
           $('#payment_input').fadeToggle('fast');
+        }
+
+        if($('#involve_payment_edit').is(':checked')){
+            
+          $('#payment_input_edit').fadeToggle('fast');
+
+        }else{
+          
+          $('#payment_input_edit').fadeToggle('fast');
         }
 
         $('#okey_update').click(function(){
@@ -1118,6 +1147,19 @@
           }else{
             
             $('#payment_input').fadeToggle('fast');
+          }
+
+        });
+
+        $('#involve_payment_edit').change(function(){
+
+          if($(this).is(':checked')){
+            
+            $('#payment_input_edit').fadeToggle('fast');
+
+          }else{
+            
+            $('#payment_input_edit').fadeToggle('fast');
           }
 
         });
@@ -1263,6 +1305,10 @@
 
       });
 
+      $('#end_event, #close_end_event').click(function(){
+        $('#end_event_container').fadeToggle('fast');
+      });
+
       $('#close_tdetail').click(function(){
 
         $('#view_timeline_content').fadeToggle('fast');
@@ -1321,6 +1367,16 @@
             $('#print_btn_section').hide();
           }
 
+          if(obj.wet_payment == 0){
+
+            $('#payment_element').hide();
+
+          }else{
+
+            $('#payment_element').show();
+            $('#payment_value').html(" <b>MYR " + obj.wet_payment + "</b>");
+          }
+
           if(obj.user_id == self){
 
             if(obj.ts_id == 1){
@@ -1368,6 +1424,17 @@
           $('#select_opt_edit').val(obj.user_id);
           $('#wet_id').val(obj.wet_id);
           $('#timeline_remark').html(obj.wet_remark);
+
+          if(obj.wet_payment == 0){
+
+            $("#involve_payment_edit").prop("checked",false);
+
+          }else{
+
+            $("#involve_payment_edit").prop("checked",true);
+            $("#payment_edit").val(wet.payment);
+          }
+
           $('#edit_timeline').fadeToggle();
 
         });
@@ -1418,13 +1485,13 @@
         var editCategory = $('#category_edit').val();
         var editUser = $('#select_opt_edit').val();
         var editID = $('#wet_id').val();
+        var payment = $('#payment_edit').val();
 
-        $.post(url,{category:editCategory,datetime:editDate,user:editUser,content:editContent,we_id:editID,subject:editSubject,_token:token},function(result){
+        $.post(url,{category:editCategory,datetime:editDate,payment:payment,user:editUser,content:editContent,we_id:editID,subject:editSubject,_token:token},function(result){
 
           location.reload();
 
         });
-
       }
 
       function deleteTimeline(){
@@ -1476,7 +1543,6 @@
             setTimeout(swap, 1000);
         });
 
-        
       });
 
       function swap(){

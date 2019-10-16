@@ -107,25 +107,11 @@
 		.step-container{
 			display: flex;
 			flex-direction: row wrap;
-<<<<<<< HEAD
 			border-radius: 10px;
 			border: 1px solid #d4af37;
 			background: url("{{asset('myasset/img/babout.jpg')}}");
 			padding: 20px 40px;
 			width: 100%;
-=======
-			/*border-radius: 10px;*/
-			/*border: 1px solid #d4af37;*/
-			/* justify-content: ; */
-			background: url("{{asset('myasset/img/babout.jpg')}}");
-			padding: 20px 40px;
-			width: 100%;
-			-moz-box-shadow: 0 0 5px #888;
-	        -webkit-box-shadow: 0 0 5px#888;
-	        box-shadow: 0 0 2px #888;
-			/* margin-top: 2%; */
-			/* margin-right:10%;			 */
->>>>>>> 4c5cda7d8a3f953b1655324597deb2b0bc21b80a
 		}
 
 		#border-hexagon {
