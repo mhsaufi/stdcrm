@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>SaveTheDate | LOGIN</title>
+	<title>SaveTheDate | Registration</title>
     <link rel="icon" href="{{asset('myasset/img/tab-icon2.png')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('myasset/loginvendor/bootstrap/css/bootstrap.min.css')}}">
 	<!-- <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"> -->
@@ -82,6 +82,82 @@
             background: #27ae60;
             color: white;
             padding: 10px 15px;
+            cursor: pointer;
+        }
+
+         .std-reg-btn:disabled {
+            border: none;
+            background: #808b96;
+            color: white;
+            padding: 10px 15px;
+            cursor: default;
+        }
+
+        .error {
+            margin-left: 20px;
+            color: #e74c3c;
+            font-weight: 700;
+            font-style: italic;
+            font-size: 12px;
+            opacity: 0.7;
+            /*display: none;*/
+        }
+
+        .phone_input_container {
+            position: relative;
+        }
+
+        .email_input_container {
+            position: relative;
+        }
+
+        #phone_prefix {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 5%;
+            background: #dcdcdc;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+        }
+
+        #phone {
+            padding-left: 6%!important;
+        }
+
+        #carrier_logo {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 5%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+            padding: 1% 1%;
+        }
+
+        #email_tick {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 5%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+            padding: 1.3% 1.3%;
         }
     </style>	
 </head>
@@ -107,24 +183,40 @@
 				<form method="POST" action="{{ route('register') }}">
 					@csrf
 
-                    <label class="std-label">Username</label>
-                    <input type="text" name="name" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"/>
+                    <label class="std-label">Username</label><span class="error" id="error_name"></span>
+                    <input type="text" name="name" id="name" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"/>
+                    <input type="hidden" id="c_name" name="">
 
-                    <label class="std-label">Fullname</label>
-                    <input type="text" name="fullname" class="form-control"/>
+                    <label class="std-label">Fullname</label><span class="error" id="error_fullname"></span>
+                    <input type="text" name="fullname" id="fullname" class="form-control" />
+                    <input type="hidden" id="c_fullname" name="">
 
-                    <label class="std-label">Email</label>
-                    <input type="text" name="email" class="form-control"/>
+                    <label class="std-label">Email</label><span class="error" id="error_email"></span>
+                    <div class="email_input_container">
+                        <input type="text" name="email" id="email" class="form-control"/>
+                        <input type="hidden" id="c_email" name="">
+                        <div id="email_tick"><img src="" id="email_tick_img"/></div>
+                    </div>
 
-                    <label class="std-label">Password</label>
-                    <input type="password" name="password" class="form-control"/>
+                    <label class="std-label">Phone No</label><span class="error" id="error_phone"></span>
+                    <div class="phone_input_container">
+                        <div id="phone_prefix"> +6 </div>
+                        <input type="text" name="phone" id="phone" class="form-control"/>
+                        <input type="hidden" id="c_phone" name="">
+                        <div id="carrier_logo"><img src="" id="carrier_logo_img"/></div>
+                    </div>
 
-                    <label class="std-label">Re-enter Password</label>
-                    <input type="password" name="password_confirmation" class="form-control"/>
+                    <label class="std-label">Password</label><span class="error" id="error_password"></span>
+                    <input type="password" name="password" id="password" class="form-control"/>
+                    <input type="hidden" id="c_password" name="">
+
+                    <label class="std-label">Re-enter Password</label><span class="error" id="error_password1"></span>
+                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control"/>
+                    <input type="hidden" id="c_password_confirmation" name="">
 
 					<br>
                     <div id="error-message"></div><br>
-                    <button class="std-reg-btn" id="reg-btn" type="submit">REGISTER</button><br>
+                    <button class="std-reg-btn" id="reg-btn" type="submit" disabled>REGISTER</button><br>
                     
 				</form>
 			</div>
@@ -134,10 +226,178 @@
 
 	<script src="{{asset('myasset/js/jquery-min.js')}}"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+    <script src="{{asset('myasset/js/email_validator.js')}}"></script>
 	<script type="text/javascript">
+
+        $(document).ready(function(){
+
+            $('#name').val('');
+            $('#fullname').val('');
+            $('#email').val('');
+            $('#phone').val('');
+            $('#password').val('');
+            $('#password_confirmation').val('');
+        });
+
 		$('#logo').click(function(){
 			window.location.replace("{{ url('/') }}");
 		});
+
+        $('#name').blur(function(){
+
+            var name = $('#name').val();
+            var fullname = $('#fullname').val();
+
+            if(name == ''){
+
+                $('#error_name').html('Required');
+
+                $('#c_name').val('0');
+
+            }else{
+
+                $('#c_name').val('1');
+
+                $('#error_name').html('');
+            }
+
+            enable();
+
+        });
+
+        $('#fullname').blur(function(){
+
+             if(fullname == ''){
+
+                 $('#error_fullname').html('Required');
+
+                 $('#c_fullname').val('0');
+
+            }else{
+
+                $('#c_fullname').val('1');
+
+                $('#error_fullname').html('');
+            }
+
+            enable();
+        });
+
+        $('#email').blur(function(){
+
+            var email = $('#email').val();
+
+            if(email == ''){
+
+                $('#error_email').html('Required');
+
+                $('#c_email').val('0');
+
+            }else{
+
+                $('#error_email').html('');
+
+                var result = emailValidator(email);
+            }
+
+            enable();
+        });
+
+        $('#phone').blur(function(){
+
+            var phone = $('#phone').val();
+
+            if(phone == ''){
+
+                $('#error_phone').html('Required');
+
+                $('#c_phone').val('0');
+
+            }else{
+
+                $('#error_phone').html('');
+
+                result_2 = phoneValidator(phone);
+            }
+
+            enable();
+        });
+
+        $('#password').blur(function(){
+
+            var password = $('#password').val();
+
+            if(password == ''){
+
+                $('#error_password').html('Required');
+
+                $('#c_password').val('0');
+
+            }else{
+
+                if(password.length < 8){
+
+                    $('#error_password').html('Must be at least 8 character');
+                    $('#c_password').val('0');
+
+                }else{
+
+                    $('#error_password').html('');
+                    $('#c_password').val('1');
+
+                }
+            }
+
+            enable();
+        });
+
+        $('#password_confirmation').blur(function(){
+
+            var password = $('#password').val();
+            var password_confirmation = $('#password_confirmation').val();
+
+            if(password_confirmation == ''){
+
+                $('#error_password').html('Required');
+                $('#c_password_confirmation').val('0');
+
+            }else{
+
+                $('#error_password').html('');
+
+                if(password == password_confirmation){
+
+                    $('#error_password').html('');
+
+                    $('#c_password_confirmation').val('1');
+
+                }else{
+
+                    $('#error_password').html('Password does not match');
+                    $('#c_password_confirmation').val('0');
+
+                }
+
+            }
+
+            enable();
+        });
+
+        function enable(){
+
+            var error = parseInt($('#c_name').val()) + parseInt($('#c_fullname').val()) + parseInt($('#c_email').val()) + parseInt($('#c_phone').val()) + parseInt($('#c_password').val()) + parseInt($('#c_password_confirmation').val());
+
+            console.log("Current value for error : " + error);
+
+            if(error == 6){
+
+                $('#reg-btn').prop('disabled',true);
+
+            }else{
+
+                $('#reg-btn').prop('disabled',false);
+            }
+        }
 	</script>
 </body>
 </html>
