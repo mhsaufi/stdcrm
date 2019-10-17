@@ -118,7 +118,10 @@
     	<div class="contact_container">
     		<div class="header">
     			<div>
-    				<h4>{{ $company_info['company_name'] }}</h4>
+    				<h4 style="color: #d4af37;">{{ $company_info['company_name'] }}</h4>
+    				<p><i class="fas fa-envelope"></i> &nbsp&nbsp{{ $company_info['company_email'] }}</p>
+    				<p><i class="fas fa-phone"></i> &nbsp&nbsp{{ $company_info['company_contact'] }}</p>
+    				<p><i class="fas fa-map-marker-alt"></i> &nbsp&nbsp{{ $company_info['company_address'] }}</p>
     			</div>
 				@if($company_info['company_logo'] == '')
 				<div class="company_logo" style="background: url('{{ asset('myasset/img/null.jpg') }}');background-position: center;background-size: cover;"></div>
@@ -143,7 +146,7 @@
     				</div>
     				<div>
     					<h6>Status</h6>
-    					<p>Active</p>
+    					<p style="font-weight: bold;color: green;">Active</p>
     				</div>
     			</div>
     			@endforeach

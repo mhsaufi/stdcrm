@@ -115,6 +115,10 @@ Route::post('/disapprovet','TimelineController@disapproveTimeline');
 Route::post('/updatetimeline','TimelineController@updateTimeline');
 Route::post('/deletetimeline','TimelineController@deleteTimeline');
 
+// ALL EVENTS ROUTES
+
+Route::post('/eeinfo','AgreementController@read');
+
 Route::get('/profile/gallery','GalleryController@index');
 
 Route::get('/profile/package','PackageController@index');
@@ -122,7 +126,6 @@ Route::post('/profile/package/new','PackageController@create');
 Route::post('/profile/package/edit','PackageController@edit');
 Route::post('/profile/package/update','PackageController@update');
 Route::post('/deletepackage','PackageController@delete');
-
 Route::get('/profile/marketing','MarketingController@index');
 
 Route::post('/uploading','GalleryController@uploadPhoto');

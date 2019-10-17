@@ -3,7 +3,6 @@ function emailValidator(email){
 
 	var API_KEY = '6ab2824c21df3e8b08fd90d1ed3a088b';
 	var endpoint = 'http://apilayer.net/api/check?access_key='+ API_KEY +'&email='+ email +'&smtp=1&format=1';
-	var status = 0;
 
 	$('#email_tick_img').attr('src','myasset/img/carrier/ajax-loader.gif');
 
@@ -16,31 +15,27 @@ function emailValidator(email){
 				$('#error_email').html('');
             	$('#email_tick_img').attr('src','myasset/img/carrier/correct.png');
 
-            	$('#c_email').val('1');
+            	$('#c_email').val('a');
 
 			}else{
 
-				status = 1;
 				$('#email_tick_img').attr('src','');
                 $('#error_email').html('Invalid email is given');
 
-                $('#c_email').val('0');
+                $('#c_email').val('b');
 			}
 
 		}else{
 
-			status = 1;
 			$('#email_tick_img').attr('src','');
             $('#error_email').html('Invalid email is given');
 
-            $('#c_email').val('0');
+            $('#c_email').val('b');
 		}
 
 		enable();
 
 	});
-
-	return status;
 }
 
 function phoneValidator(phone){
@@ -83,7 +78,7 @@ function phoneValidator(phone){
 			result.status = 0;
 			result.type = data.phone_type;
 
-			$('#c_phone').val('1');
+			$('#c_phone').val('a');
 
 		}else{
 
@@ -91,7 +86,7 @@ function phoneValidator(phone){
 			result.type = 0;
 			result.logo = 0;
 
-			$('#c_phone').val('0');
+			$('#c_phone').val('b');
 		}
 
 		if(result.status == '0'){

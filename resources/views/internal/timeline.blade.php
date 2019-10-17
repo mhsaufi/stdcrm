@@ -1002,8 +1002,14 @@
     <div id="end_event_container">
       <div id="end_event_form">
         <div id="end_event_header"><div>End Event</div><div id="close_end_event" style="cursor: pointer;"><i class="fas fa-times"></i></div></div>
+        <div style="margin-top: 15px;">You are about to end this event. Votes from others will be needed to officially end this event. Once you manage to get at least half of the participant, this event will be officially ended</div>
         <div id="end_event_content">
-          
+          <div id="eec_1">
+           
+          </div>
+          <div id="eec_2">
+            
+          </div>
         </div>
       </div>
     </div>
@@ -1022,7 +1028,11 @@
       
       var token = '{{ csrf_token() }}';
       var APP_URL = '{!! url("/") !!}';
+      var self_id = '{{ Auth::user()->id }}';
+      var role = '{{ Auth::user()->role_id }}';
+      var company_id = '{{ Auth::user()->company_id }}';
       var url = '';
+      var we_id = '{{ $data_event["we_id"] }}';
 
       $(document).ready(function () {
 
@@ -1305,8 +1315,80 @@
 
       });
 
-      $('#end_event, #close_end_event').click(function(){
+      $('#close_end_event').click(function(){
         $('#end_event_container').fadeToggle('fast');
+      });
+
+      $('#end_event').click(function(data){
+
+        $.post(APP_URL + '/eeinfo',{_token:token,we_id:we_id},function(data){
+
+          var obj = JSON.parse(data);
+          var str = '';
+
+          if(obj.count == 0){
+
+            $.each(obj.main_data,function(key, value){
+
+              str += '<div class="eec_1_content">';
+
+              if(value.dp == '' || value.dp === null){
+
+                str += '<div><img src="myasset/img/default.png"/></div>';
+
+              }else{
+
+                str += '<div><img src="storage/' + value.dp + '"/></div>';
+              }
+              
+              str += '<div>'+ value.name +'</div>';
+
+              if(role_id == '3'){
+
+                if(value.id == company_id){
+
+                  str += '<div><button class="btn_end_vote" data-id="'+ value.id +'">Vote End</button></div>';
+
+                }else{
+
+                  str += '<div><button class="btn_end_vote" data-id="'+ value.id +'" disabled>Vote End</button></div>';
+
+                }
+
+              }else{
+
+                if(value.id == self_id){
+
+                  str += '<div><button class="btn_end_vote" data-id="'+ value.id +'">Vote End</button></div>';
+
+                }else{
+
+                  str += '<div><button class="btn_end_vote" data-id="'+ value.id +'" disabled>Vote End</button></div>';
+
+                }
+
+              }
+
+              
+
+              str += '</div>';
+
+            });
+
+            $('#eec_1').html(str);
+
+            $('#eec_1').show();
+
+          }else{
+
+            $('#eec_2').show();
+
+          }
+
+        });
+
+        $('#end_event_container').fadeToggle('fast');
+
       });
 
       $('#close_tdetail').click(function(){

@@ -87,7 +87,7 @@
 
          .std-reg-btn:disabled {
             border: none;
-            background: #808b96;
+            background: #dcdcdc;
             color: white;
             padding: 10px 15px;
             cursor: default;
@@ -237,6 +237,8 @@
             $('#phone').val('');
             $('#password').val('');
             $('#password_confirmation').val('');
+
+            $('#reg-btn').prop('disabled',true);
         });
 
 		$('#logo').click(function(){
@@ -246,17 +248,16 @@
         $('#name').blur(function(){
 
             var name = $('#name').val();
-            var fullname = $('#fullname').val();
 
             if(name == ''){
 
                 $('#error_name').html('Required');
 
-                $('#c_name').val('0');
+                $('#c_name').val('b');
 
             }else{
 
-                $('#c_name').val('1');
+                $('#c_name').val('a');
 
                 $('#error_name').html('');
             }
@@ -271,11 +272,11 @@
 
                  $('#error_fullname').html('Required');
 
-                 $('#c_fullname').val('0');
+                 $('#c_fullname').val('b');
 
             }else{
 
-                $('#c_fullname').val('1');
+                $('#c_fullname').val('a');
 
                 $('#error_fullname').html('');
             }
@@ -291,13 +292,13 @@
 
                 $('#error_email').html('Required');
 
-                $('#c_email').val('0');
+                $('#c_email').val('b');
 
             }else{
 
                 $('#error_email').html('');
 
-                var result = emailValidator(email);
+                emailValidator(email);
             }
 
             enable();
@@ -311,13 +312,13 @@
 
                 $('#error_phone').html('Required');
 
-                $('#c_phone').val('0');
+                $('#c_phone').val('b');
 
             }else{
 
                 $('#error_phone').html('');
 
-                result_2 = phoneValidator(phone);
+                phoneValidator(phone);
             }
 
             enable();
@@ -331,19 +332,19 @@
 
                 $('#error_password').html('Required');
 
-                $('#c_password').val('0');
+                $('#c_password').val('b');
 
             }else{
 
                 if(password.length < 8){
 
                     $('#error_password').html('Must be at least 8 character');
-                    $('#c_password').val('0');
+                    $('#c_password').val('b');
 
                 }else{
 
                     $('#error_password').html('');
-                    $('#c_password').val('1');
+                    $('#c_password').val('a');
 
                 }
             }
@@ -359,7 +360,7 @@
             if(password_confirmation == ''){
 
                 $('#error_password').html('Required');
-                $('#c_password_confirmation').val('0');
+                $('#c_password_confirmation').val('b');
 
             }else{
 
@@ -369,12 +370,12 @@
 
                     $('#error_password').html('');
 
-                    $('#c_password_confirmation').val('1');
+                    $('#c_password_confirmation').val('a');
 
                 }else{
 
                     $('#error_password').html('Password does not match');
-                    $('#c_password_confirmation').val('0');
+                    $('#c_password_confirmation').val('b');
 
                 }
 
@@ -385,17 +386,23 @@
 
         function enable(){
 
-            var error = parseInt($('#c_name').val()) + parseInt($('#c_fullname').val()) + parseInt($('#c_email').val()) + parseInt($('#c_phone').val()) + parseInt($('#c_password').val()) + parseInt($('#c_password_confirmation').val());
+            var a_error = $('#c_name').val();
+            var b_error = $('#c_fullname').val();
+            var c_error = $('#c_email').val();
+            var e_error = $('#c_phone').val();
+            var f_error = $('#c_password').val();
+            var g_error = $('#c_password_confirmation').val();
+            var total_error = a_error +''+ b_error +''+ c_error +''+ e_error +''+ f_error +''+ g_error;
 
-            console.log("Current value for error : " + error);
+            console.log("Current value for error : " + total_error);
 
-            if(error == 6){
+            if(total_error == 'aaaaaa'){
 
-                $('#reg-btn').prop('disabled',true);
+                $('#reg-btn').prop('disabled',false);
 
             }else{
 
-                $('#reg-btn').prop('disabled',false);
+                $('#reg-btn').prop('disabled',true);
             }
         }
 	</script>
