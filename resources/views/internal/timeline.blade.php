@@ -349,13 +349,14 @@
 
       .vendors-tcard {
         position: relative;
-        padding: 8px 20px;
+        padding: 8px 10px;
         border: 0.05em solid #cfd8dc;
         border-radius: 2px;
         width: 100%;
         min-height: 28%;
         margin-bottom: 5px;
         cursor: pointer;
+        font-size: 13px;
       }
 
       .vendors-tcard:hover {
@@ -365,9 +366,20 @@
       }
 
       .vendors-tcard-name {
+        width: 93%;
         position: absolute;
         margin-right: 0;
         -webkit-transition: margin-right 0.2s, opacity 0.2s;
+      }
+
+      .vendors-tcard-name-contact {
+        width: 93%;
+        position: absolute;
+        opacity: 0.8;
+        margin-right: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
       }
 
       .vendors-tcard:hover  .vendors-tcard-name {
@@ -388,12 +400,13 @@
       }
 
       .vendors-tcard-disable {
-        padding: 10px 20px;
+        padding: 8px 10px;
         border: 0.05em solid #f7f7f7;
         background: #f7f7f7;
         border-radius: 2px;
         width: 100%;
         margin-bottom: 5px;
+        font-size: 13px;
       }
 
       .approve_btn {
@@ -612,10 +625,20 @@
 
                 @if($data_event['user_id'] != 0)
 
-                  <div class="vendors-tcard" onclick="addContactClient('{{ $data_event['client']['name'] }}','{{ $data_event['client']['id'] }}')">
-                    <div class="vendors-tcard-name">{{ $data_event['client']['name'] }}</div>
-                    <div class="vendors-tcard-add-contact"><i class="fas fa-plus"></i> Add as contact</div>
-                  </div>
+                  @if($data_event['user_is_contact'] == 'yes')
+
+                    <div class="vendors-tcard">
+                      <div class="vendors-tcard-name-contact"><div>{{ $data_event['client']['name'] }}</div><div><i class="far fa-handshake"></i></div></div>
+                    </div>
+
+                  @else
+
+                    <div class="vendors-tcard" onclick="addContactClient('{{ $data_event['client']['name'] }}','{{ $data_event['client']['id'] }}')">
+                      <div class="vendors-tcard-name">{{ $data_event['client']['name'] }}</div>
+                      <div class="vendors-tcard-add-contact"><i class="fas fa-plus"></i> Add as contact</div>
+                    </div>
+
+                  @endif
 
                 @endif
 
@@ -629,10 +652,21 @@
 
                 @else
 
-                  <div class="vendors-tcard" onclick="addContactVendor('{{ $vendor['vendor']['company_id'] }}','{{ $vendor['vendor']['company_name'] }}')">
-                    <div class="vendors-tcard-name">{{ $vendor['vendor']['company_name'] }}</div>
-                    <div class="vendors-tcard-add-contact"><i class="fas fa-plus"></i> Add as contact</div>
-                  </div>
+                  @if($vendor['contact'] == 'yes')
+
+                    <div class="vendors-tcard">
+                      <div class="vendors-tcard-name-contact"><div>{{ $vendor['vendor']['company_name'] }}</div><div><i class="far fa-handshake"></i></div></div>
+                    </div>
+
+                  @else
+
+                    <div class="vendors-tcard" onclick="addContactVendor('{{ $vendor['vendor']['company_id'] }}','{{ $vendor['vendor']['company_name'] }}')">
+                      <div class="vendors-tcard-name">{{ $vendor['vendor']['company_name'] }}</div>
+                      <div class="vendors-tcard-add-contact"><i class="fas fa-plus"></i> Add as contact</div>
+                    </div>
+
+                  @endif
+                  
 
                 @endif
 
@@ -1506,14 +1540,17 @@
             $('#add_contact_form').fadeToggle('fast');
             $('#add_contact_form_added').fadeToggle('fast');
 
-            setTimeout(swap, 1500);
-        }); 
+            setTimeout(swap, 1000);
+        });
+
       });
 
       function swap(){
         $('#add_contact_form_container').fadeToggle('fast');
         $('#add_contact_form_added').fadeToggle('fast');
         $('#add_contact_form').fadeToggle('fast');
+
+        location.reload();
       }
 
     </script>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Company;
 use App\CompanyContact;
 use App\User;
+use App\WEvent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
@@ -16,6 +17,7 @@ class ContactController extends Controller
 		$company_contact = new CompanyContact;
 
 		// ------------------------------------------------------------------------------------------------------------------
+
 		$company_data = $company_contact->where('company_id', Auth::user()->company_id)->where('contact_type',1)->get();
 
 		$i = 0;
@@ -31,6 +33,7 @@ class ContactController extends Controller
 		}
 
 		// ------------------------------------------------------------------------------------------------------------------
+
 		$company_data = $company_contact->where('company_id', Auth::user()->company_id)->where('contact_type',2)->get();
 
 		$j = 0;
@@ -38,9 +41,18 @@ class ContactController extends Controller
 		$user = new User;
 		$users = array();
 
+		$event = new WEvent;
+
 		foreach($company_data as $cd){
 
-			$users[$i] = $user->where('id',$cd['contact_id'])->first();
+			$users[$j] = $user->where('id',$cd['contact_id'])->first();
+			$current = $event->where('company_id', Auth::user()->id)->where('wes_id','1')->count();
+
+			if($current <> 0){
+				$users[$j]['status'] = '1';
+			}else{
+				$users[$j]['status'] = '2';
+			}
 
 			$j++;
 		}
