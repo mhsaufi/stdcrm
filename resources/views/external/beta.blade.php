@@ -6,6 +6,7 @@
 	 @include('templates.header')
 
    <link rel="stylesheet" type="text/css" href="{{asset('myasset/select2/dist/css/select23.css')}}">
+   <link rel="stylesheet" type="text/css" href="{{asset('myasset/std_rating/std_rating.css')}}">
 
 	 <style>
 	  .btn-like {
@@ -145,26 +146,26 @@
       margin-top: 5px;
     }
 
-    .company_logo {
+    .company_logo_2 {
       position: absolute;
       border-radius: 50%;
       border: 3px solid white;
       height: 80px;
       width: 80px;
       background: blue;
-      bottom: 6%;
+      bottom: 4%;
       right: 6%;
       z-index: 81;
     }
 
-    .company_logo_base {
+    .company_logo_base_2 {
       position: absolute;
       border-radius: 50%;
       border: 3px solid white;
       height: 80px;
       width: 80px;
       background: blue;
-      bottom: 6%;
+      bottom: 4%;
       right: 6%;
       background: white;
       z-index: 80;
@@ -260,14 +261,32 @@
                 <p>{{ $r['company_address'] }}</p>
               </div>
             </div>
-            <div style="width: 100%;height: 20%;background: white;"></div>
+            <div style="width: 100%;height: 20%;background: white;display: flex;flex-direction: row;
+            justify-content: flex-start;align-items: center;padding-left: 10px;">
+              @php
+
+                $rate = $r['rating'];
+                $unrate = 5-$rate;
+
+                for($i = 0;$i < $rate;$i++){
+
+                  echo '<i class="fas fa-star star_rated" style="margin-right: 2px;"></i>';
+                }
+
+                for($i = 0;$i < $unrate;$i++){
+
+                  echo '<i class="fas fa-star star_unrated" style="margin-right: 2px;"></i>';
+                }
+
+              @endphp
+            </div>
             @if($r['company_logo'] == '')
-            <div class="company_logo" style="background: url('{{ asset('myasset/img/null.jpg') }}');background-position: center;background-size: cover;"></div>
+            <div class="company_logo_2" style="background: url('{{ asset('myasset/img/null.jpg') }}');background-position: center;background-size: cover;"></div>
             @else
-            <div class="company_logo" style="background: url('{{ asset('storage/'.$r['company_logo']) }}');background-position: center;background-size: cover;"></div>
+            <div class="company_logo_2" style="background: url('{{ asset('storage/'.$r['company_logo']) }}');background-position: center;background-size: cover;"></div>
             @endif
             
-            <div class="company_logo_base"></div>
+            <div class="company_logo_base_2"></div>
           </div>
           @endforeach
 

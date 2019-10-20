@@ -14,6 +14,7 @@ use App\Merchant;
 use App\User;
 use App\Http\Controllers\UtilitiesController;
 use Carbon\Carbon;
+use Mail;
 
 class PublicController extends Controller
 {
@@ -190,6 +191,19 @@ class PublicController extends Controller
 
             $p_count = $company->count();
 
+            $i = 0;
+
+            foreach($result as $r){
+
+                $utilities = new UtilitiesController;
+
+                $rating = $utilities->companyRating($r['company_id']);
+
+                $result[$i]['rating'] = $rating;
+
+                $i++;
+            }
+
         }else{
 
         }
@@ -336,5 +350,73 @@ class PublicController extends Controller
         $data_user['created'] = $carbon->format('d M , Y');
 
         return json_encode($data_user);
+    }
+
+    public function reset(Request $request){
+
+        $email = $request->input('email');
+
+        $user = new User;
+
+        $check = $user->where('email',$email)->count();
+
+        if($check <> 0){
+
+            $info = $user->where('email',$email)->first();
+
+            $key = str_random(30);
+
+            $update = $user->where('id',$info['id'])->update(['remember_token' => $key]);
+
+            $reset_password_url = url('/').'/reset/'.$key;
+
+            Mail::send('emails.password_reset_mail',['link_url' => $reset_password_url,'name' => $info['name']],function($m) use ($info){
+
+                $m->from('support@savethedate-my.com','Save The Date');
+
+                $m->to($info['email'], $info['name'])->subject('Password reset link');
+
+            });
+
+
+            $status = '200';
+
+        }else{
+
+            $status = '418';
+        }
+
+        return $status;
+    }
+
+    public function resetStep2($key){
+
+        $user = new User;
+
+        $count = $user->where('remember_token',$key)->count();
+
+        if($count == 0){
+
+            abort(403, 'Unauthorized action');
+
+        }else{
+
+            $info = $user->where('remember_token',$key)->first();
+
+            return view('auth.reset_form',compact('info'));
+        }
+
+    }
+
+    public function resetStep3(Request $request){
+
+        $pw = $request->input('pw1');
+        $id = $request->input('user');
+
+        $user  = new User;
+        $update = $user->where('id',$id)->update(['password'=>Hash::make($pw)]);
+
+        return "200";
+
     }
 }

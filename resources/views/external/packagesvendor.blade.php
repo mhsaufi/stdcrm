@@ -4,7 +4,7 @@
 <head>
 	<title>{{ $result['company_name'] }} | Packages</title>
 	 @include('templates.header')
-
+   <link rel="stylesheet" href="{{ asset('myasset/socialsharekit/dist/css/social-share-kit.css') }}" type="text/css">
 	 <style>
 	  .icon {
 	  	margin-left: -30px;
@@ -263,6 +263,7 @@
             <div onclick="viewVendors('{{ $result['company_id'] }}','{{ $result['company_name']}}')">INFO</div>
             <div onclick="viewGalleries('{{ $result['company_id'] }}','{{ $result['company_name']}}')">GALLERY</div>
             <div style="background: #d4af37;color: white;" onclick="viewPackages('{{ $result['company_id'] }}','{{ $result['company_name']}}')">PACKAGES</div>
+            <div onclick="viewReviews('{{ $result['company_id'] }}','{{ $result['company_name']}}')">REVIEWS</div>
             <div onclick="contactUs('{{ $result['company_id'] }}','{{ $result['company_name']}}')">CONTACT US</div>
           </div>
           <div class="content_company_content">
@@ -304,9 +305,17 @@
       </div>
     </div>
 
+    <div class="ssk-sticky ssk-left ssk-center ssk-lg">
+        <a href="" class="ssk ssk-facebook"></a>
+        <a href="" class="ssk ssk-twitter"></a>
+        <a href="" class="ssk ssk-linkedin"></a>
+        <a href="" class="ssk ssk-google-plus"></a>
+        <a href="" class="ssk ssk-pinterest"></a>
+    </div>
+
 
     @include('templates.footer')
-
+    <script type="text/javascript" src="{{ asset('myasset/socialsharekit/dist/js/social-share-kit.js') }}"></script>
     <script>
       function viewVendors(vendorID,vendorName){
         
@@ -326,6 +335,12 @@
       function contactUs(vendorID,vendorName){
         var url = '{{ url("/vendor") }}'+ '/' + vendorName.split(' ').join('_')+'/contactus/'+vendorID;
         
+        window.location.replace(url);
+      }
+
+      function viewReviews(vendorID, vendorName){
+        var url = '{{ url("/vendor") }}' + '/' + vendorName.split(' ').join('_')+'/review/'+vendorID;
+
         window.location.replace(url);
       }
     </script>

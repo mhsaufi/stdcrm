@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\InboxController;
 use App\Http\Controllers\TimelineController;
+use App\CompanyReview;
 use App\User;
 use App\TimelineCategory;
 use App\WEvent;
@@ -428,5 +429,35 @@ class UtilitiesController extends Controller
             $result .= "</".array_pop($tags).">";
 
         return $result;
+    }
+
+    public function companyRating($company_id){
+
+        $review = new CompanyReview;
+        $review_count = $review->where('company_id',$company_id)->count();
+        $review_data = $review->where('company_id',$company_id)->get();
+
+        $total_review = 0;
+        $i = 0;
+
+        if($review_count > 0){
+
+            foreach($review_data as $data){
+
+                $total_review += $data['review_rate'];
+
+                $i++;
+            }
+
+            $rating = round($total_review/$i);
+
+        }else{
+
+            $rating = 0;
+
+        }
+        
+
+        return $rating;
     }
 }

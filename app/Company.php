@@ -41,4 +41,9 @@ class Company extends Model
     {
         return $this->belongsTo('App\CompanyCategoryTag');
     }
+
+    public function review()
+    {
+        return $this->belongsTo('App\CompanyReview');
+    }
 }

@@ -160,8 +160,10 @@
     </div>
     <!-- Feature Section End --> 
 
-    <div id="loader_screen">
-      <div class="loader"></div>
+    <div id="dashboard_loading">
+      <div>
+        <img src="{{ asset('myasset/img/carrier/loading.gif') }}"> 
+      </div>
     </div>
 
     @include('templates.footer')
@@ -176,6 +178,8 @@
       var token = '{{ csrf_token() }}';
       var APP_URL = '{!! url("/") !!}';
       var url = '';
+
+      $('#dashboard_loading').show();
       
       $(document).ready(function(){
 

@@ -195,6 +195,7 @@
             <div onclick="viewVendors('{{ $result['company_id'] }}','{{ $result['company_name']}}')">INFO</div>
             <div onclick="viewGalleries('{{ $result['company_id'] }}','{{ $result['company_name']}}')">GALLERY</div>
             <div onclick="viewPackages('{{ $result['company_id'] }}','{{ $result['company_name']}}')">PACKAGES</div>
+            <div onclick="viewReviews('{{ $result['company_id'] }}','{{ $result['company_name']}}')">REVIEWS</div>
             <div style="background: #d4af37;color: white;">CONTACT US</div>
           </div>
           <div class="content_company_content">
@@ -370,6 +371,12 @@
         
         window.location.replace(url);
 
+      }
+
+      function viewReviews(vendorID, vendorName){
+        var url = '{{ url("/vendor") }}' + '/' + vendorName.split(' ').join('_')+'/review/'+vendorID;
+
+        window.location.replace(url);
       }
 
     </script>

@@ -267,6 +267,7 @@
             <div style="background: #d4af37;color: white;">INFO</div>
             <div onclick="viewGalleries('{{ $result['company_id'] }}','{{ $result['company_name']}}')">GALLERY</div>
             <div onclick="viewPackages('{{ $result['company_id'] }}','{{ $result['company_name']}}')">PACKAGES</div>
+            <div onclick="viewReviews('{{ $result['company_id'] }}','{{ $result['company_name']}}')">REVIEWS</div>
             <div onclick="contactUs('{{ $result['company_id'] }}','{{ $result['company_name']}}')">CONTACT US</div>
           </div>
           <div class="content_company_content">
@@ -348,7 +349,7 @@
     @include('templates.footer')
 
     <script type="text/javascript" src="{{ asset('myasset/socialsharekit/dist/js/social-share-kit.js') }}"></script>
-
+ 
     <script>
 
       SocialShareKit.init();
@@ -431,6 +432,12 @@
       function contactUs(vendorID,vendorName){
         var url = '{{ url("/vendor") }}'+ '/' + vendorName.split(' ').join('_')+'/contactus/'+vendorID;
         
+        window.location.replace(url);
+      }
+
+      function viewReviews(vendorID, vendorName){
+        var url = '{{ url("/vendor") }}' + '/' + vendorName.split(' ').join('_')+'/review/'+vendorID;
+
         window.location.replace(url);
       }
     </script>

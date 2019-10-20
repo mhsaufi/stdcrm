@@ -73,6 +73,8 @@ $.post(url,function(result){
   $('#event_cal').html(string).effect('slide','fast'); // replace empty div event_cal with HTML string currently built
 
   $('#timepicker').timepicker(); // init timepicker
+
+  $('#dashboard_loading').hide();
 });
 
 // when clicked plus

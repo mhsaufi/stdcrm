@@ -47,7 +47,7 @@ class HomeController extends Controller
                 $event = new WEvent;
                 $data_event = $event->where('user_id',Auth::user()->id)->first();
 
-                $we_id = $data_event['we_id'];
+                $we_id = $data_event['we_id']; 
 
                 // if wes_id 3, it means the event are still in pending booking mode. Need acceptance or approval from vendor
                 // if wes_id 4, it means the event had been rejected by vendors
@@ -83,6 +83,7 @@ class HomeController extends Controller
             // to check if there is any inbox message such as event invitation or rejection from other vendors or client
 
             $inbox = new WEventInbox;
+            
             $count_inbox = $inbox->where(function($query){
 
                     $query->where('i_recipient_id',Auth::user()->company_id)
@@ -112,6 +113,7 @@ class HomeController extends Controller
             //------------------------------------------------------------------------------------
 
             return view('internal.home1',compact('this_month','count_inbox','package_data'));
+        
         }
         
     }

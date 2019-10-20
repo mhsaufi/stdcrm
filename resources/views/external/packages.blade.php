@@ -387,15 +387,6 @@
         });
 
       });
-     
-
-      function viewVendors(vendorID,vendorName){
-        
-        var url = '{{ url("/vendor") }}'+ '/' + vendorName.split(' ').join('_')+'/'+vendorID;
-        
-        window.location.replace(url);
-
-      }
 
     </script>
 </body>

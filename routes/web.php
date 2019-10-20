@@ -61,6 +61,13 @@ Route::get('/members',function(){
 Route::get('/terms',function(){
     return view('external.terms');
 });
+Route::get('/forgot',function(){
+    return view('auth.forgot');
+});
+
+Route::post('/forgotreset','PublicController@reset');
+Route::get('/reset/{key}','PublicController@resetStep2');
+Route::post('/updatepw','PublicController@resetStep3');
 
 Route::post('/staffinfo','PublicController@staffInfo');
 Route::get('/form','PublicController@form');
@@ -70,6 +77,9 @@ Route::get('/vendor/{company_name}/{company_id}','PublicController@viewVendor');
 Route::get('/vendor/{company_name}/gallery/{company_id}','PublicController@viewVendorGallery');
 Route::get('/vendor/{company_name}/packages/{company_id}','PublicController@viewVendorPackages');
 Route::get('/vendor/{company_name}/contactus/{company_id}','PublicController@contactVendors');
+Route::get('/vendor/{company_name}/review/{company_id}','ReviewController@index');
+Route::post('review','ReviewController@redirect')->middleware('auth');
+Route::post('/leavereview','ReviewController@newreview');
 
 Route::get('/booking/{package_id}','EventController@bookingForm')->middleware('auth');
 Route::post('/newbooking','EventController@newBooking');
@@ -118,6 +128,7 @@ Route::post('/deletetimeline','TimelineController@deleteTimeline');
 // ALL EVENTS ROUTES
 
 Route::post('/eeinfo','AgreementController@read');
+Route::post('/end','AgreementController@end');
 
 Route::get('/profile/gallery','GalleryController@index');
 

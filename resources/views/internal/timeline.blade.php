@@ -223,7 +223,7 @@
         top: 35px;
         right: 15px;
         width: 200px;
-        height: 80px;
+        height: 60px;
         background: white;
         -moz-box-shadow: 0 0 5px #888;
         -webkit-box-shadow: 0 0 5px#888;
@@ -521,7 +521,6 @@
               <div id="std-timeline-banner-option-popup-content">
                 <div class="std-timeline-banner-option-popup-content-text" id="edit_info">Edit Information</div>
                 <div class="std-timeline-banner-option-popup-content-text" id="cancel_event">Cancel Event</div>
-                <div class="std-timeline-banner-option-popup-content-text" id="end_event">End Event</div>
               </div>
             </div>
             
@@ -775,6 +774,11 @@
                   <input type="radio" name="filter_type" value="assignto" class="filter_type_radio"> Assigned To
                 </div>
               </div>
+              <div id="timeline_loader">
+                <div>
+                  <img src="{{ asset('myasset/img/carrier/loading2.gif') }}">
+                </div>
+              </div>
               <div id="myTimeline"></div>
 
               </div>
@@ -997,22 +1001,35 @@
       <br>
     </div>
 
-    <!-- Add Contact poppup -->
+    <!-- End Event poppup -->
 
     <div id="end_event_container">
       <div id="end_event_form">
-        <div id="end_event_header"><div>End Event</div><div id="close_end_event" style="cursor: pointer;"><i class="fas fa-times"></i></div></div>
-        <div style="margin-top: 15px;">You are about to end this event. Votes from others will be needed to officially end this event. Once you manage to get at least half of the participant, this event will be officially ended</div>
+        <div id="end_event_header"><div>Cancel Event</div><div id="close_end_event" style="cursor: pointer;"><i class="fas fa-times"></i></div></div>
+        <div style="margin-top: 15px;"><p>You are about to cancel this event. Votes from others will be needed to officially cancel this event. Once you manage to get majority of the participant to vote, this event will be officially cancelled and ended</p></div>
         <div id="end_event_content">
           <div id="eec_1">
            
           </div>
           <div id="eec_2">
-            
+            <div class="eec_2_content">
+              <img src="{{ asset('myasset/img/carrier/loading.gif') }}">
+            </div>
+          </div>
+          <div id="eec_3">
+            <div class="eec_3_content">
+              <div style="padding: 5px 6px;border: 0.05em solid #dcdcdc;background: #fefefe;width: 5%;margin-bottom: 10px;cursor: pointer;" id="undo_vote"><i class="fas fa-undo"></i></div>
+              <p>Give your reason for this cancellation</p>
+              <textarea class="form-control" rows="3" id="vote_reason"></textarea>
+              <button id="confim_end_event">Submit Vote</button>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
+    <input type="hidden" name="vote_id" value="" id="vote_id">
+    <input type="hidden" name="vote_type" value="" id="vote_type">
 
     @include('templates.footer')
 
@@ -1034,145 +1051,12 @@
       var url = '';
       var we_id = '{{ $data_event["we_id"] }}';
 
+      $('#timeline_loader').show();
+      $('#myTimeline').hide();
+
       $(document).ready(function () {
 
         globalNotification();
-
-        $("#radio_1").prop("checked", true);
-
-        $('#edit_info,.close-action-icon,#cancel_button1').click(function(){
-
-          $("#std-timeline-banner-option-popup").fadeOut('fast');
-          $('#create_event_form').fadeToggle('fast');
-          $('#package').val('{{ $data_event["package_id"] }}');
-
-        });
-
-        if($('#involve_payment').is(':checked')){
-            
-          $('#payment_input').fadeToggle('fast');
-
-        }else{
-          
-          $('#payment_input').fadeToggle('fast');
-        }
-
-        if($('#involve_payment_edit').is(':checked')){
-            
-          $('#payment_input_edit').fadeToggle('fast');
-
-        }else{
-          
-          $('#payment_input_edit').fadeToggle('fast');
-        }
-
-        $('#okey_update').click(function(){
-
-          location.reload();
-
-        });
-
-        $('#date_t').datepicker({
-          language: 'en',
-          minDate: new Date()
-        });
-
-        function getFormattedDate(date) {
-          var year = date.getFullYear(),
-            month = date.getMonth() + 1,
-            date = date.getDate();
-            
-            return year + '.' + month + '.' + date;
-        }
-
-        $('#my-element').datepicker({
-          language: 'en',
-          minDate: new Date()
-        });
-
-
-        $(document).on('mouseup',':not(#std-timeline-banner-option-popup)',function (e){
-
-          var container = $("#std-timeline-banner-option-popup");
-
-          if (!container.is(e.target) && container.has(e.target).length === 0){
-
-            container.fadeOut('fast');
-            
-          }
-        }); 
-
-        $('#editor').summernote({
-          height: 100,                 // set editor height
-          minHeight: 100,             // set minimum height of editor
-          maxHeight: null,             // set maximum height of editor
-          focus: true,
-          disableDragAndDrop:false,
-          toolbar: [
-            ['style', ['style']],
-            ['font', ['bold', 'underline', 'clear']],
-            ['fontname', ['fontname']],
-            ['color', ['color']],
-            ['para', ['ul', 'ol', 'paragraph']],
-            ['table', ['table']],
-            ['insert', ['link', 'picture', 'video']],
-            ['view', ['fullscreen', 'print', 'help']],
-          ]
-        });
-
-        $('#edit-icon').click(function(e){
-
-          e.stopPropagation();
-          $('#std-timeline-banner-option-popup').fadeToggle('fast');
-
-        });
-
-        $('#std-timeline-banner-option-popup').focusout(function(){
-          $(this).fadeToggle('fast');
-        });
-
-        $('#form-switch').click(function(){
-          $('#std_timline_form').slideToggle(function(){
-
-            if($(this).is(":hidden")){
-
-              $('#arrow_icon').removeClass( "fa-angle-up" ).addClass( "fa-angle-down" );
-              $('#form-switch-text').html("View timeline form");
-
-            }else if($(this).is(":visible")){
-
-              $('#arrow_icon').removeClass( "fa-angle-down" ).addClass( "fa-angle-up" );
-              $('#form-switch-text').html("Hide timeline form");
-            }
-
-          });
-        });
-
-        $('#involve_payment').change(function(){
-
-          if($(this).is(':checked')){
-            
-            $('#payment_input').fadeToggle('fast');
-
-          }else{
-            
-            $('#payment_input').fadeToggle('fast');
-          }
-
-        });
-
-        $('#involve_payment_edit').change(function(){
-
-          if($(this).is(':checked')){
-            
-            $('#payment_input_edit').fadeToggle('fast');
-
-          }else{
-            
-            $('#payment_input_edit').fadeToggle('fast');
-          }
-
-        });
 
         var data;
         url = APP_URL + '/load_u';
@@ -1194,82 +1078,10 @@
             });
 
           }
-        });
 
-        $('#add_vendors_btn').click(function(){
+          $('#timeline_loader').hide();
+          $('#myTimeline').show('highlight',700);
 
-          $('#invite_form').fadeToggle('fast');
-        });
-
-        $('#cancel_invite').click(function(){
-          $('#invite_form').fadeToggle('fast');
-        });
-
-        $('#select_opt').select2();
-
-        $('#select_client').select2();
-
-        $('#select_add_vendors').select2({
-          placeholder: {multiple:true},
-        });
-
-        $('#select_vendor, .filter_type_radio').change(function(){
-
-          var selectedVendor = $(this).children("option:selected").val();
-          var selectedFilter = $('input[name=filter_type]:checked').val(); 
-
-          $.post(url,{we_id:we_id,vid:selectedVendor,filter:selectedFilter},function(result){
-
-            if(JSON.parse(result).length == 0){
-
-              $('#myTimeline').addClass('no_timeline');
-              $('#myTimeline').html('<br><span>No timeline have been added yet</span><br><br>');
-              
-            }else{
-
-              $('#myTimeline').albeTimeline(JSON.parse(result), {
-                effect: 'fadeInUp',
-                showGroup: false,
-                formatDate: 'DD d MMMM, at std'
-              });
-
-            }
-
-          });
-
-        });
-
-        $('#add-timeline-btn').click(function(){
-          var category = $( "#category option:selected" ).text();
-          var datetime = $('#date_t').val();
-          var content = $('#editor').val();
-          var subject = $('#subject').val();
-
-
-          if(category == ''){
-
-            $('#category').effect( "shake",{'direction':'left','distance':'5'} );
-
-          }else if(datetime == ''){
-
-            $('#datetime').effect( "shake",{'direction':'left','distance':'5'} );
-
-          }else if(content == ''){
-
-            $('#editor_container').effect( "shake",{'direction':'left','distance':'5'} );
-            
-          }else if(subject == ''){
-
-            $('#subject').effect( "shake",{'direction':'left','distance':'5'} );
-
-          }else{
-
-            $('#send_alert').show();
-          }
-        });
-
-        $('#cancel_send').click(function(){
-          $('#send_alert').hide();
         });
 
         $('#proceed_send').click(function(){
@@ -1284,18 +1096,10 @@
           var we_id = "{{ $data_event['we_id'] }}";
 
           $.post(url,{category:category,user:user,subject:subject,datetime:datetime,content:content,payment:payment,_token:token,we_id:we_id},function(result){
+            
             location.reload();
+
           });
-        });
-
-        $('#proceed_invite').click(function(){
-
-          $('#send_alert_invite').fadeToggle();
-
-        });
-
-        $('#cancel_send_invite').click(function(){
-          $('#send_alert_invite').fadeToggle();
         });
 
         $('#proceed_send_invite').click(function(){
@@ -1314,93 +1118,6 @@
         });
 
       });
-
-      $('#close_end_event').click(function(){
-        $('#end_event_container').fadeToggle('fast');
-      });
-
-      $('#end_event').click(function(data){
-
-        $.post(APP_URL + '/eeinfo',{_token:token,we_id:we_id},function(data){
-
-          var obj = JSON.parse(data);
-          var str = '';
-
-          if(obj.count == 0){
-
-            $.each(obj.main_data,function(key, value){
-
-              str += '<div class="eec_1_content">';
-
-              if(value.dp == '' || value.dp === null){
-
-                str += '<div><img src="myasset/img/default.png"/></div>';
-
-              }else{
-
-                str += '<div><img src="storage/' + value.dp + '"/></div>';
-              }
-              
-              str += '<div>'+ value.name +'</div>';
-
-              if(role_id == '3'){
-
-                if(value.id == company_id){
-
-                  str += '<div><button class="btn_end_vote" data-id="'+ value.id +'">Vote End</button></div>';
-
-                }else{
-
-                  str += '<div><button class="btn_end_vote" data-id="'+ value.id +'" disabled>Vote End</button></div>';
-
-                }
-
-              }else{
-
-                if(value.id == self_id){
-
-                  str += '<div><button class="btn_end_vote" data-id="'+ value.id +'">Vote End</button></div>';
-
-                }else{
-
-                  str += '<div><button class="btn_end_vote" data-id="'+ value.id +'" disabled>Vote End</button></div>';
-
-                }
-
-              }
-
-              
-
-              str += '</div>';
-
-            });
-
-            $('#eec_1').html(str);
-
-            $('#eec_1').show();
-
-          }else{
-
-            $('#eec_2').show();
-
-          }
-
-        });
-
-        $('#end_event_container').fadeToggle('fast');
-
-      });
-
-      $('#close_tdetail').click(function(){
-
-        $('#view_timeline_content').fadeToggle('fast');
-      })
-
-      $('#close_edit_modal').click(function(){
-        $('#edit_timeline').fadeToggle();
-      });
-
-      $('#sub_contain').hide();
 
       $('#reg_event').click(function(){
 
@@ -1540,23 +1257,6 @@
         $('#reject_remark_container').fadeToggle('fast');
       }
 
-      $('#cancel_reject_btn').click(function(){
-
-        $('#reject_remark_container').fadeToggle('fast');
-      });
-
-      $('#reject_reject_btn').click(function(){
-
-        url = APP_URL + '/disapprovet';
-        var wet_id = $('#rejected_timeline_id').val();
-        var remark = $('#remark').val();
-
-        $.post(url,{wet_id:wet_id,remark:remark,_token:token},function(){
-
-            location.reload();
-        });
-      });
-
       function updateTimeline(){
 
         url = APP_URL + '/updatetimeline';
@@ -1606,10 +1306,6 @@
         $('#contact_type').val('company');
       }
 
-      $('#close_add_contact').click(function(){
-        $('#add_contact_form_container').fadeToggle('fast');
-      });
-
       $('#add_contact').click(function(){
 
         var contact_id = $('#contact_id').val();
@@ -1635,8 +1331,10 @@
         location.reload();
       }
 
+
     </script>
 
     <script src="{{asset('myasset/js/global_notification.js')}}"></script>  
+    <script src="{{asset('myasset/js/timeline.js')}}"></script> 
   </body>
 </html>
