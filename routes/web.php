@@ -21,6 +21,10 @@ Route::get('/merchant', function () {
     return view('auth.mrc');
 });
 
+Route::get('/sample', function () {
+    return view('templates.stdtemplate');
+});
+
 // -------------------------------------- EXTERNAL ROUTES
 
 Route::get('/listvendor','PublicController@listVendor');

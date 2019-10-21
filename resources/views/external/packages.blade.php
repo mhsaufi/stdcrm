@@ -64,10 +64,10 @@
     .search-engine-panel {
       display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
       justify-content: flex-start;
       width: 100%;
-      padding: 2% 12%;
-      border-bottom: 0.05em solid grey;
+      padding: 1% 12%;
     }
 
     .search-engine-panel div {
@@ -80,7 +80,7 @@
       justify-content: center;
       flex-wrap: wrap;
       background: rgba(255,255,255,1);
-      border-bottom: 1px solid #d4af37;
+      /*border-bottom: 1px solid #d4af37;*/
     }
 
     .big_container {
@@ -88,6 +88,7 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
+      /*background: pink;*/
     }
 
     .footer_result_container {
@@ -101,12 +102,15 @@
     }
 
     .result_container {
-      width: 80%;
+      width: 100%;
       min-height: 10%;
-      margin: 0 10%;
-      padding: 20px 20px;
+      margin: 0 0;
+      padding: 2% 10%;
       display: flex;
-      flex-flow: row wrap;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      /*background: blue;*/
     }
 
     .company_logo_mini {
@@ -147,12 +151,12 @@
     .package_cards {
       position: relative;
       height: 330px!important;
-      width: 30%;
+      width: 370px;
       border-radius: 2px;
       -moz-box-shadow: 0 0 6px #888;
       -webkit-box-shadow: 0 0 6px#888;
       box-shadow: 0 0 4px #888;
-      margin-right: 15px;
+      /*margin-right: 15px;*/
       margin-bottom: 20px;
       display: flex;
       flex-direction: column;
@@ -268,12 +272,11 @@
     <!-- Feature Section Start -->
     <div class="section-padding">
       <div class="big_container">
-        <div style="margin: 0 180px;opacity: 0.7;padding-top: 50px;">
+        <div style="margin: 0 11%;opacity: 0.7;padding-top: 2%;">
           <p>Browse for all available packages on our site offered by our vendors. All of our vendors comprises of best reviewed companies 
           to make sure your wedding happening the way you wished for</p>
         </div>
-        <div class="search-engine-panel">
-          
+        <div class="search-engine-panel">   
           <div>
               <label>By Category</label>
               <br>
@@ -292,7 +295,7 @@
               @endforeach
             </select>
           </div>
-          <div><button id="std_search_btn">SEARCH &nbsp&nbsp<i class="fas fa-search"></i></button></div>
+          <div><button id="std_search_btn">Search &nbsp&nbsp<i class="fas fa-search"></i></button></div>
         </div>
         <br>
         <p style="margin-left: 180px;margin-top: 20px;">{{ $p_count }} result(s) found</p>   

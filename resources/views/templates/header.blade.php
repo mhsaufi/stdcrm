@@ -3,7 +3,8 @@
     <link rel="stylesheet" type="text/css" href="{{asset('myasset/css/bootstrap.min.css')}}" >
     <!-- Font -->
     <link rel="stylesheet" type="text/css" href="{{asset('myasset/fontawesome/css/all.css')}}" >
-
+    
+    <link rel="stylesheet" type="text/css" href="{{asset('myasset/css/slicknav.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('myasset/css/main.css')}}">
     <!-- Extras Style -->
     <link rel="stylesheet" type="text/css" href="{{asset('myasset/css/extras.css')}}">

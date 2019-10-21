@@ -48,6 +48,58 @@
       /*background: yellow;*/
     }
 
+    @media (max-width: 480px){
+
+      .pattern {
+        background-image: none;
+      }
+
+      .result_container {
+        position: relative;
+        width: 100%;
+        min-height: 100%;
+        background: white;
+        margin: 0;
+        padding: 5% 0;
+        display: flex;
+        flex-flow: row wrap;
+      }
+
+      .company_logo {
+        position: absolute;
+        border-radius: 50%;
+        border: 0.05em solid white;
+        height: 70px;
+        width: 70px;
+        top: 170px;
+        right: 8%;
+        z-index: 81;
+      }
+
+      .company_logo_base {
+        position: absolute;
+        border-radius: 50%;
+        border: 0.05em solid white;
+        height: 70px;
+        width: 70px;
+        background: white;
+        top: 170px;
+        right: 8%;
+        z-index: 80;
+      }
+
+      .result_container {
+        position: relative;
+        width: 100%!important;
+        min-height: 100vh;
+        background: white;
+        margin: 0!important;
+        /*padding: 20px 0;*/
+        display: flex;
+        flex-flow: row wrap;
+      }
+    }
+
     .footer_result_container {
       width: 80%;
       min-height: 10%;

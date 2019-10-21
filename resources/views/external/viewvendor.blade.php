@@ -64,6 +64,47 @@
       flex-flow: row wrap;
     }
 
+    @media (max-width: 480px){
+
+      .pattern {
+        background-image: none;
+      }
+
+      .result_container {
+        position: relative;
+        width: 100%;
+        min-height: 100%;
+        background: white;
+        margin: 0;
+        padding: 5% 0;
+        display: flex;
+        flex-flow: row wrap;
+      }
+
+      .company_logo {
+        position: absolute;
+        border-radius: 50%;
+        border: 0.05em solid white;
+        height: 70px;
+        width: 70px;
+        top: 170px;
+        right: 8%;
+        z-index: 81;
+      }
+
+      .company_logo_base {
+        position: absolute;
+        border-radius: 50%;
+        border: 0.05em solid white;
+        height: 70px;
+        width: 70px;
+        background: white;
+        top: 170px;
+        right: 8%;
+        z-index: 80;
+      }
+    }
+
     .vendor_cards_info {
       width: 100%;
       height: 30vh;
@@ -89,7 +130,7 @@
     }
 
     .content_company_content {
-      padding: 8vh 70px;
+      padding: 8% 10%;
       padding-bottom: 20vh;
     }
 
@@ -98,8 +139,10 @@
       text-shadow: 5px 5px 10px black!important;
     }
     .tags-space {
-      /*margin-top: 40px;*/
-      /*margin-left: 300px;     */
+      width: 100%;
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-between;
     }     
     .tags {
       background: #888;
@@ -108,7 +151,8 @@
       font-size: 1.0em;
       border-radius: 5px;
       border: 0.1em solid #999;
-      margin-right: 1px;      
+      margin-right: 1px; 
+      margin-bottom: 15px;     
     }
 
     .our_team_container {

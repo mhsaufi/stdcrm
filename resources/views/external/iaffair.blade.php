@@ -8,6 +8,55 @@
 	<link rel="stylesheet" href="{{ asset('myasset/socialsharekit/dist/css/social-share-kit.css') }}" type="text/css">
 
 	<style>
+		.main_container {
+			padding: 8vh 100px;
+		}
+
+		.islamic_container {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			width: 100%;
+			height: 100%;
+		}
+
+		@media (max-width: 480px){
+			.main_container {
+				padding: 10% 0;
+			}
+
+			.big_container {
+				width: 100%;
+				min-height: 100%;
+				background: #fff;
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-start;
+				padding: 10%  0!important;
+			}
+
+			.islamic_container {
+				display: flex;
+				flex-direction: column;
+				/*flex-wrap: wrap;*/
+				align-items: center;
+				justify-content: space-between;
+				width: 100%;
+				height: 100%;
+			}
+
+			#directory_col {
+				width: 100%!important;margin-bottom: 100px;
+				/*background: green;*/
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-start;
+				align-items: center;
+				text-align: center;
+			}
+		}
+
 	 	.navbar {
 	 		-moz-box-shadow: 0 0 5px #888;
 	        -webkit-box-shadow: 0 0 5px#888;
@@ -179,14 +228,14 @@
     <br>
 
     <!--  Section Start -->
-	<div style="padding: 8vh 100px;">
+	<div class="main_container">
 		<!-- <div class="container"> -->
 
 			<div class="big_container">
 				<div style="padding: 20px 0;border-bottom: 0.05em solid #d4af37;margin-bottom: 30px;">
 					<span class="title_text">Islamic Affairs</span>
 				</div>
-				<div style="display: flex;flex-direction: row;justify-content: space-between;width: 100%;height: 100%;">
+				<div class="islamic_container">
 					<div id="directory_col">
 						<div class="directory active_directory" id="jabatan_agama">Official Jabatan Agama Page & Pre-marriage Timetable</div>
 						<div class="directory" id="info_jpn">Info from Jabatan Pendaftaran Negara</div>
