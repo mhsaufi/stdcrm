@@ -284,14 +284,7 @@
         <a href="" class="ssk ssk-linkedin"></a>
         <a href="" class="ssk ssk-google-plus"></a>
         <a href="" class="ssk ssk-pinterest"></a>
-    </div>
-
-    <script>
-      var APP_URL = '{{ url("/") }}';
-      var LOGIN = '{{ route("login") }}';
-      var REGISTER = '{{ route("register") }}';
-    </script>
-	
+    </div>	
 
     @include('templates.footer')
 

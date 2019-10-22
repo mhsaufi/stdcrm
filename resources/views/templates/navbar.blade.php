@@ -122,8 +122,8 @@
           <div id="islamic_page">Islamic Affair</div>
           <div style="height: 15px;width:100%;border-bottom: 0.05em solid white;"></div>
           <div id="about_page">About</div>
-          <div id="feature_page">Features</div>
-          <div id="member_page">Members</div>
+          <!-- <div id="feature_page">Features</div>
+          <div id="member_page">Members</div> -->
           @if (Route::has('login'))  
 
           @auth

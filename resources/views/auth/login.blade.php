@@ -47,7 +47,7 @@
                 padding: 10% 0;
                 box-shadow: 0 0 0 #fff;
                 min-height: 100%;
-                background: rgba(255,255,255,0.9);
+                background: rgba(255,255,255,0.6);
                 display: flex;
                 flex-direction: column;
             }
@@ -84,6 +84,20 @@
                 background-size: cover;
                 background-position: center; 
                 min-height: 100vh!important;
+            }
+
+            .std-login-banner {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;align-items: center;
+                padding: 20px 20px;
+                margin-left: 0!important;
+            }
+
+            .std-login-banner-desc {
+                padding-top: 20px;
+                padding-left: 0!important;
+                text-align: center;
             }
         }
 

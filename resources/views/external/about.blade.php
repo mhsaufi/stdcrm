@@ -168,6 +168,40 @@
     padding-top:10px;
     }
 
+    @media (max-width: 600px){
+        .credit {
+            display: none;
+        }
+
+        .backimg-about{
+            display:none;
+        }
+
+        .backtext-about{
+            width:100%!important;
+            height:100%;
+            z-index:80;
+            color:#000;
+        }
+
+        .backtext-about{
+            width:100%;
+            height:100%;
+            z-index:80;
+            color:#000;
+            text-align: center;
+        }
+
+        .text-about p{
+            position:absolute;
+            top: 20%;
+            padding-right: 0!important;
+            z-index:81;
+            color:#000;
+            font-size: 16px;
+        }
+    }
+
     .small-tajuk{
     font-size:14px;
     color: #000 ;
@@ -195,7 +229,7 @@
     <!-- Header Area wrapper Starts -->
     <header id="header-wrap">
       
-    @include('templates.frontnav')
+    @include('templates.navbar')
     </header>
     
     <!------------------- Header Area wrapper End ----------------------------------------------------->
@@ -279,13 +313,6 @@
               <ul>                
                 <li><a href="{{ url('/terms') }}" class="small-isi">Terms & Conditions</a></li>
               </ul>
-              <!-- <div class="contact-us">
-                <div class="social-footer">
-                  <a href="#" class="small-isi"><i class="fab fa-facebook icon-round"></i></a>
-                  <a href="#" class="small-isi"><i class="fab fa-twitter icon-round"></i></a>
-                  <a href="#" class="small-isi"><i class="fab fa-instagram icon-round"></i></a>
-                </div>              
-              </div> -->
             </div>
             <!-- Footer Widget Ends -->
           </div>
