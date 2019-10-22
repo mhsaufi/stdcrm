@@ -1,3 +1,5 @@
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
     <link rel="icon" href="{{asset('myasset/img/tab-icon2.png')}}">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="{{asset('myasset/css/bootstrap.min.css')}}" >
@@ -10,6 +12,8 @@
     <link rel="stylesheet" type="text/css" href="{{asset('myasset/css/extras.css')}}">
     <!-- Responsive Style -->
     <link rel="stylesheet" type="text/css" href="{{asset('myasset/css/responsive.css')}}">
+
+    <link rel="stylesheet" type="text/css" href="{{asset('myasset/mobile_menu/mobile_menu.css')}}">
 
     <style>
         .navbar-expand-lg .navbar-nav .nav-link {

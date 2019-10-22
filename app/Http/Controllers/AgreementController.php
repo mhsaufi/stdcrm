@@ -166,6 +166,10 @@ class AgreementController extends Controller
 
             $result = 0;
 
+            $wevent = new WEvent;
+
+            $update = $wevent->where('we_id',$we_id)->update(['wes_id'=>'5']);
+
         }else{
 
             $result = 1;

@@ -6,7 +6,7 @@
 	 @include('templates.header')
 
   <script src="{{asset('myasset/js/jquery-min.js')}}"></script>
-  <link rel="stylesheet" href="{{asset('myasset/justified/jquery.justified.css')}}"/>
+  <!-- <link rel="stylesheet" href="{{asset('myasset/justified/jquery.justified.css')}}"/> -->
   <script src="{{asset('myasset/unitegallery-master/dist/js/unitegallery.min.js')}}"></script>
   <link rel='stylesheet' href="{{asset('myasset/unitegallery-master/dist/css/unite-gallery.css')}}"/> 
   <script src="{{asset('myasset/unitegallery-master/dist/themes/tiles/ug-theme-tiles.js')}}"></script>
@@ -45,10 +45,30 @@
       flex-direction: column;
       justify-content: flex-start;
       min-height: 100vh;
-      /*background: yellow;*/
     }
 
-    @media (max-width: 480px){
+    .footer_result_container {
+      width: 80%;
+      min-height: 10%;
+      margin: 0 10%;
+      background: white;
+      padding: 20px 20px;
+      display: flex;
+      flex-flow: row wrap;
+    }
+
+    .result_container {
+      position: relative;
+      width: 80%;
+      min-height: 100vh;
+      background: white;
+      margin: 0 10%;
+      padding: 20px 0;
+      display: flex;
+      flex-flow: row wrap;
+    }
+
+    @media (max-width: 600px){
 
       .pattern {
         background-image: none;
@@ -88,37 +108,6 @@
         z-index: 80;
       }
 
-      .result_container {
-        position: relative;
-        width: 100%!important;
-        min-height: 100vh;
-        background: white;
-        margin: 0!important;
-        /*padding: 20px 0;*/
-        display: flex;
-        flex-flow: row wrap;
-      }
-    }
-
-    .footer_result_container {
-      width: 80%;
-      min-height: 10%;
-      margin: 0 10%;
-      background: white;
-      padding: 20px 20px;
-      display: flex;
-      flex-flow: row wrap;
-    }
-
-    .result_container {
-      position: relative;
-      width: 80%;
-      min-height: 100vh;
-      background: white;
-      margin: 0 10%;
-      padding: 20px 0;
-      display: flex;
-      flex-flow: row wrap;
     }
 
     .vendor_cards_info {
@@ -146,7 +135,8 @@
     }
 
     .content_company_content {
-      padding: 8vh 70px;
+      padding: 8% 10%;
+      padding-bottom: 20vh;
     }
 
     .vendor_title_info h1 {
@@ -191,8 +181,7 @@
             <div onclick="contactUs('{{ $result['company_id'] }}','{{ $result['company_name']}}')">CONTACT US</div>
           </div>
           <div class="content_company_content">
-            
-            
+                
               @if($count == 0)
 
                 <span>No gallery yet</span>

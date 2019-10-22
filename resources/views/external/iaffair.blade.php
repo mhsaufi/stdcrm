@@ -21,7 +21,13 @@
 			height: 100%;
 		}
 
-		@media (max-width: 480px){
+		.big_container_header {
+			padding: 20px 0;
+			border-bottom: 0.05em solid #d4af37;
+			margin-bottom: 30px;
+		}
+
+		@media (max-width: 600px){
 			.main_container {
 				padding: 10% 0;
 			}
@@ -34,6 +40,10 @@
 				flex-direction: column;
 				justify-content: flex-start;
 				padding: 10%  0!important;
+			}
+
+			.big_container_header {
+				text-align: center;
 			}
 
 			.islamic_container {
@@ -54,6 +64,14 @@
 				justify-content: flex-start;
 				align-items: center;
 				text-align: center;
+			}
+
+			#content_col {
+				width: 100%;
+				/*background: blue;*/
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-start;
 			}
 		}
 
@@ -232,7 +250,7 @@
 		<!-- <div class="container"> -->
 
 			<div class="big_container">
-				<div style="padding: 20px 0;border-bottom: 0.05em solid #d4af37;margin-bottom: 30px;">
+				<div class="big_container_header">
 					<span class="title_text">Islamic Affairs</span>
 				</div>
 				<div class="islamic_container">
@@ -267,6 +285,12 @@
         <a href="" class="ssk ssk-google-plus"></a>
         <a href="" class="ssk ssk-pinterest"></a>
     </div>
+
+    <script>
+      var APP_URL = '{{ url("/") }}';
+      var LOGIN = '{{ route("login") }}';
+      var REGISTER = '{{ route("register") }}';
+    </script>
 	
 
     @include('templates.footer')

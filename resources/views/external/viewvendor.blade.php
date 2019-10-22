@@ -40,7 +40,6 @@
       flex-direction: column;
       justify-content: flex-start;
       min-height: 100vh;
-      /*background: yellow;*/
     }
 
     .footer_result_container {
@@ -64,7 +63,7 @@
       flex-flow: row wrap;
     }
 
-    @media (max-width: 480px){
+    @media (max-width: 600px){
 
       .pattern {
         background-image: none;

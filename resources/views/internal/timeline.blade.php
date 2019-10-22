@@ -30,6 +30,10 @@
         background: #8bc34a;
       }
 
+      .big_container {
+        padding: 0 10%;
+      }
+
       #label-category{
         background-color: white;
         align-self: flex-start;
@@ -45,21 +49,6 @@
         font-weight: bold;
         opacity: 0.4;
       }
-
-      .label-carousel{
-      	width: 50%;
-      	height: 270px;
-      	background-color:  rgba(254, 249, 231, 0.8);
-      	color: blue;
-      	border-radius: 30px 0 30px 0;
-      	margin-left: 620px;
-      	margin-top: -30px;
-      	padding: 10px;
-      }
-
-      .label-carousel img{
-      	width: 200px;
-      } 
 
       .icon-circle{
         background-color: #fff  ; /*#f2f4f4; */
@@ -89,14 +78,6 @@
       .navbar-expand-lg .navbar-nav .nav-link:active{
         color: gold !important;
         opacity: 0.5;
-      }
-
-      .pattern{
-      	/*background-image: url("{{asset('myasset/img/bg1.jpg')}}");*/
-      	background-repeat: no-repeat;
-        background-attachment: fixed;
-      	background-size: cover;
-      	height: 250px !important;
       }
 
       #btn-register{
@@ -163,12 +144,6 @@
       /*red*/
       .disapproved {
         background: #f44336;
-      }
-
-      .title-forecast {
-        font-weight: bold;
-        font-size: 0.9em;
-        opacity: 0.8;
       }
 
       .timeline-date {
@@ -440,6 +415,149 @@
         z-index: 999;
         display: none;
       }
+
+      .main_timeline_col {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .col_notification {
+        width: 25%;
+      }
+
+      .col_timeline {
+        width: 75%;
+        padding-right: 0!important;
+        padding-left: 5px!important;
+      }
+
+      .std-timeline-banner-info-detail {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .filter_row {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+      }
+
+      .vendor_select {
+        margin-left: 30px;
+        height: 30px;
+        width: 200px;
+        padding-left: 10px;
+      }
+
+      .timeline_form_child_1 {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 15px;
+      }
+
+      .timeline_form_child_4 {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+      }
+
+      .timeline_form_child_4 div {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+      }
+
+      @media (max-width: 560px) {
+        .big_container {
+          margin-top: 7%;
+          padding: 20px 2.5%;
+        }
+
+        .std-timeline-banner {
+          margin: 0;
+          width: 100%;
+          margin-bottom: 10px;
+        }
+
+        .std-timeline-banner-info-detail {
+          height: 150px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+
+        .col_notification {
+          width: 100%;
+          margin-bottom: 2.5%;
+        }
+
+        .col_timeline {
+          width: 100%;
+          margin: 0;
+          padding: 0;
+          padding-left: 0!important;
+        }
+
+        .filter_row {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: flex-start;
+          height: 20%;
+        }
+
+        .vendor_select {
+          margin-left: 0;
+          height: 30px;
+          width: 100%;
+          margin-bottom: 15%;
+          padding-left: 10px;
+        }
+
+        #edit-icon {
+          display: none;
+        }
+
+        .timeline_form_child_1 {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          margin-top: 15px;
+        }
+
+        .timeline_form_child_1 div {
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          margin-bottom: 15px;
+        }
+
+        .timeline_form_child_4 {
+          width: 100%;
+          height: 100px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          margin-top: 10px;
+        }
+
+        .timeline_form_child_4 > div {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: flex-start;
+          width: 100%;
+        }
+      }
     </style>
   </head>
   <body class="pattern">
@@ -514,8 +632,8 @@
 
     <!-- Feature Section Start -->
     <div class="section-padding">
-      <div class="container">
-        <div class="row std-timeline-banner">
+      <div class="big_container">
+        <div class="std-timeline-banner">
           <div class="std-timeline-banner-header">
             <div id="std-timeline-banner-option-popup">
               <div id="std-timeline-banner-option-popup-content">
@@ -535,7 +653,7 @@
             <div id="edit-icon"><i class="fas fa-ellipsis-h"></i></div>
           </div>
           <div class="std-timeline-banner-info">
-            <div style="display: flex;flex-direction: row;justify-content: space-between;">
+            <div class="std-timeline-banner-info-detail">
               <div>
                 <i class="far fa-calendar-alt"></i><span style="margin-left: 20px;">{{ $data_event['we_date'] }}</span>
               </div>
@@ -558,8 +676,8 @@
 
         <!-- ========= Notification sidebar ==================  -->
 
-        <div class="row">
-          <div class="col-md-3 std-timeline-sidebar" style="padding-bottom: 100px;">
+        <div class="main_timeline_col">
+          <div class="col_notification std-timeline-sidebar" style="padding-bottom: 100px;">
             
             <div style="padding: 8px 15px;max-height: 50vh;overflow: auto;">
               <span style="opacity: 0.7;"><i class="fas fa-bell" style="margin-right: 10px;"></i> Timeline Notification</span>
@@ -676,20 +794,20 @@
 
         <!-- ======== ADD TImeline form -->
 
-          <div class="col-md-9" style="padding-right: 0!important;padding-left: 5px!important;">
+          <div class="col_timeline">
             <div class="std-timeline">
               @if($data_event['user_id'] != 0)              
-                <div class="form_switch" id="form-switch">
-                  <div><i class="fas fa-angle-down" id="arrow_icon"></i><span id="form-switch-text">View timeline form</span></div>
-                </div>
-                @endif
+              <div class="form_switch" id="form-switch">
+                <div><i class="fas fa-angle-down" id="arrow_icon"></i><span id="form-switch-text">View timeline form</span></div>
+              </div>
+              @endif
               <div id="std_timline_form">
                 
-                <div style="width: 100%;display: flex;justify-content: space-between;margin-top: 15px;">
+                <div class="timeline_form_child_1">
 
                   <div style="margin-bottom: 15px;">
                     <label>Category </label>
-                    <select class="date_form" style="margin-right: 15px;" id="category">
+                    <select class="date_form" id="category">
                       <option value=""></option>
                       @foreach($categories as $category)
                         <option value="{{ $category['tc_id'] }}">{{ $category['tc_title'] }}</option>
@@ -702,7 +820,7 @@
                     <input type='text' 
                       class="date_form" 
                       data-timepicker="true" 
-                      data-position="right top" 
+                      data-position="bottom right" 
                       data-language='en' 
                       data-date-format='d-m-yyyy' 
                       data-time-format='h:ii aa' 
@@ -746,8 +864,8 @@
                   <textarea id="editor"></textarea>
                 </div>
                 <br>
-                <div style="width: 100%;display: flex;justify-content: space-between;margin-top: 10px;">
-                  <div style="display: flex;justify-content: flex-start;align-items: center;">
+                <div class="timeline_form_child_4">
+                  <div>
                       <div>
                         <input type="checkbox" name="involve_payment" id="involve_payment">
                         <span style="margin-left: 10px;margin-right: 15px;">Include Payment</span>
@@ -762,8 +880,8 @@
                 </div>
               </div>
               <hr>
-              <div class="row" style="display: flex;flex-direction: row;justify-content: flex-start;align-items: center;">
-                <select style="margin-left: 30px;height: 30px;width: 200px;padding-left: 10px;" id="select_vendor">
+              <div class="filter_row">
+                <select class="vendor_select" id="select_vendor">
                   <option value="all">All</option>
                   @foreach($d_vendors as $vendor)
                     <option value="{{ $vendor['id'] }}">{{ $vendor['name'] }}</option>

@@ -9,3 +9,4 @@
     <!-- <script src="{{asset('myasset/js/jquery.easing.min.js')}}"></script> -->
     <!-- <script src="js/jquery.slicknav.js"></script> -->
     <script src="{{asset('myasset/js/main.js')}}"></script>
+    <script src="{{asset('myasset/mobile_menu/mobile_menu.js')}}"></script>

@@ -87,13 +87,6 @@
       border-bottom: 1px solid #d4af37;
     }
 
-    .big_container {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-    }
-
     .footer_result_container {
       width: 80%;
       min-height: 10%;
@@ -102,17 +95,6 @@
       padding: 20px 20px;
       display: flex;
       flex-flow: row wrap;
-    }
-
-    .result_container {
-      width: 80%;
-      min-height: 10%;
-      /*background: white;*/
-      margin: 0 10%;
-      padding: 20px 0;
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: space-around;
     }
 
     .vendor_cards {
@@ -299,6 +281,12 @@
         </div>
       </div>
     </div>
+
+    <script>
+      var APP_URL = '{{ url("/") }}';
+      var LOGIN = '{{ route("login") }}';
+      var REGISTER = '{{ route("register") }}';
+    </script>
       
     @include('templates.footer')
 

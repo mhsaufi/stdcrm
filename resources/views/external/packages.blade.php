@@ -347,6 +347,12 @@
         </div>
       </div>
     </div>
+
+    <script>
+      var APP_URL = '{{ url("/") }}';
+      var LOGIN = '{{ route("login") }}';
+      var REGISTER = '{{ route("register") }}';
+    </script>
       
     @include('templates.footer')
 

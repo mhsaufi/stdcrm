@@ -3,7 +3,7 @@
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <title>Save The Date</title>
 
@@ -113,11 +113,6 @@
         100% {opacity:1;}
     }
 
-    /* ---------------------------------------------------- Video styling */
-  
-
-    /* ============================================================================================ */
-
     /* ----------------------------- Footer styling */
     .credit {
     position: absolute;
@@ -223,7 +218,16 @@
     <div class="drawable_mobile_menu">
       <div class="drawable_mobile_menu_content">
         <div class="drawable_mobile_menu_content_list">
+
+          @if (Route::has('login'))  
+
+          @auth
+          <div id="dashboard_page">Dashboard</div>
+          @else 
           <div id="login_page">Login</div>
+          @endauth
+
+          @endif
           <div id="vendor_page">Our Vendors</div>
           <div id="package_page">Packages</div>
           <div id="event_page">Events</div>
@@ -234,7 +238,6 @@
           <div id="member_page">Members</div>
         </div>
       </div>
-      
     </div>
 
     <!-- Header Area wrapper Starts -->
@@ -545,10 +548,15 @@
         
     </div>  
 
+    <script>
+      var APP_URL = '{{ url("/") }}';
+      var LOGIN = '{{ route("login") }}';
+      var REGISTER = '{{ route("register") }}';
+    </script>
     
     @include('templates.footer')
     
-    <!------------------------------------------------------------------------ Footer Section End-->
+    <!----------------- ------------------------------------------------------- Footer Section End-->
 
     <div class="credit">
         <!-- Container Starts -->
@@ -666,43 +674,7 @@
         window.location.replace(url);
       }
 
-      $('.drawable_menu_trigger').click(function(){
 
-        $('.drawable_mobile_menu').toggle('fast');
-
-      });
-
-      $('#login_page').click(function(){
-        window.location.replace("{{ route('login') }}");
-      });
-
-      $('#vendor_page').click(function(){
-        window.location.replace("{{ url('/listvendor') }}");
-      });
-
-      $('#package_page').click(function(){
-        window.location.replace("{{ url('/packages') }}");
-      });
-
-      $('#event_page').click(function(){
-        window.location.replace("{{ url('/events') }}");
-      });
-
-      $('#islamic_page').click(function(){
-        window.location.replace("{{ url('/islamic_center') }}");
-      });
-
-      $('#about_page').click(function(){
-        window.location.replace("{{ url('/aboutSTD') }}");
-      });
-
-      $('#feature_page').click(function(){
-        window.location.replace("{{ url('/features') }}");
-      });
-
-      $('#member_page').click(function(){
-        window.location.replace("{{ url('/members') }}");
-      });
      
     </script>
 
