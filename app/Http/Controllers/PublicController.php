@@ -5,20 +5,21 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use App\Company;
 use App\CompanyCategory;
 use App\CompanyCategoryTag;
 use App\CompanyPackage;
+use App\CompanyPackageTag;
 use App\Attachment;
 use App\Merchant;
 use App\User;
 use App\Http\Controllers\UtilitiesController;
 use Carbon\Carbon;
-use Mail;
 
 class PublicController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
 
         $packages = new CompanyPackage;
 
@@ -286,7 +287,28 @@ class PublicController extends Controller
 
     public function allVendorPackages(Request $request){
 
-        $search_query = $request->input('query');
+        $selectedCategory = $request->input('c');
+        $selectedCompany = $request->input('cm');
+
+        if($selectedCategory <> 'null'){
+
+            $selectedC = explode(',', $selectedCategory);
+
+        }else{
+
+            $selectedC = array();
+        }
+
+        if($selectedCompany <> "undefined"){
+
+            $selectedCM = explode(',', $selectedCompany);
+
+        }else{
+
+            $selectedCM = array();
+        }
+
+        // print_r($selectedC);
 
         $category = new CompanyCategory;
 
@@ -294,18 +316,58 @@ class PublicController extends Controller
 
         $company = new Company;
 
-        if($search_query == ''){
+        $result = $company->get();
 
-            $result = $company->get();
-
-        }else{
-
-        }
+        //--------------------------------------------------------------------
 
         $packages = new CompanyPackage;
 
-        $p_count = $packages->count();
-        $p_result = $packages->get();
+        $package_id_arr = array();
+
+        if(!empty($selectedC)){
+
+            // echo "Ada";
+
+            $packageTag = new CompanyPackageTag;
+            $packageTagData = $packageTag->whereIn('cc_id',$selectedC)->get();
+
+            foreach($packageTagData as $tagData){
+
+                array_push($package_id_arr, $tagData['package_id']);
+
+            }
+
+            // print_r($package_id_arr);
+
+            $query = $packages->whereIn('package_id',$package_id_arr);
+
+            if(!empty($selectedCM)){
+
+                // echo "company ada";
+
+                $query = $query->whereIn('company_id',$selectedCM);
+            }
+
+        }else{
+
+            // echo "Tiada";
+
+            if(!empty($selectedCM)){
+
+                $query = $packages->whereIn('company_id',$selectedCM);
+
+            }else{
+
+                $query = $packages;
+
+            }
+
+        }
+
+        $p_count = $query->count();
+        $p_result = $query->get();
+
+        //--------------------------------------------------------------------
 
         $i = 0;
 
@@ -370,13 +432,21 @@ class PublicController extends Controller
 
             $reset_password_url = url('/').'/reset/'.$key;
 
-            Mail::send('emails.password_reset_mail',['link_url' => $reset_password_url,'name' => $info['name']],function($m) use ($info){
+            // try{
+                Mail::send('emails.password_reset_mail',['link_url' => $reset_password_url,'name' => $info['name']],function($m) use ($info){
 
-                $m->from('support@savethedate-my.com','Save The Date');
+                    // $m->from('online@savethedate-my.com','Save The Date');
 
-                $m->to($info['email'], $info['name'])->subject('Password reset link');
+                    $m->to($info['email'], $info['name'])->subject('Password reset link');
 
-            });
+                });
+            // }
+            // catch(\Exception $e){
+                
+            //     echo $e;
+            // }
+
+            
 
 
             $status = '200';

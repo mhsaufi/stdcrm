@@ -257,6 +257,18 @@
     .p_book_btn:hover {
       opacity: 0.9;
     }
+
+    .above_2 {
+      justify-content: space-between;
+    }
+
+    .below_2 {
+      justify-content: flex-start;
+    }
+
+    .below_2 > .package_cards {
+      margin-right: 15px;
+    }
    </style>
 
 </head>
@@ -302,9 +314,9 @@
       </div>
       <div class="big_container">
         @if($p_count > 2)
-        <div class="result_container" style="justify-content: space-between;">
+        <div class="result_container above_2">
         @else
-        <div class="result_container" style="justify-content: flex-start;">
+        <div class="result_container below_2">
         @endif
         
 
@@ -394,6 +406,17 @@
           window.location.replace(url);       
 
         });
+
+      });
+
+      $('#std_search_btn').click(function(){
+
+        var selectedCategory = $('#select_company_category').val();
+        var company_id = $( "#select_company_name option:selected" ).val();
+
+        var url = '{{ url("/packages") }}'+ '?c=' + selectedCategory + '&cm=' + company_id;
+
+        window.location.replace(url);
 
       });
 

@@ -63,6 +63,31 @@
       flex-flow: row wrap;
     }
 
+    .staff_info_container {
+      border: 1px solid #d4af37;
+      padding: 5px 10px;
+      position: fixed;
+      top: 20%!important;
+      left: 20%!important;
+      height: 50%;
+      width: 60%;
+      background: white;
+      -moz-box-shadow: 0 0 7px #888;
+      -webkit-box-shadow: 0 0 7px#888;
+      box-shadow: 0 0 30px #888;
+      z-index: 85;
+      display: none;
+    }
+
+
+    .staff_info_container_child {
+      display: flex;
+      flex-flow: row;
+      justify-content: space-around;
+      height: 100%;
+      width: 100%;
+    }
+
     @media (max-width: 600px){
 
       .pattern {
@@ -101,6 +126,54 @@
         top: 170px;
         right: 8%;
         z-index: 80;
+      }
+
+      .staff_info_container {
+        border: 1px solid #d4af37;
+        padding: 10px 10px!important;
+        position: fixed;
+        top: 0!important;
+        left: 0!important;
+        height: 70%;
+        width: 90%;
+        background: white;
+        -moz-box-shadow: 0 0 7px #888;
+        -webkit-box-shadow: 0 0 7px#888;
+        box-shadow: 0 0 30px #888;
+        z-index: 85;
+        display: none;
+        margin: 30% 20px!important;
+      }
+
+
+      .staff_info_container_child {
+        display: flex;
+        flex-flow: column;
+        justify-content: space-around;
+        height: 100%;
+        width: 100%;
+        padding: 10% 0!important;
+        /*background: blue;*/
+      }
+
+      .staff_card_dp {
+        width: 100%!important;
+        height: 100%;
+        /*background: blue;*/
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+      }
+
+
+      .staff_card_dp_circle {
+        margin-top: 0!important;
+        width: 150px!important;
+        height: 150px!important;
+        /*background: blue;*/
+        z-index: 99;
+        border-radius: 50%;
       }
     }
 
@@ -194,22 +267,6 @@
 
     .our_team_container:hover .staff_fullname{
       opacity: 1;
-    }
-
-    .staff_info_container {
-      border: 1px solid #d4af37;
-      padding: 5px 10px;
-      position: fixed;
-      top: 25%;
-      left: 25%;
-      height: 45%;
-      width: 50%;
-      background: white;
-      -moz-box-shadow: 0 0 7px #888;
-      -webkit-box-shadow: 0 0 7px#888;
-      box-shadow: 0 0 30px #888;
-      z-index: 85;
-      display: none;
     }
 
     .staff_card_dp {
@@ -365,7 +422,7 @@
     </div>
 
     <div class="staff_info_container">
-      <div style="display: flex;flex-flow: row;justify-content: flex-start;height: 100%;width: 100%;">
+      <div class="staff_info_container_child">
         <div class="staff_card_dp">
           <div class="staff_card_dp_circle" id="staff_avatar">
           </div>
