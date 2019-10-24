@@ -12,7 +12,7 @@
       <div class="collapse navbar-collapse" id="main-navbar">
         <ul class="navbar-nav mr-auto w-100 justify-content-end clearfix">
           <li class="nav-item">
-            <a class="nav-link black" href="{{ url('/listvendor') }}">Vendors</a>
+            <a class="nav-link black" href="{{ url('/listvendor') }}" data-list-name="Our Vendors" data-content-category="Header">Vendors</a>
           </li>
 
           <li class="nav-item">
@@ -22,11 +22,11 @@
           </li>             
 
           <li class="nav-item">
-            <a class="nav-link black" href="{{ url('/events') }}">Events</a>
+            <a class="nav-link black" href="{{ url('/events') }}" data-list-name="Events" data-content-category="Header">Events</a>
           </li>              
 
           <li class="nav-item">
-            <a class="nav-link black" href="{{ url('/iaffair') }}">
+            <a class="nav-link black" href="{{ url('/iaffair') }}" data-list-name="iAffair" data-content-category="Header">
             <i class="fas fa-mosque"></i> Islamic Affairs
             </a>
           </li> 
@@ -81,13 +81,13 @@
               @else          
           
                 <li class="nav-item">
-                  <a class="nav-link black" href="{{ route('login') }}">
+                  <a class="nav-link black" href="{{ route('login') }}" data-list-name="Sign In" data-content-category="Header">
                   <i class="fas fa-sign-in-alt"></i> Login
                   </a>
                 </li>
                 
                 <li class="nav-item">
-                  <a class="nav-link black" href="{{ route('register') }}">
+                  <a class="nav-link black" href="{{ route('register') }}" data-list-name="Sign Up" data-content-category="Header">
                   <i class="fas fa-edit"></i> Signup
                   </a>
                 </li>

@@ -8,6 +8,14 @@
 	<!-- <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"> -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
+         <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WM6WPDB');</script>
+    <!-- End Google Tag Manager -->
+
     <style>
     	a:hover {
     		text-decoration: none;
@@ -357,7 +365,7 @@
 
 					<br>
                     <div id="error-message"></div><br>
-                    <button class="std-reg-btn" id="reg-btn" type="submit" disabled>REGISTER</button><br>
+                    <button class="std-reg-btn" id="reg-btn" type="submit" data-item-name="Register" data-content-category="Sign Up" disabled>REGISTER</button><br>
                     
 				</form>
 			</div>
@@ -540,6 +548,7 @@
             if(total_error == 'aaaaaa'){
 
                 $('#reg-btn').prop('disabled',false);
+                $('#reg-btn').addClass('goal_registration_customer');
 
             }else{
 

@@ -16,7 +16,7 @@ var c_website;
 var selected_company;
 
 $('#label_email').hide();
-$('#label_c_email').hide();
+$('#label_c_email').hide(); 
 $('#label_pw').hide();
 
 $('.width-normal').blur(function(){

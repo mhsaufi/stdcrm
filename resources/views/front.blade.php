@@ -269,7 +269,7 @@
             <ul class="navbar-nav mr-auto w-100 justify-content-center clearfix">
                 <div class="drpdown">
                   <li class="nav-item">
-                      <a class="nav-link black" href="{{ url('/listvendor') }}">
+                      <a class="nav-link black" href="{{ url('/listvendor') }}" data-list-name="Our Vendors" data-content-category="Header">
                       Our Vendors <i class="fa fa-angle-down"></i>
                       </a> 
                       <!-- Category Section Start -->
@@ -380,7 +380,7 @@
 
                 <div class="drpdown">
                   <li class="nav-item">
-                      <a class="nav-link black" href="{{ url('/packages') }}">
+                      <a class="nav-link black" href="{{ url('/packages') }}" data-list-name="Packages" data-content-category="Header">
                       Packages <i class="fa fa-angle-down"></i>
                       </a>
                       <!-- Packages section Start --> 
@@ -409,7 +409,7 @@
 
                 <div class="drpdown">
                   <li class="nav-item">
-                      <a class="nav-link black" href="{{ url('/events') }}">
+                      <a class="nav-link black" href="{{ url('/events') }}" data-list-name="Events" data-content-category="Header">
                       Events <i class="fa fa-angle-down"></i>
                       </a>
 
@@ -448,7 +448,7 @@
 
                 <!-- <div class="drpdown"> -->
                   <li class="nav-item">
-                      <a class="nav-link black" href="{{ url('/iaffair') }}">
+                      <a class="nav-link black" href="{{ url('/iaffair') }}" data-list-name="iAffair" data-content-category="Header">
                       <i class="fas fa-mosque"></i> Islamic Affairs
                       </a>
                   </li>
@@ -487,20 +487,20 @@
                   @else         
 
                     <li class="nav-item">
-                      <a class="nav-link black" href="{{ route('login') }}">
+                      <a class="nav-link black" href="{{ route('login') }}" data-list-name="Sign In" data-content-category="Header">
                       <i class="fas fa-sign-in-alt"></i> Login
                       </a>
                     </li>
 
 
                     <li class="nav-item">
-                        <a class="nav-link black" href="{{ url('/merchant') }}">
+                        <a class="nav-link black" href="{{ url('/merchant') }}" data-list-name="Merchant Sign Up" data-content-category="Header">
                         <span style="color: #e6c500;font-weight: bold;">Are you a vendor?</span>
                         </a>
                     </li> 
                     
                     <li class="nav-item">
-                      <a class="nav-link black" href="{{ route('register') }}">
+                      <a class="nav-link black" href="{{ route('register') }}" data-list-name="Sign Up" data-content-category="Header">
                       <span id="btn_join_us">Let's Join Us!</span>
                       </a>
                     </li>

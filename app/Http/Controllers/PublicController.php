@@ -287,10 +287,17 @@ class PublicController extends Controller
 
     public function allVendorPackages(Request $request){
 
-        $selectedCategory = $request->input('c');
-        $selectedCompany = $request->input('cm');
 
-        if($selectedCategory <> 'null'){
+        if($request->input()){
+            $selectedCategory = $request->input('c');
+            $selectedCompany = $request->input('cm');
+        }else{
+            $selectedCategory = '';
+            $selectedCompany = '';
+        }
+        
+
+        if($selectedCategory <> ''){
 
             $selectedC = explode(',', $selectedCategory);
 
@@ -299,7 +306,7 @@ class PublicController extends Controller
             $selectedC = array();
         }
 
-        if($selectedCompany <> "undefined"){
+        if($selectedCompany <> ''){
 
             $selectedCM = explode(',', $selectedCompany);
 

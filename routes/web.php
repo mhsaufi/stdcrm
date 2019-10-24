@@ -62,7 +62,7 @@ Route::get('/testdulu', function(){
 
 Route::get('/form','PublicController@form');
 Route::post('/submit','PublicController@newVendor');
-Route::post('/register/87eef723','PublicController@checkUsernamePassword');
+// Route::post('/register/87eef723','PublicController@checkUsernamePassword');
 
 // ---------------------------------------  FORGOR PASSWORD
 

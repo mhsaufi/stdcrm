@@ -4,6 +4,13 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="page_site" content="savethedate-my.com">
+    <meta name="page_language" content="English">
+    <meta name="page_type" content="Timeline Vendor">
+    <meta name="page_title" content="Timeline | {{ $data_event['we_title'] }}">
+    <meta name="event_id" content="{{ $data_event['we_id'] }}">
+    <meta name="user_id" content="{{ Auth::user()->id }}">
+    <meta name="user_email" content="{{ Auth::user()->email }}">
 
     <title>Dashboard | {{ $data_event['we_title'] }}</title>
     @include('templates.header')
