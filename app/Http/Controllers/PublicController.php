@@ -31,7 +31,7 @@ class PublicController extends Controller
 
         foreach($package_result as $p){
 
-            if($i < 4){
+            if($i < 3){
 
                 $p_result[$i] = $p;
 
@@ -287,25 +287,35 @@ class PublicController extends Controller
 
     public function allVendorPackages(Request $request){
 
-        $selectedCategory = $request->input('c');
-        $selectedCompany = $request->input('cm');
+        if($request->input()){
+            $selectedCategory = $request->input('c');
+            $selectedCompany = $request->input('cm');
+        }else{
+            $selectedCategory = '';
+            $selectedCompany = '';
+        }
 
-        if($selectedCategory <> 'null'){
+        if($selectedCategory <> ''){
 
             $selectedC = explode(',', $selectedCategory);
+            // echo "2";
 
         }else{
 
             $selectedC = array();
+            // echo "1";
         }
 
-        if($selectedCompany <> "undefined"){
+        if($selectedCompany <> ''){
 
             $selectedCM = explode(',', $selectedCompany);
+            // echo "2a";
 
         }else{
 
             $selectedCM = array();
+
+            // echo "1a";
         }
 
         // print_r($selectedC);
@@ -357,6 +367,8 @@ class PublicController extends Controller
                 $query = $packages->whereIn('company_id',$selectedCM);
 
             }else{
+
+                // echo "Memang tiada";
 
                 $query = $packages;
 
