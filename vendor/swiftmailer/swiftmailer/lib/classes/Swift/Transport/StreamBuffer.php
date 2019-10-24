@@ -267,7 +267,7 @@ class Swift_Transport_StreamBuffer extends Swift_ByteStream_AbstractFilterableIn
         $this->stream = @stream_socket_client($host.':'.$this->params['port'], $errno, $errstr, $timeout, STREAM_CLIENT_CONNECT, $streamContext);
         if (false === $this->stream) {
             throw new Swift_TransportException(
-                'Connection could not be established with host '.$this->params['host'].
+                'Connection could not be established with host '.$this->params['host'].' and port '.$this->params['port'].
                 ' ['.$errstr.' #'.$errno.']'
                 );
         }
