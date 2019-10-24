@@ -448,7 +448,7 @@
 
                 <!-- <div class="drpdown"> -->
                   <li class="nav-item">
-                      <a class="nav-link black" href="{{ url('/islamic_center') }}">
+                      <a class="nav-link black" href="{{ url('/iaffair') }}">
                       <i class="fas fa-mosque"></i> Islamic Affairs
                       </a>
                   </li>

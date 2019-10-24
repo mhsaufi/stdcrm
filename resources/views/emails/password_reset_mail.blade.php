@@ -11,3 +11,5 @@ Thank you for contacting our team
 Sincerely
 <br><br>
 Your Save The Date team
+<br><br>
+<img src="https://savethedate-my.com/myasset/img/logo.png" width="10%"/>

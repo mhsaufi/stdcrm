@@ -259,6 +259,7 @@
 						<div class="directory" id="info_jpn">Info from Jabatan Pendaftaran Negara</div>
 						<div class="directory" id="fiqh_munaqahat">Fiqh Munaqahat</div>
 						<div class="directory" id="faq">FAQ</div>
+						<div class="directory" id="download">Downloadable Documents</div>
 					</div>
 					<div id="content_col">
 							
@@ -328,6 +329,15 @@
 
 			$('#replacable_content').load('myasset/templates/iaffair/jabatanagama.blade.php').fadeIn();
 			$('#title_text_replacable').html("Soalan-soalan lazim institusi perkahwinan");
+			$('.directory').removeClass('active_directory');
+			$(this).addClass('active_directory');
+
+		});
+
+		$('#download').click(function(){
+
+			$('#replacable_content').load('myasset/templates/iaffair/downloadable.blade.php').fadeIn();
+			$('#title_text_replacable').html("Wedding Checklist");
 			$('.directory').removeClass('active_directory');
 			$(this).addClass('active_directory');
 

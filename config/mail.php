@@ -16,7 +16,8 @@ return [
     |
     */
 
-    'driver' => env('MAIL_DRIVER', 'sendmail'),
+
+    'driver' => env('MAIL_DRIVER', 'smtp'),
 
     /*
     |--------------------------------------------------------------------------
@@ -57,7 +58,8 @@ return [
 
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'online.support@savethedate-my.com'),
-        'name' => env('MAIL_FROM_NAME', 'Save The Date'),
+
+        'name' => env('MAIL_FROM_NAME', 'Save The Date Online'),
     ],
 
     /*

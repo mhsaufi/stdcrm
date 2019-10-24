@@ -34,7 +34,7 @@ Route::post('/clearcart','EventController@clearCart'); // after booking rejected
 Route::get('/events',function(){
     return view('external.promo');
 });
-Route::get('/islamic_center',function(){
+Route::get('/iaffair',function(){
     return view('external.iaffair');
 });
 

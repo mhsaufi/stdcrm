@@ -432,19 +432,14 @@ class PublicController extends Controller
 
             $reset_password_url = url('/').'/reset/'.$key;
 
-            // try{
-                Mail::send('emails.password_reset_mail',['link_url' => $reset_password_url,'name' => $info['name']],function($m) use ($info){
 
-                    $m->from('support@savethedate-my.com','Save The Date');
+            Mail::send('emails.password_reset_mail',['link_url' => $reset_password_url,'name' => $info['name']],function($m) use ($info){
 
-                    $m->to($info['email'], $info['name'])->subject('Password reset link');
+                // $m->from('online@savethedate-my.com','Save The Date');
 
-                });
-            // }
-            // catch(\Exception $e){
-                
-            //     echo $e;
-            // }
+                $m->to($info['email'], $info['name'])->subject('Password reset link');
+
+            });
 
             
 
