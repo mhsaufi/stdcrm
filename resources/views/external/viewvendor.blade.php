@@ -3,6 +3,11 @@
 <html>
 <head>
 	<title>{{ $result['company_name'] }} | Info</title>
+   <meta name="page_site" content="savethedate-my.com">
+   <meta name="page_language" content="English">
+   <meta name="page_type" content="Vendor View">
+   <meta name="page_title" content="Vendor | {{ $result['company_name'] }}">
+   <meta name="page_content" content="Vendor Detail">
 	 @include('templates.header')
 
    

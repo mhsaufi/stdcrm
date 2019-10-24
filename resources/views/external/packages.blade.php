@@ -322,7 +322,7 @@
 
 
           @foreach($p_result as $p)
-          <div class="package_cards" data-pid="{{ $p['package_id'] }}" data-name="{{ $p['package_title'] }}">
+          <div class="package_cards" data-pid="{{ $p['package_id'] }}" data-name="{{ $p['package_title'] }}" data-item-name="{{ $p['package_title'] }}" data-content-category="View Package" data-content-author="{{ $p['company']['company_name'] }}">
             <div style="height: 20%;width: 100%;background: white;z-index: 71;display: flex;flex-direction: column;justify-content: space-between;" id="p_title">
               <div>{{ $p['package_title'] }}</div>
               <div style="width: 100%;display: flex;flex-direction: row;justify-content: space-between;" id="sub_p_title">
@@ -379,7 +379,7 @@
 
          th.on('click',':not(.p_book_btn)',function(e){
 
-            e.stopPropagation();
+            // e.stopPropagation();
 
             var pid = th.data('pid');
             var name = th.data('name');

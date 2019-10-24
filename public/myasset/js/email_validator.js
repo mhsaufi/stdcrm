@@ -1,16 +1,17 @@
 
 function emailValidator(email){
 
-	var API_KEY = '6ab2824c21df3e8b08fd90d1ed3a088b';
-	var endpoint = 'http://apilayer.net/api/check?access_key='+ API_KEY +'&email='+ email +'&smtp=1&format=1';
+	var API_KEY_MAIL = '6ab2824c21df3e8b08fd90d1ed3a088b';
+	// var endpoint = 'http://apilayer.net/api/check?access_key='+ API_KEY_MAIL +'&email='+ email +'&smtp=1&format=1';
+	var endpoint = 'https://api.trumail.io/v2/lookups/json?email=' + email;
 
 	$('#email_tick_img').attr('src','myasset/img/carrier/ajax-loader.gif');
 
 	$.get(endpoint, function(data){
 
-		if(data.format_valid === true){
+		if(data.validFormat === true){
 			
-			if(data.smtp_check === true){
+			if(data.deliverable === true){
 
 				$('#error_email').html('');
             	$('#email_tick_img').attr('src','myasset/img/carrier/correct.png');

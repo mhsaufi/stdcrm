@@ -370,7 +370,7 @@
           </div>
           <div>
             <button class="form_r_btn_f_cancel" style="" id="cancel_signup">Cancel</button>
-            <button class="form_r_btn_f_agree_disabled" style="" id="agree_signup">Sign Up</button>
+            <button class="form_r_btn_f_agree_disabled" style="" data-item-name="Register" data-content-category="Sign Up" id="agree_signup">Sign Up</button>
           </div>
         </div>
       </div>
@@ -439,10 +439,12 @@
           if($("#agreetnc").is(":checked")){ 
 
               $('#agree_signup').removeClass('form_r_btn_f_agree_disabled').addClass('form_r_btn_f_agree');
+              $('#agree_signup').addClass('goal_registration_vendor');
 
           }else{ 
 
               $('#agree_signup').removeClass('form_r_btn_f_agree').addClass('form_r_btn_f_agree_disabled');
+              $('#agree_signup').removeClass('goal_registration_vendor');
           } 
       }); 
 

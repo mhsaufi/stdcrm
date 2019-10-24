@@ -3,7 +3,11 @@
 <html>
 <head>
 	<title>Package | {{ $result['package_title'] }}</title>
-
+   <meta name="page_site" content="savethedate-my.com">
+   <meta name="page_language" content="English">
+   <meta name="page_type" content="Package View">
+   <meta name="page_title" content="Package | {{ $result['package_title'] }}">
+   <meta name="page_content" content="Package Detail">
 	 @include('templates.header')
    <link rel="stylesheet" href="{{ asset('myasset/socialsharekit/dist/css/social-share-kit.css') }}" type="text/css">
 

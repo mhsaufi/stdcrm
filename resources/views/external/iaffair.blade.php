@@ -3,6 +3,11 @@
 <html>
 <head>
 	<title>SaveTheDate | Islamic Affairs</title>
+	<meta name="page_site" content="savethedate-my.com">
+	<meta name="page_language" content="English">
+	<meta name="page_type" content="iAffair">
+	<meta name="page_title" content="iAffair">
+	<meta name="page_content" content="iAffair">
 	 @include('templates.header')
 
 	<link rel="stylesheet" href="{{ asset('myasset/socialsharekit/dist/css/social-share-kit.css') }}" type="text/css">
@@ -255,11 +260,11 @@
 				</div>
 				<div class="islamic_container">
 					<div id="directory_col">
-						<div class="directory active_directory" id="jabatan_agama">Official Jabatan Agama Page & Pre-marriage Timetable</div>
-						<div class="directory" id="info_jpn">Info from Jabatan Pendaftaran Negara</div>
-						<div class="directory" id="fiqh_munaqahat">Fiqh Munaqahat</div>
-						<div class="directory" id="faq">FAQ</div>
-						<div class="directory" id="download">Downloadable Documents</div>
+						<div class="directory active_directory" id="jabatan_agama" data-list-name="Official Jabatan Agama" data-content-category="iAffair Navigation">Official Jabatan Agama Page & Pre-marriage Timetable</div>
+						<div class="directory" id="info_jpn" data-list-name="Info JPN" data-content-category="iAffair Navigation">Info from Jabatan Pendaftaran Negara</div>
+						<div class="directory" id="fiqh_munaqahat" data-list-name="Fiqh Munaqahat" data-content-category="iAffair Navigation">Fiqh Munaqahat</div>
+						<div class="directory" id="faq" data-list-name="FAQ" data-content-category="iAffair Navigation">FAQ</div>
+						<div class="directory" id="download" data-list-name="Downloadable Documents" data-content-category="iAffair Navigation">Downloadable Documents</div>
 					</div>
 					<div id="content_col">
 							

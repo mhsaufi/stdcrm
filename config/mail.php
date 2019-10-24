@@ -16,6 +16,7 @@ return [
     |
     */
 
+
     'driver' => env('MAIL_DRIVER', 'smtp'),
 
     /*
@@ -29,7 +30,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env('MAIL_HOST', 'mail.savethedate-my.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -57,6 +58,7 @@ return [
 
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'online.support@savethedate-my.com'),
+
         'name' => env('MAIL_FROM_NAME', 'Save The Date Online'),
     ],
 
@@ -71,7 +73,7 @@ return [
     |
     */
 
-    'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+    'encryption' => env('MAIL_ENCRYPTION', 'TLS'),
 
     /*
     |--------------------------------------------------------------------------
@@ -84,9 +86,9 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME'),
+    'username' => env('online.support@savethedate-my.com'),
 
-    'password' => env('MAIL_PASSWORD'),
+    'password' => env('alynazren93'),
 
     /*
     |--------------------------------------------------------------------------
