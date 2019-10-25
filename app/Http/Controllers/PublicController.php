@@ -453,8 +453,6 @@ class PublicController extends Controller
 
             });
 
-            
-
 
             $status = '200';
 
@@ -482,7 +480,6 @@ class PublicController extends Controller
 
             return view('auth.reset_form',compact('info'));
         }
-
     }
 
     public function resetStep3(Request $request){
@@ -494,6 +491,5 @@ class PublicController extends Controller
         $update = $user->where('id',$id)->update(['password'=>Hash::make($pw)]);
 
         return "200";
-
     }
 }
