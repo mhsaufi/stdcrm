@@ -278,7 +278,73 @@
         height: 10%;
       }
 
+      #email_tick > img {
+          width: 100%!important;
+      }
 
+      #email_tick {
+          position: absolute;
+          right: 12%!important;
+          top: 0;
+          height: 100%;
+          width: 6%;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+          align-items: center;
+          border-top-right-radius: 4px;
+          border-bottom-right-radius: 4px;
+          padding: 1.3% 1.3%;
+      }
+
+      .error_text {
+        font-size: 12px;
+        font-weight: bold;
+        font-style: italic;
+        color: red;
+        opacity: 0.8;
+        margin-left: 20px;
+      }
+
+      #label_pw, #label_email {
+        display: none;
+      }
+
+      .phone_prefix {
+        position: absolute;
+        height: 100%;
+        width: 10%;
+        background: #dcdcdc;
+        top: 0;
+        left: 0;
+        text-align: center;
+        font-size: 18px;
+        padding: 2.5% 1%;
+      }
+
+      .phone_carrier {
+        position: absolute;
+        height: 100%;
+        width: 10%;
+        background: white;
+        top: 0;
+        right: 20%;
+        text-align: center;
+        font-size: 18px;
+        padding: 2.5% 1%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+      }
+
+      #phone {
+        padding-left: 13%;
+      }
+
+      #carrier_logo_img {
+        width: 50%!important;
+      }
     </style>
   </head>
   <body>
@@ -306,20 +372,41 @@
           <div style="position:relative;display: flex;flex-direction: column;justify-content: space-between;height: 90%;width: 100%;">
             <div id="form_personal">
               <div style="width: 50%;">
-                <label id="label_fullname">Fullname</label>
+                <label id="label_fullname">Fullname</label><span class="error_text" id="fullname_error"></span>
                 <input type="text" class="form-control width-normal" name="" id="fullname" />
+                <input type="hidden" id="fullname_" value="" />
                 <label>Email <span id="label_email" style='color: red;font-size: 12px;font-weight: bold;opacity: 0.5;'><em>Invalid email given</em></span></label>
-                <input type="email" class="form-control width-normal" name="" id="email"/>
-                <label id="label_name">Name / Nickname</label>
+                
+                <div style="position: relative;">
+                  <input type="email" class="form-control width-normal" name="" id="email"/>
+                  <input type="hidden" id="email_" value="" />
+                  <div id="email_tick">
+                    <img src="" id="email_tick_img"/>
+                  </div>
+                </div>
+
+                <label id="label_name">Name / Nickname</label><span class="error_text" id="name_error"></span>
                 <input type="text" class="form-control width-normal" name="name" id="name" />
+                <input type="hidden" id="name_" value=""/>
               </div>
               <div style="width: 50%;">
-                <label id="label_phone">Phone Number</label>
-                <input type="text" class="form-control width-normal" name="" id="phone" style="width: 70%!important;"/>
+
+                <label id="label_phone">Phone Number</label><span class="error_text" id="phone_error"></span>
+                <div style="position: relative;">
+                  <input type="text" class="form-control width-normal" name="" id="phone" style="width: 70%!important;"/>
+                  <input type="hidden" id="phone_" value=""/>
+                  <div class="phone_prefix">
+                      +6
+                  </div>
+                  <div class="phone_carrier">
+                    <img src="" id="carrier_logo_img">
+                  </div>
+                </div>
                 <label id="label_phone">Password <span id="label_pw" style='color: red;font-size: 12px;font-weight: bold;opacity: 0.5;'><em>Password doesnt match</em></span></label>
                 <input type="password" class="form-control width-normal" name="" id="pw1" style="width: 100%!important;"/>
                 <label id="label_phone">Re-Enter Password</label>
                 <input type="password" class="form-control width-normal" name="" id="pw2" style="width: 100%!important;"/>
+                <input type="hidden" id="pw_" value="" />
               </div>
               
             </div>
@@ -376,12 +463,11 @@
       </div>
     </div>
     
-
-    
     @include('templates.footer')
     <script src="{{asset('myasset/jqueryui/jquery-ui.js')}}"></script>
-    <script src="{{asset('myasset/js/merchant_form.js')}}"></script>
+    <script src="{{asset('myasset/js/merchant_form2.js')}}"></script>
     <script src="{{asset('myasset/select2/dist/js/select2.js')}}"></script>
+    <script src="{{asset('myasset/js/email_validator.js')}}"></script>
     <script type="text/javascript">
       $('#signup').attr("disabled",true);
       $('#next').attr("disabled",true).addClass('next_btn_disabled');

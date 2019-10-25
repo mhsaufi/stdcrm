@@ -1,6 +1,4 @@
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- Navbar Start -->
+      <!-- Navbar Start -->
   <nav class="navbar navbar-expand-lg fixed-top scrolling-navbar indigo bg-white " 
     style="height: 80px!important;">
     <div class="container">
@@ -12,7 +10,9 @@
       <div class="collapse navbar-collapse" id="main-navbar">
         <ul class="navbar-nav mr-auto w-100 justify-content-end clearfix">
           <li class="nav-item">
-            <a class="nav-link black" href="{{ url('/listvendor') }}" data-list-name="Our Vendors" data-content-category="Header">Vendors</a>
+            <a class="nav-link black" href="{{ url('/listvendor') }}" data-list-name="Our Vendors" data-content-category="Header">
+	            	Vendors
+	        </a>
           </li>
 
           <li class="nav-item">
@@ -34,28 +34,6 @@
           @if (Route::has('login'))                
               @auth
 
-                @if(Auth::user()->role_id == 3)
-
-                  @if(Auth::user()->status_id == 1)
-
-                    <li class="nav-item">
-                      <a class="nav-link black" href="{{ url('/insider') }}">
-                        <i class="fas fa-sitemap"></i> 
-                        Insider
-                      </a>
-                    </li>
-
-                    <li class="nav-item">
-                      <a class="nav-link black" href="{{ url('/contact') }}">
-                        <i class="fas fa-address-book"></i>  
-                        Contact
-                      </a>
-                    </li>
-
-                    @endif   
-
-                @endif
-
                 <li class="nav-item">
                   <a class="nav-link black" href="{{ url('/home') }}">
                     <i class="fas fa-columns"></i>
@@ -64,12 +42,7 @@
                 </li>
 
                 <li class="nav-item">
-                  @if(Auth::user()->status_id == 1)
-                    <a class="nav-link black" href="{{ url('/profile') }}">
-                  @else
-                    <a class="nav-link black" href="{{ url('/home') }}">
-                  @endif
-
+                  <a class="nav-link black" href="#">
                   <i class="fas fa-user-circle"></i> {{ Auth::user()->name }}
                   </a>
                 </li>
@@ -111,44 +84,3 @@
     </div>
   </nav>
   <!-- Navbar End -->
-
-    <div class="drawable_mobile_menu">
-      <div class="drawable_mobile_menu_content">
-        <div class="drawable_mobile_menu_content_list">
-
-          @if (Route::has('login'))  
-
-          @auth
-          <div id="dashboard_page">Dashboard</div>
-          @else 
-          <div id="login_page">Login</div>
-          @endauth
-
-          @endif
-          <div id="vendor_page">Our Vendors</div>
-          <div id="package_page">Packages</div>
-          <div id="event_page">Events</div>
-          <div id="islamic_page">Islamic Affair</div>
-          <div style="height: 15px;width:100%;border-bottom: 0.05em solid white;"></div>
-          <div id="about_page">About</div>
-          <!-- <div id="feature_page">Features</div>
-          <div id="member_page">Members</div> -->
-          @if (Route::has('login'))  
-
-          @auth
-          <div id="logout">Logout <i class="fas fa-sign-out-alt"></i></div>
-          @else 
-
-          @endauth
-
-          @endif
-        </div>
-      </div>
-    </div>
-
-    <script>
-      var LOGOUT = '{{ route("logout") }}';
-      var APP_URL = '{{ url("/") }}';
-      var LOGIN = '{{ route("login") }}';
-      var REGISTER = '{{ route("register") }}';
-    </script>

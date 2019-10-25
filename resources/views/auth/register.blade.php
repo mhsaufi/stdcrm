@@ -308,7 +308,6 @@
             padding: 1.3% 1.3%;
         }
 
-
     </style>	
 </head>
 <body class="pattern">
