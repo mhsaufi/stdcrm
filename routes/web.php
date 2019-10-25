@@ -156,6 +156,7 @@ Route::get('/contact','ContactController@index')->middleware('auth');
 // ---------------------------------------  INSIDER
 
 Route::get('/insider','InsiderController@index')->middleware('auth');
+Route::post('/activation','InsiderController@activationStaff');
 
 
 

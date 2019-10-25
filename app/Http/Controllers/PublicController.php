@@ -133,18 +133,16 @@ class PublicController extends Controller
             
         }else{
 
-            $update = $merchant->where('id', $merchant->id)->update(['company_id'=>$cid]);
+            $update = $merchant->where('id', $merchant->id)->update(['company_id'=>$cid,'status_id'=>'3']);
 
         }
 
         $data_return = array($merchant->id);
 
         $this->authenticate($email, $pass);
-        
     }
 
-    public function authenticate($email, $password)
-    {
+    public function authenticate($email, $password){
         if(Auth::attempt(['email' => $email, 'password' => $password])){
             
         }else{
@@ -482,7 +480,6 @@ class PublicController extends Controller
 
             return view('auth.reset_form',compact('info'));
         }
-
     }
 
     public function resetStep3(Request $request){
@@ -494,6 +491,5 @@ class PublicController extends Controller
         $update = $user->where('id',$id)->update(['password'=>Hash::make($pw)]);
 
         return "200";
-
     }
 }

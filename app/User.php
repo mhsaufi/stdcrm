@@ -42,6 +42,11 @@ class User extends Authenticatable
         return $this->hasOne('App\Company','company_id','company_id');
     }
 
+    public function companyreverse()
+    {
+        return $this->belongsTo('App\Company');
+    }
+
     public function event()
     {
         return $this->belongsTo('App\WEvent');
