@@ -171,4 +171,28 @@ class HomeController extends Controller
         return view('internal.vendor.vendor_temp_page_inactive');
     }
 
+    public function updateProfile(Request $req){
+
+        $fname = $req->input('fname');
+        $phonenum = $req->input('phonenum');
+        $dob = $req->input('dob');
+        $addr = $req->input('addr');
+        $state = $req->input('state');
+
+        $users = new User;
+
+        $update = $users
+                    ->where('id', Auth::user()->id)
+                    ->update(
+                        [
+                            'fullname'=>$fname,
+                            'phone'=>$phonenum,
+                            'dob'=>$dob,
+                            'address'=>$addr,
+                            'state'=>$state
+                        ]);
+
+        return "Successful update";
+    }
+
 }

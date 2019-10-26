@@ -85,16 +85,24 @@
 
 		 .middle-step{
 			display:flex;
-			 flex-direction:row;
-			 justify-content: center;			 
-			 margin-bottom: 2%;
-			 width:100%;
-			 height:90px;
-			 border-radius: 10px;
+			flex-direction: row;
+			justify-content: center;			 
+			margin-bottom: 2%;
+			width:100%;
+			height:auto;
+			border-radius: 10px;
 			border: 1px solid #d4af37;
 			background: #fff;
 			/* background: url("{{asset('myasset/img/babout.jpg')}}"); */
-			padding: auto;
+			padding: 30px 20px;
+		 }
+
+		 .middle-left{			 
+			 width:50%;
+		 }
+
+		 .middle-right{
+			 width:50%;
 		 }
 		/* =============================== HEXAGON STEP INSTRUCTION */
 		 .title-step{
@@ -240,10 +248,8 @@
 		.tbutton:focus + .tp, div:focus .tP, .tp {
 		display: block;
 		position: absolute;
-		border-radius: 0 10px 10px 10px;
-		border-bottom: 1px solid #d4af37;
-		border-left: 1px solid #d4af37;
-		border-right: 1px solid #d4af37;
+		border-radius:10px;
+		border: 1px solid #d4af37;
 		background-color: #fff;
 		color: #d4af37;
 		min-height: 100%;
@@ -251,14 +257,24 @@
 		left: 0;
 		z-index: 2;
 		outline: none;
-		top: 38px;
+		/* top: 38px; */
 		text-align: center;
 		padding-top: 20px;
 		/* margin-bottom: 20px; */
 		}
 
+		#tp-form{
+			margin-top: -34.5%;			
+			z-index: 99 !important;
+			position: absolute;
+		}
+
+		#background_tp{
+			background: rgba(0,0,0,0.5);
+		}
+
 		.tp {
-			display: block;
+			/* display: block; */
 			font-size: 14px;
 		}
 
@@ -284,7 +300,7 @@
 			/* background: orange;			 */
 		}
 		
-		input[type=text], select {
+		input[type=text], input[type=date], select {
 		width: 70%;
 		padding: 5px;
 		border: 1px solid #d4af37;
@@ -354,8 +370,9 @@
 
 		 .name-space{
 			 display: flex;
-			 flex-direction: row;
+			 flex-direction: column;
 			 justify-content: center;
+			 align-items:center;
 			 width: 100%;
 			 padding-top:5px;
 			 /* background: blue; */
@@ -365,7 +382,7 @@
 		 .line-space{
 			 padding:0;
 			 border:thin solid #d4af37;
-			 width:40%;
+			 width:80%;
 			 align-items:center;
 			 margin:0 auto;
 
@@ -373,8 +390,9 @@
 
 		 .detail-space{
 			display: flex;
-			 flex-direction: row;
+			 flex-direction: column;
 			 justify-content: center;
+			 align-items: center;
 			 width: 100%;
 			 /* background: red; */
 			 padding-top:10px;
@@ -399,15 +417,15 @@
 					<div class="section-profile-img">
 						<img class="vend_pic" src="{{asset('myasset/img/default.jpeg')}}">
 
-						<div>
-							<p><b>Name:</b>&nbsp {{ Auth::user()->name }}</p>
-							<p><b>Email:</b>&nbsp {{ Auth::user()->email }}</p>
-							<p><b>Phone No:</b>&nbsp {{ Auth::user()->phone }}</p>
-							<p><b>DOB</b>&nbsp {{ Auth::user()->dob }}</p>
-							<p><b>Address:</b>&nbsp {{ Auth::user()->address }}</p>
-							<p><b>State:</b>&nbsp {{ Auth::user()->state }}</p>
-							<p><b>Joined at:</b>&nbsp {{ Carbon\Carbon::parse(Auth::user()->created_at)->format('d M, Y') }}</p>
-						</div>
+						<div class="name-space">
+		 						<p>Bride's Name</p>
+								<p>&</p>
+								<p>Groom's Name</p>
+							</div><hr class="line-space">
+							<div class="detail-space">
+								<p><i class="far fa-calendar-alt"></i> Wedding date</p>								
+								<p><i class="fa fa-map-marker-alt"></i> Wedding Venue</p>
+		 					</div>
 					</div>
 
 				</div>
@@ -454,36 +472,40 @@
 					</div>
 
 					<div class="middle-step">		 				
-						<div class="container">
-		 					<div class="name-space">
-		 						<p>Bride's Name</p>
-								<p>&nbsp&nbsp & &nbsp&nbsp</p>
-								<p>Groom's Name</p>
-							</div><hr class="line-space">
-							<div class="detail-space">
-								<p><i class="far fa-calendar"></i> Wedding date</p>
-								<p>&nbsp&nbsp|&nbsp&nbsp</p>
-								<p><i class="fa fa-map-marker-alt"></i> Wedding Venue</p>
-		 					</div>
-						</div>
-					</div> 
+						
+							<div class="middle-left">
+								<p><b>Name:</b>&nbsp {{ Auth::user()->fullname }}</p>
+								<p><b>Email:</b>&nbsp {{ Auth::user()->email }}</p>								
+								<p><b>Address:</b>&nbsp {{ Auth::user()->address }}</p>								
+								<p><b>Joined:</b>&nbsp {{ Carbon\Carbon::parse(Auth::user()->created_at)->format('d M, Y') }}</p>
+							</div>							
+							<div class="middle-right">
+								<p><b>Phone No:</b>&nbsp {{ Auth::user()->phone }}</p>
+								<p><b>DOB:</b>&nbsp {{ Carbon\Carbon::parse(Auth::user()->dob)->format('d M Y') }}</p>
+								<p><b>State:</b>&nbsp {{ Auth::user()->state }}</p>
+								<button class="btn_form" onclick="updatePro()" style="margin-left:60%;">Update My Profile</button>
+							</div>
+							
+						
+					</div>  
 
-					<div class="down-step">
+					<!-- <div class="down-step"> -->
 
 						<section>
 						<!-- PERSONAL INFO -->
-							<div tabindex="0">
-								<button class="tbutton tbutton-active" id="pi">Personal Information</button>
+							<div tabindex="0" id="background_tp">
+								<!-- <button class="tbutton tbutton-active" id="pi">Personal Information</button> -->
 								
-								<div class="tp tp-active" id="tp-form">
+								<div class="tp tp-active" id="tp-form" style="display:none;">
 									<div class="p-info">
+									<i class="fa fa-times" onclick="closePro()" style="position:absolute;right:4%;top:4%;cursor:pointer;"></i>
 
 										<div class="row">
 											<div class="col-25">
 												<label for="fullname">Full Name</label>
 											</div>
 											<div class="col-75">
-												<input type="text" id="fullname" name="fullname" placeholder="Your full name..">
+												<input type="text" id="fullname" name="fullname" value="{{ Auth::user()->fullname }}" placeholder="{{ Auth::user()->fullname }}">
 											</div>
 										</div>
 
@@ -492,7 +514,7 @@
 												<label for="phone">Phone No.</label>
 											</div>
 											<div class="col-75">
-												<input type="text" id="lname" name="lastname" placeholder="Your phone number..">
+												<input type="text" id="phonenum" name="phonenum" value="{{ Auth::user()->phone }}" placeholder="{{ Auth::user()->phone }}">
 											</div>
 										</div>
 
@@ -501,7 +523,7 @@
 												<label for="dob">D.O.B</label>
 											</div>
 											<div class="col-75">
-												<input type="text" id="lname" name="lastname" placeholder="Your date of birth..">
+												<input type="date" id="dob" name="dob" value="{{ Auth::user()->dob }}" placeholder="{{ Auth::user()->dob }}">
 											</div>
 										</div>
 
@@ -510,7 +532,7 @@
 												<label for="address">Address</label>
 											</div>
 											<div class="col-75">
-												<input type="text" id="lname" name="lastname" placeholder="Your address..">
+												<input type="text" id="addr" name="addr" value="{{ Auth::user()->address }}" placeholder="{{ Auth::user()->address }}">
 											</div>
 										</div>
 
@@ -519,107 +541,40 @@
 												<label for="state">State</label>
 											</div>
 											<div class="col-75">
-												<select id="country" name="country">
-												<option value="">Please choose your state</option>
-												<option value="Johor">Johor</option>
-												<option value="Kedah">Kedah</option>
-												<option value="Kelantan">Kelantan</option>
-												<option value="Melaka">Melaka</option>
-												<option value="Negeri">Negeri Sembilan</option>
-												<option value="Pahang">Pahang</option>
-												<option value="Perak">Perak</option>
-												<option value="Perlis">Perlis</option>
-												<option value="Pulau">Pulau Pinang</option>
-												<option value="Sabah">Sabah</option>
-												<option value="Sarawak">Sarawak</option>
-												<option value="Selangor">Selangor</option>
-												<option value="Terengganu">Terengganu</option>
-												<option value="Wilayah">Wilayah Persekutuan</option>
-												<option value="International">International</option>
+												<select id="state" name="state" value="{{ Auth::user()->state }}">
+													<option value="">Please choose your state</option>
+													<option value="Johor">Johor</option>
+													<option value="Kedah">Kedah</option>
+													<option value="Kelantan">Kelantan</option>
+													<option value="Melaka">Melaka</option>
+													<option value="Negeri">Negeri Sembilan</option>
+													<option value="Pahang">Pahang</option>
+													<option value="Perak">Perak</option>
+													<option value="Perlis">Perlis</option>
+													<option value="Pulau Pinang">Pulau Pinang</option>
+													<option value="Sabah">Sabah</option>
+													<option value="Sarawak">Sarawak</option>
+													<option value="Selangor">Selangor</option>
+													<option value="Terengganu">Terengganu</option>
+													<option value="Wilayah">Wilayah Persekutuan</option>
+													<option value="International">International</option>
 												</select>
 											</div>
 										</div>
 								
 									</div>
 
-									<button class="btn_form" onclick="()" style="margin-top:2%; margin-left:80%;">Update</button>
+									<button class="btn_form" id="pi_update" onclick="updateProfile()" style="margin-top:2%; margin-left:80%;">Update</button>
 									
 								</div>								
 								
 							</div>
 
-						 <!-- WEDDING INFO -->
-							<div tabindex="0">
-								<button class="tbutton" id="wi">Wedding Information</button>
-		 						
-								<div class="tp" id="tp-wi-form">
-									
-									<div class="p-info" id="wi-form">
-										<div class="row">
-											<div class="col-25">
-												<label for="bride">Bride's Name</label>
-											</div>
-											<div class="col-75">
-												<input type="text" id="bridename" name="bridename" placeholder="Bride name..">
-											</div>
-										</div>
-
-										<div class="row">
-											<div class="col-25">
-												<label for="groom">Groom's Name</label>
-											</div>
-											<div class="col-75">
-												<input type="text" id="groomname" name="groomname" placeholder="Groom name..">
-											</div>
-										</div>
-
-										<div class="row">
-											<div class="col-25">
-												<label for="weddate">Wedding Date</label>
-											</div>
-											<div class="col-75">
-												<input type="text" id="weddate" name="weddate" placeholder="Your wedding date..">
-											</div>
-										</div>
-
-										<div class="row">
-											<div class="col-25">
-												<label for="wedvenue">Wedding Venue</label>
-											</div>
-											<div class="col-75">
-												<input type="text" id="wedvenue" name="wedvenue" placeholder="Your wedding venue..">
-											</div>
-										</div>	
-									</div>
-
-									<button class="btn_form" onclick="()" style="margin-top:2%; margin-left:80%;">Update</button>
-
-								</div>
 					
-							</div>
-
-						<!-- GALLERY -->
-							<div tabindex="0">
-								<button class="tbutton" id="gi">Gallery</button>
-
-								<div class="tp" id="gi-form">
-		 							<h1>Page Under Construction<br><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></h1>
-								</div>
-
-							</div>
-
-						<!-- PAST EVENTS -->
-							<div tabindex="0">
-								<button class="tbutton" id="fi">Past Events</button>
-
-								<div class="tp" id="fi-form">
-									<h1>Page Under Construction<br><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></h1>
-								</div>
-
-							</div>
 						</section>
 						 
-				</div>
+					<!-- </div> -->
+					
 				</div>
 				
 		    	
@@ -632,112 +587,35 @@
     @include('templates.footer')
 
 	<script>
-		$(document).ready(function(){
-			$('#pi').click(function(){
-				$('.tbutton').removeClass('tbutton-active');
-				$(this).addClass('tbutton-active');			
 
-					$('#tp-wi-form').fadeOut(function(){
-						$('.tp').removeClass('tp-active');
-						$(this).addClass('tp-active');
-					});
+		function updatePro() {
+			$('#tp-form').fadeToggle('fast');
+		}
 
-					$('#gi-form').fadeOut(function(){
-						$('.tp').removeClass('tp-active');
-						$(this).addClass('tp-active');
-					});
+		function closePro() {
+			$('#tp-form').fadeToggle('fast');
+		}
 
-					$('#fi-form').fadeOut(function(){
-						$('.tp').removeClass('tp-active');
-						$(this).addClass('tp-active');
-					});
-
-					$('#tp-form').slideDown(function(){
-						$('.tp').removeClass('tp-active');
-						$(this).addClass('tp-active');
-					});
-
-
-			});
-
-			$('#wi').click(function(){
-				$('.tbutton').removeClass('tbutton-active');
-				$(this).addClass('tbutton-active');
-				
-					$('#tp-form').fadeOut(function(){
-						$('.tp').removeClass('tp-active');
-						$(this).addClass('tp-active');
-					});
-
-					$('#gi-form').fadeOut(function(){
-						$('.tp').removeClass('tp-active');
-						$(this).addClass('tp-active');
-					});
-
-					$('#fi-form').fadeOut(function(){
-						$('.tp').removeClass('tp-active');
-						$(this).addClass('tp-active');
-					});
-
-					$('#tp-wi-form').slideDown(function(){
-						$('.tp').removeClass('tp-active');
-						$(this).addClass('tp-active');
-					});
-				
-			});
-
-			$('#gi').click(function(){
-				$('.tbutton').removeClass('tbutton-active');
-				$(this).addClass('tbutton-active');
-
-					$('#tp-form').fadeOut(function(){
-						$('.tp').removeClass('tp-active');
-						$(this).addClass('tp-active');
-					});
-
-					$('#tp-wi-form').fadeOut(function(){
-						$('.tp').removeClass('tp-active');
-						$(this).addClass('tp-active');
-					});
-
-					$('#fi-form').fadeOut(function(){
-						$('.tp').removeClass('tp-active');
-						$(this).addClass('tp-active');
-					});
-
-					$('#gi-form').slideDown(function(){
-						$('.tp').removeClass('tp-active');
-						$(this).addClass('tp-active');
-					});
-			});
-
-			$('#fi').click(function(){
-				$('.tbutton').removeClass('tbutton-active');
-				$(this).addClass('tbutton-active');
-
-				$('#tp-form').fadeOut(function(){
-						$('.tp').removeClass('tp-active');
-						$(this).addClass('tp-active');
-					});
-
-					$('#tp-wi-form').fadeOut(function(){
-						$('.tp').removeClass('tp-active');
-						$(this).addClass('tp-active');
-					});
-
-					$('#gi-form').fadeOut(function(){
-						$('.tp').removeClass('tp-active');
-						$(this).addClass('tp-active');
-					});
-
-					$('#fi-form').slideDown(function(){
-						$('.tp').removeClass('tp-active');
-						$(this).addClass('tp-active');
-					});
-			});		
+		// $(document).ready(function(){	
 			
 
-		});
+		 	// update the editing		
+			$('#pi_update').click(function(){
+				var fullname = $('#fullname').val();
+				var phoneno = $('#phonenum').val();
+				var dateob = $('#dob').val();
+				var addrs = $('#addr').val();
+				var states = $('#state').val();
+				var token = '{{ csrf_token() }}';
+				var url = '{{ url("/profile/update") }}';				
+
+				$.post(url, {fname:fullname,phonenum:phoneno,dob:dateob,addr:addrs,state:states,_token:token},function(){
+					alert('Profile successfully updated');
+					$('#tp-form').fadeToggle('fast');				
+				});			
+			});
+
+		// });
 	</script>
 </body>
 </html>

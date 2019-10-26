@@ -107,6 +107,7 @@ Route::post('/_ack','EventController@ackDeclineInvitationCompany');
 // ---------------------------------------  PROFILE (INTERNAL PROFILE)
 
 Route::get('/profile', 'HomeController@profile');
+Route::post('/profile/update', 'HomeController@updateProfile');
 Route::get('/profile/gallery','GalleryController@index');
 Route::post('/uploading','GalleryController@uploadPhoto'); // vendor upload photo unto gallery
 Route::post('/newlogo','GalleryController@newLogo'); // upload new company logo
