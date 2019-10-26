@@ -78,7 +78,7 @@
 
       .features_content {
         width: 80%;
-        background: yellow;
+        /*background: yellow;*/
         height: 200px;
         margin-left: 20%;
         padding: 1% 1%;
@@ -112,7 +112,7 @@
               <div><a href="{{ url('/vendorfeatures') }}">Vendors</a></div>
             </div>
             <div class="features_directory_child">
-              <div id="registration" class="directory directory_active">Registration</div>
+              <div id="registration" class="directory">Registration</div>
               <div id="login" class="directory">Login</div>
               <div id="profile" class="directory">Profile</div>
               <div id="start" class="directory">Start Planning</div>
