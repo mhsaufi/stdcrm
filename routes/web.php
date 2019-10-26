@@ -46,6 +46,9 @@ Route::get('/aboutSTD',function(){
 Route::get('/features',function(){
     return view('external.features');
 });
+Route::get('/vendorfeatures',function(){
+    return view('external.features_vendor');
+});
 Route::get('/members',function(){
     return view('external.members');
 });

@@ -108,17 +108,15 @@
         <div class="features_container_body">
           <div class="features_directory">
             <div class="features_directory_main">
-              <div class="directory_active"><a href="{{ url('/features') }}">Customers</a></div>
-              <div><a href="{{ url('/vendorfeatures') }}">Vendors</a></div>
+              <div><a href="{{ url('/features') }}">Customers</a></div>
+              <div class="directory_active"><a href="{{ url('/vendorfeatures') }}">Vendors</a></div>
             </div>
             <div class="features_directory_child">
-              <div id="registration" class="directory directory_active">Registration</div>
-              <div id="login" class="directory">Login</div>
-              <div id="profile" class="directory">Profile</div>
-              <div id="start" class="directory">Start Planning</div>
-              <div id="dashboard" class="directory">Dashboard</div>
-              <div id="timeline" class="directory">Timeline</div>
-              <div id="feedback" class="directory">Feedback</div>
+              <div id="registration" class="directory_active">Registration</div>
+              <div id="login">Login</div>
+              <div id="dashboard">Dashboard</div>
+              <div id="timeline">Timeline</div>
+              <div id="feedback">Insiders</div>
             </div>
           </div>
           <div class="features_content">
@@ -128,9 +126,7 @@
       </div>
     </div>
     
-    @include('templates.footer')  
-
-    <script src="{{ asset('myasset/js/features.js') }}"></script>  
+    @include('templates.footer')    
 
     <!-- Javascript  -->
     <script type="text/javascript">         

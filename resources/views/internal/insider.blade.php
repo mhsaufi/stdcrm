@@ -150,6 +150,7 @@
 	    	width: 100%;
 	    	/*background: green;*/
 	    	min-height: 100px!important;
+	    	display: none;
 	    }
 
 	    .insider_new_application {
@@ -159,7 +160,6 @@
 	    	width: 100%;
 	    	/*background: purple;*/
 	    	min-height: 120px!important;
-	    	display: none;
 	    }
 
 	    .insider_staff_inactive {
@@ -209,6 +209,38 @@
 	    	opacity: 0.9;
 	    }
 
+	    .action_col_approve {
+	    	cursor: pointer;
+	    	background: #52BE80;
+	    	color: white;
+	    	text-align: center;
+	    }
+
+	    .action_col_activate:HOVER {
+	    	opacity: 0.9;
+	    }
+
+	    .action_col_reject {
+	    	cursor: pointer;
+	    	background: #E74C3C;
+	    	color: white;
+	    	text-align: center;
+	    }
+
+	    .action_col_reject:HOVER {
+	    	opacity: 0.9;
+	    }
+
+	    .deactivating_container {
+	    	position: fixed;
+	    	top: 0;
+	    	left: 0;
+	    	width: 100%!important;
+	    	height: 100%!important;
+	    	background: rgba(255,255,255, 0.6);
+	    	display: none;
+	    }
+
 	    .deactivating_container {
 	    	position: fixed;
 	    	top: 0;
@@ -247,7 +279,7 @@
 	    	border-bottom: 0.05em solid #d4af37;
 	    }
 
-	    .activating_container {
+	    .activating_container, .approving_container, .rejecting_container {
 	    	position: fixed;
 	    	top: 0;
 	    	left: 0;
@@ -257,7 +289,7 @@
 	    	display: none;
 	    }
 
-	    .confirm_activation {
+	    .confirm_activation, .confirm_approval , .confirm_rejection {
 	    	height: 22%!important;
 	    	width: 20%!important;
 	    	position: absolute;
@@ -278,7 +310,7 @@
 	        padding: 15px 15px;
 	    }
 
-	    .confirm_activation_header {
+	    .confirm_activation_header, .confirm_approval_header, .confirm_rejection_header {
 	    	width: 100%;
 	    	padding-bottom: 10px;
 	    	margin-bottom: 10px;
@@ -325,8 +357,8 @@
     		</div>
     		<div class="insider">
     			<div class="insider_header">
-    				<div class="insider_tab_button active-tab" id="tab_1">Staff Member</div>
-    				<div class="insider_tab_button" id="tab_2">New Staff Application</div>
+    				<div class="insider_tab_button active-tab" id="tab_2">New Staff Application</div>
+    				<div class="insider_tab_button" id="tab_1">Staff Member</div>
     				<div class="insider_tab_button" id="tab_3">Inactive Staff</div>
     			</div>
     			<div class="insider_content">
@@ -389,7 +421,63 @@
     				</div>
 
     				<div class="insider_new_application">
-    					
+    					<table class="insider_table">
+    						<thead>
+    							<tr>
+    								<th>
+    									
+    								</th>
+    								<th>
+    									Fullname
+    								</th>
+    								<th>
+    									Email
+    								</th>
+    								<th>
+    									Name
+    								</th>
+    								<th>
+    									Contact
+    								</th>
+    								<th style="text-align: center;">
+    									Status
+    								</th>
+    								<th colspan="2" style="text-align: center;">
+    									Action
+    								</th>
+    							</tr>
+    						</thead>
+    						<tbody>
+    							@foreach($users_pending as $user)
+    							<tr>
+    								<td>
+    									
+    								</td>
+    								<td>
+    									{{ $user['fullname'] }}
+    								</td>
+    								<td>
+    									{{ $user['email'] }}
+    								</td>
+    								<td>
+    									{{ $user['name'] }}
+    								</td>
+    								<td>
+    									{{ $user['phone'] }}
+    								</td>
+    								<td style="text-align: center;">
+    									{{ $user['status_id'] }}
+    								</td>
+    								<td class="action_col_approve" data-id="{{ $user['id'] }}">
+    									Approve
+    								</td>
+    								<td class="action_col_reject" data-id="{{ $user['id'] }}">
+    									Reject
+    								</td>
+    							</tr>
+    							@endforeach
+    						</tbody>
+    					</table>
     				</div>
 
     				<div class="insider_staff_inactive">
@@ -487,6 +575,36 @@
     		</div>
     	</div>
     </div>
+
+    <div class="approving_container">
+    	<div class="confirm_approval">
+    		<div class="confirm_approval_header">
+    			Alert
+    		</div>
+    		<div class="confirm_approval_content" style="display: flex;flex-direction: column;justify-content: flex-start;">
+    			<div><p>Confirm approve this application?</p></div>
+    			<div style="display: flex;flex-direction: row;justify-content: space-around;width: 100%;margin-top: 10px;">
+    				<button class="alert_btn confirm_action">Confirm</button>
+    				<button class="alert_btn cancel_button">Cancel</button>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+
+    <div class="rejecting_container">
+    	<div class="confirm_rejection">
+    		<div class="confirm_rejection_header">
+    			Alert
+    		</div>
+    		<div class="confirm_rejection_content" style="display: flex;flex-direction: column;justify-content: flex-start;">
+    			<div><p>Confirm reject this application?</p></div>
+    			<div style="display: flex;flex-direction: row;justify-content: space-around;width: 100%;margin-top: 10px;">
+    				<button class="alert_btn confirm_action">Confirm</button>
+    				<button class="alert_btn cancel_button">Cancel</button>
+    			</div>
+    		</div>
+    	</div>
+    </div>
 	
 
     @include('templates.footer')
@@ -557,9 +675,36 @@
 
 		});
 
+
+		$('.action_col_approve').each(function(){
+
+			var btn = $(this);
+			var staff_id = btn.data('id');
+
+			btn.click(function(){
+				$('#staff_id').val(staff_id);
+				$('#action_value').val('approve');
+				$('.approving_container').show('fade','fast');
+			});
+		});
+
+		$('.action_col_reject').each(function(){
+
+			var btn = $(this);
+			var staff_id = btn.data('id');
+
+			btn.click(function(){
+				$('#staff_id').val(staff_id);
+				$('#action_value').val('reject');
+				$('.rejecting_container').show('fade','fast');
+			});
+		});
+
 		$('.cancel_button').click(function(){
 			$('.deactivating_container').hide('fade','fast');
 			$('.activating_container').hide('fade','fast');
+			$('.approving_container').hide('fade','fast');
+			$('.rejecting_container').hide('fade','fast');
 		});
 
 		$('.confirm_action').click(function(){
@@ -574,6 +719,7 @@
 			});
 
 		});
+
 	</script>
 </body>
 </html>

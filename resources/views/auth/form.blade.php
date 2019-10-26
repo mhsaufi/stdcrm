@@ -4,6 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
 
     <title>Merchant Centre</title>
 
@@ -374,12 +375,12 @@
               <div style="width: 50%;">
                 <label id="label_fullname">Fullname</label><span class="error_text" id="fullname_error"></span>
                 <input type="text" class="form-control width-normal" name="" id="fullname" />
-                <input type="hidden" id="fullname_" value="" />
+                <input type="hidden" id="fullname_" value="b" />
                 <label>Email <span id="label_email" style='color: red;font-size: 12px;font-weight: bold;opacity: 0.5;'><em>Invalid email given</em></span></label>
                 
                 <div style="position: relative;">
                   <input type="email" class="form-control width-normal" name="" id="email"/>
-                  <input type="hidden" id="email_" value="" />
+                  <input type="hidden" id="email_" value="b" />
                   <div id="email_tick">
                     <img src="" id="email_tick_img"/>
                   </div>
@@ -387,14 +388,14 @@
 
                 <label id="label_name">Name / Nickname</label><span class="error_text" id="name_error"></span>
                 <input type="text" class="form-control width-normal" name="name" id="name" />
-                <input type="hidden" id="name_" value=""/>
+                <input type="hidden" id="name_" value="b"/>
               </div>
               <div style="width: 50%;">
 
                 <label id="label_phone">Phone Number</label><span class="error_text" id="phone_error"></span>
                 <div style="position: relative;">
                   <input type="text" class="form-control width-normal" name="" id="phone" style="width: 70%!important;"/>
-                  <input type="hidden" id="phone_" value=""/>
+                  <input type="hidden" id="phone_" value="b"/>
                   <div class="phone_prefix">
                       +6
                   </div>
@@ -403,10 +404,14 @@
                   </div>
                 </div>
                 <label id="label_phone">Password <span id="label_pw" style='color: red;font-size: 12px;font-weight: bold;opacity: 0.5;'><em>Password doesnt match</em></span></label>
+
                 <input type="password" class="form-control width-normal" name="" id="pw1" style="width: 100%!important;"/>
+
                 <label id="label_phone">Re-Enter Password</label>
+
                 <input type="password" class="form-control width-normal" name="" id="pw2" style="width: 100%!important;"/>
-                <input type="hidden" id="pw_" value="" />
+
+                <input type="hidden" id="pw_" value="b" />
               </div>
               
             </div>

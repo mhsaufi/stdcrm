@@ -89,9 +89,7 @@ class HomeController extends Controller
                 $temp_dashboard = $this->vendorInactive();
 
                 return $temp_dashboard;
-
             }
-        
         }    
     }
 
