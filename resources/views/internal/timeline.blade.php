@@ -190,14 +190,14 @@
 
       .std-timeline-banner {
         position: relative;
-        min-height: 150px!important;
+        height: auto;
         background: #ffff;        
         padding: 20px 20px;
         border-radius: 5px;
         -moz-box-shadow: 0 0 5px #888;
         -webkit-box-shadow: 0 0 5px#888;
         box-shadow: 0 0 2px #888;
-        margin-top: 20px;
+        margin: 20px 0 10px 0;
       }
 
       #std-timeline-banner-option-popup {
