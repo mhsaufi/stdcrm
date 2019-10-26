@@ -21,7 +21,8 @@ td{
 </style>
 <h3>Registration</h3>
 <br>
-<p>Join us now. It's <b>FREE</b> and <b>EASY</b></p>
+<p>Feeling clueless? Having headache? Looking for a platform to plan your big day? <b>Save The Date</b> 
+can help you to plan your wedding. Join us now. It's <b>FREE</b> and <b>EASY</b></p>
 <br>
 <table>
   <tr>

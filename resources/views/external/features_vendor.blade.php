@@ -78,7 +78,7 @@
 
       .features_content {
         width: 80%;
-        background: yellow;
+        /* background: yellow; */
         height: 200px;
         margin-left: 20%;
         padding: 1% 1%;
@@ -112,11 +112,13 @@
               <div class="directory_active"><a href="{{ url('/vendorfeatures') }}">Vendors</a></div>
             </div>
             <div class="features_directory_child">
-              <div id="registration" class="directory_active">Registration</div>
-              <div id="login">Login</div>
-              <div id="dashboard">Dashboard</div>
-              <div id="timeline">Timeline</div>
-              <div id="feedback">Insiders</div>
+              <div id="registration_v" class="directory">Registration</div>
+              <div id="login_v" class="directory">Login</div>
+              <div id="profile_v" class="directory">Profile</div>
+              <div id="dashboard_v" class="directory">Dashboard</div>
+              <div id="timeline_v" class="directory">Timeline</div>
+              <div id="feedback_v" class="directory">Feedback</div>              
+              <div id="insider_v" class="directory">Insider</div>
             </div>
           </div>
           <div class="features_content">
@@ -126,11 +128,34 @@
       </div>
     </div>
     
-    @include('templates.footer')    
+    @include('templates.footer')  
+
+    <script src="{{ asset('myasset/js/features.js') }}"></script>  
 
     <!-- Javascript  -->
     <script type="text/javascript">         
+      $(document).ready(function(){
+	
+        if(localStorage.getItem('fcpv') === null){
 
+          $('.features_content').load('myasset/templates/features/vendor/registration_v.blade.php',function(){
+            
+          });
+
+          localStorage.setItem('fcpv','myasset/templates/features/vendor/registration_v.blade.php');
+          localStorage.setItem('fcpav','#registration_v');
+          $('.directory').removeClass('directory_active');
+          $('#registration_v').addClass('directory_active');
+
+        }else{
+
+          $('.features_content').load(localStorage.getItem('fcpv'),function(){
+            
+          });
+          $('.directory').removeClass('directory_active');
+          $(localStorage.getItem('fcpav')).addClass('directory_active');
+        }
+      });
      
     </script>
 
