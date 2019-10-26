@@ -134,7 +134,28 @@
 
     <!-- Javascript  -->
     <script type="text/javascript">         
+      $(document).ready(function(){
+	
+        if(localStorage.getItem('fcp') === null){
 
+          $('.features_content').load('myasset/templates/features/customer/registration.blade.php',function(){
+            
+          });
+
+          localStorage.setItem('fcp','myasset/templates/features/customer/registration.blade.php');
+          localStorage.setItem('fcpa','#registration');
+          $('.directory').removeClass('directory_active');
+          $('#registration').addClass('directory_active');
+
+        }else{
+
+          $('.features_content').load(localStorage.getItem('fcp'),function(){
+            
+          });
+          $('.directory').removeClass('directory_active');
+          $(localStorage.getItem('fcpa')).addClass('directory_active');
+        }
+      });
      
     </script>
 

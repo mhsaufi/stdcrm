@@ -1,25 +1,4 @@
-$(document).ready(function(){
-	
-	if(localStorage.getItem('fcp') === null){
 
-		$('.features_content').load('myasset/templates/features/customer/registration.blade.php',function(){
-			
-		});
-
-		localStorage.setItem('fcp','myasset/templates/features/customer/registration.blade.php');
-		localStorage.setItem('fcpa','#registration');
-		$('.directory').removeClass('directory_active');
-		$('#registration').addClass('directory_active');
-
-	}else{
-
-		$('.features_content').load(localStorage.getItem('fcp'),function(){
-			
-		});
-		$('.directory').removeClass('directory_active');
-		$(localStorage.getItem('fcpa')).addClass('directory_active');
-	}
-});
 
 $('#registration').click(function(){
 	localStorage.setItem('fcp','myasset/templates/features/customer/registration.blade.php');
@@ -113,4 +92,96 @@ $('#feedback').click(function(){
 	$('.features_content').fadeIn('fast');
 });
 
+// ------------------------------------------------------------------------ VENDOR
 
+$('#registration_v').click(function(){
+	localStorage.setItem('fcpv','myasset/templates/features/vendor/registration_v.blade.php');
+	localStorage.setItem('fcpav','#registration_v');
+
+	$('.features_content').fadeOut('fast');
+	$('.features_content').fadeIn('fast');
+	$('.features_content').load(localStorage.getItem('fcpv'),function(){
+		
+	});
+	$('.directory').removeClass('directory_active');
+	$(this).addClass('directory_active');
+});
+
+$('#login_v').click(function(){
+	localStorage.setItem('fcpv','myasset/templates/features/vendor/login_v.blade.php');
+	localStorage.setItem('fcpav','#login_v');
+
+	$('.features_content').fadeOut('fast');
+	$('.features_content').load(localStorage.getItem('fcpv'),function(){
+		
+	});
+	$('.directory').removeClass('directory_active');
+	$(this).addClass('directory_active');
+	$('.features_content').fadeIn('fast');
+});
+
+
+$('#profile_v').click(function(){
+	localStorage.setItem('fcpv','myasset/templates/features/vendor/profile_v.blade.php');
+	localStorage.setItem('fcpav','#profile_v');
+
+	$('.features_content').fadeOut('fast');
+	$('.features_content').load(localStorage.getItem('fcpv'),function(){
+		
+	});
+	$('.directory').removeClass('directory_active');
+	$(this).addClass('directory_active');
+	$('.features_content').fadeIn('fast');
+});
+
+$('#dashboard_v').click(function(){
+	localStorage.setItem('fcpv','myasset/templates/features/vendor/dashboard_v.blade.php');
+	localStorage.setItem('fcpav','#dashboard_v');
+
+	$('.features_content').fadeOut('fast');
+	$('.features_content').load(localStorage.getItem('fcpv'),function(){
+		
+	});
+	$('.directory').removeClass('directory_active');
+	$(this).addClass('directory_active');
+	$('.features_content').fadeIn('fast');
+});
+
+$('#timeline_v').click(function(){
+	localStorage.setItem('fcpv','myasset/templates/features/vendor/timeline_v.blade.php');
+	localStorage.setItem('fcpav','#timeline_v');
+
+	$('.features_content').fadeOut('fast');
+	$('.features_content').load(localStorage.getItem('fcpv'),function(){
+		
+	});
+	$('.directory').removeClass('directory_active');
+	$(this).addClass('directory_active');
+	$('.features_content').fadeIn('fast');
+});
+
+$('#feedback_v').click(function(){
+	localStorage.setItem('fcpv','myasset/templates/features/vendor/feedback_v.blade.php');
+	localStorage.setItem('fcpav','#feedback_v');
+
+	$('.features_content').fadeOut('fast');
+	$('.features_content').load(localStorage.getItem('fcpv'),function(){
+		
+	});
+	$('.directory').removeClass('directory_active');
+	$(this).addClass('directory_active');
+	$('.features_content').fadeIn('fast');
+});
+
+$('#insider_v').click(function(){
+	localStorage.setItem('fcpv','myasset/templates/features/vendor/insider_v.blade.php');
+	localStorage.setItem('fcpav','#insider_v');
+
+	$('.features_content').fadeOut('fast');
+	$('.features_content').load(localStorage.getItem('fcpv'),function(){
+		
+	});
+	$('.directory').removeClass('directory_active');
+	$(this).addClass('directory_active');
+	$('.features_content').fadeIn('fast');
+});
