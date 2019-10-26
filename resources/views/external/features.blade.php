@@ -27,6 +27,7 @@
       }
 
       .features_container_header {
+        position: fixed;
         width: 100%;
         height: 10%;
         font-size: 30px!important;
@@ -38,6 +39,7 @@
       .features_container_body {
         width: 100%;
         height: 100vh;
+        position: relative;
         /*background: green;*/
         display: flex;
         flex-direction: row;
@@ -47,6 +49,7 @@
       .features_directory {
         position: fixed;
         width: 15%;
+        margin-top: 5%;
         /*background: blue;*/
         height: 200px;
         display: flex;
@@ -117,7 +120,6 @@
               <div id="profile" class="directory">Profile</div>
               <div id="start" class="directory">Start Planning</div>
               <div id="dashboard" class="directory">Dashboard</div>
-              <div id="timeline" class="directory">Timeline</div>
               <div id="feedback" class="directory">Feedback</div>
             </div>
           </div>
