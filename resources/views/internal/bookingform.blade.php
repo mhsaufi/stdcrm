@@ -90,6 +90,32 @@
       justify-content: flex-start;
     }
 
+    @media (max-width: 600px){
+      .result_container {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 20px 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+
+      .booking_form_container {
+        width: 100%;
+        min-height: 200px;
+        background: #fff;
+        -moz-box-shadow: 0 0 6px #888;
+        -webkit-box-shadow: 0 0 6px#888;
+        box-shadow: 0 0 4px #888;
+        padding: 25px 25px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+    }
+
     #book_now {
       width: 100%;
       height: 50px;
@@ -211,7 +237,7 @@
               <input type="text" name="title" class="form-std req" id="title" placeholder="Romie & Julie">
               <br>
               <label>Expected wedding date</label><br>
-              <input type="text" name="date" class="form-std datepicker-here req" data-position="right top" data-language='en' data-date-format='d-m-yyyy' id="date" style="width: 300px!important;"><br>
+              <input type="text" name="date" class="form-std datepicker-here req" data-position="bottom right" data-language='en' data-date-format='d-m-yyyy' id="date" ><br>
               <label>(Optional) Any additional notes for {{ $package_data['company']['company_name'] }}</label><br>
               <textarea class="form-std" id="notes"></textarea>
               <br>

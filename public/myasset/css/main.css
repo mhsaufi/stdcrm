@@ -76,6 +76,228 @@ ul, ol {
 
 /* ============================================================================================= ADDED CSS CUSTOM*/
 
+/* ==================================================================================================================FRONT PAGE*/
+
+.big_container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.result_container {
+  width: 80%;
+  min-height: 10%;
+  /*background: white;*/
+  margin: 0 10%;
+  padding: 20px 0;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.biglayer{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.leftlayer{
+    width:30%;
+    height:100%;
+    z-index:80;
+    background: rgba(255, 255, 255, 0);
+}
+.midlayer {
+    width:40%;
+    height:100%;
+    z-index:80;
+    background: linear-gradient(to bottom right,rgba(212, 175, 55, 0) 50%,rgba(212, 175, 55, 0) 0%,rgba(255, 255, 255, 0.5) 50%,rgba(255, 255, 255, 0.5) 0%);
+}
+
+.rightlayer{
+    width:30%;
+    height:100%;
+    z-index:80;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+
+
+@media (max-width: 600px){
+
+  .biglayer{
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      background-image: url('babout.jpg');
+  }
+
+  .leftlayer{
+      width:0;
+      height:100%;
+      z-index:80;
+      background: rgba(255, 255, 255, 0);
+  }
+  .midlayer {
+      width:100%;
+      height:100%;
+      z-index:80;
+      background: rgba(255,255,255, 0.6);
+  }
+
+  .rightlayer{
+      width:0;
+      height:100%;
+      z-index:80;
+      background: rgba(255, 255, 255, 0.5);
+  }
+
+  /*PACKAGES*/
+
+  .search-engine-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 1% 12%;
+  }
+}
+
+#div_logo {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+     /*background: yellow; */
+    z-index:82;
+    text-align: center;
+}
+
+#logo_text_container {
+    /*display:none;*/
+    position: absolute;
+    top: 30%;
+    left: 25%;
+    width: 50%;
+    height: 30%;
+    /*opacity: 0.7;*/
+    cursor: pointer;
+    z-index: 999;
+}
+
+#std_logo {
+    width: 40%;
+    filter:drop-shadow(5px 5px 8px grey);
+    -webkit-transition: margin-top 1s, filter 1s, width 1s;
+    z-index: 99;
+}
+
+#std_logo_text {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif; 
+    font-size: 20px; 
+    font-style: normal; 
+    font-variant: normal; 
+    font-weight: 800; 
+    color: white;
+    -webkit-text-stroke: 1px #23430C;
+    text-shadow: -1px 1px 2px #23430C,
+            1px 1px 2px #23430C,
+            1px -1px 0 #23430C,
+            -1px -1px 0 #23430C;
+    line-height: 20px;
+    z-index: 99;
+    -webkit-transition: top 0.7s, opacity 1s;
+    opacity: 0;
+}
+
+#logo_text_container:hover {
+    /*background: yellow;*/
+}
+
+#logo_text_container:hover  #std_logo_text {
+    top: 80%!important;
+    opacity: 1;
+}
+
+#logo_text_container:hover  #std_logo {
+    margin-top: -5%!important;
+    opacity: 1;
+    filter:drop-shadow(-7px -5px 6px grey);
+}
+
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  background-repeat:no-repeat;
+  min-width: 100%; 
+  min-height: 100%;
+  opacity:0.8;  
+}
+
+.small-p{
+  font-size:13px;
+  color: #d4af37;
+  /*margin-left:30%;*/
+  text-align: center;
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  body {
+    background-image: url('myasset/img/babout.jpg');
+  }
+
+  #div_logo {
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+       /*background: yellow; */
+      z-index:82;
+      text-align: center;
+  }
+
+  #std_logo {
+      width: 100%;
+      filter:drop-shadow(5px 5px 8px grey);
+      -webkit-transition: margin-top 1s, filter 1s, width 1s;
+      z-index: 99;
+  }
+
+  #myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    background-repeat:no-repeat;
+    max-width: 100%; 
+    max-height: 100%;
+    opacity:0.8;
+    display: none;
+  }
+
+  .navbar-brand img {
+    width: 80%!important;
+    height: 80%!important;
+  }
+}
+
 #add_contact_form_container {
   position: fixed;
   top: 30%;
@@ -327,6 +549,7 @@ ul, ol {
 .content_company_menu {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
   width: 70%;
@@ -350,6 +573,47 @@ ul, ol {
 
 .content_company_menu div:hover {
   border: 0.05em solid #d4af37;
+}
+
+@media (max-width: 600px){
+  .content_company {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: auto!important;
+    width: 100%;
+    /*background: red!important;*/
+  }
+
+  .content_company_menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center!important;
+    align-items: center;
+    width: 100%;
+    font-size: 17px;
+    letter-spacing: 4px;
+    /*background: green!important;*/
+    height: 40%!important;
+  }
+
+  .content_company_menu > div {
+    flex-grow: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    height: 60px!important;
+    cursor: pointer;
+    /*background: orange;*/
+  }
+
+  .content_company_content {
+    /*background: blue;*/
+  }
+
 }
 
 .close-action-icon {
@@ -945,6 +1209,12 @@ ul, ol {
 
 #timeline_loader div img {
   width: 20%;
+}
+
+@media (min-width: 200px) and (max-width: 600px){
+  .std-footer {
+    display: none;
+  }
 }
 
 /* ============================================================================================= ADDED CSS CUSTOM*/
@@ -2053,6 +2323,8 @@ footer .menu li a:hover {
   height: 100%;
   width: 100%;
 }
+
+
 
 .navbar-toggle .icon-bar {
   background: #EB586F;

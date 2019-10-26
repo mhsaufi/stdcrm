@@ -64,10 +64,10 @@
     .search-engine-panel {
       display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
       justify-content: flex-start;
       width: 100%;
-      padding: 2% 12%;
-      border-bottom: 0.05em solid grey;
+      padding: 1% 12%;
     }
 
     .search-engine-panel div {
@@ -80,7 +80,7 @@
       justify-content: center;
       flex-wrap: wrap;
       background: rgba(255,255,255,1);
-      border-bottom: 1px solid #d4af37;
+      /*border-bottom: 1px solid #d4af37;*/
     }
 
     .big_container {
@@ -88,6 +88,7 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
+      /*background: pink;*/
     }
 
     .footer_result_container {
@@ -101,12 +102,15 @@
     }
 
     .result_container {
-      width: 80%;
+      width: 100%;
       min-height: 10%;
-      margin: 0 10%;
-      padding: 20px 20px;
+      margin: 0 0;
+      padding: 2% 10%;
       display: flex;
-      flex-flow: row wrap;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      /*background: blue;*/
     }
 
     .company_logo_mini {
@@ -147,12 +151,12 @@
     .package_cards {
       position: relative;
       height: 330px!important;
-      width: 30%;
+      width: 370px;
       border-radius: 2px;
       -moz-box-shadow: 0 0 6px #888;
       -webkit-box-shadow: 0 0 6px#888;
       box-shadow: 0 0 4px #888;
-      margin-right: 15px;
+      /*margin-right: 15px;*/
       margin-bottom: 20px;
       display: flex;
       flex-direction: column;
@@ -253,6 +257,18 @@
     .p_book_btn:hover {
       opacity: 0.9;
     }
+
+    .above_2 {
+      justify-content: space-between;
+    }
+
+    .below_2 {
+      justify-content: flex-start;
+    }
+
+    .below_2 > .package_cards {
+      margin-right: 15px;
+    }
    </style>
 
 </head>
@@ -268,12 +284,11 @@
     <!-- Feature Section Start -->
     <div class="section-padding">
       <div class="big_container">
-        <div style="margin: 0 180px;opacity: 0.7;padding-top: 50px;">
+        <div style="margin: 0 11%;opacity: 0.7;padding-top: 2%;">
           <p>Browse for all available packages on our site offered by our vendors. All of our vendors comprises of best reviewed companies 
           to make sure your wedding happening the way you wished for</p>
         </div>
-        <div class="search-engine-panel">
-          
+        <div class="search-engine-panel">   
           <div>
               <label>By Category</label>
               <br>
@@ -292,22 +307,22 @@
               @endforeach
             </select>
           </div>
-          <div><button id="std_search_btn">SEARCH &nbsp&nbsp<i class="fas fa-search"></i></button></div>
+          <div><button id="std_search_btn">Search &nbsp&nbsp<i class="fas fa-search"></i></button></div>
         </div>
         <br>
         <p style="margin-left: 180px;margin-top: 20px;">{{ $p_count }} result(s) found</p>   
       </div>
       <div class="big_container">
         @if($p_count > 2)
-        <div class="result_container" style="justify-content: space-between;">
+        <div class="result_container above_2">
         @else
-        <div class="result_container" style="justify-content: flex-start;">
+        <div class="result_container below_2">
         @endif
         
 
 
           @foreach($p_result as $p)
-          <div class="package_cards" data-pid="{{ $p['package_id'] }}" data-name="{{ $p['package_title'] }}">
+          <div class="package_cards" data-pid="{{ $p['package_id'] }}" data-name="{{ $p['package_title'] }}" data-item-name="{{ $p['package_title'] }}" data-content-category="View Package" data-content-author="{{ $p['company']['company_name'] }}">
             <div style="height: 20%;width: 100%;background: white;z-index: 71;display: flex;flex-direction: column;justify-content: space-between;" id="p_title">
               <div>{{ $p['package_title'] }}</div>
               <div style="width: 100%;display: flex;flex-direction: row;justify-content: space-between;" id="sub_p_title">
@@ -344,6 +359,12 @@
         </div>
       </div>
     </div>
+
+    <script>
+      var APP_URL = '{{ url("/") }}';
+      var LOGIN = '{{ route("login") }}';
+      var REGISTER = '{{ route("register") }}';
+    </script>
       
     @include('templates.footer')
 
@@ -358,7 +379,7 @@
 
          th.on('click',':not(.p_book_btn)',function(e){
 
-            e.stopPropagation();
+            // e.stopPropagation();
 
             var pid = th.data('pid');
             var name = th.data('name');
@@ -385,6 +406,17 @@
           window.location.replace(url);       
 
         });
+
+      });
+
+      $('#std_search_btn').click(function(){
+
+        var selectedCategory = $('#select_company_category').val();
+        var company_id = $( "#select_company_name option:selected" ).val();
+
+        var url = '{{ url("/packages") }}'+ '?c=' + selectedCategory + '&cm=' + company_id;
+
+        window.location.replace(url);
 
       });
 

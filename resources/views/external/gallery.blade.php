@@ -6,7 +6,7 @@
 	 @include('templates.header')
 
   <script src="{{asset('myasset/js/jquery-min.js')}}"></script>
-  <link rel="stylesheet" href="{{asset('myasset/justified/jquery.justified.css')}}"/>
+  <!-- <link rel="stylesheet" href="{{asset('myasset/justified/jquery.justified.css')}}"/> -->
   <script src="{{asset('myasset/unitegallery-master/dist/js/unitegallery.min.js')}}"></script>
   <link rel='stylesheet' href="{{asset('myasset/unitegallery-master/dist/css/unite-gallery.css')}}"/> 
   <script src="{{asset('myasset/unitegallery-master/dist/themes/tiles/ug-theme-tiles.js')}}"></script>
@@ -45,7 +45,6 @@
       flex-direction: column;
       justify-content: flex-start;
       min-height: 100vh;
-      /*background: yellow;*/
     }
 
     .footer_result_container {
@@ -67,6 +66,48 @@
       padding: 20px 0;
       display: flex;
       flex-flow: row wrap;
+    }
+
+    @media (max-width: 600px){
+
+      .pattern {
+        background-image: none;
+      }
+
+      .result_container {
+        position: relative;
+        width: 100%;
+        min-height: 100%;
+        background: white;
+        margin: 0;
+        padding: 5% 0;
+        display: flex;
+        flex-flow: row wrap;
+      }
+
+      .company_logo {
+        position: absolute;
+        border-radius: 50%;
+        border: 0.05em solid white;
+        height: 70px;
+        width: 70px;
+        top: 170px;
+        right: 8%;
+        z-index: 81;
+      }
+
+      .company_logo_base {
+        position: absolute;
+        border-radius: 50%;
+        border: 0.05em solid white;
+        height: 70px;
+        width: 70px;
+        background: white;
+        top: 170px;
+        right: 8%;
+        z-index: 80;
+      }
+
     }
 
     .vendor_cards_info {
@@ -94,7 +135,8 @@
     }
 
     .content_company_content {
-      padding: 8vh 70px;
+      padding: 8% 10%;
+      padding-bottom: 20vh;
     }
 
     .vendor_title_info h1 {
@@ -139,8 +181,7 @@
             <div onclick="contactUs('{{ $result['company_id'] }}','{{ $result['company_name']}}')">CONTACT US</div>
           </div>
           <div class="content_company_content">
-            
-            
+                
               @if($count == 0)
 
                 <span>No gallery yet</span>

@@ -99,3 +99,9 @@
         from {opacity: 0;margin-left: -80px; }
         to {opacity: 0.8;margin-left: 2px; }
     }
+
+@media (max-width: 560px) {
+    #quick_access_section {
+        display: none;
+    }
+}

@@ -3,7 +3,11 @@
 <html>
 <head>
 	<title>Package | {{ $result['package_title'] }}</title>
-
+   <meta name="page_site" content="savethedate-my.com">
+   <meta name="page_language" content="English">
+   <meta name="page_type" content="Package View">
+   <meta name="page_title" content="Package | {{ $result['package_title'] }}">
+   <meta name="page_content" content="Package Detail">
 	 @include('templates.header')
    <link rel="stylesheet" href="{{ asset('myasset/socialsharekit/dist/css/social-share-kit.css') }}" type="text/css">
 
@@ -85,7 +89,8 @@
       font-size: 1.0em;
       border-radius: 5px;
       border: 0.1em solid #999;
-      margin-right: 5px;      
+      margin-right: 5px; 
+      margin-bottom: 10px;     
     }
 
     .company_info {
@@ -108,6 +113,48 @@
       height: 100px;
       width: 100px;
       margin: 0 3px;
+    }
+
+    @media (max-width: 600px){
+      .result_container {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 20px 20px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+
+      .package_info {
+        width: 100%;
+        min-height: 50%;
+        background: white;
+        -moz-box-shadow: 1px 2px 4px rgba(0, 0, 0,0.5);
+        -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+        box-shadow: 1px 2px 10px rgba(0, 0, 0, .5);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 20px 25px;
+        margin-bottom: 15px;
+      }
+
+      .company_info {
+        width: 100%;
+        min-height: 20px!important;
+        background: white;
+        -moz-box-shadow: 1px 2px 4px rgba(0, 0, 0,0.5);
+        -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+        box-shadow: 1px 2px 10px rgba(0, 0, 0, .5);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 25px 15px;
+      }
     }
 
     #book_now {
@@ -221,6 +268,12 @@
         <a href="" class="ssk ssk-google-plus"></a>
         <a href="" class="ssk ssk-pinterest"></a>
     </div>
+
+    <script>
+      var APP_URL = '{{ url("/") }}';
+      var LOGIN = '{{ route("login") }}';
+      var REGISTER = '{{ route("register") }}';
+    </script>
       
     @include('templates.footer')
 

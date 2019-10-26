@@ -3,6 +3,7 @@
 <head>
 
 	<title>Packages</title>
+	
 	@include('templates.header')
 
 	<link rel="stylesheet" type="text/css" href="{{asset('myasset/summernote-master/summernote/summernote-lite-bs3.css')}}">

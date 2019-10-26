@@ -3,16 +3,16 @@
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <title>Save The Date</title>
 
     @include('templates.header')
 
     <style type="text/css">
-    html {
+    /*html {
        height: 100%!important; 
-    }
+    }*/
     /* ------------------------------------------------------------  navigation bar styling */
 
 
@@ -113,116 +113,6 @@
         100% {opacity:1;}
     }
 
-    /* ---------------------------------------------------- Video styling */
-    #myVideo {
-      position: fixed;
-      right: 0;
-      bottom: 0;
-      background-repeat:no-repeat;
-      min-width: 100%; 
-      min-height: 100%;
-      opacity:0.8;  
-    }
-
-    .biglayer{
-        position:absolute;
-        top:0;
-        left:0;
-        width:100%;
-        height:100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-    }
-
-    .leftlayer{
-        width:30%;
-        height:100%;
-        z-index:80;
-        background: rgba(255, 255, 255, 0);
-    }
-    .midlayer {
-        width:40%;
-        height:100%;
-        z-index:80;
-        background: linear-gradient(to bottom right,rgba(212, 175, 55, 0) 50%,rgba(212, 175, 55, 0) 0%,rgba(255, 255, 255, 0.5) 50%,rgba(255, 255, 255, 0.5) 0%);
-    }
-
-    .rightlayer{
-        width:30%;
-        height:100%;
-        z-index:80;
-        background: rgba(255, 255, 255, 0.5);
-    }
-
-    #div_logo {
-        position:absolute;
-        top:0;
-        left:0;
-        width:100%;
-        height:100%;
-         /*background: yellow; */
-        z-index:82;
-        text-align: center;
-    }
-
-    #logo_text_container {
-        /*display:none;*/
-        position: absolute;
-        top: 30%;
-        left: 25%;
-        width: 50%;
-        height: 30%;
-        /*opacity: 0.7;*/
-        cursor: pointer;
-        z-index: 999;
-    }
-
-    #std_logo {
-        width: 40%;
-        filter:drop-shadow(5px 5px 8px grey);
-        -webkit-transition: margin-top 1s, filter 1s, width 1s;
-        z-index: 99;
-    }
-
-    #std_logo_text {
-        position: absolute;
-        top: 50%;
-        width: 100%;
-        font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif; 
-        font-size: 20px; 
-        font-style: normal; 
-        font-variant: normal; 
-        font-weight: 800; 
-        color: white;
-        -webkit-text-stroke: 1px #23430C;
-        text-shadow: -1px 1px 2px #23430C,
-                1px 1px 2px #23430C,
-                1px -1px 0 #23430C,
-                -1px -1px 0 #23430C;
-        line-height: 20px;
-        z-index: 99;
-        -webkit-transition: top 0.7s, opacity 1s;
-        opacity: 0;
-    }
-
-    #logo_text_container:hover {
-        /*background: yellow;*/
-    }
-
-    #logo_text_container:hover  #std_logo_text {
-        top: 80%!important;
-        opacity: 1;
-    }
-
-    #logo_text_container:hover  #std_logo {
-        margin-top: -5%!important;
-        opacity: 1;
-        filter:drop-shadow(-7px -5px 6px grey);
-    }
-
-    /* ============================================================================================ */
-
     /* ----------------------------- Footer styling */
     .credit {
     position: absolute;
@@ -249,12 +139,6 @@
 
     .small-isi:hover{
     color: #000 ;
-    }
-
-    .small-p{
-    font-size:13px;
-    color: #d4af37;
-    margin-left:30%;
     }
 
     .package_nav {
@@ -331,18 +215,61 @@
   </head>
   <body>
 
+    <div class="drawable_mobile_menu">
+      <div class="drawable_mobile_menu_content">
+        <div class="drawable_mobile_menu_content_list">
+
+          @if (Route::has('login'))  
+
+          @auth
+          <div id="dashboard_page">Dashboard</div>
+          @else 
+          <div id="login_page">Login</div>
+          @endauth
+
+          @endif
+          <div id="vendor_page">Our Vendors</div>
+          <div id="package_page">Packages</div>
+          <div id="event_page">Events</div>
+          <div id="islamic_page">Islamic Affair</div>
+          <div style="height: 15px;width:100%;border-bottom: 0.05em solid white;"></div>
+          <div id="about_page">About</div>
+          <!-- <div id="feature_page">Features</div>
+          <div id="member_page">Members</div> -->
+          @if (Route::has('login'))  
+
+          @auth
+          <div id="logout">Logout <i class="fas fa-sign-out-alt"></i></div>
+          @else 
+
+          @endauth
+
+          @endif
+        </div>
+      </div>
+    </div>
+
     <!-- Header Area wrapper Starts -->
     <header id="header-wrap">
       <!-- Navbar Start -->
       <nav class="navbar navbar-expand-lg fixed-top scrolling-navbar indigo bg-white " 
         style="height: 70px!important;border-bottom: 3px inset #d4af37;">
         <div class="container">
-          <!-- Brand and toggle get grouped for better mobile display -->
+           <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+              <span class="icon-menu"></span>
+              <span class="icon-menu"></span>
+              <span class="icon-menu"></span>
+            </button><!-- 
+            <a href="index.html" class="navbar-brand"><img src="img/logo.png" alt=""></a> -->
+          </div>
           <div class="collapse navbar-collapse" id="main-navbar" >
             <ul class="navbar-nav mr-auto w-100 justify-content-center clearfix">
                 <div class="drpdown">
                   <li class="nav-item">
-                      <a class="nav-link black" href="{{ url('/listvendor') }}">
+                      <a class="nav-link black" href="{{ url('/listvendor') }}" data-list-name="Our Vendors" data-content-category="Header">
                       Our Vendors <i class="fa fa-angle-down"></i>
                       </a> 
                       <!-- Category Section Start -->
@@ -453,7 +380,7 @@
 
                 <div class="drpdown">
                   <li class="nav-item">
-                      <a class="nav-link black" href="{{ url('/packages') }}">
+                      <a class="nav-link black" href="{{ url('/packages') }}" data-list-name="Packages" data-content-category="Header">
                       Packages <i class="fa fa-angle-down"></i>
                       </a>
                       <!-- Packages section Start --> 
@@ -482,7 +409,7 @@
 
                 <div class="drpdown">
                   <li class="nav-item">
-                      <a class="nav-link black" href="{{ url('/events') }}">
+                      <a class="nav-link black" href="{{ url('/events') }}" data-list-name="Events" data-content-category="Header">
                       Events <i class="fa fa-angle-down"></i>
                       </a>
 
@@ -521,7 +448,7 @@
 
                 <!-- <div class="drpdown"> -->
                   <li class="nav-item">
-                      <a class="nav-link black" href="{{ url('/islamic_center') }}">
+                      <a class="nav-link black" href="{{ url('/iaffair') }}" data-list-name="iAffair" data-content-category="Header">
                       <i class="fas fa-mosque"></i> Islamic Affairs
                       </a>
                   </li>
@@ -537,13 +464,6 @@
                         Dashboard
                       </a>
                     </li>
-
-                    <!-- <li class="nav-item">
-                      <a class="nav-link black" href="{{ url('/home') }}">
-                        <i class="far fa-address-book"></i>
-                        Contact
-                      </a>
-                    </li> -->
 
                     <li class="nav-item">
                       <a class="nav-link black" href="{{ url('/profile') }}">
@@ -567,20 +487,20 @@
                   @else         
 
                     <li class="nav-item">
-                      <a class="nav-link black" href="{{ route('login') }}">
+                      <a class="nav-link black" href="{{ route('login') }}" data-list-name="Sign In" data-content-category="Header">
                       <i class="fas fa-sign-in-alt"></i> Login
                       </a>
                     </li>
 
 
                     <li class="nav-item">
-                        <a class="nav-link black" href="{{ url('/merchant') }}">
+                        <a class="nav-link black" href="{{ url('/merchant') }}" data-list-name="Merchant Sign Up" data-content-category="Header">
                         <span style="color: #e6c500;font-weight: bold;">Are you a vendor?</span>
                         </a>
                     </li> 
                     
                     <li class="nav-item">
-                      <a class="nav-link black" href="{{ route('register') }}">
+                      <a class="nav-link black" href="{{ route('register') }}" data-list-name="Sign Up" data-content-category="Header">
                       <span id="btn_join_us">Let's Join Us!</span>
                       </a>
                     </li>
@@ -588,7 +508,12 @@
               @endif
             </ul>
           </div>
+
+          <div class="drawable_menu_trigger">
+            <i class="fas fa-bars"></i>
+          </div>
         </div>
+
       </nav>
     <!-- Navbar End -->
     
@@ -596,8 +521,9 @@
     
     <!------------------- Header Area wrapper End ----------------------------------------------------->
 
-    <div style="height: 100%;background: green!important;">
-        <video autoplay muted loop id="myVideo"><source src="{{asset('myasset/img/vid.mp4')}}" type="video/mp4">
+    <div style="height: 100%;">
+        <video autoplay muted loop id="myVideo">
+          <source src="{{asset('myasset/img/vid.mp4')}}" type="video/mp4">
         Your browser does not support HTML5 video.
         </video>
 
@@ -622,25 +548,30 @@
         
     </div>
     <div id="div_logo">
-            <div id="logo_text_container">
-            <img src="{{asset('myasset/img/logo.png')}}" class="slide-text fadeIn" id="std_logo" /> 
-            <p id="std_logo_text">Every love story is beautiful, but yours should be unique. 
-            <br><br>Let us help you design your perfect wedding event.</p>
-            
-            </div>
+        <div id="logo_text_container">
+        <img src="{{asset('myasset/img/logo.png')}}" class="slide-text fadeIn" id="std_logo" /> 
+        <p id="std_logo_text">Every love story is beautiful, but yours should be unique. 
+        <br><br>Let us help you design your perfect wedding event.</p>
+        
+        </div>
         
     </div>  
 
+    <script>
+      var APP_URL = '{{ url("/") }}';
+      var LOGIN = '{{ route("login") }}';
+      var REGISTER = '{{ route("register") }}';
+    </script>
     
     @include('templates.footer')
     
-    <!------------------------------------------------------------------------ Footer Section End-->
+    <!----------------- ------------------------------------------------------- Footer Section End-->
 
     <div class="credit">
         <!-- Container Starts -->
         <div class="container" style="padding:1px;">
           <!-- Row Starts -->
-          <div class="row section" style="padding:1px;">
+          <div class="row section std-footer" style="padding:1px;">
             <!-- Footer Widget Starts -->
             <div class="footer-widget col-lg-3 col-md-6 col-xs-12 wow fadeIn">
               <h5 class="small-tajuk">
@@ -687,13 +618,6 @@
               <ul>                
                 <li><a href="{{ url('/terms') }}" class="small-isi">Terms & Conditions</a></li>
               </ul>
-              <!-- <div class="contact-us">
-                <div class="social-footer">
-                  <a href="#" class="small-isi"><i class="fab fa-facebook icon-round"></i></a>
-                  <a href="#" class="small-isi"><i class="fab fa-twitter icon-round"></i></a>
-                  <a href="#" class="small-isi"><i class="fab fa-instagram icon-round"></i></a>
-                </div>              
-              </div> -->
             </div>
             <!-- Footer Widget Ends -->
           </div>
@@ -758,6 +682,8 @@
 
         window.location.replace(url);
       }
+
+
      
     </script>
 

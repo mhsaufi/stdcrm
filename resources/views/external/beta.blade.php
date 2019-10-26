@@ -65,9 +65,10 @@
     .search-engine-panel {
     	display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
       justify-content: flex-start;
     	width: 100%;
-    	padding: 2% 12%;
+    	padding: 2% 10%;
       border-bottom: 0.05em solid grey;
       /*background: blue;*/
       /*margin: 0 10%;*/
@@ -78,19 +79,12 @@
     }
 
     .search-result-panel {
-    	padding: 20px 15px;
+    	padding: 5% 10%;
     	display: flex;
     	justify-content: center;
     	flex-wrap: wrap;
     	background: rgba(255,255,255,1);
       border-bottom: 1px solid #d4af37;
-    }
-
-    .big_container {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
     }
 
     .footer_result_container {
@@ -103,19 +97,9 @@
       flex-flow: row wrap;
     }
 
-    .result_container {
-      width: 80%;
-      min-height: 10%;
-      /*background: white;*/
-      margin: 0 10%;
-      padding: 20px 20px;
-      display: flex;
-      flex-flow: row wrap;
-    }
-
     .vendor_cards {
       position: relative;
-      width: 30%;
+      width: 350px;
       height: 250px;
       min-height: 220px;
       /*background: yellow;*/
@@ -241,13 +225,14 @@
               </select>
             </div>
             <div><button id="std_search_btn">SEARCH &nbsp&nbsp<i class="fas fa-search"></i></button></div>
-          </div>	
-          <br>
+        </div>	
+        <br>
         <p style="margin-left: 200px;margin-top: 20px;">{{ $p_count }} result(s) found</p> 	
     	</div>
 
       <div class="big_container">
         <div class="result_container">
+          
           @foreach($result as $r)
           <div class="vendor_cards" onclick="viewVendors('{{ $r['company_id'] }}','{{ $r['company_name']}}')">
             <div class="vendor_cards_info" style="background: url('{{ asset('myasset/img/back.jpg') }}');background-size: cover;">
@@ -296,6 +281,12 @@
         </div>
       </div>
     </div>
+
+    <script>
+      var APP_URL = '{{ url("/") }}';
+      var LOGIN = '{{ route("login") }}';
+      var REGISTER = '{{ route("register") }}';
+    </script>
       
     @include('templates.footer')
 

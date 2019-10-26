@@ -107,6 +107,71 @@
       z-index: 80;
     }
 
+    @media (max-width: 480px){
+
+      .pattern {
+        background-image: none;
+      }
+
+      .content_company_content {
+        width: 100%;
+        padding: 5% 0!important;
+        margin-top: 3%;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: flex-start;
+        margin-bottom: 100px;
+        /*background-color: blue;*/
+      }
+
+      .result_container {
+        position: relative;
+        width: 100%;
+        min-height: 100%;
+        /*background: pink!important;*/
+        margin: 0;
+        padding: 5% 0!important;
+        display: flex;
+        flex-flow: row wrap;
+      }
+
+      .company_logo {
+        position: absolute;
+        border-radius: 50%;
+        border: 0.05em solid white;
+        height: 70px;
+        width: 70px;
+        top: 170px;
+        right: 8%;
+        z-index: 81;
+      }
+
+      .company_logo_base {
+        position: absolute;
+        border-radius: 50%;
+        border: 0.05em solid white;
+        height: 70px;
+        width: 70px;
+        background: white;
+        top: 170px;
+        right: 8%;
+        z-index: 80;
+      }
+
+      .package_cards {
+        position: relative;
+        height: 330px!important;
+        width: 80%!important;
+        border-radius: 2px;
+        -moz-box-shadow: 0 0 6px #888;
+        -webkit-box-shadow: 0 0 6px#888;
+        box-shadow: 0 0 4px #888;
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
     .vendor_cards:hover ~ .vendor_cards_info {
       height: 90%;
     }

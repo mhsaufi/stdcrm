@@ -3,11 +3,83 @@
 <html>
 <head>
 	<title>SaveTheDate | Islamic Affairs</title>
+	<meta name="page_site" content="savethedate-my.com">
+	<meta name="page_language" content="English">
+	<meta name="page_type" content="iAffair">
+	<meta name="page_title" content="iAffair">
+	<meta name="page_content" content="iAffair">
 	 @include('templates.header')
 
 	<link rel="stylesheet" href="{{ asset('myasset/socialsharekit/dist/css/social-share-kit.css') }}" type="text/css">
 
 	<style>
+		.main_container {
+			padding: 8vh 100px;
+		}
+
+		.islamic_container {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			width: 100%;
+			height: 100%;
+		}
+
+		.big_container_header {
+			padding: 20px 0;
+			border-bottom: 0.05em solid #d4af37;
+			margin-bottom: 30px;
+		}
+
+		@media (max-width: 600px){
+			.main_container {
+				padding: 10% 0;
+			}
+
+			.big_container {
+				width: 100%;
+				min-height: 100%;
+				background: #fff;
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-start;
+				padding: 10%  0!important;
+			}
+
+			.big_container_header {
+				text-align: center;
+			}
+
+			.islamic_container {
+				display: flex;
+				flex-direction: column;
+				/*flex-wrap: wrap;*/
+				align-items: center;
+				justify-content: space-between;
+				width: 100%;
+				height: 100%;
+			}
+
+			#directory_col {
+				width: 100%!important;margin-bottom: 100px;
+				/*background: green;*/
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-start;
+				align-items: center;
+				text-align: center;
+			}
+
+			#content_col {
+				width: 100%;
+				/*background: blue;*/
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-start;
+			}
+		}
+
 	 	.navbar {
 	 		-moz-box-shadow: 0 0 5px #888;
 	        -webkit-box-shadow: 0 0 5px#888;
@@ -179,19 +251,20 @@
     <br>
 
     <!--  Section Start -->
-	<div style="padding: 8vh 100px;">
+	<div class="main_container">
 		<!-- <div class="container"> -->
 
 			<div class="big_container">
-				<div style="padding: 20px 0;border-bottom: 0.05em solid #d4af37;margin-bottom: 30px;">
+				<div class="big_container_header">
 					<span class="title_text">Islamic Affairs</span>
 				</div>
-				<div style="display: flex;flex-direction: row;justify-content: space-between;width: 100%;height: 100%;">
+				<div class="islamic_container">
 					<div id="directory_col">
-						<div class="directory active_directory" id="jabatan_agama">Official Jabatan Agama Page & Pre-marriage Timetable</div>
-						<div class="directory" id="info_jpn">Info from Jabatan Pendaftaran Negara</div>
-						<div class="directory" id="fiqh_munaqahat">Fiqh Munaqahat</div>
-						<div class="directory" id="faq">FAQ</div>
+						<div class="directory active_directory" id="jabatan_agama" data-list-name="Official Jabatan Agama" data-content-category="iAffair Navigation">Official Jabatan Agama Page & Pre-marriage Timetable</div>
+						<div class="directory" id="info_jpn" data-list-name="Info JPN" data-content-category="iAffair Navigation">Info from Jabatan Pendaftaran Negara</div>
+						<div class="directory" id="fiqh_munaqahat" data-list-name="Fiqh Munaqahat" data-content-category="iAffair Navigation">Fiqh Munaqahat</div>
+						<div class="directory" id="faq" data-list-name="FAQ" data-content-category="iAffair Navigation">FAQ</div>
+						<div class="directory" id="download" data-list-name="Downloadable Documents" data-content-category="iAffair Navigation">Downloadable Documents</div>
 					</div>
 					<div id="content_col">
 							
@@ -217,8 +290,7 @@
         <a href="" class="ssk ssk-linkedin"></a>
         <a href="" class="ssk ssk-google-plus"></a>
         <a href="" class="ssk ssk-pinterest"></a>
-    </div>
-	
+    </div>	
 
     @include('templates.footer')
 
@@ -262,6 +334,15 @@
 
 			$('#replacable_content').load('myasset/templates/iaffair/jabatanagama.blade.php').fadeIn();
 			$('#title_text_replacable').html("Soalan-soalan lazim institusi perkahwinan");
+			$('.directory').removeClass('active_directory');
+			$(this).addClass('active_directory');
+
+		});
+
+		$('#download').click(function(){
+
+			$('#replacable_content').load('myasset/templates/iaffair/downloadable.blade.php').fadeIn();
+			$('#title_text_replacable').html("Wedding Checklist");
 			$('.directory').removeClass('active_directory');
 			$(this).addClass('active_directory');
 

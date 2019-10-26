@@ -72,50 +72,25 @@ class HomeController extends Controller
 
         }else{
 
-            $carbon = new Carbon;
+            if(Auth::user()->status_id == '1'){ // if active
 
-            $this_month = $carbon->month;
+                $dashboard = $this->vendorHome();
 
-            date_create();
+                return $dashboard;
 
-            //---------------------------------------------------------------------------------------------
+            }else if(Auth::user()->status_id == '3'){ // if pending, need approval from company admin
 
-            // to check if there is any inbox message such as event invitation or rejection from other vendors or client
+                $temp_dashboard = $this->vendorPending();
 
-            $inbox = new WEventInbox;
-            
-            $count_inbox = $inbox->where(function($query){
+                return $temp_dashboard;
 
-                    $query->where('i_recipient_id',Auth::user()->company_id)
-                    ->whereIn('i_type_id',[3,4,5,6])
-                    ->where('i_status_id',0);
+            }else{ // if inactive..taking holiday leave maybe
 
-                })->orWhere(function($query){
+                $temp_dashboard = $this->vendorInactive();
 
-                    $query->where('i_recipient_id',Auth::user()->user_id)
-                    ->whereIn('i_type_id',[2,7])
-                    ->where('i_status_id',0);
-
-                })->count();
-
-            // to count if there is any booking from customer made
-
-            $wevent = new WEvent;
-            $count = $wevent->where('company_id',Auth::user()->company_id)->where('wes_id','3')->count();
-
-            $count_inbox += $count;
-
-            // to list down all packages within this company in creating event form select option
-
-            $package = new CompanyPackage;
-            $package_data = $package->where('company_id', Auth::user()->company_id)->get();
-
-            //------------------------------------------------------------------------------------
-
-            return view('internal.home1',compact('this_month','count_inbox','package_data'));
-        
-        }
-        
+                return $temp_dashboard;
+            }
+        }    
     }
 
     public function profile(){
@@ -139,7 +114,61 @@ class HomeController extends Controller
             return view('internal.profile');
             // echo "No page yet";
         }
+    }
 
+    public function vendorHome(){
+
+        $carbon = new Carbon;
+
+        $this_month = $carbon->month;
+
+        date_create();
+
+        //---------------------------------------------------------------------------------------------
+
+        // to check if there is any inbox message such as event invitation or rejection from other vendors or client
+
+        $inbox = new WEventInbox;
+        
+        $count_inbox = $inbox->where(function($query){
+
+                $query->where('i_recipient_id',Auth::user()->company_id)
+                ->whereIn('i_type_id',[3,4,5,6])
+                ->where('i_status_id',0);
+
+            })->orWhere(function($query){
+
+                $query->where('i_recipient_id',Auth::user()->user_id)
+                ->whereIn('i_type_id',[2,7])
+                ->where('i_status_id',0);
+
+            })->count();
+
+        // to count if there is any booking from customer made
+
+        $wevent = new WEvent;
+        $count = $wevent->where('company_id',Auth::user()->company_id)->where('wes_id','3')->count();
+
+        $count_inbox += $count;
+
+        // to list down all packages within this company in creating event form select option
+
+        $package = new CompanyPackage;
+        $package_data = $package->where('company_id', Auth::user()->company_id)->get();
+
+        //------------------------------------------------------------------------------------
+
+        return view('internal.home1',compact('this_month','count_inbox','package_data'));
+    }
+
+    public function vendorPending(){
+
+        return view('internal.vendor.vendor_temp_page_pending');
+    }
+
+    public function vendorInactive(){
+
+        return view('internal.vendor.vendor_temp_page_inactive');
     }
 
 }

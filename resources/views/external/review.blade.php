@@ -112,9 +112,10 @@
     }
 
     .review_data_card {
+      position: relative;
       padding: 15px;
       width: 100%;
-      height: 40%;
+      min-height: 50px;
       margin-bottom: 15px;
       background: #f9f9f9;
       border: 0.05em solid #dcdcdc;
@@ -146,9 +147,85 @@
     }
 
     .review_data_card_review {
+      position: inherit;
       padding: 15px 0;
       width: 100%;
     }
+
+    @media (max-width: 480px){
+
+      .pattern {
+        background-image: none;
+      }
+
+      .content_company_content {
+        width: 100%;
+        padding: 5% 0!important;
+        margin-top: 3%;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: flex-start;
+        margin-bottom: 100px;
+        /*background-color: blue;*/
+      }
+
+      .result_container {
+        position: relative;
+        width: 100%;
+        min-height: 100%;
+        /*background: pink!important;*/
+        margin: 0;
+        padding: 5% 0!important;
+        display: flex;
+        flex-flow: row wrap;
+      }
+
+      .company_logo {
+        position: absolute;
+        border-radius: 50%;
+        border: 0.05em solid white;
+        height: 70px;
+        width: 70px;
+        top: 170px;
+        right: 8%;
+        z-index: 81;
+      }
+
+      .company_logo_base {
+        position: absolute;
+        border-radius: 50%;
+        border: 0.05em solid white;
+        height: 70px;
+        width: 70px;
+        background: white;
+        top: 170px;
+        right: 8%;
+        z-index: 80;
+      }
+
+      .package_cards {
+        position: relative;
+        height: 330px!important;
+        width: 80%!important;
+        border-radius: 2px;
+        -moz-box-shadow: 0 0 6px #888;
+        -webkit-box-shadow: 0 0 6px#888;
+        box-shadow: 0 0 4px #888;
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .review_data_card_rating {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+        padding: 15px 0;
+      }
+    }
+
 	 </style>
 
 </head>
@@ -229,34 +306,35 @@
                 @foreach($review_data as $review)
 
                   <div class="review_data_card">
-                    <div class="review_data_card_header">
-                      <div>{{ $review['review_user'] }}</div><div>{{ $review['created_at_human'] }}</div>
-                    </div>
-
-                    <div class="review_data_card_rating">
-                      <div>
-                        @php
-
-                          $rate = $review['review_rate'];
-                          $unrate = 5-$rate;
-
-                          for($i = 0;$i < $rate;$i++){
-
-                            echo '<i class="fas fa-star star_rated"></i>';
-                          }
-
-                          for($i = 0;$i < $unrate;$i++){
-
-                            echo '<i class="fas fa-star star_unrated"></i>';
-                          }
-
-                        @endphp
+                      <div class="review_data_card_header">
+                        <div>{{ $review['review_user'] }}</div>
+                        <div>{{ $review['created_at_human'] }}</div>
                       </div>
-                    </div>
 
-                    <div class="review_data_card_review">
-                      "{{ $review['review_text'] }}"
-                    </div>
+                      <div class="review_data_card_rating">
+                        <div>
+                          @php
+
+                            $rate = $review['review_rate'];
+                            $unrate = 5-$rate;
+
+                            for($i = 0;$i < $rate;$i++){
+
+                              echo '<i class="fas fa-star star_rated"></i>';
+                            }
+
+                            for($i = 0;$i < $unrate;$i++){
+
+                              echo '<i class="fas fa-star star_unrated"></i>';
+                            }
+
+                          @endphp
+                        </div>
+                      </div>
+
+                      <div class="review_data_card_review">
+                        "{{ $review['review_text'] }}"
+                      </div>
 
                   </div>
 

@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>SaveTheDate | Registration</title>
     <link rel="icon" href="{{asset('myasset/img/tab-icon2.png')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('myasset/loginvendor/bootstrap/css/bootstrap.min.css')}}">
 	<!-- <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"> -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+         <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WM6WPDB');</script>
+    <!-- End Google Tag Manager -->
 
     <style>
     	a:hover {
@@ -22,6 +31,137 @@
     		background: rgba(255,255,255,0.9);
             width: 100%;
     	}
+
+        .login-banner > div:nth-child(1){
+            width: 5%;
+        }
+
+        .login-banner > div:nth-child(2){
+            width: 45%;
+        }
+
+        .login-banner > div:nth-child(3){
+            width: 45%;
+        }
+
+        .login-banner > div:nth-child(4){
+            width: 5%;
+        }
+
+        @media (max-width: 600px){
+            .login-banner {
+                position: absolute;
+                display: flex;
+                flex-flow: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                box-shadow: 0 0 0 #fff;
+                height: auto;
+                background: rgba(255,255,255,0.6);
+                width: 100%;
+                padding-top: 50px;
+                padding-bottom: 50px;
+            }
+
+            .login-banner > div:nth-child(1){
+                width: 100%;
+            }
+
+            .login-banner > div:nth-child(2){
+                width: 100%;
+            }
+
+            .login-banner > div:nth-child(3){
+                width: 100%;
+            }
+
+            .std-login-banner {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                /*align-items: center;*/
+                padding: 20px 20px;
+                margin-left: 0!important;
+                border-right: 0;
+            }
+
+            .std-login-banner-desc {
+                padding-top: 0;
+                padding-left: 0;
+                text-align: center;
+            }
+
+            .pattern{
+                background-image: url("{{asset('myasset/img/IMG_7092.jpg')}}");
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: fixed!important;
+                background-attachment: fixed; 
+                min-height: 100vh!important;
+            }
+
+            #phone_prefix {
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 100%;
+                width: 15%!important;
+                background: #dcdcdc;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                align-items: center;
+                border-top-left-radius: 4px;
+                border-bottom-left-radius: 4px;
+            }
+
+            #phone {
+                padding-left: 80px!important;
+            }
+
+            .phone_input_container {
+                position: relative;
+                padding-left: 40px!important;
+            }
+
+            #carrier_logo {
+                position: fixed;
+                right: 8px!important;
+                top: 0;
+                height: 40px!important;
+                width: 30px!important;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                align-items: center;
+                border-top-right-radius: 4px;
+                border-bottom-right-radius: 4px;
+                padding: 0 4px!important;
+            }
+
+            #carrier_logo > img {
+                width: 100%;
+            }
+
+            #email_tick {
+                position: fixed;
+                right: 10px!important;
+                top: 0;
+                height: 45px!important;
+                width: 35px!important;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                align-items: center;
+                border-top-right-radius: 4px;
+                border-bottom-right-radius: 4px;
+                padding: 0 4px!important;
+            }
+
+            #email_tick > img {
+                width: 100%;
+            }
+        }
 
     	.pattern{
 	        background-image: url("{{asset('myasset/img/IMG_7092.jpg')}}");
@@ -57,7 +197,8 @@
     	.std-login-banner {
             display: flex;
             flex-direction: column;
-            justify-content: center;align-items: center;
+            justify-content: center;
+            align-items: center;
     		padding: 20px 20px;
     		margin-left: 10px;
             border-right: 0.09em solid #968e90;
@@ -132,7 +273,7 @@
 
         #carrier_logo {
             position: absolute;
-            right: 0;
+            right: 0!important;
             top: 0;
             height: 100%;
             width: 5%;
@@ -145,9 +286,16 @@
             padding: 1% 1%;
         }
 
+        #carrier_logo > img {
+            width: 100%!important;
+        }
+        #email_tick > img {
+            width: 100%!important;
+        }
+
         #email_tick {
             position: absolute;
-            right: 0;
+            right: 0!important;
             top: 0;
             height: 100%;
             width: 5%;
@@ -159,15 +307,15 @@
             border-bottom-right-radius: 4px;
             padding: 1.3% 1.3%;
         }
+
     </style>	
 </head>
 <body class="pattern">
 	<div class="login-banner">
-		<div style="width: 10%;"></div>
-        <div style="width: 30%;">
+		<div></div>
+        <div>
             <div class="std-login-banner">
                 <img src="{{asset('myasset/img/logo.png')}}" alt="" id="logo" style="width: 50% !important;cursor: pointer;"/>
-                <br>
                 <div class="std-login-banner-desc">
                     <p>It's free! Create an account and have your wedding ceremony fully organized. <span class="std-name">Save The Date</span> is your best deal 
                         for your reception arrangement. 
@@ -178,7 +326,7 @@
                 <span class="watermark">Copyright &copy; SaveTheDate2019</span>
             </div>
         </div>
-		<div style="width: 50%;">
+		<div>
 			<div class="std-login-form">
 				<form method="POST" action="{{ route('register') }}">
 					@csrf
@@ -216,12 +364,12 @@
 
 					<br>
                     <div id="error-message"></div><br>
-                    <button class="std-reg-btn" id="reg-btn" type="submit" disabled>REGISTER</button><br>
+                    <button class="std-reg-btn" id="reg-btn" type="submit" data-item-name="Register" data-content-category="Sign Up" disabled>REGISTER</button><br>
                     
 				</form>
 			</div>
 		</div>
-        <div style="width: 10%;"></div>
+        <div></div>
 	</div>
 
 	<script src="{{asset('myasset/js/jquery-min.js')}}"></script>
@@ -399,6 +547,7 @@
             if(total_error == 'aaaaaa'){
 
                 $('#reg-btn').prop('disabled',false);
+                $('#reg-btn').addClass('goal_registration_customer');
 
             }else{
 

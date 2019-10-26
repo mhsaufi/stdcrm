@@ -161,6 +161,59 @@
       -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
       box-shadow: 1px 2px 2px rgba(0, 0, 0, .5);
     }
+
+
+    @media (max-width: 480px){
+
+      .pattern {
+        background-image: none;
+      }
+
+      .content_company_content {
+        width: 100%;
+        padding: 5% 0!important;
+        margin-top: 3%;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: flex-start;
+        margin-bottom: 100px;
+        /*background-color: blue;*/
+      }
+
+      .result_container {
+        position: relative;
+        width: 100%;
+        min-height: 100%;
+        /*background: pink!important;*/
+        margin: 0;
+        padding: 5% 0!important;
+        display: flex;
+        flex-flow: row wrap;
+      }
+
+      .company_logo {
+        position: absolute;
+        border-radius: 50%;
+        border: 0.05em solid white;
+        height: 70px;
+        width: 70px;
+        top: 170px;
+        right: 8%;
+        z-index: 81;
+      }
+
+      .company_logo_base {
+        position: absolute;
+        border-radius: 50%;
+        border: 0.05em solid white;
+        height: 70px;
+        width: 70px;
+        background: white;
+        top: 170px;
+        right: 8%;
+        z-index: 80;
+      }
+    }
 	 </style>
 
 </head>

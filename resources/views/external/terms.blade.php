@@ -241,13 +241,6 @@
               <ul>                
                 <li><a href="{{ url('/terms') }}" class="small-isi">Terms & Conditions</a></li>
               </ul>
-              <!-- <div class="contact-us">
-                <div class="social-footer">
-                  <a href="#" class="small-isi"><i class="fab fa-facebook icon-round"></i></a>
-                  <a href="#" class="small-isi"><i class="fab fa-twitter icon-round"></i></a>
-                  <a href="#" class="small-isi"><i class="fab fa-instagram icon-round"></i></a>
-                </div>              
-              </div> -->
             </div>
             <!-- Footer Widget Ends -->
           </div>

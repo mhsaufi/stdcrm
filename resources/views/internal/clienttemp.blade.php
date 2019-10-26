@@ -4,6 +4,11 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="page_site" content="savethedate-my.com">
+    <meta name="page_language" content="English">
+    <meta name="page_type" content="Dashboard User">
+    <meta name="user_id" content="{{ Auth::user()->id }}">
+    <meta name="user_email" content="{{ Auth::user()->email }}">
 
     <title>Dashboard</title>
     @include('templates.header')

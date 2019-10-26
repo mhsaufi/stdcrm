@@ -250,6 +250,40 @@
     color: #d4af37;
     margin-left:33%;
     }
+
+    @media (max-width: 600px){
+        .credit {
+            display: none;
+        }
+
+        .backimg-about{
+            display:none;
+        }
+
+        .backtext-about{
+            width:100%!important;
+            height:100%;
+            z-index:80;
+            color:#000;
+        }
+
+        .backtext-about{
+            width:100%;
+            height:100%;
+            z-index:80;
+            color:#000;
+            text-align: center;
+        }
+
+        .text-about p{
+            position:absolute;
+            top: 20%;
+            padding-right: 0!important;
+            z-index:81;
+            color:#000;
+            font-size: 16px;
+        }
+    }
     </style>
   </head>
   <body>
@@ -257,7 +291,7 @@
     <!-- Header Area wrapper Starts -->
     <header id="header-wrap">
       
-      @include('templates.frontnav')
+      @include('templates.navbar')
     </header>
     
     <!------------------- Header Area wrapper End ----------------------------------------------------->
