@@ -38,6 +38,14 @@
 	.second_o > img {
 		width: 60%!important;
 	}
+
+	.third {
+		width: 100%;
+	}
+
+	.third img {
+		width: 70%;
+	}
 </style>
 
 <h3>Dashboard</h3>
@@ -72,9 +80,29 @@
 	<div class="first_o">
 		<h6>Transaction</h6>
 		<img src="myasset/features/start_planning/7.JPG">
+		<p>This is the transaction information happening within the event.</p>
 	</div>
 	<div class="second_o">
 		<h6>Event Vendors</h6>
 		<img src="myasset/features/start_planning/8.jpg">
+		<p>This is the list of vendors involved with this event. Click the <i class="fas fa-plus"></i> icon to add more vendors to the events.</p>
 	</div>
 </div>
+<h5>Timeline</h5>
+<br>
+<div class="third">
+	<p><img src="myasset/features/start_planning/9.JPG" align="right">
+		So far, this is the most interesting part where you can thoroughly view what had been happening along the days until your wedding day. Our platform make it easy for you to estimate and plan your schedule so that your wedding can be uninterrupted. This graph lists out all the <span class="nav_link_text">Timeline</span> happening within your event sorted by date. You can filter what to display by using the filter on top of the graph. You can choose to view which company, and even to view, that company/person you selected was an <span class="nav_link_text">Assigned To</span> or <span class="nav_link_text">Assigner</span>. Every timeline has a category for each. It can be a Meeting, Phone Call, Fitting or others.
+		<br><br>
+		If you notice, each <span class="nav_link_text">Timeline</span> card has different colours for each. 
+		<br><br>
+		<span class="nav_link_text" style="color: #8bc34a;">Green</span> coloured timeline card indicates that this timeline is clean which means approved and agreed by all parties within this event on it's creation.
+		<br><br>
+		<span class="nav_link_text" style="color: #ffca28;">Yellow</span> coloured timeline card indicates that this timeline is newly created and has yet to be approved by the <span class="nav_link_text">Assigned To</span> person.
+		<br><br>
+		<span class="nav_link_text" style="color: #f44336;">Red</span> coloured timeline card indicates that this timeline has been rejected by the <span class="nav_link_text">Assigned To</span> person. This might be because the <span class="nav_link_text">Assigned To</span> person did not agree on this timeline creation. Hence, the <span class="nav_link_text">Assigner</span> or creator of this timeline might have to update the timeline detail or create a new one after deleting it.
+		<br><br>
+		Also, if you notice, in some of the timeline card, there is <i class="fas fa-sort-amount-up-alt"></i> icon. This indicates that there is payment done within this timeline. This will contribute to the <span class="nav_link_text">Payable</span> amount in <span class="nav_link_text">Transaction</span> section.
+	</p>
+</div>
+<br><br><br><br><br><br>
