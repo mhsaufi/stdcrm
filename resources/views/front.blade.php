@@ -14,7 +14,9 @@
        height: 100%!important; 
     }*/
     /* ------------------------------------------------------------  navigation bar styling */
-
+    .container {
+      padding: 0 -30%!important;
+    }
 
     .navcolumn {
         /* padding: 10px; */
@@ -255,16 +257,6 @@
       <nav class="navbar navbar-expand-lg fixed-top scrolling-navbar indigo bg-white " 
         style="height: 70px!important;border-bottom: 3px inset #d4af37;">
         <div class="container">
-           <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-              <span class="icon-menu"></span>
-              <span class="icon-menu"></span>
-              <span class="icon-menu"></span>
-            </button><!-- 
-            <a href="index.html" class="navbar-brand"><img src="img/logo.png" alt=""></a> -->
-          </div>
           <div class="collapse navbar-collapse" id="main-navbar" >
             <ul class="navbar-nav mr-auto w-100 justify-content-center clearfix">
                 <div class="drpdown">
@@ -450,6 +442,12 @@
                   <li class="nav-item">
                       <a class="nav-link black" href="{{ url('/iaffair') }}" data-list-name="iAffair" data-content-category="Header">
                       <i class="fas fa-mosque"></i> Islamic Affairs
+                      </a>
+                  </li>
+
+                  <li class="nav-item">
+                      <a class="nav-link black" href="{{ url('/features') }}" data-list-name="How it works" data-content-category="Header">
+                      <i class="fas fa-question-circle"></i> How it works
                       </a>
                   </li>
 
