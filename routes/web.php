@@ -144,6 +144,7 @@ Route::post('/deletetimeline','TimelineController@deleteTimeline');
 
 Route::post('/listeventvendor','UtilitiesController@listEventVendors');
 Route::post('/invite','EventController@invite'); // invite vendor into event
+Route::post('/approveinvitation','EventController@approveinvite');
 Route::post('/addcontact','ContactController@addContact'); // add vendor as contact
 
 Route::post('/updateevent','EventController@updateEvent');

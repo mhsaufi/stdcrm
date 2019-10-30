@@ -12,4 +12,16 @@ class WEventInbox extends Model
     {
         return $this->hasOne('App\WEvent','we_id','i_item_id');
     }
+
+    public function invited()
+    {
+    	if($this->i_type_id == '4'){
+
+    		return $this->hasOne('App\Company','company_id','i_recipient_id');
+
+    	}else if($this->i_type_id == '2'){
+
+    		return $this->hasOne('App\User','id','i_recipient_id');
+    	}
+    }
 }

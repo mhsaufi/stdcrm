@@ -20,6 +20,10 @@
     <link rel="stylesheet" type="text/css" href="{{asset('myasset/select2/dist/css/select2.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('myasset/summernote-master/summernote/summernote-lite-bs3.css')}}">
     <style type="text/css">
+      .pattern {
+        background: #eaeded!important;
+      }
+
       #std_timline_form {
         display: none;
       }
@@ -322,16 +326,19 @@
       .notification-tcard-content {
         background: #fff;
         border-radius: 2px;
-        padding: 6px 10px;
-        padding-bottom: 35px;
+        padding: 10px 10px;
         border: 0.05em solid #cfd8dc;
         margin-bottom: 10px;
         font-size: 12px;
+        min-height: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
       }
 
       .vendors-tcard {
         position: relative;
-        padding: 8px 10px;
+        /*padding: 0 10%;*/
         border: 0.05em solid #cfd8dc;
         border-radius: 2px;
         width: 100%;
@@ -339,6 +346,7 @@
         margin-bottom: 5px;
         cursor: pointer;
         font-size: 13px;
+        /*background: green;*/
       }
 
       .vendors-tcard:hover {
@@ -355,13 +363,38 @@
       }
 
       .vendors-tcard-name-contact {
-        width: 93%;
+        width: 100%;
         position: absolute;
-        opacity: 0.8;
-        margin-right: 0;
+        top: 0;
+        bottom: 0;
+        opacity: 1;
+        margin: auto;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        align-items: center;
+        /*background: red;*/
+        padding: 0 5%;
+      }
+
+      .vendors-tcard-name-invite-alert {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        opacity: 1;
+        margin: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        background: #e74c3c;
+        color: white;
+        padding: 0 5%;
+      }
+
+      .vendors-tcard-name-invite-alert:hover {
+        opacity: 0.9;
       }
 
       .vendors-tcard:hover  .vendors-tcard-name {
@@ -479,6 +512,64 @@
         display: flex;
         justify-content: flex-start;
         align-items: center;
+      }
+
+      #approve_invite_container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: rgba(255,255,255, 0.8);
+        z-index: 999;
+        display: none;
+      }
+
+      #approve_invite_form {
+        position: absolute;
+        top: 40%;
+        left: 40%;
+        width: 20%;
+        height: 20%;
+        background: white;
+        border-radius: 5px;
+        -moz-box-shadow: 0 0 30px #888;
+        -webkit-box-shadow: 0 0 30px#888;
+        box-shadow: 0 0 30px #888;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 10px 15px;
+      }
+
+      .approve_button_yes {
+        padding: 5px 10px;
+        border: none;
+        background: #2ecc71;
+        color: white;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+
+      .approve_button_yes:hover {
+        opacity: 0.9;
+      }
+
+      .approve_button_no {
+        padding: 5px 10px;
+        border: none;
+        background: #e74c3c;
+        color: white;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+
+      .approve_button_no:hover {
+        opacity: 0.9;
+      }
+
+      .close_approve_container {
+        cursor: pointer;
       }
 
       @media (max-width: 560px) {
@@ -688,7 +779,7 @@
             
             <div style="padding: 8px 15px;max-height: 50vh;overflow: auto;">
               <span style="opacity: 0.7;"><i class="fas fa-bell" style="margin-right: 10px;"></i> Timeline Notification</span>
-              <hr><br>
+              <hr>
 
               @foreach($data_noti as $noti)
 
@@ -702,9 +793,9 @@
 
                 {{ $noti['assigned'] }} : {{ $noti['category']['tc_title'] }}</div>
                 <div class="notification-tcard-content">
-                  {{ $noti['wet_subject'] }}
-                  <br>
-
+                  <div>{{ $noti['wet_subject'] }}</div>
+                  
+                  <div>
                   @if($noti['ts_id'] == 1)
                       <button class="std-timeline-sidebar-btn new" onclick="tDetail('{{ $noti['wet_id'] }}')">
                         Approve
@@ -714,7 +805,7 @@
                         Change
                       </button>
                   @endif
-
+                  </div>
                   
                 </div>
               </div>
@@ -768,33 +859,47 @@
 
                 @foreach($data_vendors as $vendor)
 
-                @if($vendor['company_id'] == $data_event['company_id'])
+                  @if($vendor['company_id'] == $data_event['company_id'])
 
-                  <div class="vendors-tcard-disable">
-                    {{ $vendor['vendor']['company_name'] }}
-                  </div>
-
-                @else
-
-                  @if($vendor['contact'] == 'yes')
-
-                    <div class="vendors-tcard">
-                      <div class="vendors-tcard-name-contact"><div>{{ $vendor['vendor']['company_name'] }}</div><div><i class="far fa-handshake"></i></div></div>
+                    <div class="vendors-tcard-disable">
+                      {{ $vendor['vendor']['company_name'] }}
                     </div>
 
                   @else
 
-                    <div class="vendors-tcard" onclick="addContactVendor('{{ $vendor['vendor']['company_id'] }}','{{ $vendor['vendor']['company_name'] }}')">
-                      <div class="vendors-tcard-name">{{ $vendor['vendor']['company_name'] }}</div>
-                      <div class="vendors-tcard-add-contact"><i class="fas fa-plus"></i> Add as contact</div>
-                    </div>
+                    @if($vendor['contact'] == 'yes')
+
+                      <div class="vendors-tcard">
+                        <div class="vendors-tcard-name-contact"><div>{{ $vendor['vendor']['company_name'] }}</div><div><i class="far fa-handshake"></i></div></div>
+                      </div>
+
+                    @else
+
+                      <div class="vendors-tcard" onclick="addContactVendor('{{ $vendor['vendor']['company_id'] }}','{{ $vendor['vendor']['company_name'] }}')">
+                        <div class="vendors-tcard-name">{{ $vendor['vendor']['company_name'] }}</div>
+                        <div class="vendors-tcard-add-contact"><i class="fas fa-plus"></i> Add as contact</div>
+                      </div>
+
+                    @endif
+                    
 
                   @endif
-                  
-
-                @endif
 
                 @endforeach
+
+                @if(Auth::user()->id == '5')
+
+                  @foreach($inbox_data as $inbox)
+
+                    <div class="vendors-tcard" onclick="approveInvite('{{ $inbox['i_id'] }}')">
+                      <div class="vendors-tcard-name-invite-alert">
+                        <span>{{ $inbox['invited']['company_name'] }}</span> <i class="fas fa-exclamation-circle"></i>
+                      </div>
+                    </div>
+
+                  @endforeach
+
+                @endif
 
             </div>
           </div> 
@@ -1156,6 +1261,21 @@
     <input type="hidden" name="vote_id" value="" id="vote_id">
     <input type="hidden" name="vote_type" value="" id="vote_type">
 
+    <input type="hidden" name="i_id" value="" id="i_id">
+
+    <div id="approve_invite_container">
+      <div id="approve_invite_form">
+        <div style="padding-bottom: 10px;border-bottom: 0.05em solid #d4af37;display: flex;flex-direction: row;justify-content: space-between;">
+          <span>Approve</span>
+          <span class="close_approve_container"><i class="fas fa-times"></i></span>
+        </div>
+        <div style="display: flex;flex-direction: column;justify-content: space-around;height: 100%;align-items: center;">
+          <div>Approve this invitation?</div>
+          <div style="display: flex;flex-direction: row;justify-content: space-around;width: 90%;"><button class="approve_button_yes">Approve</button><button class="approve_button_no">Reject</button></div>
+        </div>
+      </div>
+    </div>
+
     @include('templates.footer')
 
     <script src="{{asset('myasset/summernote-master/summernote/summernote-lite.js')}}"></script>
@@ -1264,6 +1384,43 @@
 
         });
       });
+
+      $('.close_approve_container').click(function(){
+        $('#approve_invite_container').fadeToggle('fast');
+      });
+
+      $('.approve_button_yes').click(function(){
+
+        url = APP_URL + '/approveinvitation';
+        var i_id = $('#i_id').val();
+        var action = 'app';
+
+        $.post(url,{_token:token,i_id:i_id,action:action},function(data){
+            location.reload();
+        });
+
+      });
+
+
+      $('.approve_button_no').click(function(){
+
+        url = APP_URL + '/approveinvitation';
+        var i_id = $('#i_id').val();
+        var action = 'rej';
+
+        $.post(url,{_token:token,i_id:i_id,action:action},function(data){
+            location.reload();
+        });
+
+      });
+
+
+      function approveInvite(i_id){
+
+        $('#approve_invite_container').fadeToggle('fast');
+
+        $('#i_id').val(i_id);
+      }
 
       function tDetail(id){
 

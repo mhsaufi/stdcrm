@@ -238,17 +238,28 @@ class EventController extends Controller
         return "Success";
     }
 
-    public function invite(Request $request){
+    public function invite(Request $request){ 
 
         $user = $request->input('client');
         $vendors = $request->input('vendors');
         $item_id = $request->input('item_id');
 
+
+        // if user is customer, can invite without approval
+        if(Auth::user()->role_id == 5){
+
+            $status_id = '0';
+
+        }else{
+
+            $status_id = '2';
+        }
+
         $inboxcontroller = new InboxController;
 
         if($user <> null || $user <> ''){
             //v2c invitation
-            $result = $inboxcontroller->newInbox(Auth::user()->company_id, $user,'2','','', $item_id);
+            $result = $inboxcontroller->newInbox(Auth::user()->company_id, $user,'2','','', $item_id, '0');
         }
 
         if($vendors == null || $vendors == ''){
@@ -258,10 +269,30 @@ class EventController extends Controller
             
             foreach($vendors as $vendor){
                 //v2v invitation
-                $result = $inboxcontroller->newInbox(Auth::user()->company_id, $vendor,'4','','', $item_id);
+                $result = $inboxcontroller->newInbox(Auth::user()->company_id, $vendor,'4','','', $item_id, $status_id);
             }
         }
 
+        return "Success";
+    }
+
+    public function approveinvite(Request $request){
+
+        $i_id = $request->input('i_id');
+        $action = $request->input('action');
+
+        $inbox = new WEventInbox;
+
+        if($action == 'app'){
+
+            $update = $inbox->where('i_id', $i_id)->update(['i_status_id'=> '0']);
+
+        }else{
+
+            $update = $inbox->where('i_id', $i_id)->update(['i_status_id'=> '4']);
+        }
+
+    
         return "Success";
     }
 
