@@ -21,7 +21,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('myasset/summernote-master/summernote/summernote-lite-bs3.css')}}">
     <style type="text/css">
       .pattern {
-        background: #eaeded!important;
+        background: #FFFBE5!important;
       }
 
       #std_timline_form {
@@ -201,7 +201,7 @@
         -moz-box-shadow: 0 0 5px #888;
         -webkit-box-shadow: 0 0 5px#888;
         box-shadow: 0 0 2px #888;
-        margin: 20px 0 10px 0;
+        margin: 20px 0 5px 0;
       }
 
       #std-timeline-banner-option-popup {
@@ -770,7 +770,6 @@
             </div>
           </div>
         </div>
-        <br>
 
         <!-- ========= Notification sidebar ==================  -->
 
@@ -910,7 +909,7 @@
             <div class="std-timeline">
               @if($data_event['user_id'] != 0)              
               <div class="form_switch" id="form-switch">
-                <div><i class="fas fa-angle-down" id="arrow_icon"></i><span id="form-switch-text">View timeline form</span></div>
+                <div><i class="fas fa-angle-down" id="arrow_icon"></i><span id="form-switch-text">Show timeline form</span></div>
               </div>
               @endif
               <div id="std_timline_form">

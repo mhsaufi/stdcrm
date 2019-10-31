@@ -4,9 +4,10 @@
 	<title>Profile</title>
 	@include('templates.header')
 	<link rel='stylesheet' 	href="{{asset('myasset/dropzone-master/dist/dropzone.css')}}"/>
+	<link rel="stylesheet" type="text/css" href="{{asset('myasset/std_rating/std_rating.css')}}">
 	<style type="text/css">
 		.grey-background {
-			background: #EEE;
+			background: #FFFBE5;
 		}
 		.half-vertical {
 			width: 100%;
@@ -69,109 +70,7 @@
 			margin-left: 300px;
 			/*background: blue;*/
 		}
-		.rate-space {
-			position: absolute;
-			top: 0;
-			right: 0;
-			/*background: red;*/
-			margin-top: 5px;
-			margin-right: 40px;
-			font-size: 1.1em;
-		}
-		.rate {
-     		color: #FFC300;
-    	}
-    	.rate-o {
-     		color: #CACACA;
-    	}
-		.section-header {
-			margin-top: 20px;
-			height: 300px;
-			/*background: yellow;*/
-		}
-		.section-sub-header {
-			height: 40%;
-			/*background: #ff0068;*/
-			background: #fff;
-		}
-		.section-profile-img {
-			/*background: blue;*/
-			z-index: 9999;
-			height: 200px;
-			width: 200px;
-			position: absolute;
-			top: 1;
-			margin-top: 50px;
-			margin-left: 40px;
-			display: flex;
-			justify-content: center;
-			align-items: center; 
-			cursor: pointer;
-		}
-
-		.std_info {
-			font-weight: bold;
-		}
-		.std-label {
-			opacity: 0.8;
-			font-style: italic;
-			font-size: 0.9em;
-		}
-		.tags-space {
-			margin-top: 40px;
-			margin-left: 300px;			
-		}			
-		.tags {
-			background: #888;
-			color: #fff;
-			padding: 8px 10px;
-			font-size: 1.0em;
-			border-radius: 5px;
-			border: 0.1em solid #999;
-			margin-right: 1px;			
-		}
-		.vend_pic{
-	    	height: 200px;
-	    	width: 200px;
-	    	border-radius: 50%;
-	    	border: 10px solid #fff;
-	    	object-fit: cover;
-	    }
-
-	    .vend_pic:hover {
-	    	border: 10px solid #f8f8f8;
-	    }
-
-	    #dp_uploader_container {
-	    	display: none;
-	    	position: absolute;
-	    	min-height: 40%;
-	    	width: 20%;
-	    	top: 30%;
-	    	left: 40%;
-	    	background: white;  
-	        padding: 20px 20px;
-	        border-radius: 5px;
-	        -moz-box-shadow: 0 0 5px #888;
-	        -webkit-box-shadow: 0 0 5px#888;
-	        box-shadow: 0 0 2px #888;
-	    }
-
-	    #logo_uploader_container {
-	    	display: none;
-	    	position: absolute;
-	    	min-height: 40%;
-	    	width: 20%;
-	    	top: 30%;
-	    	left: 40%;
-	    	background: white;  
-	        padding: 20px 20px;
-	        border-radius: 5px;
-	        -moz-box-shadow: 0 0 5px #888;
-	        -webkit-box-shadow: 0 0 5px#888;
-	        box-shadow: 0 0 2px #888;
-	    }
-
+		
 	    .company_logo_container {
 	    	 float: right;
 	    }
@@ -204,52 +103,11 @@
 <body class="grey-background">
 	<!-- Header Area wrapper Starts -->
     <header id="header-wrap">
-      @include('templates.navbar')
+	@include('templates.navbar')
     </header>
     <!-- Header Area wrapper End -->
     <br>
-
-    <div class="section-padding">
-    	<div class="container">
-    		<div class="section-header">
-    			<div class="section-profile-img" id="uploader_trigger">
-    				@if(Auth::user()->dp == '')
-    				<img class="vend_pic" src="{{asset('myasset/img/default.jpeg')}}">
-    				@else
-    				<img class="vend_pic" src="{{asset('storage/'.Auth::user()->dp)}}">
-    				@endif
-    			</div>
-		    	<div class="section-sub-header">
-		    		<div class="half-vertical" style="background: #fff;">
-		    			
-		    		</div>
-		    		<div class="half-vertical" style="background: #fff;">
-		    			<div class="info-panel">
-		    				<div>
-			    				<h4 style="opacity: 0.8;color: #ff0068;">{{ Auth::user()->name }}</h4>
-			    				<span style="font-style: italic;font-size: 1.1em ;color: grey;opacity: 0.7;">
-				    				{{ Auth::user()->email }}
-				    			</span>
-				    		</div>
-		    			</div>
-	    				<div class="rate-space">
-	    					<i class="fa fa-star rate"></i>
-		    				<i class="fa fa-star rate"></i>
-		    				<i class="fa fa-star rate"></i>
-		    				<i class="fa fa-star rate"></i>
-		    				<i class="fa fa-star rate-o"></i>
-	    				</div>
-		    		</div>
-		    	</div>
-		    	<div class="tags-space">
-		    		@foreach($tag_list as $tag)
-		    			<span class="tags">#{{ $tag['category']['cc_title'] }}</span>
-		    		@endforeach
-    				
-    			</div>
-		    </div>
-    	</div>
-    </div>
+	@include('templates.vendor_profile_header')
 
 	<div class="container" style="margin-top: -160px!important;padding-bottom: 100px!important;">
 		<div class="section-header">
