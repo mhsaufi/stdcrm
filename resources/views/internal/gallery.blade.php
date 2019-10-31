@@ -6,17 +6,17 @@
 	<script src="{{asset('myasset/js/jquery-min.js')}}"></script>
 	<link rel="stylesheet" href="{{asset('myasset/justified/jquery.justified.css')}}"/>
 	<script src="{{asset('myasset/unitegallery-master/dist/js/unitegallery.min.js')}}"></script>
-	<link rel='stylesheet' href="{{asset('myasset/unitegallery-master/dist/css/unite-gallery.css')}}"/> 
-	<!-- <script src="{{asset('myasset/unitegallery-master/dist/themes/default/ug-theme-default.js')}}"></script>  -->
+	<link rel='stylesheet' href="{{asset('myasset/unitegallery-master/dist/css/unite-gallery.css')}}"/>
 	<script src="{{asset('myasset/unitegallery-master/dist/themes/tiles/ug-theme-tiles.js')}}"></script>
 	<link rel='stylesheet' href="{{asset('myasset/unitegallery-master/dist/themes/default/ug-theme-default.css')}}"/>
 	<link rel='stylesheet' 	href="{{asset('myasset/unitegallery-master/dist/skins/alexis/alexis.css')}}"/>
 	<link rel='stylesheet' 	href="{{asset('myasset/dropzone-master/dist/dropzone.css')}}"/>
+	<link rel="stylesheet" type="text/css" href="{{asset('myasset/std_rating/std_rating.css')}}">
 	<style type="text/css">
 
 
 		.grey-background {
-			background: #EEE;
+			background: #FFFBE5;
 		}
 		.half-vertical {
 			width: 100%;
@@ -47,35 +47,7 @@
 			margin-right: 40px;
 			font-size: 1.1em;
 		}
-		.rate {
-     		color: #FFC300;
-    	}
-    	.rate-o {
-     		color: #CACACA;
-    	}
-		.section-header {
-			margin-top: 20px;
-			height: 300px;
-			/*background: yellow;*/
-		}
-		.section-sub-header {
-			height: 40%;
-			/*background: #ff0068;*/
-			background: #fff;
-		}
-		.section-profile-img {
-			/*background: blue;*/
-			z-index: 90;
-			height: 200px;
-			width: 200px;
-			position: absolute;
-			top: 1;
-			margin-top: 50px;
-			margin-left: 40px;
-			display: flex;
-			justify-content: center;
-			align-items: center; 
-		}
+
 		.std_info {
 			font-weight: bold;
 		}
@@ -84,19 +56,7 @@
 			font-style: italic;
 			font-size: 0.9em;
 		}
-		.tags-space {
-			margin-top: 40px;
-			margin-left: 300px;			
-		}			
-		.tags {
-			background: #888;
-			color: #fff;
-			padding: 8px 10px;
-			font-size: 1.0em;
-			border-radius: 5px;
-			border: 0.1em solid #999;
-			margin-right: 1px;			
-		}
+		
 		.vend_pic{
 	    	height: 200px;
 	    	width: 200px;
@@ -151,46 +111,7 @@
     <!-- Header Area wrapper End -->
     <br>
 
-    <div class="section-padding">
-    	<div class="container">
-    		<div class="section-header">
-    			<div class="section-profile-img">
-    				@if(Auth::user()->dp == '')
-    				<img class="vend_pic" src="{{asset('myasset/img/default.jpeg')}}">
-    				@else
-    				<img class="vend_pic" src="{{asset('storage/'.Auth::user()->dp)}}">
-    				@endif
-    			</div>
-		    	<div class="section-sub-header">
-		    		<div class="half-vertical" style="background: #fff;">
-		    			
-		    		</div>
-		    		<div class="half-vertical" style="background: #fff;">
-		    			<div class="info-panel">
-		    				<div>
-			    				<h4 style="opacity: 0.8;color: #ff0068;">{{ Auth::user()->name }}</h4>
-			    				<span style="font-style: italic;font-size: 1.1em ;color: grey;opacity: 0.7;">
-				    				{{ Auth::user()->email }}
-				    			</span>
-				    		</div>
-		    			</div>
-	    				<div class="rate-space">
-	    					<i class="fa fa-star rate"></i>
-		    				<i class="fa fa-star rate"></i>
-		    				<i class="fa fa-star rate"></i>
-		    				<i class="fa fa-star rate"></i>
-		    				<i class="fa fa-star rate-o"></i>
-	    				</div>
-		    		</div>
-		    	</div>
-		    	<div class="tags-space">
-    				@foreach($tag_list as $tag)
-		    			<span class="tags">#{{ $tag['category']['cc_title'] }}</span>
-		    		@endforeach
-    			</div>
-		    </div>
-    	</div>
-    </div>
+    @include('templates.vendor_profile_header')
 
 	<div class="container" style="margin-top: -160px!important;">
 		<div class="section-header">

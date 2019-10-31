@@ -163,9 +163,8 @@ Route::get('/contact','ContactController@index')->middleware('auth');
 Route::get('/insider','InsiderController@index')->middleware('auth');
 Route::post('/activation','InsiderController@activationStaff');
 
+// ---------------------------------------  ADMIN SECTION
 
-
-
-// Route::get('/testdb','TimelineController@test');
-Route::get('/testdb','UtilitiesController@dashboardController');
-
+Route::get('/controlcenter',function(){
+    return view('admin.auth.login');
+});
