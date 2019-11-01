@@ -168,3 +168,5 @@ Route::post('/activation','InsiderController@activationStaff');
 Route::get('/controlcenter',function(){
     return view('admin.auth.login');
 });
+
+Route::post('/cardsdata','AdminControllerHome@dashboardData');
