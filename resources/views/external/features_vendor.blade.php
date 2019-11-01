@@ -74,7 +74,7 @@
 
       .features_directory_main > div:hover ,.features_directory_child > div:hover {
         color: #d4af37;
-      }
+      } 
 
       .features_content {
         width: 80%;
