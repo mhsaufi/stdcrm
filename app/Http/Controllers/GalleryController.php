@@ -6,6 +6,7 @@ use App\Attachment;
 use App\Company;
 use App\CompanyCategoryTag;
 use App\User;
+use App\Http\Controllers\UtilitiesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -22,7 +23,11 @@ class GalleryController extends Controller
 
         $tag_list = $tag->where('company_id',Auth::user()->company_id)->get();
 
-    	return view('internal.gallery', compact('result','tag_list'));
+        $utilities = new UtilitiesController;
+
+        $rate = $utilities->companyRating(Auth::user()->company_id);
+
+    	return view('internal.gallery', compact('result','tag_list','rate'));
     }
 
     public function uploadPhoto(Request $request){

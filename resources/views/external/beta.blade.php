@@ -99,11 +99,11 @@
 
     .vendor_cards {
       position: relative;
-      width: 350px;
+      width: 380px;
       height: 250px;
       min-height: 220px;
       /*background: yellow;*/
-      margin: 15px 15px;
+      margin: 15px 10px;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -190,6 +190,14 @@
       #std_search_btn:hover {
         opacity: 0.9;
       }
+
+      .above_2 {
+        justify-content: space-between;
+      }
+
+      .below_2 {
+        justify-content: flex-start;
+      }
 	 </style>
 
 </head>
@@ -231,7 +239,11 @@
     	</div>
 
       <div class="big_container">
-        <div class="result_container">
+        @if($p_count > 2)
+        <div class="result_container above_2">
+        @else
+        <div class="result_container below_2">
+        @endif
           
           @foreach($result as $r)
           <div class="vendor_cards" onclick="viewVendors('{{ $r['company_id'] }}','{{ $r['company_name']}}')">

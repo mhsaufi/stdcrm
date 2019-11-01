@@ -319,8 +319,6 @@
         <div class="result_container below_2">
         @endif
         
-
-
           @foreach($p_result as $p)
           <div class="package_cards" data-pid="{{ $p['package_id'] }}" data-name="{{ $p['package_title'] }}" data-item-name="{{ $p['package_title'] }}" data-content-category="View Package" data-content-author="{{ $p['company']['company_name'] }}">
             <div style="height: 20%;width: 100%;background: white;z-index: 71;display: flex;flex-direction: column;justify-content: space-between;" id="p_title">

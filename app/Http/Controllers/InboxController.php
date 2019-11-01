@@ -68,7 +68,7 @@ class InboxController extends Controller
         return $mailbox_data;
     }
 
-    public function newInbox($i_sender_id, $i_recipient_id, $i_type_id, $i_subject,$i_content, $i_item_id){
+    public function newInbox($i_sender_id, $i_recipient_id, $i_type_id, $i_subject,$i_content, $i_item_id, $i_status_id){
 
     	$inbox = new WEventInbox;
 
@@ -78,6 +78,7 @@ class InboxController extends Controller
         $inbox->i_subject = $i_subject;
         $inbox->i_content = $i_content;
         $inbox->i_item_id = $i_item_id;
+        $inbox->i_status_id = $i_status_id;
 
         $inbox->save();
 
@@ -145,6 +146,7 @@ class InboxController extends Controller
         $inbox->i_subject = $subject;
         $inbox->i_content = $content;
         $inbox->i_item_id = $i_type_id;
+        $inbox->i_status_id = '0';
 
         $inbox->save();
 

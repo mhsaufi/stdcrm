@@ -32,6 +32,7 @@
         /*background-image: url("{{asset('myasset/img/bg1.jpg')}}");*/
         background-repeat: no-repeat;
         background-size: cover;
+        background: #FFFBE5;
         height: 250px !important;
       }
 

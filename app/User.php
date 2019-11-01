@@ -56,4 +56,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\WEventTimeline');
     }
+
+    public function inbox()
+    {
+        return $this->belongsTo('App\WEventInbox');
+    }
 }

@@ -22,8 +22,10 @@
           </li>             
 
           <li class="nav-item">
-            <a class="nav-link black" href="{{ url('/events') }}" data-list-name="Events" data-content-category="Header">Events</a>
-          </li>              
+              <a class="nav-link black" href="{{ url('/features') }}" data-list-name="How it works" data-content-category="Header">
+              <i class="fas fa-question-circle"></i> How it works
+              </a>
+          </li>             
 
           <li class="nav-item">
             <a class="nav-link black" href="{{ url('/iaffair') }}" data-list-name="iAffair" data-content-category="Header">

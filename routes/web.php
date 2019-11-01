@@ -144,6 +144,7 @@ Route::post('/deletetimeline','TimelineController@deleteTimeline');
 
 Route::post('/listeventvendor','UtilitiesController@listEventVendors');
 Route::post('/invite','EventController@invite'); // invite vendor into event
+Route::post('/approveinvitation','EventController@approveinvite');
 Route::post('/addcontact','ContactController@addContact'); // add vendor as contact
 
 Route::post('/updateevent','EventController@updateEvent');
@@ -162,9 +163,10 @@ Route::get('/contact','ContactController@index')->middleware('auth');
 Route::get('/insider','InsiderController@index')->middleware('auth');
 Route::post('/activation','InsiderController@activationStaff');
 
+// ---------------------------------------  ADMIN SECTION
 
+Route::get('/controlcenter',function(){
+    return view('admin.auth.login');
+});
 
-
-// Route::get('/testdb','TimelineController@test');
-Route::get('/testdb','UtilitiesController@dashboardController');
-
+Route::post('/cardsdata','AdminControllerHome@dashboardData');

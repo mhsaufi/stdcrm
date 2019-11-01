@@ -17,6 +17,11 @@ class Company extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function inbox()
+    {
+        return $this->belongsTo('App\WEventInbox');
+    }
+
     public function userReverse()
     {
         return $this->hasOne('App\User','id','user_id');

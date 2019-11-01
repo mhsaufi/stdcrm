@@ -9,8 +9,10 @@ use App\CompanyPackage;
 use App\TimelineCategory;
 use App\WEvent;
 use App\WEventInbox;
+use App\Http\Controllers\AdminControllerHome as Admin;
 use App\Http\Controllers\TimelineController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\UtilitiesController;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -70,7 +72,7 @@ class HomeController extends Controller
 
             }
 
-        }else{
+        }else if(Auth::user()->role_id == '3'){
 
             if(Auth::user()->status_id == '1'){ // if active
 
@@ -90,7 +92,15 @@ class HomeController extends Controller
 
                 return $temp_dashboard;
             }
-        }    
+
+        }else if(Auth::user()->role_id == '0'){
+
+            $admin = new Admin;
+
+            $admin_page = $admin->index();
+
+            return $admin_page;
+        }
     }
 
     public function profile(){
@@ -107,7 +117,11 @@ class HomeController extends Controller
 
             $tag_list = $tag->where('company_id',Auth::user()->company_id)->get();
 
-            return view('internal.beta',compact('c_info','logo','tag_list'));
+            $utilities = new UtilitiesController;
+
+            $rate = $utilities->companyRating(Auth::user()->company_id);
+
+            return view('internal.beta',compact('c_info','logo','tag_list','rate'));
 
         }else if(Auth::user()->role_id == '5' || Auth::user()->role_id == '4'){
 

@@ -10,6 +10,7 @@ use App\CompanyPackage;
 use App\TimelineCategory;
 use App\User;
 use App\WEvent;
+use App\WEventInbox;
 use App\WEventTimeline;
 use App\WEventVendors;
 use App\Template;
@@ -52,6 +53,20 @@ class TimelineController extends Controller
         $data_event['we_time2_timepicker'] = $carbon->format('h:i A');
 
         //--------------------------------------------------
+
+        // get all if there is any invitation to approve
+
+        if(Auth::user()->role_id == '5'){
+
+            $inbox = new WEventInbox;
+
+            $inbox_data = $inbox->where('i_item_id',$we_id)->where('i_type_id','4')->where('i_status_id','2')->get();
+
+        }else{
+
+            $inbox_data = '';
+
+        }
 
         // get all package under this event's company for editing purpose in case want to change package
 
@@ -231,7 +246,7 @@ class TimelineController extends Controller
         //--------------------------------------------------
 
     	return view('internal.timeline', 
-            compact('data_event','d_vendors','data_vendors','data_noti','categories','vendors_users','all_users_data','all_company_data','package_data','payment_data'));
+            compact('data_event','d_vendors','data_vendors','data_noti','categories','vendors_users','all_users_data','all_company_data','package_data','payment_data','inbox_data'));
     }
 
     public function createTimeline(Request $request){
