@@ -2857,11 +2857,11 @@ blockquote.pull-right {
 }
 /* END SWITCH */
 /* PAGINATION */
-.pagination {
+/*.pagination {
   width: 100%;
   margin: 10px 0px;
-}
-.pagination > li > a,
+}*/
+/*.pagination > li > a,
 .pagination > li > span {
   margin-left: 3px;
   -moz-border-radius: 3px;
@@ -2879,8 +2879,8 @@ blockquote.pull-right {
   background: #1b1e24;
   color: #FFF;
   border-color: #1b1e24;
-}
-.pagination.pagination-sm {
+}*/
+/*.pagination.pagination-sm {
   margin: 0px;
   width: auto;
 }
@@ -2889,7 +2889,7 @@ blockquote.pull-right {
 }
 .pagination.pagination-sm.push-up-20 {
   margin-top: 20px;
-}
+}*/
 /* END PAGINATION */
 /* POPOVER */
 .popover {

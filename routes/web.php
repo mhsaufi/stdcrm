@@ -175,3 +175,4 @@ Route::get('/recordevents','AdminControllerEvents@index');
 
 Route::post('/cardsdata','AdminControllerHome@dashboardData');
 Route::get('/userslist','AdminControllerUsers@listAll');
+Route::get('/vendorslist','AdminControllerVendors@listAll');

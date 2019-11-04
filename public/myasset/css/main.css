@@ -18,7 +18,7 @@ h1 {
   font-size: 36px;
 }
 
-h2 {
+h2 { 
   font-size: 30px;
 }
 
@@ -245,7 +245,8 @@ ul, ol {
 .tags-space {
   margin-top: 40px;
   margin-left: 300px;     
-}     
+}
+
 .tags {
   background: #888;
   color: #fff;
@@ -255,6 +256,7 @@ ul, ol {
   border: 0.1em solid #999;
   margin-right: 1px;      
 }
+
 
 .rate-space {
   position: absolute;
@@ -277,6 +279,16 @@ ul, ol {
   background: #fff;
   border: 0.05em solid #dcdcdc;
 }
+
+.info-panel {
+    margin-left: 300px;
+    /*background: blue;*/
+  }
+
+.info-panel-2 {
+  padding: 0 15px 0 15px;
+}
+
 .section-profile-img {
   /*background: blue;*/
   z-index: 99;

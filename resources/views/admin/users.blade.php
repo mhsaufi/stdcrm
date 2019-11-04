@@ -13,7 +13,16 @@
         <!-- CSS INCLUDE -->        
         <link rel="stylesheet" type="text/css" id="theme" href="{{ asset('admin/css/theme-default.css') }}"/>
         <link rel="stylesheet" type="text/css" href="DataTablesBS4/datatables.min.css"/>
-        <!-- EOF CSS INCLUDE -->                                     
+        <!-- EOF CSS INCLUDE -->  
+        <style>
+            .table_additional_option {
+                position: absolute;
+                margin: 0 auto!important;
+                height: 30px;
+                width: 95%;
+                /*background: blue;*/
+            }
+        </style>                                  
     </head>
     <body>
         <!-- START PAGE CONTAINER -->
@@ -109,6 +118,7 @@
                                     </ul>                                
                                 </div>
                                 <div class="panel-body">
+                                    <div class="table_additional_option"></div>
                                     <table class="table datatable">
                                         <thead>
                                             <tr>

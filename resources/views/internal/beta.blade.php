@@ -66,10 +66,6 @@
 			margin-right: 30px;
 			margin-top: 20px;
 		}
-		.info-panel {
-			margin-left: 300px;
-			/*background: blue;*/
-		}
 		
 	    .company_logo_container {
 	    	 float: right;
