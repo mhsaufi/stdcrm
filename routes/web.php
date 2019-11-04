@@ -169,4 +169,9 @@ Route::get('/controlcenter',function(){
     return view('admin.auth.login');
 });
 
+Route::get('/recordusers','AdminControllerUsers@index');
+Route::get('/recordvendors','AdminControllerVendors@index');
+Route::get('/recordevents','AdminControllerEvents@index');
+
 Route::post('/cardsdata','AdminControllerHome@dashboardData');
+Route::get('/userslist','AdminControllerUsers@listAll');
