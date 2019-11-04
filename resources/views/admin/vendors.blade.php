@@ -147,29 +147,13 @@
         </div>
         <!-- END PAGE CONTAINER -->       
         
-        <!-- MESSAGE BOX-->
-        <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
-            <div class="mb-container">
-                <div class="mb-middle">
-                    <div class="mb-title"><span class="fa fa-sign-out"></span> Log <strong>Out</strong> ?</div>
-                    <div class="mb-content">
-                        <p>Are you sure you want to log out?</p>                    
-                        <p>Press No if youwant to continue work. Press Yes to logout current user.</p>
-                    </div>
-                    <div class="mb-footer">
-                        <div class="pull-right">
-                            <a href="pages-login.html" class="btn btn-success btn-lg">Yes</a>
-                            <button class="btn btn-default btn-lg mb-control-close">No</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!-- MESSAGE BOX--> 
+        @include('admin.templates.logout')
         <!-- END MESSAGE BOX-->
 
         <div class="confirm_remove_container">
             <div class="confirm_remove_container_child fade-in-top">
-                <div class="confirm_header">Remove Selected Vendor(s)</div>
+                <div class="confirm_header bg-standard">Remove Selected Vendor(s)</div>
                 <div class="confirm_content">
                     <div style="padding-top: 3%;">
                         <p>Are you sure you want to remove selected vendor(s)?</p>
@@ -182,17 +166,22 @@
             </div>
         </div>
 
-        <!-- START PRELOADS -->
-        <audio id="audio-alert" src="audio/alert.mp3" preload="auto"></audio>
-        <audio id="audio-fail" src="audio/fail.mp3" preload="auto"></audio>
-        <!-- END PRELOADS -->                       
-        
-    <!-- START SCRIPTS -->
-        <!-- START PLUGINS -->
-        <script type="text/javascript" src="{{ asset('admin/js/plugins/jquery/jquery.min.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('admin/js/plugins/jquery/jquery-ui.min.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('admin/js/plugins/bootstrap/bootstrap.min.js') }}"></script>        
-        <!-- END PLUGINS -->                
+        <div class="confirm_remove_all_container">
+            <div class="confirm_remove_all_child fade-in-top">
+                <div class="confirm_header bg-harmfull">Remove All Vendors/Companies</div>
+                <div class="confirm_content">
+                    <div style="padding-top: 3%;">
+                        <p>Are you sure you want to remove all registered vendors?</p>
+                    </div>
+                    <div style="width: 100%;display: flex;flex-direction: row;justify-content: space-around;margin-top: 10px;">
+                        <button class="remove_all_button_cancel">Cancel</button>
+                        <button class="remove_all_button_confirm">Remove</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       @include('admin.templates.scripts')                
 
         <!-- THIS PAGE PLUGINS -->
         <script type='text/javascript' src="{{ asset('admin/js/plugins/icheck/icheck.min.js') }}"></script>        
@@ -212,7 +201,7 @@
         <script>
             var APP_URL = "{!! url('/') !!}";
 
-            $(document).ready(function() {
+            $(document).ready(function(){
 
                 var url = APP_URL + '/vendorslist';
                 
@@ -241,7 +230,6 @@
                         onresize(100);
                     });
 
-
                     var table = $(".datatable").DataTable();
 
                     var obj;
@@ -263,18 +251,29 @@
                         }else{
 
                             $('.confirm_remove_container').fadeIn('fast');
-                            $('.confirm_remove_container_child').removeClass('slide-out-top')
+                            $('.confirm_remove_container_child').removeClass('slide-out-top');
                         }
                     });
                 }
 
-
-                $('.remove_button_cancel').click(function(){
+                $('.remove_button_cancel').on('click',function(){
 
                     $('.confirm_remove_container_child').addClass('slide-out-top').parent().fadeOut('fast');
                 });
 
-            } );
+            });
+
+            $('#remove_all').click(function(){
+
+                $('.confirm_remove_all_container').fadeIn('fast');
+                $('.confirm_remove_all_child').removeClass('slide-out-top');
+
+            });
+
+            $('.remove_all_button_cancel').on('click',function(){
+
+                $('.confirm_remove_all_child').addClass('slide-out-top').parent().fadeOut('fast');
+            });
         </script>
     <!-- END SCRIPTS --> 
         

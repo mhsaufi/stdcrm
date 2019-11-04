@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class AdminControllerUsers extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index(Request $request){
 
     	return view('admin.users');
@@ -85,7 +90,6 @@ class AdminControllerUsers extends Controller
     	}else{
 
     		$query = $query->orderBy('name',$sortDir);
-
     	}
 
     	$data = $query->get();
@@ -106,6 +110,5 @@ class AdminControllerUsers extends Controller
     	$main_array = ['draw'=>$draw,'recordsTotal'=>$total,'recordsFiltered'=>$total,'data'=>$data_arr];
 
     	return json_encode($main_array);
-
     }
 }
