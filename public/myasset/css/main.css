@@ -258,6 +258,25 @@ ul, ol {
 }
 
 
+.ext-tags-space {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;  
+}
+
+.ext-tags {
+  background: #888;
+  color: #fff;
+  padding: 8px 10px;
+  font-size: 1.0em;
+  border-radius: 5px;
+  border: 0.1em solid #999;
+  margin-right: 10px;
+  margin-bottom: 10px;    
+}
+
+
 .rate-space {
   position: absolute;
   top: 0;

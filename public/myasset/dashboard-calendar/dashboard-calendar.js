@@ -70,7 +70,13 @@ $.post(url,function(result){
     $('#year_label').html(value.year_text);
   });
 
-  $('#event_cal').html(string).effect('slide','fast'); // replace empty div event_cal with HTML string currently built
+  // $('#event_cal').html(string).effect('slide','fast'); // replace empty div event_cal with HTML string currently built
+  $('#event_cal').html(string).addClass('bounceInLeft').one('animationend',function(){
+
+    $(this).removeClass('bounceInLeft');
+
+  });
+
 
   $('#timepicker').timepicker(); // init timepicker
 
@@ -141,7 +147,13 @@ $('#plus').click(function(){
 
     });
 
-    $('#event_cal').html(string).effect('slide',{direction:"right"},'fast');
+    // $('#event_cal').html(string).effect('slide',{direction:"right"},'fast');
+    $('#event_cal').html(string).addClass('bounceInRight').one('animationend',function(){
+
+      $(this).removeClass('bounceInRight');
+
+    });
+
   });
 });
 
@@ -207,6 +219,11 @@ $('#minus').click(function(){
       $('#year_label').html(value.year_text);
     });
 
-    $('#event_cal').html(string).effect('slide','fast');
+    // $('#event_cal').html(string).effect('slide','fast');
+    $('#event_cal').html(string).addClass('bounceInLeft').one('animationend',function(){
+
+      $(this).removeClass('bounceInLeft');
+
+    });
   });
 });

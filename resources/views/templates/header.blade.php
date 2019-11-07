@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('myasset/css/extras.css')}}">
     <!-- Responsive Style -->
     <link rel="stylesheet" type="text/css" href="{{asset('myasset/css/responsive.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('myasset/css/animate-std.css')}}">
 
     <link rel="stylesheet" type="text/css" href="{{asset('myasset/mobile_menu/mobile_menu.css')}}">
 

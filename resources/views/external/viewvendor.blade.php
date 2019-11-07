@@ -215,23 +215,6 @@
       color: white;
       text-shadow: 5px 5px 10px black!important;
     }
-    .tags-space {
-      width: 100%;
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: space-between;
-    }     
-    .tags {
-      background: #888;
-      color: #fff;
-      padding: 8px 10px;
-      font-size: 1.0em;
-      border-radius: 5px;
-      border: 0.1em solid #999;
-      margin-right: 1px; 
-      margin-bottom: 15px;     
-    }
-
     .our_team_container {
       height: 180px;
       width: 180px;
@@ -395,9 +378,9 @@
               @endif
             </p>
             <br><br>
-            <div class="tags-space">
+            <div class="ext-tags-space">
               @foreach($tag_list as $tag)
-                <span class="tags">#{{ $tag['category']['cc_title'] }}</span>
+                <span class="ext-tags">#{{ $tag['category']['cc_title'] }}</span>
               @endforeach
             </div>
             <br><br>

@@ -643,6 +643,13 @@
 				$('#tab_1').removeClass('active-tab');$('#tab_2').removeClass('active-tab');$('#tab_3').addClass('active-tab');
 			});
 
+			$('.company_logo_insider').each(function(){
+
+				var logo = $(this);
+
+				logo.addClass('animated zoomIn faster');
+			});
+
 		});
 
 		$('.action_col_deactivate').each(function(){

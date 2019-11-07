@@ -189,7 +189,7 @@
           <div id="year_label" style="padding: 5px 10px;border-bottom: 0.05em solid #d4af37;"></div>
           <a href="#" class="slide_btn next round" id="plus">&#8250;</a>
         </div><br>     
-        <div class="row-forecast" id='event_cal'>
+        <div class="row-forecast animated faster" id='event_cal'>
           
         </div>
       </div>

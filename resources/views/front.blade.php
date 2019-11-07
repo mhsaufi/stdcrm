@@ -546,7 +546,7 @@
         
     </div>
     <div id="div_logo">
-        <div id="logo_text_container">
+        <div id="logo_text_container" class="animated bounceInDown">
         <img src="{{asset('myasset/img/logo.png')}}" class="slide-text fadeIn" id="std_logo" /> 
         <p id="std_logo_text">Every love story is beautiful, but yours should be unique. 
         <br><br>Let us help you design your perfect wedding event.</p>
