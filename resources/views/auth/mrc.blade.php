@@ -9,6 +9,8 @@
 
     @include('templates.header')
 
+    <link rel="stylesheet" type="text/css" href="{{asset('myasset/css/animate-std.css')}}">
+
     <style type="text/css">
 
       #label-category{
@@ -112,13 +114,13 @@
     <div class="merchant-option">
 
       <div class="merchant-section">
-        <div style="width: 30%; margin-top:-7%;"><img src="{{asset('myasset/img/pm.png')}}" id="pm" /></div>
+        <div style="width: 30%; margin-top:-7%;"><img src="{{asset('myasset/img/pm.png')}}" id="pm" class="animated rollIn fast" /></div>
 
-        <div style="width: 70%;">
+        <div style="width: 70%;" class="animated fadeIn slow" >
           <p>Client relationships are extremely important for vendors to master. The experience you provide for them often determines how smooth the event completion is. Not only that, but how clients feel about your service stand to greatly impact your reputation with future customers.</p>
           <p>That’s not to say that vendors are solely responsible for managing the client. Clients also have a duty to be clear in what they expect so that there can be no miscommunication going forward.</p>
           <p>In order to help your business, we’ve set a standard ways to manage your clients straight via our service.</p>
-          <div style="width: 100%;display: flex;flex-direction: row;justify-content: flex-end;margin-top: 5%;">
+          <div style="width: 100%;display: flex;flex-direction: row;justify-content: flex-end;margin-top: 5%;" class="animated fadeInRight fast" >
             <button id="reg-btn">Register Now</button>
           </div>
         </div>
