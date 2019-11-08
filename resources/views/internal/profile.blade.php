@@ -48,7 +48,7 @@
 			position: absolute;			
 			display: flex;
 			flex-direction: row;
-			justify-content: center;
+			justify-content: space-around;
 			min-width: 100%;
 			/* height: 100%; */
 			/* background:yellow; */
@@ -62,7 +62,7 @@
 		}
 
 		.right-space{
-			width: 60%;
+			width: 70%;
 			/* background: orange; */
 		}
 
