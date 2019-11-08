@@ -9,8 +9,13 @@
 
    <style>
     .bg {
-      background: #00695c;
+      /*background: linear-gradient(#039be5,#006064);*/
+      background: #009688;
       color: #fff;
+    }
+
+    .navbar-expand-lg .navbar-nav .nav-link {
+      color: white!important;
     }
 
     .btn-like {
@@ -67,11 +72,12 @@
     }
 
     .search-engine-panel {
-      display: flex block;
-      flex-direction: row;
+      display: flex;
+      flex-direction: column;
       justify-content: space-between;
       margin: 0 10%;
-      /*height: auto;*/
+      min-height: 50px;
+      /*background: blue;*/
     }
 
     .search-engine-panel > div {
@@ -79,7 +85,9 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      width: 30%!important;
+      width: 100%!important;
+      margin-bottom: 20px;
+      /*background: pink;*/
     }
 
     .search-result-panel {
@@ -90,7 +98,7 @@
       background: rgba(255,255,255,1);
     }
 
-    .big_container {
+    .big_container_o {
       width: 100%;
       display: flex;
       flex-direction: column;
@@ -133,12 +141,10 @@
     }
 
     .forms_std {
-      width: 100%;
+      width: 30%!important;
     }
 
     #std_search_btn {
-      position: absolute;
-      bottom: 0;
       padding: 8px 20px;
       background: #4caf50;
       color: white;
@@ -150,13 +156,14 @@
     }
 
     #std_search_btn:hover {
-      opacity: 0.9;
+      /*opacity: 0.9;*/
+      background: #7cb342;
     }
 
     .package_cards {
       position: relative;
       height: 330px!important;
-      width: 370px;
+      width: 350px;
       border-radius: 2px;
       -moz-box-shadow: 0 0 6px #888;
       -webkit-box-shadow: 0 0 6px#888;
@@ -276,7 +283,7 @@
     }
 
     @media (max-width: 700px){
-      .big_container {
+      .big_container_o {
         margin-bottom: 25px;
       }
 
@@ -287,22 +294,24 @@
       .search-engine-panel {
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: space-between;
         width: 100%;
         margin: 0!important;
         height: 250px;
         /*background: blue;*/
+        padding: 0 10%;
       }
 
-      .search-engine-panel div {
+      .search-engine-panel > div {
         width: 100%!important;
-        height: auto;
         /*background: pink;*/
+        border-radius: 3px;
       }
 
       .forms_std {
+        display: block;
         border: 0.01em solid #cdcdcd;
-        width: 100%;
+        width: 100%!important;
       }
 
       .select2-container .select2-selection--multiple {
@@ -323,8 +332,8 @@
     <div style="min-height: 100vh;">
     <!-- Feature Section Start -->
     <div class="section-padding">
-      <div class="big_container bg">
-        <div style="opacity: 0.7;padding: 20px 10%;">
+      <div class="big_container_o bg">
+        <div style="opacity: 0.7;padding: 20px 10% 5px 10%;">
           <p style="color: #fff">Browse for all available packages on our site offered by our vendors. All of our vendors comprises of best reviewed companies 
           to make sure your wedding happening the way you wished for</p>
         </div>
@@ -349,10 +358,9 @@
             <button id="std_search_btn">Search &nbsp&nbsp<i class="fas fa-search"></i></button>
           </div>
         </div>
-        <br>
-        <p style="margin-left: 10%;margin-top: 20px;color: #fff">{{ $p_count }} result(s) found</p>   
+        <p style="margin-left: 10%;color: #fff">{{ $p_count }} result(s) found</p>   
       </div>
-      <div class="big_container">
+      <div class="big_container_o">
         @if($p_count > 2)
         <div class="result_container above_2">
         @else

@@ -254,7 +254,7 @@
     <!-- Header Area wrapper Starts -->
     <header id="header-wrap">
       <!-- Navbar Start -->
-      <nav class="navbar navbar-expand-lg fixed-top scrolling-navbar indigo bg-white " 
+      <nav class="navbar navbar-expand-lg fixed-top scrolling-navbar indigo bg-white animated bounceInDown fast" 
         style="height: 70px!important;border-bottom: 3px inset #d4af37;">
         <div class="container">
           <div class="collapse navbar-collapse" id="main-navbar" >
@@ -548,8 +548,7 @@
     <div id="div_logo">
         <div id="logo_text_container" class="animated bounceInDown">
         <img src="{{asset('myasset/img/logo.png')}}" class="slide-text fadeIn" id="std_logo" /> 
-        <p id="std_logo_text">Every love story is beautiful, but yours should be unique. 
-        <br><br>Let us help you design your perfect wedding event.</p>
+        <p id="std_logo_text">Every love story is beautiful, but yours should be unique. Let us help you design your perfect wedding event.</p>
         
         </div>
         
@@ -565,7 +564,7 @@
     
     <!----------------- ------------------------------------------------------- Footer Section End-->
 
-    <div class="credit">
+    <div class="credit animated bounceInUp faster">
         <!-- Container Starts -->
         <div class="container" style="padding:1px;">
           <!-- Row Starts -->
@@ -645,20 +644,13 @@
             in: {
               // set the effect name
               effect: 'bounceInDown',
-
               // set the delay between each character
-              delay: 20,
-
+              delay: 5,
               // set to true to animate all the characters at the same time
               sync: false,
-
               // randomize the character sequence
               // (note that shuffle doesn't make sense with sync = true)
               shuffle: true,
-
-              // reverse the character sequence
-              // (note that reverse doesn't make sense with sync = true)
-              reverse: false
             }
           });
         }, function() {
@@ -667,16 +659,13 @@
             out: {
               // set the effect name
               effect: 'bounceOutUp',
-
               // set the delay between each character
               delay: 20,
-
               // set to true to animate all the characters at the same time
               sync: false,
-
               // randomize the character sequence
               // (note that shuffle doesn't make sense with sync = true)
-              shuffle: true
+              shuffle: true,
             }
           });
         }

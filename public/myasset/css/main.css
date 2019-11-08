@@ -166,14 +166,6 @@ ul, ol {
   }
 
   /*PACKAGES*/
-
-  .search-engine-panel {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    width: 100%;
-    padding: 1% 12%;
-  }
 }
 
 #div_logo {

@@ -8,6 +8,8 @@
 	<!-- <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"> -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
+    <link rel="stylesheet" type="text/css" href="{{asset('myasset/css/animate-std.css')}}">
+
          <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -211,7 +213,7 @@
     		font-weight: bold;
     		font-style: italic;
     		color: #CC0066;
-    	}
+    	} 
     	.invalid-feedbacks {
     		color: red;
     		font-weight: bold;
@@ -313,8 +315,8 @@
 <body class="pattern">
 	<div class="login-banner">
 		<div></div>
-        <div>
-            <div class="std-login-banner">
+        <div class=" animated zoomIn fast">
+            <div class="std-login-banner animated fadeInLeft fast">
                 <img src="{{asset('myasset/img/logo.png')}}" alt="" id="logo" style="width: 50% !important;cursor: pointer;"/>
                 <div class="std-login-banner-desc">
                     <p>It's free! Create an account and have your wedding ceremony fully organized. <span class="std-name">Save The Date</span> is your best deal 
@@ -326,8 +328,8 @@
                 <span class="watermark">Copyright &copy; SaveTheDate2019</span>
             </div>
         </div>
-		<div>
-			<div class="std-login-form">
+		<div class=" animated zoomIn fast">
+			<div class="std-login-form animated fadeInRight fast">
 				<form method="POST" action="{{ route('register') }}">
 					@csrf
 

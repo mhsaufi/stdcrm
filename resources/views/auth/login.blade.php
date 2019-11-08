@@ -8,6 +8,7 @@
     <!-- <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"> -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="icon" href="{{asset('myasset/img/tab-icon2.png')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('myasset/css/animate-std.css')}}">
 
          <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -241,11 +242,11 @@
     </style>    
 </head>
 <body class="pattern">
-    <div class="login-banner">
-        <div class="form_container">
+    <div class="login-banner animated fadeIn faster">
+        <div class="form_container animated zoomIn fast">
             <div class="empty_col"></div>
             <div class="form_col">
-                <div class="std-login-form">
+                <div class="std-login-form animated fadeInLeft fast">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
@@ -272,7 +273,7 @@
                     </form>
                 </div>
             </div>
-            <div class="logo_col">
+            <div class="logo_col animated fadeInRight fast">
                 <div class="std-login-banner">
                     <img src="{{asset('myasset/img/logo.png')}}" alt="" id="logo" style="width: 50% !important;cursor: pointer;"/>
                     <br>
