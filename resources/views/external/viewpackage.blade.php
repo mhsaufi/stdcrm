@@ -225,7 +225,7 @@
                 <span class="tags animated faster">#{{ $cpct['category']['cc_title'] }}</span>
               @endforeach
             </div>
-            <div style="padding: 20px 0!important;">
+            <div style="padding: 20px 0!important;" class="animated bounceInLeft fast">
               {!! base64_decode($result['package_detail']) !!}
             </div>
           </div>

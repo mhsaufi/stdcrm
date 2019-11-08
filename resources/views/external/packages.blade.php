@@ -71,16 +71,15 @@
       flex-direction: row;
       justify-content: space-between;
       margin: 0 10%;
-      height: auto;
+      /*height: auto;*/
     }
 
     .search-engine-panel > div {
       position: relative;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
+      justify-content: space-between;
       width: 30%!important;
-      margin-bottom: 15px;
     }
 
     .search-result-panel {
@@ -277,6 +276,10 @@
     }
 
     @media (max-width: 700px){
+      .big_container {
+        margin-bottom: 25px;
+      }
+
       #std_search_btn {
         width: 100%!important;
       }
@@ -287,19 +290,23 @@
         justify-content: space-around;
         width: 100%;
         margin: 0!important;
-        /*height: 500px;*/
-        background: pink;
+        height: 250px;
+        /*background: blue;*/
       }
 
       .search-engine-panel div {
         width: 100%!important;
-        margin-bottom: 15px!important;
-        /*background: green;*/
+        height: auto;
+        /*background: pink;*/
       }
 
       .forms_std {
-        padding: 5px 10px!important;
         border: 0.01em solid #cdcdcd;
+        width: 100%;
+      }
+
+      .select2-container .select2-selection--multiple {
+        min-width: 100px!important;
       }
     }
    </style>
