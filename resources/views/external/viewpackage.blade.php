@@ -13,7 +13,7 @@
 
 	 <style>
 	  .icon {
-	  	margin-left: -30px;
+	  	margin-left: -30px; 
 	  	opacity: 0.5;
 	  }
 	  .icon-s {
@@ -91,6 +91,7 @@
       border: 0.1em solid #999;
       margin-right: 5px; 
       margin-bottom: 10px;     
+      display: none;
     }
 
     .company_info {
@@ -208,7 +209,7 @@
     <div class="section-padding">
       <div class="big_container">
         <div class="result_container">
-          <div class="package_info">
+          <div class="package_info animated fadeIn fast">
             <div style="display: flex;flex-direction: row;width: 100%;justify-content: space-between;">
               <div onclick="back()" style="margin-bottom: 15px;cursor: pointer;">< Back</div>
               <div>
@@ -221,14 +222,14 @@
             </div>
             <div class="tags-space">
               @foreach($result['cpct_reverse'] as $cpct)
-                <span class="tags">#{{ $cpct['category']['cc_title'] }}</span>
+                <span class="tags animated faster">#{{ $cpct['category']['cc_title'] }}</span>
               @endforeach
             </div>
             <div style="padding: 20px 0!important;">
               {!! base64_decode($result['package_detail']) !!}
             </div>
           </div>
-          <div class="company_info">
+          <div class="company_info animated flipInX fast">
             <div style="display: flex;flex-direction: row;align-items: center;border-bottom: 0.05em solid #f1f1f1;width: 100%;margin-bottom: 20px;">
               @if($result['company']['company_logo'] == '')
               <div class="company_logo_medium" style="background: url('{{ asset('myasset/img/null.jpg') }}');background-position: center;background-size: cover;">
@@ -281,6 +282,19 @@
 
     <script>
       SocialShareKit.init();
+
+      $('.tags').each(function(i){
+
+        var tag = $(this);
+        var time = 10;
+
+        setTimeout(function(i){ 
+
+          tag.addClass('bounceInLeft');
+          tag.show();
+
+        }, time*i); 
+      });
 
       function back(){
 

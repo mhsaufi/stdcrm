@@ -177,7 +177,7 @@
 
                 var url = APP_URL + '/userslist';
                 
-                if($(".datatable").length > 0){                
+                if($(".datatable").length > 0){             
                     $(".datatable").DataTable({
                         "processing": true,
                         "serverSide": true,
@@ -191,7 +191,6 @@
                     $(".datatable").on('page.dt',function () {
                         onresize(100);
                     });
-
 
                     var table = $(".datatable").DataTable();
 

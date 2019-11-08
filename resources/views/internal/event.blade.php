@@ -434,7 +434,7 @@
 
                   @if($event['event']['wes_id'] == 3)
 
-                    <tr>
+                    <tr class="animated fast ani_row">
                       <td>{{ $i }}</td>
                       <td style="background: #f1c40f;"></td>
                       <td>{{ $event['event']['we_title'] }}</td>
@@ -456,7 +456,7 @@
 
                   @elseif($event['event']['wes_id'] == 1)
 
-                    <tr onclick="viewTimeline('{{ $event['we_id'] }}')">
+                    <tr onclick="viewTimeline('{{ $event['we_id'] }}')" class="animated fast ani_row">
                       <td>{{ $i }}</td>
                       <td style="background: #7dcea0;"></td>
                       <td>{{ $event['event']['we_title'] }}</td>
@@ -530,6 +530,26 @@
       var url = '';
       
       $(document).ready(function(){
+
+        $('.view-btn-history').each(function(){
+
+          var btn = $(this);
+
+          btn.addClass('jelly');
+        });
+
+        $('.ani_row').each(function(i){
+
+        var tag = $(this);
+        var time = 20;
+
+        setTimeout(function(i){ 
+
+          tag.addClass('bounceInLeft');
+          tag.show();
+
+        }, time*i); 
+      });
 
         globalNotification();
 

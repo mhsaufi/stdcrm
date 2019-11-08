@@ -8,6 +8,11 @@
    <link rel="stylesheet" type="text/css" href="{{asset('myasset/select2/dist/css/select23.css')}}">
 
    <style>
+    .bg {
+      background: #00695c;
+      color: #fff;
+    }
+
     .btn-like {
       border: 1px solid #d4af37;
       border-radius: 3px;
@@ -62,16 +67,20 @@
     }
 
     .search-engine-panel {
-      display: flex;
+      display: flex block;
       flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: flex-start;
-      width: 100%;
-      padding: 1% 12%;
+      justify-content: space-between;
+      margin: 0 10%;
+      height: auto;
     }
 
-    .search-engine-panel div {
-      margin-right: 15px;
+    .search-engine-panel > div {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      width: 30%!important;
+      margin-bottom: 15px;
     }
 
     .search-result-panel {
@@ -80,7 +89,6 @@
       justify-content: center;
       flex-wrap: wrap;
       background: rgba(255,255,255,1);
-      /*border-bottom: 1px solid #d4af37;*/
     }
 
     .big_container {
@@ -88,7 +96,6 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      /*background: pink;*/
     }
 
     .footer_result_container {
@@ -126,22 +133,21 @@
       opacity: 0.7;
     }
 
-    .form_std {
-      padding: 5px 10px!important;
-      height: 35px!important;
-      border: 0.01em solid #cdcdcd;
-      margin-right: 25px;
+    .forms_std {
+      width: 100%;
     }
 
     #std_search_btn {
-      padding: 5px 20px;
-      background: #d4af37;
+      position: absolute;
+      bottom: 0;
+      padding: 8px 20px;
+      background: #4caf50;
       color: white;
       border: none;
-      border-radius: 5px;
+      border-radius: 3px;
       cursor: pointer;
-      opacity: 0.7;
-      margin-top:28px;
+      opacity: 1;
+      width: 200px!important;
     }
 
     #std_search_btn:hover {
@@ -269,6 +275,33 @@
     .below_2 > .package_cards {
       margin-right: 15px;
     }
+
+    @media (max-width: 700px){
+      #std_search_btn {
+        width: 100%!important;
+      }
+
+      .search-engine-panel {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 100%;
+        margin: 0!important;
+        /*height: 500px;*/
+        background: pink;
+      }
+
+      .search-engine-panel div {
+        width: 100%!important;
+        margin-bottom: 15px!important;
+        /*background: green;*/
+      }
+
+      .forms_std {
+        padding: 5px 10px!important;
+        border: 0.01em solid #cdcdcd;
+      }
+    }
    </style>
 
 </head>
@@ -283,16 +316,15 @@
     <div style="min-height: 100vh;">
     <!-- Feature Section Start -->
     <div class="section-padding">
-      <div class="big_container">
-        <div style="margin: 0 11%;opacity: 0.7;padding-top: 2%;">
-          <p>Browse for all available packages on our site offered by our vendors. All of our vendors comprises of best reviewed companies 
+      <div class="big_container bg">
+        <div style="opacity: 0.7;padding: 20px 10%;">
+          <p style="color: #fff">Browse for all available packages on our site offered by our vendors. All of our vendors comprises of best reviewed companies 
           to make sure your wedding happening the way you wished for</p>
         </div>
         <div class="search-engine-panel">   
           <div>
               <label>By Category</label>
-              <br>
-              <select class="form_std" id="select_company_category" multiple="multiple" style="width: 300px!important;">
+              <select class="forms_std" id="select_company_category" multiple="multiple">
                 @foreach($category_data as $category)
                   <option value="{{ $category['cc_id'] }}">{{ $category['cc_title'] }}</option>
                 @endforeach
@@ -300,17 +332,18 @@
           </div>
           <div>
             <label>By Vendors name</label>
-            <br>
-            <select class="form_std" id="select_company_name" multiple="multiple" style="width: 300px!important;">
+            <select class="forms_std" id="select_company_name" multiple="multiple">
               @foreach($result as $r)
                 <option value="{{ $r['company_id'] }}">{{ $r['company_name'] }}</option>
               @endforeach
             </select>
           </div>
-          <div><button id="std_search_btn">Search &nbsp&nbsp<i class="fas fa-search"></i></button></div>
+          <div>
+            <button id="std_search_btn">Search &nbsp&nbsp<i class="fas fa-search"></i></button>
+          </div>
         </div>
         <br>
-        <p style="margin-left: 180px;margin-top: 20px;">{{ $p_count }} result(s) found</p>   
+        <p style="margin-left: 10%;margin-top: 20px;color: #fff">{{ $p_count }} result(s) found</p>   
       </div>
       <div class="big_container">
         @if($p_count > 2)

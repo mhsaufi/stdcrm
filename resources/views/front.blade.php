@@ -634,8 +634,53 @@
     </div>
     
 
+    <script src="{{asset('myasset/textillate/jquery.lettering.js')}}"></script>
+    <script src="{{asset('myasset/textillate/jquery.textillate.js')}}"></script>
     <!-- Javascript  -->
     <script type="text/javascript">
+
+      $('#logo_text_container').hover(
+        function() {
+          $('#std_logo_text').textillate({
+            in: {
+              // set the effect name
+              effect: 'bounceInDown',
+
+              // set the delay between each character
+              delay: 20,
+
+              // set to true to animate all the characters at the same time
+              sync: false,
+
+              // randomize the character sequence
+              // (note that shuffle doesn't make sense with sync = true)
+              shuffle: true,
+
+              // reverse the character sequence
+              // (note that reverse doesn't make sense with sync = true)
+              reverse: false
+            }
+          });
+        }, function() {
+
+           $('#std_logo_text').textillate({
+            out: {
+              // set the effect name
+              effect: 'bounceOutUp',
+
+              // set the delay between each character
+              delay: 20,
+
+              // set to true to animate all the characters at the same time
+              sync: false,
+
+              // randomize the character sequence
+              // (note that shuffle doesn't make sense with sync = true)
+              shuffle: true
+            }
+          });
+        }
+      );
 
       $('#all').click(function(){
         window.location.replace("{{ url('/listvendor') }}");

@@ -224,6 +224,13 @@
       var url = '';
 
       $('#dashboard_loading').show();
+
+      $('.view-btn-history').each(function(){
+
+        var btn = $(this);
+
+        btn.addClass('jelly');
+      });
       
       $(document).ready(function(){
 

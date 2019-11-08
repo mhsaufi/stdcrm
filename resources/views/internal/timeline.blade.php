@@ -746,7 +746,7 @@
               @else
               <a href="{{ url('/home') }}" class="std-link"><i class="fas fa-columns"></i> Back to Dashboard</a><br><br>
               @endif
-              <h4 style="opacity: 0.7;">{{ $data_event['we_title'] }}</h4>
+              <h4 style="opacity: 0.7;" id="banner_we_title">{{ $data_event['we_title'] }}</h4>
             </div>
             <div id="edit-icon"><i class="fas fa-ellipsis-h"></i></div>
           </div>
@@ -1280,6 +1280,8 @@
     <script src="{{asset('myasset/summernote-master/summernote/summernote-lite.js')}}"></script>
     <script src="{{asset('myasset/summernote-master/summernote/summernote-ext-print.js')}}"></script>
     <script src="{{asset('myasset/jqueryui/jquery-ui.js')}}"></script>
+    <script src="{{asset('myasset/textillate/jquery.lettering.js')}}"></script>
+    <script src="{{asset('myasset/textillate/jquery.textillate.js')}}"></script>
     <script src="{{asset('myasset/bootstrap-timepicker/js/bootstrap-timepicker.min.js')}}"></script>
     <script src="{{asset('myasset/timelinesimple/jquery-albe-timeline.js')}}"></script>
     <script src="{{asset('myasset/air-datepicker-master/dist/js/datepicker.min.js')}}"></script>
@@ -1297,6 +1299,7 @@
 
       $('#timeline_loader').show();
       $('#myTimeline').hide();
+      $('#banner_we_title').textillate({ in: { effect: 'bounceInDown', shuffle: true,  delay: 20 } });
 
       $(document).ready(function () {
 

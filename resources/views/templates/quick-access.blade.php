@@ -1,4 +1,4 @@
-<div id="quick_access_section" style="background: white;">
+<div id="quick_access_section" style="background: white;" class="animated bounceInUp faster">
 	<div style="width: 15%;font-size: 15px;cursor: pointer;" id="add_t">
 		<span id="add_t_icon"><i class="fas fa-plus"></i></span>
 		<span id="add_t_text">Add Timeline</span>

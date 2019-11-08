@@ -28,25 +28,90 @@
             background: rgba(255,255,255,0.9);
             display: flex;
             flex-direction: column;
+            transition: margin-top 0.5s;
         }
 
         .form_container {
             display: flex;
             /*flex-direction: row;*/
             flex-flow: row wrap-reverse;
-            justify-content: flex-start;
+            justify-content: center;
         }
 
         .empty_col {
-            width: 20%;
+            width: 100px;
         }
 
         .form_col {
-            width: 30%;
+            width: 500px;
         }
 
         .logo_col {
-            width: 30%;
+            width: 500px;
+        }
+
+        @media (max-width: 1200px){
+            .login-banner {
+                margin-top: 0;
+                padding: 10% 0;
+                box-shadow: 0 0 0 #fff;
+                min-height: 100%;
+                background: rgba(255,255,255,0.6);
+                display: flex;
+                flex-direction: column;
+            }
+
+            .form_container {
+                display: flex;
+                /*flex-direction: row;*/
+                flex-flow: row wrap-reverse;
+                justify-content: center;
+            }
+
+            .empty_col {
+                width: 0px;
+                transition: width 0.5s;
+            }
+
+            .form_col {
+                width: 500px;
+                /*background: blue;*/
+                padding: 0;
+                transition: width 0.5s;
+            }
+
+            .std-login-form {
+                padding: 1% 10px!important;
+                margin-left: 0!important;
+                border-right: none!important;
+            }
+
+            .logo_col {
+                width: 500px;
+                transition: width 0.5s;
+            }
+
+            .pattern{
+                background-image: url("{{asset('myasset/img/IMG_7092.jpg')}}");
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center; 
+                min-height: 100vh!important;
+            }
+
+            .std-login-banner {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;align-items: center;
+                padding: 20px 20px;
+                margin-left: 0!important;
+            }
+
+            .std-login-banner-desc {
+                padding-top: 20px;
+                padding-left: 0!important;
+                text-align: center;
+            }
         }
 
         @media (max-width: 480px){
@@ -68,6 +133,7 @@
             }
 
             .empty_col {
+                transition: width 0.5s;
                 width: 100%;
             }
 
@@ -75,6 +141,7 @@
                 width: 100%;
                 /*background: blue;*/
                 padding: 0;
+                transition: width 0.5s;
             }
 
             .std-login-form {
@@ -84,6 +151,7 @@
 
             .logo_col {
                 width: 100%;
+                transition: width 0.5s;
             }
 
             .pattern{

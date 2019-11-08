@@ -647,7 +647,7 @@
 
 				var logo = $(this);
 
-				logo.addClass('animated zoomIn faster');
+				logo.addClass('jelly');
 			});
 
 		});
