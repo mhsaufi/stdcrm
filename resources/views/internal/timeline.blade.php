@@ -929,13 +929,13 @@
                   <div>
                     <label>Date & Time </label>
                     <input type='text' 
-                      class="date_form" 
+                      class="date_form datepicker-here" 
                       data-timepicker="true" 
                       data-position="bottom right" 
                       data-language='en' 
                       data-date-format='d-m-yyyy' 
                       data-time-format='h:ii aa' 
-                      id="date_t"/>
+                      />
                   </div>
 
                   <div>

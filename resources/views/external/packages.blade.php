@@ -73,7 +73,7 @@
 
     .search-engine-panel {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       justify-content: space-between;
       margin: 0 10%;
       min-height: 50px;
@@ -141,10 +141,17 @@
     }
 
     .forms_std {
-      width: 30%!important;
+      width: 100%!important;
+    }
+
+    .select2-container .select2-selection--multiple {
+        min-width: 80%!important;
+        max-width: 80%!important;
     }
 
     #std_search_btn {
+      position: absolute;
+      bottom: 0;
       padding: 8px 20px;
       background: #4caf50;
       color: white;
@@ -309,13 +316,13 @@
       }
 
       .forms_std {
-        display: block;
         border: 0.01em solid #cdcdcd;
         width: 100%!important;
       }
 
       .select2-container .select2-selection--multiple {
-        min-width: 100px!important;
+          min-width: 100%!important;
+          max-width: 100%!important;
       }
     }
    </style>
@@ -328,8 +335,7 @@
       @include('templates.navbar')
     </header>
     <!-- Header Area wrapper End -->
-    <br>
-    <div style="min-height: 100vh;">
+
     <!-- Feature Section Start -->
     <div class="section-padding">
       <div class="big_container_o bg">

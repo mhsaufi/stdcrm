@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\EventExternal;
 use Illuminate\Http\Request;
 
 class AdminControllerEvents extends Controller
@@ -13,6 +14,10 @@ class AdminControllerEvents extends Controller
     
     public function index(Request $request){
 
-    	return view('admin.events');
+    	$event = new EventExternal;
+    	$event_data = $event->get();
+    	$event_count = $event->count();
+
+    	return view('admin.events',compact('event_data','event_count'));
     }
 }

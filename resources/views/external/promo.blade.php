@@ -2,9 +2,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>SaveTheDate | Events</title>
+	<title>Save The Date | Events</title>
 	 @include('templates.header')
 
+
+   <link rel="stylesheet" href="{{ asset('myasset/socialsharekit/dist/css/social-share-kit.css') }}" type="text/css">
+   <link rel="stylesheet" href="{{ asset('myasset/swiper/css/swiper.min.css') }}" type="text/css">
 	 <style>
 	  .btn-like {
 	  	border: 1px solid #d4af37;
@@ -24,6 +27,7 @@
 	  	border-radius: 2px;
 	  	cursor: pointer;
 	  	color: #fff;
+      width: 100%;
 	  }
 	  .btn-search:hover {
         background:#bb9928;
@@ -46,7 +50,7 @@
         opacity: 0.5;
       }
       .pattern{
-      	background-image: url("{{asset('myasset/img/bg1.jpg')}}");
+      	/*background-image: url("{{asset('myasset/img/bg1.jpg')}}");*/
       	background-repeat: no-repeat;
         background-attachment: fixed;
       	background-size: cover;
@@ -58,22 +62,14 @@
       	border: 1px solid #d4af37;
       	width: 100%;
       }
-
-      .rate {
-      	color: #FFC300;
-      }
-      .rate-o {
-      	color: #CACACA;
-      }
       .search-engine-panel {
       	display: flex;
+        flex-direction: row;
       	justify-content: center;
       	width: 100%;
-      	/* background: rgba(255,255,255,0.5); */
       	padding: 40px 30px;
       	margin-top: 10px;
-      	/*border-bottom: 0.2em solid #999;*/
-      	/* border-top: 1px solid #d4af37; */
+        transition: padding 0.5s;
       }
       .search-engine-panel-footer {
       	display: flex;
@@ -87,62 +83,193 @@
       	padding-right: 20px;
       }
       .search-result-panel {
-      	/*margin-top: 10px;*/
-      	padding: 20px 15px;
+        box-sizing: border-box;
+        /*background: pink;*/
+      	margin: 1% 8%;
+        height: 100px;
       	display: flex;
+        flex-direction: row;
       	justify-content: center;
-      	flex-wrap: wrap;
-      	background: rgba(255,255,255,0.7);
-        /* border-top: 1px solid #d4af37; */
-        border-bottom: 1px solid #d4af37;
+        transition: margin 0.5s;
       }
 
-      .event-card {
-      	text-align: center;
-      	padding: 20px 20px;
-      	border: 0.1em solid #d4af37;
-      	border-radius: 2px;
-      	background: #fff;
-      	width: 90%;
-      	margin: 10px 10px;
-        display:flex;
-        justify-content:space-between;
-      }
-      .event-card:hover {
-      	border: 0.1em solid #d4af37;
-      	/* background: #f8f5db; */
+      .search_result_list {
+        width: 80%;
+        padding-right: 5%;
+        transition: padding-right 0.5s;
+        /*background: blue;*/
       }
 
-	  .card-container{
-      	text-align: center;
-		    padding: 20px 20px;
+      .ads_panel {
+        width: 20%;
+        /*background: yellow;*/
       }
 
-      .text-space{          
-          /* background:blue; */
-          width:65%;
+      .swiper-container {
+        width: 300px;
+        height: 250px;
+        background: blue;
+        position: fixed;
       }
 
-      .pic-space{
-        width:35%;
+      .swiper-image {
+        height: 100%!important;
+        width: 100%!important;
       }
 
-      .vend_pic{
-	     height: 300px;
-	     width: 100%;
-	     /* border-radius: 10%; */
-	     /* border: 1px solid lightgray; */
-	     object-fit: contain;
-	   }
+      .swiper-button-next {
+        color: #fff;
+      }
 
-	   .page {
-	   	margin-top: 10px;
-	   	font-size: 1.3em;
-	   	letter-spacing: 10px;
-       }
-       
-      
+      .swiper-button-prev {
+        color: #fff;        
+      }
 
+      .event_card {
+        width: 100%;
+        background: #fff;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        /*border-radius: 5px;*/
+      }
+
+      .event_card_date {
+        width: 15%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 20px 10px;
+      }
+
+      .event_card_date > div:nth-child(1){
+        font-size: 40px;
+        opacity: 0.5;
+        margin: 0 0 15px 0!important;
+        transition: margin 0.5s, font-size 0.5s;
+      }
+
+      .event_card_date > div:nth-child(2){
+        font-size: 20px;
+        opacity: 0.5;
+      }
+
+      .event_card_content {
+        width: 85%;
+        padding: 3% 15px!important;
+        border-left: 0.05em solid #ffecb3;
+      }
+
+      .event_card_content > div:nth-child(1){
+        font-size: 30px;
+        line-height: 1.3em;
+        margin-bottom: 20px;
+      }
+
+      .event_card_content > div:nth-child(2){
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+      }
+
+      .date_location {
+        padding: 5px 10px;
+        border: 0.05em solid #f3f3f3;
+        margin-right: 10px;
+      }
+
+      .event_card_content > div:nth-child(3){
+
+      }
+
+      @media (max-width: 600px){
+        .search-engine-panel {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          width: 100%;
+          padding: 20px 5px;
+          margin-top: 10px;
+          /*background: blue;*/
+        }
+
+        .sep-search {
+          width: 100%;
+          padding-right: 0!important;
+          margin-bottom: 15px;
+        }
+
+        .search-engine-panel-footer {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          width: 100%;
+          /*background: green;*/
+        }
+
+        .search-result-panel {
+          box-sizing: border-box;
+          /*background: pink;*/
+          margin: 0% 1%!important;
+          height: auto;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+        }
+
+        .search_result_list {
+          width: 100%!important;
+          /*background: blue;*/
+          padding-right: 0%!important;   
+        }
+
+        .ads_panel {
+          width: 100%!important;
+          /*background: yellow;*/
+        }
+
+        .event_card {
+          width: 100%;
+          background: #fff;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: center;
+        }
+
+        .event_card_date {
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          /*align-items: center;*/
+          padding: 10px 20px;
+        }
+
+        .event_card_date > div:nth-child(1){
+          font-size: 20px;
+          opacity: 0.5;
+          margin: 0 5px 0 0!important;
+        }
+
+        .event_card_date > div:nth-child(2){
+          font-size: 20px;
+          opacity: 0.5;
+        }
+
+        .event_card_content {
+          width: 100%;
+          padding: 10% 5%!important;
+          border-left: none;
+          border-top: 0.05em solid #dcdcdc!important;
+        }
+
+      }
+     
 	 </style>
 
 </head>
@@ -158,70 +285,111 @@
     <!-- Feature Section Start -->
     <section class="section-padding">
 
-		<div class="container">
-			<div class="search-engine-panel">
-				<div class="sep-search">
-					<input type="text" name="query" placeholder="look by name etc" id="query-input" />
-					<i class="fa fa-search icon"></i>
-				</div>                            
-				<div class="search-engine-panel-footer">
-					<button class="btn-search">Search Events</button>
-				</div>
-			</div> 
-		</div>
 
-    	<div class="container">
-    		<div class="search-result-panel">
-           <div class="card-container">
-                <h5>Upcoming Events</h5>
-                <p>Why hired <b>Wedding Planner ?</b> Wedding planner will help you
-                 to manage your wedding planning including dealing with your vendors yang you nak laa.<br>
-                 Wedding planner will help you
-                 to manage your wedding planning including dealing with your vendors yang you nak laa.
-                 </p><br>
-           </div>
-    			<!-- Event section Start -->              
-                    
-						<div class="event-card">
-                            <div class="pic-space">
-                                <img class="vend_pic" src="{{asset('myasset/img/event-1.jpg')}}">
-                            </div>
+  			<div class="search-engine-panel">
+  				<div class="sep-search">
+  					<input type="text" name="query" placeholder="look by name etc" id="query-input" />
+  					<i class="fa fa-search icon"></i>
+  				</div>                            
+  				<div class="search-engine-panel-footer">
+  					<button class="btn-search">Search Events</button>
+  				</div>
+  			</div> 
 
-                            <div class="text-space">
-                                <h5><a href="http://www.mefa.my/" target="_blank">Malaysian Wedding Festival (MEFA)</a></h5><hr>
-                                <p>This wedding festival is an opportunity for brides to prepare for the wedding as MEFA
-								 organizes exhibitions as One Stop Center Wedding, from catering products, pelamin, 
-								 bridal boutiques, wedding cards, souvenirs, wedding halls and more.</p>
-								<p><b>Date: </b>27 - 29 December 2019</p>
-								<p><b>Time: </b>10am - 10pm</p>
-								<p><b>Venue: </b>Shah Alam Convention Centre</p>
-                            </div>
-                        </div>
+        <div class="search-result-panel">
+          <div class="search_result_list">
+            <!-- repeated section -->
+            <div class="event_card">
+              <div class="event_card_date animated fadeInLeft fast">
+                <div>25</div>
+                <div>Sept</div>
+              </div>
+              <div class="event_card_content">
+                <div class="animated fadeInRight fast">Wedding Expo 2019 KarangKraf</div>
+                <div>
+                  <span class="date_location">Fri, 11 - Sun, 13 Oct 2019</span>
+                  <span class="date_location">Setia SPICE Arena, George Town</span>
+                </div>
+                <div class="animated fadeInDown fast">
+                  <p>The FIRST KLPJ Wedding Fair for Year 2020 will be held on 11 & 12 January 2020 (Sat & Sun) at Kuala Lumpur Convention Centre (KLCC).For couples who wish to tie-the-knot in Year 2020 or 2021, begin your wedding planning journey here!23rd KLPJ Wedding Fair, The Real Largest Wedding Fair, will feature Malaysia's Top 10 Bridal Houses & Bridal Studios.</p>
+                </div>
+              </div>
+            </div>
 
-                        <div class="event-card">
-                            <div class="pic-space">
-                                <img class="vend_pic" src="{{asset('myasset/img/event-2.jpg')}}">
-                            </div>
+            <div class="event_card">
+              <div class="event_card_date animated fadeInLeft fast">
+                <div>25</div>
+                <div>Sept</div>
+              </div>
+              <div class="event_card_content">
+                <div class="animated fadeInRight fast">Wedding Expo 2019</div>
+                <div>
+                  <span class="date_location">Fri, 11 - Sun, 13 Oct 2019</span>
+                  <span class="date_location">Setia SPICE Arena, George Town</span>
+                </div>
+                <div class="animated fadeInDown fast">
+                  <p>The FIRST KLPJ Wedding Fair for Year 2020 will be held on 11 & 12 January 2020 (Sat & Sun) at Kuala Lumpur Convention Centre (KLCC).For couples who wish to tie-the-knot in Year 2020 or 2021, begin your wedding planning journey here!23rd KLPJ Wedding Fair, The Real Largest Wedding Fair, will feature Malaysia's Top 10 Bridal Houses & Bridal Studios.</p>
+                </div>
+              </div>
+            </div>
 
-                            <div class="text-space">
-                                <h5><a href="https://www.klpj.com.my/" target="_blank">KLPJ Wedding Fair</a></h5><hr>
-                                <p>Walk and sit 
-                                  wherever you wish - there will be no limitations of where you must go or sit! Our hopes and 
-                                  desires are for couples to make their wedding planning experience an exciting, meaningful and 
-                                  comfortable in a unique and inspiring space!</p>
-								  <p><b>Date: </b>11 - 12 January 2020</p>
-								  <p><b>Time: </b> 10am - 10pm</p>
-								  <p><b>Venue: </b>Kuala Lumpur Convention Centre</p>
-                            </div>
-                        </div>
+            <div class="event_card">
+              <div class="event_card_date animated fadeInLeft fast">
+                <div>25</div>
+                <div>Sept</div>
+              </div>
+              <div class="event_card_content">
+                <div class="animated fadeInRight fast">Wedding Expo 2019</div>
+                <div>
+                  <span class="date_location">Fri, 11 - Sun, 13 Oct 2019</span>
+                  <span class="date_location">Setia SPICE Arena, George Town</span>
+                </div>
+                <div class="animated fadeInDown fast">
+                  <p>The FIRST KLPJ Wedding Fair for Year 2020 will be held on 11 & 12 January 2020 (Sat & Sun) at Kuala Lumpur Convention Centre (KLCC).For couples who wish to tie-the-knot in Year 2020 or 2021, begin your wedding planning journey here!23rd KLPJ Wedding Fair, The Real Largest Wedding Fair, will feature Malaysia's Top 10 Bridal Houses & Bridal Studios.</p>
+                </div>
+              </div>
+            </div>
+            <!-- end repeated section -->
+          </div>
+          <div class="ads_panel">
+            <!-- Slider main container -->
+            <div class="swiper-container">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide">
+                      <img src="{{ asset('myasset/img/event1.JPG') }}" class="swiper-image" />
+                    </div>
+                    <div class="swiper-slide">
+                      <img src="{{ asset('myasset/img/event-1.JPG') }}" class="swiper-image" />
+                    </div>
+                    <div class="swiper-slide">
+                      <img src="{{ asset('myasset/img/event2.JPG') }}" class="swiper-image" />
+                    </div>
+                </div>
+                <!-- If we need pagination -->
+                <div class="swiper-pagination"></div>
 
-                        
+                <!-- If we need navigation buttons -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
 
-                
-                <!-- Event Table Section End -->
-    		</div>
-    	</div>
+                <!-- If we need scrollbar -->
+                <div class="swiper-scrollbar"></div>
+            </div>
+          </div>
+        </div>
+
+
     </section>
+
+    <div class="ssk-sticky ssk-left ssk-center ssk-lg">
+        <a href="" class="ssk ssk-facebook"></a>
+        <a href="" class="ssk ssk-twitter"></a>
+        <a href="" class="ssk ssk-linkedin"></a>
+        <a href="" class="ssk ssk-google-plus"></a>
+        <a href="" class="ssk ssk-pinterest"></a>
+    </div>
 
     <script>
       var APP_URL = '{{ url("/") }}';
@@ -230,5 +398,37 @@
     </script>
 
     @include('templates.footer')
+
+    <script type="text/javascript" src="{{ asset('myasset/socialsharekit/dist/js/social-share-kit.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('myasset/swiper/js/swiper.min.js') }}"></script>
+    <script>
+      SocialShareKit.init();
+
+        var mySwiper = new Swiper ('.swiper-container', {
+        // Optional parameters
+        direction: 'horizontal',
+        loop: true,
+
+        // If we need pagination
+        pagination: {
+          // el: '.swiper-pagination',
+        },
+
+        // Navigation arrows
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+
+        autoplay: {
+          delay: 3000,
+        },
+
+        // And if we need scrollbar
+        scrollbar: {
+          el: '.swiper-scrollbar',
+        },
+      })
+    </script>
 </body>
 </html>

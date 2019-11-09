@@ -1,9 +1,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Navbar Start -->
-  <nav class="navbar navbar-expand-lg fixed-top scrolling-navbar indigo bg-white " 
+  <nav class="navbar navbar-expand-lg fixed-top scrolling-navbar indigo bg-white animated bounceInDown faster" 
     style="height: 80px!important;">
-    <div class="container">
+    <div class="navbar-container">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
         <a href="{{ url('/') }}" class="navbar-brand"><img src="{{asset('myasset/img/logo.png')}}" alt=""></a>
@@ -19,7 +19,13 @@
             <a class="nav-link black" href="{{ url('/packages') }}">
               Packages
             </a>
-          </li>             
+          </li> 
+
+          <li class="nav-item">
+            <a class="nav-link black" href="{{ url('/events') }}">
+              Events
+            </a>
+          </li>            
 
           <li class="nav-item">
               <a class="nav-link black" href="{{ url('/features') }}" data-list-name="How it works" data-content-category="Header">
@@ -105,7 +111,7 @@
               @endauth               
           @endif
           
-        </ul>
+        </ul> 
       </div>
       <div class="drawable_menu_trigger">
         <i class="fas fa-bars"></i>

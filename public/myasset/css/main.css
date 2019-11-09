@@ -2434,6 +2434,14 @@ footer .menu li a:hover {
   border-radius: 0;
 }
 
+.navbar-container {
+  padding: 0 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .navbar-brand {
   position: absolute;
   color: #ccc !important;
@@ -2447,8 +2455,8 @@ footer .menu li a:hover {
 }
 
 .navbar-brand img {
-  width: 110%!important;
-  height: 110%!important;
+  width: 100%!important;
+  height: 100%!important;
 }
 
 .navbar-light .navbar-brand, .navbar-light .navbar-toggler {

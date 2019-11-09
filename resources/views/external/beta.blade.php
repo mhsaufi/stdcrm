@@ -9,29 +9,20 @@
    <link rel="stylesheet" type="text/css" href="{{asset('myasset/std_rating/std_rating.css')}}">
 
 	 <style>
-	  .btn-like {
-	  	border: 1px solid #d4af37;
-	  	border-radius: 3px;
-	  	background: #fff;
-	  	padding: 10px 20px;
-	  	margin-right: 15px;
-	  	cursor: pointer;
-	  }
-	  .btn-like:hover {
-	  	background: #eee;
-	  }
-	  .btn-search {
-	  	padding: 10px 20px;
-	  	background: #d4af37;
-	  	border: none;
-	  	border-radius: 2px;
-	  	cursor: pointer;
-	  	color: #fff;
-	  }
-	  .btn-search:hover {
-        background:#bb9928;
-	  	opacity: 0.9;
-	  }
+    .bg {
+      /*background: linear-gradient(#039be5,#006064);*/
+      background: #1b5e20;
+      color: #fff;
+    }
+
+    .big_container_o {
+      padding-top: 10px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
 	  .icon {
 	  	margin-left: -30px;
 	  	opacity: 0.5;
@@ -63,19 +54,22 @@
     }
 
     .search-engine-panel {
-    	display: flex;
+      display: flex;
       flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: flex-start;
-    	width: 100%;
-    	padding: 2% 10%;
-      border-bottom: 0.05em solid grey;
+      justify-content: space-between;
+      margin: 0 10%;
+      min-height: 50px;
       /*background: blue;*/
-      /*margin: 0 10%;*/
     }
 
-    .search-engine-panel div {
-      margin-right: 15px;
+    .search-engine-panel > div {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 100%!important;
+      margin-bottom: 20px;
+      /*background: pink;*/
     }
 
     .search-result-panel {
@@ -176,20 +170,28 @@
         margin-right: 25px;
       }
 
-      #std_search_btn {
-        padding: 5px 20px;
-        background: #d4af37;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        opacity: 0.7;
-        margin-top:28px;
-      }
+    .select2-container .select2-selection--multiple {
+        min-width: 80%!important;
+        max-width: 80%!important;
+    }
 
-      #std_search_btn:hover {
-        opacity: 0.9;
-      }
+    #std_search_btn {
+      position: absolute;
+      bottom: 0;
+      padding: 8px 20px;
+      background: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      opacity: 1;
+      width: 200px!important;
+    }
+
+    #std_search_btn:hover {
+      /*opacity: 0.9;*/
+      background: #7cb342;
+    }
 
       .above_2 {
         justify-content: space-between;
@@ -198,6 +200,49 @@
       .below_2 {
         justify-content: flex-start;
       }
+
+    @media (max-width: 700px){
+      .big_container_o {
+        margin-bottom: 25px;
+      }
+
+      #std_search_btn {
+        width: 100%!important;
+      }
+
+      .search-engine-panel {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        margin: 0!important;
+        height: 250px;
+        /*background: blue;*/
+        padding: 0 10%;
+      }
+
+      .search-engine-panel > div {
+        width: 100%!important;
+        /*background: pink;*/
+        border-radius: 3px;
+      }
+
+      .forms_std {
+        position:absolute;
+        top:0;
+        left:0;
+        width:100%;
+        border: 0.01em solid #cdcdcd;
+        min-width: 100%!important;
+        max-width: 100%!important;
+        /*width: 50px!important;*/
+      }
+
+      .select2-container .select2-selection--multiple {
+        min-width: 100%!important;
+        max-width: 70%!important;
+      }
+    }
 	 </style>
 
 </head>
@@ -208,37 +253,38 @@
       @include('templates.navbar')
     </header>
     <!-- Header Area wrapper End -->
-    <br>
-    <div style="background: rgba(230,230,230,0.8);min-height: 100vh;">
+
     <!-- Feature Section Start -->
     <div class="section-padding">
-    	<div class="big_container">
+    	<div class="big_container_o bg">
+        <div style="opacity: 0.9;padding: 20px 10% 5px 10%;">
+          <p style="color: #fff">Browse for all available packages on our site offered by our vendors. All of our vendors comprises of best reviewed companies 
+          to make sure your wedding happening the way you wished for</p>
+        </div>
     		<div class="search-engine-panel">
-            <div>
-                <label>By Category</label>
-                <br>
-                <select class="form_std" id="select_company_category" multiple="multiple" style="width: 300px!important;">
-                  @foreach($category_data as $category)
-                    <option value="{{ $category['cc_id'] }}">{{ $category['cc_title'] }}</option>
-                  @endforeach
-                </select>
-            </div>
-            <div>
-              <label>By Vendors name</label>
-              <br>
-              <select class="form_std" id="select_company_name" multiple="multiple" style="width: 300px!important;">
-                @foreach($result as $r)
-                  <option value="{{ $r['company_id'] }}">{{ $r['company_name'] }}</option>
+          <div>
+              <label>By Category</label>
+              <select class="forms_std" id="select_company_category" multiple="multiple">
+                @foreach($category_data as $category)
+                  <option value="{{ $category['cc_id'] }}">{{ $category['cc_title'] }}</option>
                 @endforeach
               </select>
-            </div>
-            <div><button id="std_search_btn">SEARCH &nbsp&nbsp<i class="fas fa-search"></i></button></div>
+          </div>
+          <div>
+            <label>By Vendors name</label>
+            <select class="forms_std" id="select_company_name" multiple="multiple">
+              @foreach($result as $r)
+                <option value="{{ $r['company_id'] }}">{{ $r['company_name'] }}</option>
+              @endforeach
+            </select>
+          </div>
+          <div><button id="std_search_btn">SEARCH &nbsp&nbsp<i class="fas fa-search"></i></button></div>
         </div>	
         <br>
-        <p style="margin-left: 200px;margin-top: 20px;">{{ $p_count }} result(s) found</p> 	
+        <p style="margin-left: 10%;color: #fff">{{ $p_count }} result(s) found</p>   	
     	</div>
 
-      <div class="big_container">
+      <div class="big_container_o">
         @if($p_count > 2)
         <div class="result_container above_2">
         @else
