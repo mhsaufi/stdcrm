@@ -6,6 +6,7 @@
 	@include('templates.header')
 
 	<link href="{{ asset('myasset/fullcalendar/core/main.css') }}"  rel='stylesheet' />
+	<link rel="stylesheet" href="{{ asset('myasset/swiper/css/swiper.min.css') }}" />
     <link href="{{ asset('myasset/fullcalendar/daygrid/main.css') }}" rel='stylesheet' />
 
 	<style type="text/css">
@@ -52,7 +53,7 @@
 			flex-direction: row;
 			justify-content: space-around;
 			min-width: 100%;
-			height: 100%;
+			min-height: 100%;
 			top: 0;
 			padding-top: 7%; 
 			background-color: lightyellow; 
@@ -76,6 +77,7 @@
 
 		.middle-space{
 			width: 50%;
+			height: auto;
 			padding: 20px;
 			border-radius: 10px;
 			box-shadow: 0 0 2px #888;
@@ -89,15 +91,26 @@
 			border-radius: 10px;
 		}
 		
-		.up-step{
-			 margin-bottom: 5%;
-			 width: 100%;
-			 height: auto;
-			 border-radius: 10px;
-			 box-shadow: 0 0 2px #888;
-			background: #fff;
-			padding: 20px;
-		 }
+		.swiper-container {
+	        width: 300px;
+	        height: 250px;
+	        background: blue;
+	        margin-bottom: 5%;
+	        /*position: fixed;*/
+	      }
+
+	      .swiper-image {
+	        height: 250px!important;
+	        width: 300px!important;
+	      }
+
+	      .swiper-button-next {
+	        color: #fff;
+	      }
+
+	      .swiper-button-prev {
+	        color: #fff;        
+	      }
 
 		 .middle-step{			 
 			margin-bottom: 5%;
@@ -331,8 +344,30 @@
 
 				<div class="right-space">
 
-					<div class="up-step">
-						ads letak sini
+					<div class="swiper-container">
+						<!-- Slider main container -->
+		                <!-- Additional required wrapper -->
+		                <div class="swiper-wrapper">
+		                    <!-- Slides -->
+		                    <div class="swiper-slide">
+		                      <img src="{{ asset('myasset/img/event1.JPG') }}" class="swiper-image" />
+		                    </div>
+		                    <div class="swiper-slide">
+		                      <img src="{{ asset('myasset/img/event-1.JPG') }}" class="swiper-image" />
+		                    </div>
+		                    <div class="swiper-slide">
+		                      <img src="{{ asset('myasset/img/event2.JPG') }}" class="swiper-image" />
+		                    </div>
+		                </div>
+		                <!-- If we need pagination -->
+		                <div class="swiper-pagination"></div>
+
+		                <!-- If we need navigation buttons -->
+		                <div class="swiper-button-prev"></div>
+		                <div class="swiper-button-next"></div>
+
+		                <!-- If we need scrollbar -->
+		                <div class="swiper-scrollbar"></div>
 					</div>
 
 					<div class="middle-step">
@@ -438,6 +473,7 @@
 
     <script src="{{ asset('myasset/fullcalendar/core/main.js') }}"></script>
     <script src="{{ asset('myasset/fullcalendar/daygrid/main.js') }}"></script>
+    <script src="{{ asset('myasset/swiper/js/swiper.min.js') }}"></script>
 
 	<script>
 
@@ -452,6 +488,32 @@
 	        });
 
 	        calendar.render();
+
+	        var mySwiper = new Swiper ('.swiper-container', {
+		        // Optional parameters
+		        direction: 'horizontal',
+		        loop: true,
+
+		        // If we need pagination
+		        pagination: {
+		          // el: '.swiper-pagination',
+		        },
+
+		        // Navigation arrows
+		        navigation: {
+		          nextEl: '.swiper-button-next',
+		          prevEl: '.swiper-button-prev',
+		        },
+
+		        autoplay: {
+		          delay: 3000,
+		        },
+
+		        // And if we need scrollbar
+		        scrollbar: {
+		          el: '.swiper-scrollbar',
+		        },
+		      })
 
 		});
 
