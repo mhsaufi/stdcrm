@@ -100,7 +100,7 @@
                                     <span class="fa fa-user"></span>
                                 </div>
                                 <div class="widget-data">
-                                    <div class="widget-int num-count">375</div>
+                                    <div class="widget-int num-count">{{ $count_user }}</div>
                                     <div class="widget-title">Registered users</div>
                                     <div class="widget-subtitle">On your platform</div>
                                 </div>                           
@@ -116,7 +116,7 @@
                                     <span class="fa fa-briefcase"></span>
                                 </div>                             
                                 <div class="widget-data">
-                                    <div class="widget-int num-count">48</div>
+                                    <div class="widget-int num-count">{{ $count_company }}</div>
                                     <div class="widget-title">Total Vendors</div>
                                     <div class="widget-subtitle">On your platform</div>
                                 </div>
@@ -132,7 +132,7 @@
                                     <span class="fa fa-th-list"></span>
                                 </div>                             
                                 <div class="widget-data">
-                                    <div class="widget-int num-count">48</div>
+                                    <div class="widget-int num-count">{{ $count_wevent }}</div>
                                     <div class="widget-title">Events</div>
                                     <div class="widget-subtitle">On your platform</div>
                                 </div>
@@ -176,7 +176,7 @@
                                     </ul>                                    
                                 </div>                                
                                 <div class="panel-body padding-0">
-                                    <div class="chart-holder" id="dashboard-bar-1" style="height: 200px;"></div>
+                                    <div class="chart-holder" id="dashboard-bar-1" style="height: 200px;"></div> 
                                 </div>                                    
                             </div>
                             <!-- END USERS ACTIVITY BLOCK -->
@@ -421,6 +421,11 @@
         <!-- END MESSAGE BOX-->
 
         @include('admin.templates.scripts')
+
+        <script>
+            var APP_URL = "{{ url('/') }}";
+            var token = "{{ csrf_token() }}";
+        </script>
 
         <!-- START THIS PAGE PLUGINS-->        
         <script type='text/javascript' src="{{ asset('admin/js/plugins/icheck/icheck.min.js') }}"></script>        

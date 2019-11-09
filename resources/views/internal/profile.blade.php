@@ -2,7 +2,12 @@
 <html>
 <head>
 	<title>SaveTheDate | Profile</title>
+
 	@include('templates.header')
+
+	<link href="{{ asset('myasset/fullcalendar/core/main.css') }}"  rel='stylesheet' />
+    <link href="{{ asset('myasset/fullcalendar/daygrid/main.css') }}" rel='stylesheet' />
+
 	<style type="text/css">
 		.grey-background {
 			background: #EEE;
@@ -15,19 +20,16 @@
 		}		
 		.section-profile-img {
 			background: #fff;
-			/*border-radius:20px;*/
-			/*border: 1px solid #d4af37;*/
+			border-radius: 10px;
 			z-index: 99;
-			min-height: 80%;
-			width: 18%;
-			position: absolute;			
-			padding: 10px;
-			margin-top: %;			
-			/* margin: 2% 5%; */
+			min-height: 100%;
+			width: 100%;
+			margin-top: 0 !important;
+			margin-left: 0 !important;	
 			display: flex;
 			flex-direction: column;
 			justify-content: space-around;
-			align-items: center; 
+			align-items: left !important; 
 			-moz-box-shadow: 0 0 5px #888;
 	        -webkit-box-shadow: 0 0 5px#888;
 	        box-shadow: 0 0 2px #888;
@@ -35,7 +37,7 @@
 		
 		.vend_pic{
 			margin-top: 10%;
-			margin-bottom: 20%;
+			/*margin-bottom: 20%;*/
 	    	height: 150px;
 	    	width: 150px;
 	    	border-radius: 50%;
@@ -48,22 +50,36 @@
 			position: absolute;			
 			display: flex;
 			flex-direction: row;
-			justify-content: center;
+			justify-content: space-around;
 			min-width: 100%;
-			/* height: 100%; */
-			/* background:yellow; */
+			height: 100%;
+			top: 0;
+			padding-top: 7%; 
+			background-color: lightyellow; 
 			
 		}
 
 		.left-space{
-			width: 19%;
+			position: relative;
+			/*min-height: 500px;
+			max-height: 900px;*/
+			height: 550px;
+			width: 20%;
 			 /*background: green; */
 			
 		}
 
 		.right-space{
-			width: 60%;
-			/* background: orange; */
+			width: 20%;
+			/*background: orange; */
+		}
+
+		.middle-space{
+			width: 50%;
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 0 0 2px #888;
+			background: #fff;
 		}
 
 		.down-step{
@@ -74,135 +90,27 @@
 		}
 		
 		.up-step{
-			 display:flex;
-			 flex-direction:row;
-			 justify-content: center;
-			 /* margin-top: 1%; */
-			 margin-bottom: 2%;
+			 margin-bottom: 5%;
 			 width: 100%;
 			 height: auto;
-		 }
-
-		 .middle-step{
-			display:flex;
-			flex-direction: row;
-			justify-content: center;			 
-			margin-bottom: 2%;
-			width:100%;
-			height:auto;
-			border-radius: 10px;
-			border: 1px solid #d4af37;
+			 border-radius: 10px;
+			 box-shadow: 0 0 2px #888;
 			background: #fff;
-			/* background: url("{{asset('myasset/img/babout.jpg')}}"); */
-			padding: 30px 20px;
+			padding: 20px;
 		 }
 
-		 .middle-left{			 
-			 width:50%;
-		 }
-
-		 .middle-right{
-			 width:50%;
-		 }
-		/* =============================== HEXAGON STEP INSTRUCTION */
-		 .title-step{
-			/* background:green; */
-			width: 20%;
-			text-align: right;
-			padding: 60px 10px 5px 1px;
-		 }
-
-		.step-container{
-			display: flex;
-			flex-direction: row wrap;
-			border-radius: 10px;
-			border: 1px solid #d4af37;
-			background: url("{{asset('myasset/img/babout.jpg')}}");
-			padding: 20px 40px;
+		 .middle-step{			 
+			margin-bottom: 5%;
 			width: 100%;
-		}
-
-		#border-hexagon {
-			width: 114px;
-			height: 74px;
-			margin: 20px;
-			background: #d4af37;
-			position: relative; 
-			text-align: center;
-			padding: 5px;
-			z-index:80;			
-		}		
-		
-		 #border-hexagon:before { 
-			 content: ""; 
-			 position: absolute; 
-			 top: -26px; 
-			 left: 0; 
-			 width: 0; 
-			 height: 0; 
-			 border-left: 57px solid transparent; 
-			 border-right: 57px solid transparent; 
-			 border-bottom: 26px solid #d4af37;
-			 z-index:80;	
-			 /* background: green;  */
-		}
-		 #border-hexagon:after { 
-			 content: ""; 
-			 position: absolute; 
-			 bottom: -26px; 
-			 left: 0; 
-			 width: 0; 
-			 height: 0; 
-			 border-left: 57px solid transparent; 
-			 border-right: 57px solid transparent; 
-			 border-top: 26px solid #d4af37;
-			 z-index:80;	
-			 /* background: blue;  */
-		 }
-
-		#hexagon {
-			width: 110px;
-			height: 70px;
-			margin: -3px;
+			height: auto;
+			border-radius: 10px;
+			box-shadow: 0 0 2px #888;
+			/*border: 1px solid #d4af37;*/
 			background: #fff;
-			/* background:yellow;  */
-			position: relative; 
-			text-align: center;
-			padding: 0 2px;	
-			z-index:82;			
-		}		
+			padding: 20px;
+		 }
+
 		
-		 #hexagon:before { 
-			 content: ""; 
-			 position: absolute; 
-			 top: -25px; 
-			 left: 0; 
-			 width: 0; 
-			 height: 0; 
-			 border-left: 55px solid transparent; 
-			 border-right: 55px solid transparent; 
-			 border-bottom: 25px solid white;
-			 z-index:82;	
-			 /* background: green;  */
-		}
-		 #hexagon:after { 
-			 content: ""; 
-			 position: absolute; 
-			 bottom: -25px; 
-			 left: 0; 
-			 width: 0; 
-			 height: 0; 
-			 border-left: 55px solid transparent; 
-			 border-right: 55px solid transparent; 
-			 border-top: 25px solid white;
-			 z-index:82;	
-			 /* background: blue;  */
-		 }
-
-		 #step-p {
-			 font-size: 11px;
-		 }
-
 		 /* ================== tab styling */
 		section {
 		position: relative;
@@ -372,31 +280,15 @@
 			 display: flex;
 			 flex-direction: column;
 			 justify-content: center;
-			 align-items:center;
+			 /*align-items:center;*/
 			 width: 100%;
-			 padding-top:5px;
-			 /* background: blue; */
+			 padding-top: 10px;
+			 padding-left: 10%;
+			 margin-bottom: 10%;
+			  /*background: blue; */
 			 /* border-bottom: 1px solid #d4af37;			  */
 		 }
 
-		 .line-space{
-			 padding:0;
-			 border:thin solid #d4af37;
-			 width:80%;
-			 align-items:center;
-			 margin:0 auto;
-
-		 }
-
-		 .detail-space{
-			display: flex;
-			 flex-direction: column;
-			 justify-content: center;
-			 align-items: center;
-			 width: 100%;
-			 /* background: red; */
-			 padding-top:10px;
-		 }
 
 	</style>
 </head>
@@ -418,80 +310,41 @@
 						<img class="vend_pic" src="{{asset('myasset/img/default.jpeg')}}">
 
 						<div class="name-space">
-		 						<p>Bride's Name</p>
-								<p>&</p>
-								<p>Groom's Name</p>
-							</div><hr class="line-space">
-							<div class="detail-space">
-								<p><i class="far fa-calendar-alt"></i> Wedding date</p>								
-								<p><i class="fa fa-map-marker-alt"></i> Wedding Venue</p>
-		 					</div>
+	 						<p><b>Name:</b>&nbsp {{ Auth::user()->fullname }}</p>
+							<p><b>Email:</b>&nbsp {{ Auth::user()->email }}</p>								
+							<p><b>Address:</b>&nbsp {{ Auth::user()->address }}</p>	
+							<p><b>Phone No:</b>&nbsp {{ Auth::user()->phone }}</p>
+							<p><b>DOB:</b>&nbsp {{ Carbon\Carbon::parse(Auth::user()->dob)->format('d M Y') }}</p>
+							<p><b>State:</b>&nbsp {{ Auth::user()->state }}</p>
+							<p><b>Joined:</b>&nbsp {{ Carbon\Carbon::parse(Auth::user()->created_at)->format('d M, Y') }}</p>
+							<button class="btn_form" onclick="updatePro()" style="width:90%;">Update My Profile</button>
+						</div>
+
 					</div>
 
+				</div>
+
+				<div class="middle-space" id="calendar">
+					<!-- <p>Testing</p> -->
 				</div>
 
 
 				<div class="right-space">
 
-					<div class="up-step">		 				
-						<div class="step-container">
-							<h5 style="font-size:14px;margin-top:40px;">How to start:</h5>
-							<div id="border-hexagon">
-								<div id="hexagon">
-									<p id="step-p"><b>Step #1</b><br>
-										Book wedding packages.
-									</p>
-								</div>
-							</div><i class="fa fa-chevron-right fa-2x" style="margin-top:5%;"></i>
-							
-
-
-							<div id="border-hexagon">
-								<div id="hexagon">
-									<p id="step-p"><b>Step #2</b><br>
-									Fill-up form send by the vendor.
-									</p>
-								</div>
-							</div><i class="fa fa-chevron-right fa-2x" style="margin-top:5%;"></i>
-
-							<div id="border-hexagon">
-								<div id="hexagon">
-									<p id="step-p"><b>Step #3</b><br>
-									Wait for invitation into dashboard.</p>
-								</div>
-							</div><i class="fa fa-chevron-right fa-2x" style="margin-top:5%;"></i>
-
-							<div id="border-hexagon">	
-								<div id="hexagon">
-									<p id="step-p"><b>Step #4</b><br>
-									Start Planning !
-									</p>
-								</div>
-							</div>
-						</div>
+					<div class="up-step">
+						ads letak sini
 					</div>
 
-					<div class="middle-step">		 				
-						
-							<div class="middle-left">
-								<p><b>Name:</b>&nbsp {{ Auth::user()->fullname }}</p>
-								<p><b>Email:</b>&nbsp {{ Auth::user()->email }}</p>								
-								<p><b>Address:</b>&nbsp {{ Auth::user()->address }}</p>								
-								<p><b>Joined:</b>&nbsp {{ Carbon\Carbon::parse(Auth::user()->created_at)->format('d M, Y') }}</p>
-							</div>							
-							<div class="middle-right">
-								<p><b>Phone No:</b>&nbsp {{ Auth::user()->phone }}</p>
-								<p><b>DOB:</b>&nbsp {{ Carbon\Carbon::parse(Auth::user()->dob)->format('d M Y') }}</p>
-								<p><b>State:</b>&nbsp {{ Auth::user()->state }}</p>
-								<button class="btn_form" onclick="updatePro()" style="margin-left:60%;">Update My Profile</button>
-							</div>
-							
-						
-					</div>  
+					<div class="middle-step">
+						<h6>How To Start?</h6>
+						<p><b>Step #1</b><br>Start looking for your favourite vendors/packages.</p>
+						<p><b>Step #2</b><br>Booking your package manually or online.</p>								
+						<p><b>Step #3</b><br>Wait for approval from the vendor.</p>								
+						<p><b>Step #4</b><br>If aprroved! You can start planning your wedding at your dashboard.</p>
+						<p><em>** visit <b>How it Works</b> tab for more explanation. **</em></p>							
+					</div> 
 
-					<!-- <div class="down-step"> -->
-
-						<section>
+						<!-- <section> -->
 						<!-- PERSONAL INFO -->
 							<div tabindex="0" id="background_tp">
 								<!-- <button class="tbutton tbutton-active" id="pi">Personal Information</button> -->
@@ -569,11 +422,8 @@
 								</div>								
 								
 							</div>
-
 					
-						</section>
-						 
-					<!-- </div> -->
+						<!-- </section> -->
 					
 				</div>
 				
@@ -586,7 +436,25 @@
 
     @include('templates.footer')
 
+    <script src="{{ asset('myasset/fullcalendar/core/main.js') }}"></script>
+    <script src="{{ asset('myasset/fullcalendar/daygrid/main.js') }}"></script>
+
 	<script>
+
+		
+
+		$(document).ready(function(){
+
+			var calendarEl = document.getElementById('calendar');
+
+	        var calendar = new FullCalendar.Calendar(calendarEl, {
+	          plugins: [ 'dayGrid' ]
+	        });
+
+	        calendar.render();
+
+		});
+
 
 		function updatePro() {
 			$('#tp-form').fadeToggle('fast');
