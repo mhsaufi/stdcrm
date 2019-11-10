@@ -14,6 +14,7 @@ use App\CompanyPackageTag;
 use App\Attachment;
 use App\Merchant;
 use App\User;
+use App\EventExternal;
 use App\Http\Controllers\UtilitiesController;
 use Carbon\Carbon;
 
@@ -172,6 +173,31 @@ class PublicController extends Controller
         }
 
         return $status;
+    }
+
+    public function events(){
+
+        $event = new EventExternal;
+        $event_data = $event->get();
+        $event_count = $event->count();
+
+        $i = 0;
+
+        foreach($event_data as $e){
+
+            $a = new Carbon($e['date_start']);
+
+            $event_data[$i]['big_date_num'] = $a->format('d');
+            $event_data[$i]['big_date_text'] = $a->format('M');
+
+            $b = new Carbon($e['date_end']);
+
+            $event_data[$i]['period'] = $a->format('D, d')." - ".$b->format('D, d M Y');
+
+            $i++;
+        }
+
+        return view('external.promo',compact('event_data','event_count'));
     }
 
     public function listVendor(Request $request){

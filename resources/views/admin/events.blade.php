@@ -14,7 +14,7 @@
         <link rel="stylesheet" type="text/css" id="theme" href="{{ asset('admin/css/theme-default.css') }}"/>
         <link rel="stylesheet" type="text/css" href="DataTablesBS4/datatables.min.css"/>
         <link rel="stylesheet" type="text/css" href="{{asset('myasset/bootstrap-timepicker/css/bootstrap-timepicker.min.css')}}">
-        <link rel="stylesheet" type="text/css" href="{{asset('myasset/air-datepicker-master/dist/css/datepicker.min.css')}}">
+        <link rel='stylesheet'  href="{{asset('admin/css/dropzone/dropzone.css')}}"/>
         <!-- EOF CSS INCLUDE -->  
         <style>
             .event_container {
@@ -50,6 +50,7 @@
             }
 
             .event_form_container {
+                display: none;
                 position: absolute;
                 top: 0;
                 left: 0;
@@ -57,6 +58,14 @@
                 width: 100%;
                 background: rgba(255,255,255,0.8);
                 z-index: 9;
+            }
+
+            .event_form_child {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
             }
 
             .event_form {
@@ -70,13 +79,76 @@
                 -moz-box-shadow: 0 0 30px #888;
                 -webkit-box-shadow: 0 0 30px#888;
                 box-shadow: 0 0 30px #888;
+            }
+
+            .event_form_child > div {
+                margin-bottom: 15px;
+            }
+
+            .event_form_child > div:nth-child(1) {
                 display: flex;
-                flex-direction: column;
-                justify-content: flex-start;
+                flex-direction: row;
+                justify-content: flex-end;
+            }
+
+            #close_form {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-end;
+                width: 10%;
+                cursor: pointer;
+            }
+
+            #close_form:hover {
+                opacity: 0.8;
+            }
+
+            .event_form_child > div:nth-child(3) {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .event_form_child > div:nth-child(6) {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .event_form_child > div:nth-child(6) > div {
+                width: 45%;
+            }
+
+            .event_form_child_2 {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(255,255,255,0.5);
+                /*background: blue;*/
+                border-radius: 3px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                align-items: center;
             }
 
             .datepicker-here {
                 z-index: 999!important;
+            }
+
+            #new_event_btn {
+                width: 100%;
+                padding: 10px 15px;
+                border-radius: 3px;
+                border: none;
+                background: #009688;
+                color: #fff;
+            }
+
+            #new_event_btn:hover {
+                opacity: 0.9;
             }
         </style>                                  
     </head>
@@ -168,7 +240,7 @@
                             <div class="event_container">
                                 <div class="event_container_header">
                                     <div>All posted upcoming events</div>
-                                    <div>Post new</div>
+                                    <div id="post_new">Post new</div>
                                 </div>
                                 <div>
                                     
@@ -187,22 +259,57 @@
 
         <div class="event_form_container">
             <div class="event_form">
-                <div>
-                    <label>Event Name</label>
-                    <input type="text" name="eventname" class="form-control">
+                <div class="event_form_child">
+                    <div>
+                        <div id="close_form"><i class="fa fa-times"></i></div>
+                    </div>
+                    <div>
+                        <label>Event Name</label>
+                        <input type="text" name="title" class="form-control" id="ename">
+                    </div>
+                    <div>
+                        <div>
+                            <label>Date (From)</label>
+                            <input type="text" name="ds" class="form-control datepicker" value="" id="edatestart">
+                        </div>
+                        <div>
+                            <label>Date (To)</label>
+                            <input type="text" name="de" class="form-control datepicker" value="" id="edateened">
+                        </div>
+                        <div>
+                            <label>Time (From)</label>
+                            <input type="text" name="ts" class="form-control timepicker" id="etimestart">
+                        </div>
+                        <div>
+                            <label>Time (To)</label>
+                            <input type="text" name="te" class="form-control timepicker" id="etimeened">
+                        </div>
+                    </div>
+                    <div>
+                        <label>Event Address</label>
+                        <input type="text" name="address" name="eventaddress" class="form-control" id="eaddress">
+                    </div>
+                    <div>
+                        <label>Event Website URL</label>
+                        <input type="text" name="address" name="eventurl" class="form-control" id="eventurl">
+                    </div>
+                    <div>
+                        <div>
+                            <label>Event Description</label>
+                            <textarea name="desc" class="form-control" rows="7" id="edesc"></textarea>
+                        </div>
+                        <div>
+                            <label>Event Poster</label>
+                            <!-- <form action="#" class="dropzone dropzone-mini"></form> -->
+                            <div id="poster_drop" style="width: 100%;height: 90%!important;" class="dropzone dropzone-mini"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <button id="new_event_btn" type="submit">POST EVENT</button>
+                    </div>
                 </div>
-                <div>
-                    
-                </div>
-                <div>
-                    <input type='text' 
-                      class="date_form" 
-                      data-timepicker="true" 
-                      data-position="bottom right" 
-                      data-language='en' 
-                      data-date-format='d-m-yyyy' 
-                      data-time-format='h:ii aa' 
-                      id="date_t"/>
+                <div class="event_form_child_2">
+                    <img src="{{ asset('myasset/img/carrier/upload.gif') }}" width="10%">
                 </div>
             </div>
         </div>     
@@ -223,9 +330,9 @@
 
         <!-- START TEMPLATE -->
         <!-- <script type="text/javascript" src="js/settings.js"></script> -->
-
-        <script src="{{asset('myasset/air-datepicker-master/dist/js/datepicker.min.js')}}"></script>
-        <script src="{{asset('myasset/air-datepicker-master/dist/js/i18n/datepicker.en.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('admin/js/plugins/bootstrap/bootstrap-datepicker.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('admin/js/plugins/bootstrap/bootstrap-timepicker.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('admin/js/plugins/dropzone/dropzone.min.js') }}"></script>
         
         <script type="text/javascript" src="{{ asset('admin/js/plugins.js') }}"></script>        
         <script type="text/javascript" src="{{ asset('admin/js/actions.js') }}"></script>        
@@ -233,13 +340,67 @@
 
         <script>
             var APP_URL = "{!! url('/') !!}";
+            var token = "{{ csrf_token() }}";
+            var id = 0;
+
+            $('.event_form_child_2').hide();
+
+            var dropzone = $('#poster_drop').dropzone({
+                url:APP_URL + '/postposter',
+                method: "post"
+            });
+
+            console.log(dropzone);
 
             $(document).ready(function() {
 
                 var url = APP_URL + '/userslist';
-                
 
             });
+
+            $('#post_new').click(function(){
+
+                $('.event_form_container').fadeIn('fast');
+            });
+
+            $('#close_form').click(function(){
+                $('.event_form_container').fadeOut('fast');
+            });
+
+            $('#new_event_btn').click(function(){
+
+                $('.event_form_child_2').show();
+
+                var url = APP_URL + '/postnewevent';
+                var title = $('#ename').val();
+                var eurl = $('#eventurl').val();
+                var ts = $('#etimestart').val();
+                var te = $('#etimeened').val();
+                var ds = $('#edatestart').val();
+                var de = $('#edateened').val();
+                var desc = $('#edesc').val();
+                var address = $('#eaddress').val();
+
+                $.post(url,{_token:token,title:title,ts:ts,te:te,ds:ds,de:de,desc:desc,address:address,eurl:eurl},function(data){
+
+                    var myDropzone = Dropzone.forElement(".dropzone");
+                    myDropzone.on("sending", function(file, xhr, formData) {
+                      // Will send the filesize along with the file as POST data.
+                      formData.append("_token", token);
+                      formData.append("event", data);
+                    });
+                    myDropzone.processQueue();
+
+                    myDropzone.on("success", function(file, xhr, formData) {
+                      location.reload();
+                    });
+
+                    // location.reload();
+                });
+
+            });
+
+            
         </script>
     <!-- END SCRIPTS --> 
         

@@ -31,9 +31,7 @@ Route::post('/newbooking','EventController@newBooking');
 Route::post('/actiononbooking','EventController@actionBooking');
 Route::post('/clearcart','EventController@clearCart'); // after booking rejected, this link will clear the cart before book new
 
-Route::get('/events',function(){
-    return view('external.promo');
-});
+Route::get('/events','PublicController@events');
 Route::get('/iaffair',function(){
     return view('external.iaffair');
 });
@@ -172,6 +170,8 @@ Route::get('/controlcenter',function(){
 Route::get('/recordusers','AdminControllerUsers@index');
 Route::get('/recordvendors','AdminControllerVendors@index');
 Route::get('/recordevents','AdminControllerEvents@index');
+Route::post('/postnewevent','AdminControllerEvents@newevent');
+Route::post('/postposter','AdminControllerEvents@posterupload');
 
 Route::post('/cardsdata','AdminControllerHome@dashboardData');
 Route::post('/barddata','AdminControllerHome@companyEventsTimeline');
