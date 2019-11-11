@@ -325,7 +325,7 @@
     	<!-- <div class="container" style="background:red;"> -->
     		<div class="big-space">
 
-		 		<div class="left-space">
+		 		<div class="left-space animated fadeInLeft fast">
 
 					<div class="section-profile-img">
 						<img class="vend_pic" src="{{asset('myasset/img/default.jpeg')}}">
@@ -345,7 +345,47 @@
 
 				</div>
 
-				<div class="middle-space" id="calendar">
+				<div class="middle-space animated fadeInUp fast" id="calendar">
+					<!-- <p>Testing</p> -->
+				</div>
+
+
+				<div class="right-space animated fadeInRight fast">
+
+					<div class="swiper-container">
+						<!-- Slider main container -->
+		                <!-- Additional required wrapper -->
+		                <div class="swiper-wrapper">
+		                    <!-- Slides -->
+		                    <div class="swiper-slide">
+		                      <img src="{{ asset('myasset/img/event1.JPG') }}" class="swiper-image" />
+		                    </div>
+		                    <div class="swiper-slide">
+		                      <img src="{{ asset('myasset/img/event-1.JPG') }}" class="swiper-image" />
+		                    </div>
+		                    <div class="swiper-slide">
+		                      <img src="{{ asset('myasset/img/event2.JPG') }}" class="swiper-image" />
+		                    </div>
+		                </div>
+		                <!-- If we need pagination -->
+		                <div class="swiper-pagination"></div>
+
+		                <!-- If we need navigation buttons -->
+		                <div class="swiper-button-prev"></div>
+		                <div class="swiper-button-next"></div>
+
+		                <!-- If we need scrollbar -->
+		                <div class="swiper-scrollbar"></div>
+					</div>
+
+					<div class="middle-step">
+						<h6>How To Start?</h6>
+						<p><b>Step #1</b><br>Start looking for your favourite vendors/packages.</p>
+						<p><b>Step #2</b><br>Booking your package manually or online.</p>								
+						<p><b>Step #3</b><br>Wait for approval from the vendor.</p>								
+						<p><b>Step #4</b><br>If aprroved! You can start planning your wedding at your dashboard.</p>
+						<p><em>** visit <b>How it Works</b> tab for more explanation. **</em></p>							
+					</div> 
 
 					<!-- <section> -->
 						<!-- PERSONAL INFO -->

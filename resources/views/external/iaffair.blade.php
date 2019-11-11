@@ -282,7 +282,9 @@
 			
 			
 		<!-- </div> -->
-	</div>		
+	</div>
+
+	@include('templates.external_footer')		
 
 	<div class="ssk-sticky ssk-left ssk-center ssk-lg">
         <a href="" class="ssk ssk-facebook"></a>
@@ -369,51 +371,62 @@
 
 		$(document).ready(function(){
 
-			$('#replacable_content').load('myasset/templates/iaffair/jabatanagama.blade.php').effect('slide');
+			var page_ = '{{ $page }}';
 
-			$("#johor").click(function(){
-				$("#info-johor").slideToggle();
-			});
-			$("#kedah").click(function(){
-				$("#info-kedah").slideToggle();
-			});
-			$("#kelantan").click(function(){
-				$("#info-kelantan").slideToggle();
-			});
-			$("#melaka").click(function(){
-				$("#info-melaka").slideToggle();
-			});
-			$("#negeri").click(function(){
-				$("#info-negeri").slideToggle();
-			});
-			$("#pahang").click(function(){
-				$("#info-pahang").slideToggle();
-			});
-			$("#perak").click(function(){
-				$("#info-perak").slideToggle();
-			});
-			$("#perlis").click(function(){
-				$("#info-perlis").slideToggle();
-			});
-			$("#pulau").click(function(){
-				$("#info-pulau").slideToggle();
-			});
-			$("#sabah").click(function(){
-				$("#info-sabah").slideToggle();
-			});
-			$("#sarawak").click(function(){
-				$("#info-sarawak").slideToggle();
-			});
-			$("#selangor").click(function(){
-				$("#info-selangor").slideToggle();
-			});
-			$("#tereng").click(function(){
-				$("#info-tereng").slideToggle();
-			});
-			$("#wilayah").click(function(){
-				$("#info-wilayah").slideToggle();
-			});
+			if(page_ == 'download'){
 
+				$('#replacable_content').load('myasset/templates/iaffair/downloadable.blade.php').fadeIn();
+				$('#title_text_replacable').html("Wedding Checklist");
+				$('.directory').removeClass('active_directory');
+				$('#download').addClass('active_directory');
+
+			}else{
+
+				$('#replacable_content').load('myasset/templates/iaffair/jabatanagama.blade.php').effect('slide');
+
+				$("#johor").click(function(){
+					$("#info-johor").slideToggle();
+				});
+				$("#kedah").click(function(){
+					$("#info-kedah").slideToggle();
+				});
+				$("#kelantan").click(function(){
+					$("#info-kelantan").slideToggle();
+				});
+				$("#melaka").click(function(){
+					$("#info-melaka").slideToggle(); 
+				});
+				$("#negeri").click(function(){
+					$("#info-negeri").slideToggle();
+				});
+				$("#pahang").click(function(){
+					$("#info-pahang").slideToggle();
+				});
+				$("#perak").click(function(){
+					$("#info-perak").slideToggle();
+				});
+				$("#perlis").click(function(){
+					$("#info-perlis").slideToggle();
+				});
+				$("#pulau").click(function(){
+					$("#info-pulau").slideToggle();
+				});
+				$("#sabah").click(function(){
+					$("#info-sabah").slideToggle();
+				});
+				$("#sarawak").click(function(){
+					$("#info-sarawak").slideToggle();
+				});
+				$("#selangor").click(function(){
+					$("#info-selangor").slideToggle();
+				});
+				$("#tereng").click(function(){
+					$("#info-tereng").slideToggle();
+				});
+				$("#wilayah").click(function(){
+					$("#info-wilayah").slideToggle();
+				});
+			}
 		});
 	</script>
 

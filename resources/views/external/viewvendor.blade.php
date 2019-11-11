@@ -63,7 +63,7 @@
       min-height: 100vh;
       background: white;
       margin: 0 10%;
-      padding: 20px 0;
+      padding: 20px 0 0 0;
       display: flex;
       flex-flow: row wrap;
     }
@@ -405,6 +405,7 @@
             </div>
             
           </div>
+          @include('templates.external_footer')
         </div>
       </div>
     </div>

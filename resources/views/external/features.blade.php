@@ -38,7 +38,7 @@
 
       .features_container_body {
         width: 100%;
-        height: 100vh;
+        height: auto!important;
         position: relative;
         /*background: green;*/
         display: flex;
@@ -117,7 +117,7 @@
       .features_content {
         width: 80%;
         /*background: yellow;*/
-        height: 200px;
+        height: auto!important;
         margin-left: 20%;
         padding: 1% 1%;
       }
@@ -140,11 +140,11 @@
 
     <div class="features_container">
       <div class="features_container_child">
-        <div class="features_container_header">
+        <div class="features_container_header animated fadeInDown fast">
           <h3>How it works?</h3>
         </div>
         <div class="features_container_body">
-          <div class="features_directory">
+          <div class="features_directory animated fadeInLeft fast">
             <div class="features_directory_main">
               <div class="directory_active"><a href="{{ url('/features') }}">Customers</a></div>
               <div><a href="{{ url('/vendorfeatures') }}">Vendors</a></div>
@@ -158,14 +158,16 @@
               <div id="feedback" class="directory">Feedback</div>
             </div>
           </div>
-          <div class="features_content">
+          <div class="features_content animated fadeIn fast">
             
           </div>
         </div>
+
+        @include('templates.external_footer')
       </div>
+
+
     </div>
-    
-    @include('templates.footer')  
 
     <script src="{{ asset('myasset/js/features.js') }}"></script>  
 
@@ -195,6 +197,5 @@
       });
      
     </script>
-
   </body>
 </html>

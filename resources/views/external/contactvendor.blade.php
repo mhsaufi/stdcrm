@@ -55,7 +55,7 @@
       min-height: 100vh;
       background: white;
       margin: 0 10%;
-      padding: 20px 0;
+      padding: 20px 0 0 0;
       display: flex;
       flex-flow: row wrap;
     }
@@ -108,8 +108,8 @@
 
     .contact_form_container {
       width: 100%;
-      height: 100%;
-      padding: 25px 25px;
+      height: auto;
+      padding: 10px 25px;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -280,8 +280,9 @@
                 SUBMIT
               </div>
             </div>
-           
+            
           </div>
+          @include('templates.external_footer')
         </div>
       </div>
     </div>

@@ -262,6 +262,8 @@
         </div>
       </div>
     </div>
+
+    @include('templates.external_footer')
     <div class="ssk-sticky ssk-left ssk-center ssk-lg">
         <a href="" class="ssk ssk-facebook"></a>
         <a href="" class="ssk ssk-twitter"></a>

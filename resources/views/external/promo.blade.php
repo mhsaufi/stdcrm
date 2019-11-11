@@ -67,9 +67,10 @@
         flex-direction: row;
       	justify-content: center;
       	width: 100%;
-      	padding: 40px 30px;
-      	margin-top: 10px;
+      	padding: 3% 10%;
+      	margin-top: 10vh;
         transition: padding 0.5s;
+        /*background: pink;*/
       }
       .search-engine-panel-footer {
       	display: flex;
@@ -84,9 +85,9 @@
       }
       .search-result-panel {
         box-sizing: border-box;
-        /*background: pink;*/
-      	margin: 1% 8%;
-        height: 100px;
+        /*background: green;*/
+      	margin: 1% 5%;
+        height: auto;
       	display: flex;
         flex-direction: row;
       	justify-content: center;
@@ -108,8 +109,8 @@
       .swiper-container {
         width: 300px;
         height: 250px;
-        background: blue;
-        position: fixed;
+        /*background: blue;*/
+        /*position: fixed;*/
       }
 
       .swiper-image {
@@ -119,10 +120,12 @@
 
       .swiper-button-next {
         color: #fff;
+        display: none;
       }
 
       .swiper-button-prev {
-        color: #fff;        
+        color: #fff;
+        display: none;        
       }
 
       .event_card {
@@ -163,9 +166,19 @@
       }
 
       .event_card_content > div:nth-child(1){
+        margin-bottom: 20px;
+      }
+
+      .event_card_content > div:nth-child(1) > a {
         font-size: 30px;
         line-height: 1.3em;
         margin-bottom: 20px;
+        cursor: pointer;
+        color: #546e7a;
+      }
+
+      .event_card_content > div:nth-child(1) > a:hover {
+        color: #c2185b;
       }
 
       .event_card_content > div:nth-child(2){
@@ -184,6 +197,10 @@
 
       .event_card_content > div:nth-child(3){
 
+      }
+
+      .result_container_empty {
+        min-height: 40vh;
       }
 
       @media (max-width: 600px){
@@ -280,11 +297,6 @@
       @include('templates.navbar')
     </header>
     <!-- Header Area wrapper End -->
-    <br>
-
-    <!-- Feature Section Start -->
-    <section class="section-padding">
-
 
   			<div class="search-engine-panel">
   				<div class="sep-search">
@@ -299,73 +311,57 @@
         <div class="search-result-panel">
           <div class="search_result_list">
             <!-- repeated section -->
-            <div class="event_card">
-              <div class="event_card_date animated fadeInLeft fast">
-                <div>25</div>
-                <div>Sept</div>
-              </div>
-              <div class="event_card_content">
-                <div class="animated fadeInRight fast">Wedding Expo 2019 KarangKraf</div>
-                <div>
-                  <span class="date_location">Fri, 11 - Sun, 13 Oct 2019</span>
-                  <span class="date_location">Setia SPICE Arena, George Town</span>
+            @if($event_count > 0)
+
+              @foreach($event_data as $event)
+
+                <div class="event_card">
+                  <div class="event_card_date animated fadeInLeft fast">
+                    <div>{{ $event['big_date_num'] }}</div>
+                    <div>{{ $event['big_date_text'] }}</div>
+                  </div>
+                  <div class="event_card_content">
+                    <div class="animated fadeInRight fast"><a href="{{ $event['url'] }}" target="_blank">{{ $event['ee_title'] }}</a></div>
+                    <div>
+                      <span class="date_location">{{ $event['period'] }}</span>
+                      <span class="date_location">{{ $event['location'] }}</span>
+                    </div>
+                    <div class="animated fadeInDown fast">
+                      <p>{{ $event['description'] }}</p>
+                    </div>
+                  </div>
                 </div>
-                <div class="animated fadeInDown fast">
-                  <p>The FIRST KLPJ Wedding Fair for Year 2020 will be held on 11 & 12 January 2020 (Sat & Sun) at Kuala Lumpur Convention Centre (KLCC).For couples who wish to tie-the-knot in Year 2020 or 2021, begin your wedding planning journey here!23rd KLPJ Wedding Fair, The Real Largest Wedding Fair, will feature Malaysia's Top 10 Bridal Houses & Bridal Studios.</p>
-                </div>
-              </div>
+
+              @endforeach
+
+            @else
+
+            <div class="result_container_empty">
+              <p>No event found</p>
             </div>
 
-            <div class="event_card">
-              <div class="event_card_date animated fadeInLeft fast">
-                <div>25</div>
-                <div>Sept</div>
-              </div>
-              <div class="event_card_content">
-                <div class="animated fadeInRight fast">Wedding Expo 2019</div>
-                <div>
-                  <span class="date_location">Fri, 11 - Sun, 13 Oct 2019</span>
-                  <span class="date_location">Setia SPICE Arena, George Town</span>
-                </div>
-                <div class="animated fadeInDown fast">
-                  <p>The FIRST KLPJ Wedding Fair for Year 2020 will be held on 11 & 12 January 2020 (Sat & Sun) at Kuala Lumpur Convention Centre (KLCC).For couples who wish to tie-the-knot in Year 2020 or 2021, begin your wedding planning journey here!23rd KLPJ Wedding Fair, The Real Largest Wedding Fair, will feature Malaysia's Top 10 Bridal Houses & Bridal Studios.</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="event_card">
-              <div class="event_card_date animated fadeInLeft fast">
-                <div>25</div>
-                <div>Sept</div>
-              </div>
-              <div class="event_card_content">
-                <div class="animated fadeInRight fast">Wedding Expo 2019</div>
-                <div>
-                  <span class="date_location">Fri, 11 - Sun, 13 Oct 2019</span>
-                  <span class="date_location">Setia SPICE Arena, George Town</span>
-                </div>
-                <div class="animated fadeInDown fast">
-                  <p>The FIRST KLPJ Wedding Fair for Year 2020 will be held on 11 & 12 January 2020 (Sat & Sun) at Kuala Lumpur Convention Centre (KLCC).For couples who wish to tie-the-knot in Year 2020 or 2021, begin your wedding planning journey here!23rd KLPJ Wedding Fair, The Real Largest Wedding Fair, will feature Malaysia's Top 10 Bridal Houses & Bridal Studios.</p>
-                </div>
-              </div>
-            </div>
+            @endif
             <!-- end repeated section -->
           </div>
           <div class="ads_panel">
+
+            @if($event_count > 0)
             <!-- Slider main container -->
             <div class="swiper-container">
                 <!-- Additional required wrapper -->
                 <div class="swiper-wrapper">
-                    <!-- Slides -->
+
+                    @foreach($event_data as $e)
+
                     <div class="swiper-slide">
-                      <img src="{{ asset('myasset/img/event1.JPG') }}" class="swiper-image" />
+                      <a href="{{ $e['url'] }}" target="_blank">
+                        <img src="{{ asset('storage/'.$e['poster']) }}" class="swiper-image" />
+                      </a>
                     </div>
-                    <div class="swiper-slide">
-                      <img src="{{ asset('myasset/img/event-1.JPG') }}" class="swiper-image" />
-                    </div>
-                    <div class="swiper-slide">
-                      <img src="{{ asset('myasset/img/event2.JPG') }}" class="swiper-image" />
-                    </div>
+
+                    @endforeach
+
+
                 </div>
                 <!-- If we need pagination -->
                 <div class="swiper-pagination"></div>
@@ -377,11 +373,12 @@
                 <!-- If we need scrollbar -->
                 <div class="swiper-scrollbar"></div>
             </div>
+
+            @endif
           </div>
         </div>
 
-
-    </section>
+        @include('templates.external_footer')
 
     <div class="ssk-sticky ssk-left ssk-center ssk-lg">
         <a href="" class="ssk ssk-facebook"></a>
@@ -409,24 +406,8 @@
         direction: 'horizontal',
         loop: true,
 
-        // If we need pagination
-        pagination: {
-          // el: '.swiper-pagination',
-        },
-
-        // Navigation arrows
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
-
         autoplay: {
           delay: 3000,
-        },
-
-        // And if we need scrollbar
-        scrollbar: {
-          el: '.swiper-scrollbar',
         },
       })
     </script>

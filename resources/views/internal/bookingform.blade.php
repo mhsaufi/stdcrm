@@ -291,7 +291,7 @@
       </div>
     </div>
     
-      
+    @include('templates.external_footer')
     @include('templates.footer')
 
     <script src="{{asset('myasset/air-datepicker-master/dist/js/datepicker.min.js')}}"></script>
