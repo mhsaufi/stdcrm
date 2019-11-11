@@ -359,7 +359,7 @@
     <div class="merchant-option">
       <div class="merchant-section"> 
         <div id="form_frame">
-          <div style="height: 8%;width: 100%;display: flex;flex-direction: row;justify-content: flex-start;">
+          <div style="height: 8%;width: 100%;display: flex;flex-direction: row;justify-content: flex-start;" class="animated fadeInLeft fast">
             <div class="form_header" style="background: #FFCA28;" id="a1">
               PERSONAL
             </div>
@@ -370,7 +370,7 @@
             <div id="b" class="form_header_b" style="width: 3%;"></div>
           </div>
 
-          <div style="position:relative;display: flex;flex-direction: column;justify-content: space-between;height: 90%;width: 100%;">
+          <div style="position:relative;display: flex;flex-direction: column;justify-content: space-between;height: 90%;width: 100%;" class="animated fadeInUp fast">
             <div id="form_personal">
               <div style="width: 50%;">
                 <label id="label_fullname">Fullname</label><span class="error_text" id="fullname_error"></span>
@@ -545,6 +545,12 @@
 
       }
 
+      $('#select_company_category').change(function(){
+        var cc = $( "#select_company_category" ).val();
+
+        console.log(cc);
+      });
+
       function register(fullname, phone, name, email, pw1, c_name, c_email, c_ssm, c_address, c_phone, cid, c_type, c_website){
 
         var url = '{{ url("/submit") }}';
@@ -552,6 +558,8 @@
         var cc = $( "#select_company_category" ).val();
 
         var data = {_token:token,fullname:fullname,c_website:c_website,phone:phone,cc:cc,name:name,email:email,pw:pw1,c_name:c_name,c_email:c_email,c_ssm:c_ssm,c_address:c_address,c_phone:c_phone,cid:cid, c_type:c_type};
+
+        console.log(cc);
 
         $.post(url,data,function(result){
 

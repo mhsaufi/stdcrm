@@ -118,7 +118,7 @@ class PublicController extends Controller
 
             $update = $merchant->where('id', $merchant->id)->update(['company_id'=>$company->id]);
 
-            if($c_category <> null || $c_category <> ''){
+            if(is_array($c_category)){
 
                 foreach($c_category as $category){
 
@@ -515,5 +515,12 @@ class PublicController extends Controller
         $update = $user->where('id',$id)->update(['password'=>Hash::make($pw)]);
 
         return "200";
+    }
+
+    public function iaffairDownload(Request $request){
+
+        $page = 'download';
+
+        return view('external.iaffair',compact('page'));
     }
 }

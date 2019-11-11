@@ -67,9 +67,10 @@
         flex-direction: row;
       	justify-content: center;
       	width: 100%;
-      	padding: 40px 30px;
-      	margin-top: 10px;
+      	padding: 3% 10%;
+      	margin-top: 10vh;
         transition: padding 0.5s;
+        /*background: pink;*/
       }
       .search-engine-panel-footer {
       	display: flex;
@@ -84,9 +85,9 @@
       }
       .search-result-panel {
         box-sizing: border-box;
-        /*background: pink;*/
-      	margin: 1% 8%;
-        height: 100px;
+        /*background: green;*/
+      	margin: 1% 5%;
+        height: auto;
       	display: flex;
         flex-direction: row;
       	justify-content: center;
@@ -108,8 +109,8 @@
       .swiper-container {
         width: 300px;
         height: 250px;
-        background: blue;
-        position: fixed;
+        /*background: blue;*/
+        /*position: fixed;*/
       }
 
       .swiper-image {
@@ -165,9 +166,19 @@
       }
 
       .event_card_content > div:nth-child(1){
+        margin-bottom: 20px;
+      }
+
+      .event_card_content > div:nth-child(1) > a {
         font-size: 30px;
         line-height: 1.3em;
         margin-bottom: 20px;
+        cursor: pointer;
+        color: #546e7a;
+      }
+
+      .event_card_content > div:nth-child(1) > a:hover {
+        color: #c2185b;
       }
 
       .event_card_content > div:nth-child(2){
@@ -186,6 +197,10 @@
 
       .event_card_content > div:nth-child(3){
 
+      }
+
+      .result_container_empty {
+        min-height: 40vh;
       }
 
       @media (max-width: 600px){
@@ -282,11 +297,6 @@
       @include('templates.navbar')
     </header>
     <!-- Header Area wrapper End -->
-    <br>
-
-    <!-- Feature Section Start -->
-    <section class="section-padding">
-
 
   			<div class="search-engine-panel">
   				<div class="sep-search">
@@ -311,7 +321,7 @@
                     <div>{{ $event['big_date_text'] }}</div>
                   </div>
                   <div class="event_card_content">
-                    <div class="animated fadeInRight fast">{{ $event['ee_title'] }}</div>
+                    <div class="animated fadeInRight fast"><a href="{{ $event['url'] }}" target="_blank">{{ $event['ee_title'] }}</a></div>
                     <div>
                       <span class="date_location">{{ $event['period'] }}</span>
                       <span class="date_location">{{ $event['location'] }}</span>
@@ -326,7 +336,9 @@
 
             @else
 
-            <p>No event found</p>
+            <div class="result_container_empty">
+              <p>No event found</p>
+            </div>
 
             @endif
             <!-- end repeated section -->
@@ -366,8 +378,7 @@
           </div>
         </div>
 
-
-    </section>
+        @include('templates.external_footer')
 
     <div class="ssk-sticky ssk-left ssk-center ssk-lg">
         <a href="" class="ssk ssk-facebook"></a>
@@ -397,11 +408,6 @@
 
         autoplay: {
           delay: 3000,
-        },
-
-        // And if we need scrollbar
-        scrollbar: {
-          el: '.swiper-scrollbar',
         },
       })
     </script>

@@ -331,7 +331,7 @@
     <div class="big_container">
     	<div class="contact_container">
     		<div class="header">
-    			<div>
+    			<div class="animated fadeInDown fast">
     				<h4 style="color: #d4af37;">{{ $company_info['company_name'] }}</h4>
     				<p><i class="fas fa-envelope"></i> &nbsp&nbsp{{ $company_info['company_email'] }}</p>
     				<p><i class="fas fa-phone"></i> &nbsp&nbsp{{ $company_info['company_contact'] }}</p>
@@ -343,7 +343,7 @@
 				<div class="company_logo_insider" style="background: url('{{ asset('storage/'.$company_info['company_logo']) }}');background-position: center;background-size: cover;"></div>
       			@endif
 
-      			<div>
+      			<div class="animated fadeInDown fast">
     				<h4 style="color: #d4af37;">{{ $company_info['userreverse']['name'] }}</h4>
     				<p><i class="fas fa-id-card"></i> &nbsp&nbsp{{ $company_info['userreverse']['fullname'] }}</p>
     				<p><i class="fas fa-envelope"></i> &nbsp&nbsp{{ $company_info['userreverse']['email'] }}</p>
@@ -355,7 +355,7 @@
 				<div class="company_logo_insider" style="background: url('{{asset('storage/'.$company_info['userreverse']['dp'])}}');background-position: center;background-size: cover;"></div>
       			@endif
     		</div>
-    		<div class="insider">
+    		<div class="insider animated fadeInUp fast">
     			<div class="insider_header">
     				<div class="insider_tab_button active-tab" id="tab_2">New Staff Application</div>
     				<div class="insider_tab_button" id="tab_1">Staff Member</div>
@@ -613,7 +613,13 @@
 
 	
 	<script>
+		var token = '{{ csrf_token() }}';
+		var APP_URL = '{!! url("/") !!}';
+		var url = '';
+		
 		$(document).ready(function(){
+
+			globalNotification();
 
 			$('#tab_1').click(function(){
 
@@ -728,5 +734,6 @@
 		});
 
 	</script>
+	<script src="{{ asset('myasset/js/global_notification.js') }}"></script>
 </body>
 </html>

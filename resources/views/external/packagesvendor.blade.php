@@ -366,6 +366,10 @@
             </div>
             @endforeach
           </div>
+          <div style="position: absolute;bottom: 0;width: 100%;">
+            
+            @include('templates.external_footer')
+          </div>
         </div>
       </div>
     </div>

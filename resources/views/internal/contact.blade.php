@@ -195,10 +195,14 @@
     @include('templates.footer')
 
 	<script src="{{asset('myasset/jqueryui/jquery-ui.js')}}"></script>
-
-	
 	<script>
+		var token = '{{ csrf_token() }}';
+		var APP_URL = '{!! url("/") !!}';
+		var url = '';
+
 		$(document).ready(function(){
+
+			globalNotification();
 
 		});
 
@@ -230,5 +234,7 @@
 			}
 		})
 	</script>
+
+	<script src="{{ asset('myasset/js/global_notification.js') }}"></script>
 </body>
 </html>

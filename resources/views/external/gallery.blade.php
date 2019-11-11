@@ -63,7 +63,7 @@
       min-height: 100vh;
       background: white;
       margin: 0 10%;
-      padding: 20px 0;
+      padding: 20px 0 0 0;
       display: flex;
       flex-flow: row wrap;
     }
@@ -184,10 +184,10 @@
                 
               @if($count == 0)
 
-                <span>No gallery yet</span>
+                <div class="result_container_empty">No gallery yet</div>
 
               @else
-                <div id="gallery" style="display:none;">
+                <div id="gallery" style="display:none;" class="animated fadeInUp fast">
                 @foreach($galleries as $gallery)
 
                 <img alt="Gallery" src="{{ asset('storage/'.$gallery['att_path']) }}"
@@ -197,10 +197,8 @@
                 @endforeach
                 </div>
               @endif
-              
-            
-            
           </div>
+          @include('templates.external_footer')
         </div>
       </div>
     </div>

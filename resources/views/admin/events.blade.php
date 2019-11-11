@@ -182,7 +182,7 @@
                             </div> -->
                         </div>                                                                        
                     </li>
-                    <li class="xn-title">Navigation</li>
+                    <li class="xn-title">Navigation</li> 
                     <li>
                         <a href="{{ url('/home') }}"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>                        
                     </li>  
@@ -243,7 +243,30 @@
                                     <div id="post_new">Post new</div>
                                 </div>
                                 <div>
-                                    
+                                    <!-- START DEFAULT DATATABLE -->
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <div class="table_additional_option"></div>
+                                            <table class="table datatable">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>From</th>
+                                                        <th>To</th>
+                                                        <th>Time</th>
+                                                        <th>Location</th>
+                                                        <th>URL</th>
+                                                        <th>Posted On</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <!-- END DEFAULT DATATABLE -->
+
                                 </div>
                             </div>
 
@@ -350,11 +373,48 @@
                 method: "post"
             });
 
-            console.log(dropzone);
+            // console.log(dropzone);
 
             $(document).ready(function() {
 
-                var url = APP_URL + '/userslist';
+                var urls = APP_URL + '/eventslist';
+
+                if($(".datatable").length > 0){                
+                    $(".datatable").DataTable({
+                        "processing": true,
+                        "serverSide": true,
+                        "select": true,
+                        "ajax": urls,
+                        "columns": [
+                            { "data": "ee_title" },
+                            { "data": "date_start" },
+                            { "data": "date_end" },
+                            { "data": "time_start" },
+                            { "data": "location" },
+                            { "data": "url" },
+                            { "data": "created_at" }
+                        ],
+                        buttons: [
+                            'excel'
+                        ]
+                    });
+
+                    $(".datatable").on('page.dt',function () {
+                        onresize(100);
+                    });
+
+                    var table = $(".datatable").DataTable();
+
+                    var obj;
+
+                    table.on('select.dt',function( e, dt, type, indexes){
+
+                        if(type === 'row'){
+
+                            obj = table.rows({ selected: true }).ids().toArray();
+                        }
+                    });
+                }
 
             });
 

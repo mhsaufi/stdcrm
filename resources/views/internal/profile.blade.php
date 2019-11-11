@@ -317,7 +317,7 @@
     	<!-- <div class="container" style="background:red;"> -->
     		<div class="big-space">
 
-		 		<div class="left-space">
+		 		<div class="left-space animated fadeInLeft fast">
 
 					<div class="section-profile-img">
 						<img class="vend_pic" src="{{asset('myasset/img/default.jpeg')}}">
@@ -337,12 +337,12 @@
 
 				</div>
 
-				<div class="middle-space" id="calendar">
+				<div class="middle-space animated fadeInUp fast" id="calendar">
 					<!-- <p>Testing</p> -->
 				</div>
 
 
-				<div class="right-space">
+				<div class="right-space animated fadeInRight fast">
 
 					<div class="swiper-container">
 						<!-- Slider main container -->
