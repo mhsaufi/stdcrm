@@ -18,6 +18,7 @@
 			height: 70%;
 			position: absolute;
 			right:0;
+			background: red;
 		}		
 		.section-profile-img {
 			background: #fff;
@@ -32,7 +33,7 @@
 			justify-content: space-around;
 			align-items: left !important; 
 			-moz-box-shadow: 0 0 5px #888;
-	        -webkit-box-shadow: 0 0 5px#888;
+	        -webkit-box-shadow: 0 0 5px #888;
 	        box-shadow: 0 0 2px #888;
 		}
 		
@@ -56,7 +57,10 @@
 			min-height: 100%;
 			top: 0;
 			padding-top: 7%; 
-			background-color: lightyellow; 
+			background: url("{{asset('myasset/img/babout.jpg')}}");
+			background-repeat: no-repeat;
+        	background-size: cover;
+			/*background-color: lightyellow; */
 			
 		}
 
@@ -96,6 +100,8 @@
 	        height: 250px;
 	        background: blue;
 	        margin-bottom: 5%;
+	        box-shadow: 0 0 2px #888;
+	        border-radius: 10px;
 	        /*position: fixed;*/
 	      }
 
@@ -125,15 +131,6 @@
 
 		
 		 /* ================== tab styling */
-		section {
-		position: relative;
-		width: 100%;
-		z-index: 0;
-		/* color: #fff; */
-		background: #eee;
-		}
-
-
 
 		.tbutton {
 		cursor: pointer;
@@ -169,29 +166,40 @@
 		.tbutton:focus + .tp, div:focus .tP, .tp {
 		display: block;
 		position: absolute;
-		border-radius:10px;
+		box-shadow: 0 0 4px #888;
+		border-radius: 10px;
 		border: 1px solid #d4af37;
 		background-color: #fff;
-		color: #d4af37;
-		min-height: 100%;
-		width: 100%;
+		height: auto;
+		width: 50%;
+		bottom: 1;
 		left: 0;
 		z-index: 2;
 		outline: none;
-		/* top: 38px; */
 		text-align: center;
 		padding-top: 20px;
-		/* margin-bottom: 20px; */
 		}
 
 		#tp-form{
-			margin-top: -34.5%;			
-			z-index: 99 !important;
 			position: absolute;
+			top: 20%;
+			left: 25%;
+			width: 50%;
+			-moz-box-shadow: 0 0 30px #888;
+	        -webkit-box-shadow: 0 0 30px#888;
+	        box-shadow: 0 0 30px #888;
 		}
 
 		#background_tp{
-			background: rgba(0,0,0,0.5);
+			display: none;
+			position: absolute;
+			z-index: 99;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(255,255,255,0.6);
+			
 		}
 
 		.tp {
@@ -338,53 +346,12 @@
 				</div>
 
 				<div class="middle-space" id="calendar">
-					<!-- <p>Testing</p> -->
-				</div>
 
-
-				<div class="right-space">
-
-					<div class="swiper-container">
-						<!-- Slider main container -->
-		                <!-- Additional required wrapper -->
-		                <div class="swiper-wrapper">
-		                    <!-- Slides -->
-		                    <div class="swiper-slide">
-		                      <img src="{{ asset('myasset/img/event1.JPG') }}" class="swiper-image" />
-		                    </div>
-		                    <div class="swiper-slide">
-		                      <img src="{{ asset('myasset/img/event-1.JPG') }}" class="swiper-image" />
-		                    </div>
-		                    <div class="swiper-slide">
-		                      <img src="{{ asset('myasset/img/event2.JPG') }}" class="swiper-image" />
-		                    </div>
-		                </div>
-		                <!-- If we need pagination -->
-		                <div class="swiper-pagination"></div>
-
-		                <!-- If we need navigation buttons -->
-		                <div class="swiper-button-prev"></div>
-		                <div class="swiper-button-next"></div>
-
-		                <!-- If we need scrollbar -->
-		                <div class="swiper-scrollbar"></div>
-					</div>
-
-					<div class="middle-step">
-						<h6>How To Start?</h6>
-						<p><b>Step #1</b><br>Start looking for your favourite vendors/packages.</p>
-						<p><b>Step #2</b><br>Booking your package manually or online.</p>								
-						<p><b>Step #3</b><br>Wait for approval from the vendor.</p>								
-						<p><b>Step #4</b><br>If aprroved! You can start planning your wedding at your dashboard.</p>
-						<p><em>** visit <b>How it Works</b> tab for more explanation. **</em></p>							
-					</div> 
-
-						<!-- <section> -->
+					<!-- <section> -->
 						<!-- PERSONAL INFO -->
 							<div tabindex="0" id="background_tp">
-								<!-- <button class="tbutton tbutton-active" id="pi">Personal Information</button> -->
 								
-								<div class="tp tp-active" id="tp-form" style="display:none;">
+								<div class="tp tp-active" id="tp-form">
 									<div class="p-info">
 									<i class="fa fa-times" onclick="closePro()" style="position:absolute;right:4%;top:4%;cursor:pointer;"></i>
 
@@ -458,9 +425,50 @@
 								
 							</div>
 					
-						<!-- </section> -->
-					
+				<!-- </section> -->
 				</div>
+
+
+				<div class="right-space">
+
+					<div class="swiper-container">
+						<!-- Slider main container -->
+		                <!-- Additional required wrapper -->
+		                <div class="swiper-wrapper">
+		                    <!-- Slides -->
+		                    <div class="swiper-slide">
+		                      <img src="{{ asset('myasset/img/event1.JPG') }}" class="swiper-image" />
+		                    </div>
+		                    <div class="swiper-slide">
+		                      <img src="{{ asset('myasset/img/event-1.JPG') }}" class="swiper-image" />
+		                    </div>
+		                    <div class="swiper-slide">
+		                      <img src="{{ asset('myasset/img/event2.JPG') }}" class="swiper-image" />
+		                    </div>
+		                </div>
+		                <!-- If we need pagination -->
+		                <div class="swiper-pagination"></div>
+
+		                <!-- If we need navigation buttons -->
+		                <div class="swiper-button-prev"></div>
+		                <div class="swiper-button-next"></div>
+
+		                <!-- If we need scrollbar -->
+		                <div class="swiper-scrollbar"></div>
+					</div>
+
+					<div class="middle-step">
+						<h6>How To Start?</h6><hr>
+						<p><b>Step #1</b><br>Start looking for your favourite vendors/packages.</p>
+						<p><b>Step #2</b><br>Booking your package manually or online.</p>								
+						<p><b>Step #3</b><br>Wait for approval from the vendor.</p>								
+						<p><b>Step #4</b><br>If aprroved! You can start planning your wedding at your dashboard.</p>
+						<p><em>** visit <b>How it Works</b> tab for more explanation. **</em></p>							
+					</div> 
+
+										
+				</div>
+				
 				
 		    	
 		    </div>
@@ -519,11 +527,11 @@
 
 
 		function updatePro() {
-			$('#tp-form').fadeToggle('fast');
+			$('#background_tp').fadeToggle('fast');
 		}
 
 		function closePro() {
-			$('#tp-form').fadeToggle('fast');
+			$('#background_tp').fadeToggle('fast');
 		}
 
 		// $(document).ready(function(){	
@@ -541,7 +549,7 @@
 
 				$.post(url, {fname:fullname,phonenum:phoneno,dob:dateob,addr:addrs,state:states,_token:token},function(){
 					alert('Profile successfully updated');
-					$('#tp-form').fadeToggle('fast');				
+					$('#background_tp').fadeToggle('fast');				
 				});			
 			});
 
