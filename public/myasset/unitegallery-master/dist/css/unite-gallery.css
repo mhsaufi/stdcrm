@@ -1,5 +1,60 @@
 .---------Protection--------{}
 
+.unite_gallery_custom_option {
+	height: 100%;
+	margin-top: 25%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	/*background:blue;*/
+}
+
+.unite_gallery_custom_option_container {
+	display: none;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	right: 0;
+	width: 10%;
+	height: 40%;
+	z-index: 999999999999;
+}
+
+#delete_loading {
+	position: absolute;
+	top: 15%;
+	left: 48%;
+	display: none;
+}
+
+#delete_loading > img {
+	width: 30%!important;
+}
+
+
+#remove_image_btn {
+	background: rgba(0,0,0,0.4);
+	color: #fff;
+	padding: 5px 10px;
+	border-radius: 4px;
+	cursor: pointer;
+	margin-bottom: 20px;
+}
+
+#email_image_btn{
+	background: rgba(0,0,0,0.4);
+	color: #fff;
+	padding: 5px 10px;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+#remove_image_btn:hover, #email_image_btn:hover {
+	background: rgba(0,0,0,0.3);
+}
+
 .ug-gallery-wrapper, 
 .ug-gallery-wrapper *{
 	transition: all !important;

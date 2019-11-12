@@ -8,6 +8,7 @@
     
     <link rel="stylesheet" type="text/css" href="{{asset('myasset/css/slicknav.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('myasset/css/main.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('myasset/css/custom_std.css')}}">
     <!-- Extras Style -->
     <link rel="stylesheet" type="text/css" href="{{asset('myasset/css/extras.css')}}">
     <!-- Responsive Style -->

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 11, 2019 at 09:01 AM
+-- Generation Time: Nov 12, 2019 at 09:40 AM
 -- Server version: 10.1.39-MariaDB
 -- PHP Version: 7.3.5
 
@@ -44,11 +44,12 @@ CREATE TABLE `attachment` (
 --
 
 INSERT INTO `attachment` (`att_id`, `att_name`, `att_filename`, `att_path`, `item_type`, `item_id`, `created_at`, `updated_at`) VALUES
-(12, '20180407013526tn.jpg', '20180407013526tn.jpg', 'gallery/company/1/j4ZuiQ1LsYXynqBE3RnRuolA6jXgp7bWeFX2OVMI.jpeg', 'gallery', 1, '2019-11-10 22:11:14', '2019-11-10 22:11:14'),
-(13, 'Ani-Catering-Wedding-Planner-4.jpg', 'Ani-Catering-Wedding-Planner-4.jpg', 'gallery/company/1/OOaC5xyj2dlqsbuGK48Hn9Cyu0qQcheSO42cgt6z.jpeg', 'gallery', 1, '2019-11-10 22:11:14', '2019-11-10 22:11:14'),
-(14, 'Ani-Catering-Wedding-Planner-6.jpg', 'Ani-Catering-Wedding-Planner-6.jpg', 'gallery/company/1/wMP8dtKytra3vixyOQjbl8ehlm4MAMKc8VZRRiex.jpeg', 'gallery', 1, '2019-11-10 22:11:14', '2019-11-10 22:11:14'),
 (15, '81fmJOLZBGL._SR500,500_.jpg', '81fmJOLZBGL._SR500,500_.jpg', 'gallery/company/2/WLVQEKjEF0iEbGYkPw3wB4yyPIsQDOBZB44DSqUY.jpeg', 'gallery', 2, '2019-11-10 22:35:57', '2019-11-10 22:35:57'),
-(16, '51HdQsRdSJL._SR500,500_.jpg', '51HdQsRdSJL._SR500,500_.jpg', 'gallery/company/2/RV3AZ0gxFk0f0zGfq0FgQqKjPoCqPoJNgnAtEdQ2.jpeg', 'gallery', 2, '2019-11-10 22:36:22', '2019-11-10 22:36:22');
+(16, '51HdQsRdSJL._SR500,500_.jpg', '51HdQsRdSJL._SR500,500_.jpg', 'gallery/company/2/RV3AZ0gxFk0f0zGfq0FgQqKjPoCqPoJNgnAtEdQ2.jpeg', 'gallery', 2, '2019-11-10 22:36:22', '2019-11-10 22:36:22'),
+(21, '01-All-0192.jpg', '01-All-0192.jpg', 'gallery/company/1/Hx4bnCXfmPnRljZCb9mOYty1zw0wutV3fcF3Lkqq.jpeg', 'gallery', 1, '2019-11-12 00:20:07', '2019-11-12 00:20:07'),
+(26, 'index.jpg', 'index.jpg', 'gallery/company/1/MvoKjnHIAHyVKs9BSNBwfet7HFdrHkE2mw90jJY4.jpeg', 'gallery', 1, '2019-11-12 00:34:10', '2019-11-12 00:34:10'),
+(27, 'index.jpg', 'index.jpg', 'gallery/company/1/sE0u8om4yl01HvIfPc5KCLiVN9JhZGjMeyRGyjgH.jpeg', 'gallery', 1, '2019-11-12 00:38:29', '2019-11-12 00:38:29'),
+(28, '01-All-0192.jpg', '01-All-0192.jpg', 'gallery/company/1/tkY9G0MxdC0SSwt0ZnKu667pIqdw073c3MobUcEH.jpeg', 'gallery', 1, '2019-11-12 00:38:35', '2019-11-12 00:38:35');
 
 -- --------------------------------------------------------
 
@@ -511,6 +512,13 @@ CREATE TABLE `wevent` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `wevent`
+--
+
+INSERT INTO `wevent` (`we_id`, `we_title`, `we_date`, `we_time1`, `we_time2`, `we_venue`, `we_desc`, `we_remark`, `package_id`, `company_id`, `user_id`, `wes_id`, `created_at`, `updated_at`) VALUES
+(1, 'Abdul Qahar & Aisyah Zahira', '2020-03-28', '10:00:00', '15:00:00', 'Lot 1866, Jalan Harmonis 4, Taman Harmonis, 53100 Kuala Lumpur, Selangor', 'Marriage', NULL, 0, 1, 18, 1, '2019-11-12 01:48:15', '2019-11-11 17:48:16');
+
 -- --------------------------------------------------------
 
 --
@@ -544,6 +552,14 @@ CREATE TABLE `wevent_inbox` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `wevent_inbox`
+--
+
+INSERT INTO `wevent_inbox` (`i_id`, `i_sender_id`, `i_recipient_id`, `i_type_id`, `i_subject`, `i_content`, `i_item_id`, `i_status_id`, `created_at`, `updated_at`) VALUES
+(1, '1', 18, 2, '', '', 1, 1, '2019-11-12 01:48:15', '2019-11-11 17:48:15'),
+(2, '0', 2, 4, '', '', 1, 1, '2019-11-12 02:39:11', '2019-11-11 18:39:11');
 
 -- --------------------------------------------------------
 
@@ -587,6 +603,14 @@ CREATE TABLE `wevent_timeline` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `wevent_timeline`
+--
+
+INSERT INTO `wevent_timeline` (`wet_id`, `wet_subject`, `wet_desc`, `wet_datetime`, `we_id`, `wet_owner`, `user_id`, `wet_payment`, `tc_id`, `ts_id`, `wet_remark`, `created_at`, `updated_at`) VALUES
+(1, 'Organizing and Meeting', 'PHA+d2lsbCBiZSBoZWxkIGF0IFJlc3RvcmFuIE5lbGF5YW4gQW1wYW5nLiBNaWdodCBuZWVkIHRvIGRpc2N1c3MgbW9yZSBhYm91dCBib290aCBhZGRpdGlvbi48YnI+PC9wPg==', '2019-11-28 14:05:00', 1, 15, 18, 0, 1, 2, NULL, '2019-11-12 06:21:08', '2019-11-11 22:21:08'),
+(2, 'Payment Online Transfer', 'PHA+SW5mb3JtIG9uIHBheW1lbnQgbWFkZTxicj48L3A+', '2019-11-30 14:21:00', 1, 18, 14, 1200, 3, 2, NULL, '2019-11-12 06:23:15', '2019-11-11 22:23:15');
+
 -- --------------------------------------------------------
 
 --
@@ -598,6 +622,14 @@ CREATE TABLE `wevent_vendors` (
   `company_id` int(11) NOT NULL,
   `we_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `wevent_vendors`
+--
+
+INSERT INTO `wevent_vendors` (`wev_id`, `company_id`, `we_id`) VALUES
+(1, 1, 1),
+(2, 2, 1);
 
 --
 -- Indexes for dumped tables
@@ -767,7 +799,7 @@ ALTER TABLE `wevent_vendors`
 -- AUTO_INCREMENT for table `attachment`
 --
 ALTER TABLE `attachment`
-  MODIFY `att_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `att_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `company`
@@ -887,7 +919,7 @@ ALTER TABLE `users_status`
 -- AUTO_INCREMENT for table `wevent`
 --
 ALTER TABLE `wevent`
-  MODIFY `we_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `we_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `wevent_agreement`
@@ -899,7 +931,7 @@ ALTER TABLE `wevent_agreement`
 -- AUTO_INCREMENT for table `wevent_inbox`
 --
 ALTER TABLE `wevent_inbox`
-  MODIFY `i_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `i_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `wevent_status`
@@ -911,13 +943,13 @@ ALTER TABLE `wevent_status`
 -- AUTO_INCREMENT for table `wevent_timeline`
 --
 ALTER TABLE `wevent_timeline`
-  MODIFY `wet_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `wet_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `wevent_vendors`
 --
 ALTER TABLE `wevent_vendors`
-  MODIFY `wev_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `wev_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
