@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>SaveTheDate | Islamic Affairs</title>
+	<title>Save The Date | Islamic Affairs</title>
 	<meta name="page_site" content="savethedate-my.com">
 	<meta name="page_language" content="English">
 	<meta name="page_type" content="iAffair">

@@ -2,18 +2,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Packages</title>
+  <title>Save The Date | Packages</title>
    @include('templates.header')
 
    <link rel="stylesheet" type="text/css" href="{{asset('myasset/select2/dist/css/select23.css')}}">
 
    <style>
-    .bg {
-      /*background: linear-gradient(#039be5,#006064);*/
-      background: #009688;
-      color: #fff;
-    }
-
     .navbar-expand-lg .navbar-nav .nav-link {
       color: white!important;
     }

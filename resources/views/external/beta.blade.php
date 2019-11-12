@@ -2,19 +2,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Vendors</title>
+	<title>Save The Date | Vendors</title>
 	 @include('templates.header')
 
    <link rel="stylesheet" type="text/css" href="{{asset('myasset/select2/dist/css/select23.css')}}">
    <link rel="stylesheet" type="text/css" href="{{asset('myasset/std_rating/std_rating.css')}}">
 
 	 <style>
-    .bg {
-      /*background: linear-gradient(#039be5,#006064);*/
-      background: #009688;
-      color: #fff;
-    }
-
     .big_container_o {
       padding-top: 10px;
       width: 100%;
