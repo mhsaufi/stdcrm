@@ -8,12 +8,6 @@
    <link rel="stylesheet" type="text/css" href="{{asset('myasset/select2/dist/css/select23.css')}}">
 
    <style>
-    .bg {
-      /*background: linear-gradient(#039be5,#006064);*/
-      background: #009688;
-      color: #fff;
-    }
-
     .navbar-expand-lg .navbar-nav .nav-link {
       color: white!important;
     }
@@ -340,7 +334,7 @@
     <div class="section-padding">
       <div class="big_container_o bg animated fadeInDown faster">
         <div style="padding: 3% 10% 5px 10%;">
-          <p style="color: #fff">Browse for all available packages on our site offered by our vendors. All of our vendors comprises of best reviewed companies 
+          <p>Browse for all available packages on our site offered by our vendors. All of our vendors comprises of best reviewed companies 
           to make sure your wedding happening the way you wished for</p>
         </div>
         <div class="search-engine-panel">   
@@ -364,7 +358,7 @@
             <button id="std_search_btn">Search &nbsp&nbsp<i class="fas fa-search"></i></button>
           </div>
         </div>
-        <p style="margin-left: 10%;color: #fff">{{ $p_count }} result(s) found</p>   
+        <p style="margin-left: 10%">{{ $p_count }} result(s) found</p>   
       </div>
       <div class="big_container_o">
         @if($p_count > 0)

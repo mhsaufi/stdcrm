@@ -106,10 +106,12 @@
 
 	      .swiper-button-next {
 	        color: #fff;
+	        display: none;
 	      }
 
 	      .swiper-button-prev {
-	        color: #fff;        
+	        color: #fff;
+	        display: none;        
 	      }
 
 		 .middle-step{			 
@@ -184,13 +186,23 @@
 		/* margin-bottom: 20px; */
 		}
 
-		#tp-form{
-			margin-top: -34.5%;			
+		#tp-form{			
 			z-index: 99 !important;
 			position: absolute;
+			bottom: 0;
+			height: auto!important;
+			background: #fff;
+			width: 100%;
+			padding: 2% 10%;
 		}
 
 		#background_tp{
+			display: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
 			background: rgba(0,0,0,0.5);
 		}
 
@@ -344,20 +356,23 @@
 
 				<div class="right-space animated fadeInRight fast">
 
-					<div class="swiper-container">
-						<!-- Slider main container -->
+					@if($event_count > 0)
+		            <!-- Slider main container -->
+		            <div class="swiper-container">
 		                <!-- Additional required wrapper -->
 		                <div class="swiper-wrapper">
-		                    <!-- Slides -->
+
+		                    @foreach($event_data as $e)
+
 		                    <div class="swiper-slide">
-		                      <img src="{{ asset('myasset/img/event1.JPG') }}" class="swiper-image" />
+		                      <a href="{{ $e['url'] }}" target="_blank">
+		                        <img src="{{ asset('storage/'.$e['poster']) }}" class="swiper-image" />
+		                      </a>
 		                    </div>
-		                    <div class="swiper-slide">
-		                      <img src="{{ asset('myasset/img/event-1.JPG') }}" class="swiper-image" />
-		                    </div>
-		                    <div class="swiper-slide">
-		                      <img src="{{ asset('myasset/img/event2.JPG') }}" class="swiper-image" />
-		                    </div>
+
+		                    @endforeach
+
+
 		                </div>
 		                <!-- If we need pagination -->
 		                <div class="swiper-pagination"></div>
@@ -368,7 +383,9 @@
 
 		                <!-- If we need scrollbar -->
 		                <div class="swiper-scrollbar"></div>
-					</div>
+		            </div>
+
+		            @endif
 
 					<div class="middle-step">
 						<h6>How To Start?</h6>
@@ -380,86 +397,7 @@
 					</div> 
 
 						<!-- <section> -->
-						<!-- PERSONAL INFO -->
-							<div tabindex="0" id="background_tp">
-								<!-- <button class="tbutton tbutton-active" id="pi">Personal Information</button> -->
-								
-								<div class="tp tp-active" id="tp-form" style="display:none;">
-									<div class="p-info">
-									<i class="fa fa-times" onclick="closePro()" style="position:absolute;right:4%;top:4%;cursor:pointer;"></i>
-
-										<div class="row">
-											<div class="col-25">
-												<label for="fullname">Full Name</label>
-											</div>
-											<div class="col-75">
-												<input type="text" id="fullname" name="fullname" value="{{ Auth::user()->fullname }}" placeholder="{{ Auth::user()->fullname }}">
-											</div>
-										</div>
-
-										<div class="row">
-											<div class="col-25">
-												<label for="phone">Phone No.</label>
-											</div>
-											<div class="col-75">
-												<input type="text" id="phonenum" name="phonenum" value="{{ Auth::user()->phone }}" placeholder="{{ Auth::user()->phone }}">
-											</div>
-										</div>
-
-										<div class="row">
-											<div class="col-25">
-												<label for="dob">D.O.B</label>
-											</div>
-											<div class="col-75">
-												<input type="date" id="dob" name="dob" value="{{ Auth::user()->dob }}" placeholder="{{ Auth::user()->dob }}">
-											</div>
-										</div>
-
-										<div class="row">
-											<div class="col-25">
-												<label for="address">Address</label>
-											</div>
-											<div class="col-75">
-												<input type="text" id="addr" name="addr" value="{{ Auth::user()->address }}" placeholder="{{ Auth::user()->address }}">
-											</div>
-										</div>
-
-										<div class="row">
-											<div class="col-25">
-												<label for="state">State</label>
-											</div>
-											<div class="col-75">
-												<select id="state" name="state" value="{{ Auth::user()->state }}">
-													<option value="">Please choose your state</option>
-													<option value="Johor">Johor</option>
-													<option value="Kedah">Kedah</option>
-													<option value="Kelantan">Kelantan</option>
-													<option value="Melaka">Melaka</option>
-													<option value="Negeri">Negeri Sembilan</option>
-													<option value="Pahang">Pahang</option>
-													<option value="Perak">Perak</option>
-													<option value="Perlis">Perlis</option>
-													<option value="Pulau Pinang">Pulau Pinang</option>
-													<option value="Sabah">Sabah</option>
-													<option value="Sarawak">Sarawak</option>
-													<option value="Selangor">Selangor</option>
-													<option value="Terengganu">Terengganu</option>
-													<option value="Wilayah">Wilayah Persekutuan</option>
-													<option value="International">International</option>
-												</select>
-											</div>
-										</div>
-								
-									</div>
-
-									<button class="btn_form" id="pi_update" onclick="updateProfile()" style="margin-top:2%; margin-left:80%;">Update</button>
-									
-								</div>								
-								
-							</div>
-					
-						<!-- </section> -->
-					
+						
 				</div>
 				
 		    	
@@ -467,7 +405,86 @@
     	<!-- </div> -->
     </div>
 
+    <!-- PERSONAL INFO -->
+	<div id="background_tp">
+		<!-- <button class="tbutton tbutton-active" id="pi">Personal Information</button> -->
+		
+		<div class="animated fadeInUp faster" id="tp-form">
+			<div class="p-info">
+			<i class="fa fa-times" onclick="closePro()" style="position:absolute;right:4%;top:4%;cursor:pointer;"></i>
 
+				<div class="row">
+					<div class="col-25">
+						<label for="fullname">Full Name</label>
+					</div>
+					<div class="col-75">
+						<input type="text" id="fullname" name="fullname" value="{{ Auth::user()->fullname }}" placeholder="{{ Auth::user()->fullname }}">
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-25">
+						<label for="phone">Phone No.</label>
+					</div>
+					<div class="col-75">
+						<input type="text" id="phonenum" name="phonenum" value="{{ Auth::user()->phone }}" placeholder="{{ Auth::user()->phone }}">
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-25">
+						<label for="dob">D.O.B</label>
+					</div>
+					<div class="col-75">
+						<input type="date" id="dob" name="dob" value="{{ Auth::user()->dob }}" placeholder="{{ Auth::user()->dob }}">
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-25">
+						<label for="address">Address</label>
+					</div>
+					<div class="col-75">
+						<input type="text" id="addr" name="addr" value="{{ Auth::user()->address }}" placeholder="{{ Auth::user()->address }}">
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-25">
+						<label for="state">State</label>
+					</div>
+					<div class="col-75">
+						<select id="state" name="state" value="{{ Auth::user()->state }}">
+							<option value="">Please choose your state</option>
+							<option value="Johor">Johor</option>
+							<option value="Kedah">Kedah</option>
+							<option value="Kelantan">Kelantan</option>
+							<option value="Melaka">Melaka</option>
+							<option value="Negeri">Negeri Sembilan</option>
+							<option value="Pahang">Pahang</option>
+							<option value="Perak">Perak</option>
+							<option value="Perlis">Perlis</option>
+							<option value="Pulau Pinang">Pulau Pinang</option>
+							<option value="Sabah">Sabah</option>
+							<option value="Sarawak">Sarawak</option>
+							<option value="Selangor">Selangor</option>
+							<option value="Terengganu">Terengganu</option>
+							<option value="Wilayah">Wilayah Persekutuan</option>
+							<option value="International">International</option>
+						</select>
+					</div>
+				</div>
+		
+			</div>
+
+			<button class="btn_form" id="pi_update" onclick="updateProfile()" style="margin-top:2%; margin-left:80%;">Update</button>
+			
+		</div>								
+		
+	</div>
+
+<!-- </section> -->
+					
 
     @include('templates.footer')
 
@@ -494,36 +511,20 @@
 		        direction: 'horizontal',
 		        loop: true,
 
-		        // If we need pagination
-		        pagination: {
-		          // el: '.swiper-pagination',
-		        },
-
-		        // Navigation arrows
-		        navigation: {
-		          nextEl: '.swiper-button-next',
-		          prevEl: '.swiper-button-prev',
-		        },
-
 		        autoplay: {
 		          delay: 3000,
-		        },
-
-		        // And if we need scrollbar
-		        scrollbar: {
-		          el: '.swiper-scrollbar',
-		        },
+		        }
 		      })
 
 		});
 
 
 		function updatePro() {
-			$('#tp-form').fadeToggle('fast');
+			$('#background_tp').fadeToggle('fast');
 		}
 
 		function closePro() {
-			$('#tp-form').fadeToggle('fast');
+			$('#background_tp').fadeToggle('fast');
 		}
 
 		// $(document).ready(function(){	

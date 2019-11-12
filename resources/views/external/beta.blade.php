@@ -9,12 +9,6 @@
    <link rel="stylesheet" type="text/css" href="{{asset('myasset/std_rating/std_rating.css')}}">
 
 	 <style>
-    .bg {
-      /*background: linear-gradient(#039be5,#006064);*/
-      background: #009688;
-      color: #fff;
-    }
-
     .big_container_o {
       padding-top: 10px;
       width: 100%;
@@ -258,7 +252,7 @@
     <div class="section-padding">
     	<div class="big_container_o bg animated fadeInDown faster">
         <div style="padding: 3% 10% 5px 10%;">
-          <p style="color: #fff">Browse for all available packages on our site offered by our vendors. All of our vendors comprises of best reviewed companies 
+          <p>Browse for all available packages on our site offered by our vendors. All of our vendors comprises of best reviewed companies 
           to make sure your wedding happening the way you wished for</p>
         </div>
     		<div class="search-engine-panel">
@@ -281,7 +275,7 @@
           <div><button id="std_search_btn">SEARCH &nbsp&nbsp<i class="fas fa-search"></i></button></div>
         </div>	
         <br>
-        <p style="margin-left: 10%;color: #fff">{{ $p_count }} result(s) found</p>   	
+        <p style="margin-left: 10%">{{ $p_count }} result(s) found</p>   	
     	</div>
 
       <div class="big_container_o">

@@ -20,45 +20,16 @@
     <link rel="stylesheet" type="text/css" href="{{asset('myasset/select2/dist/css/select2.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('myasset/summernote-master/summernote/summernote-lite-bs3.css')}}">
     <style type="text/css">
+      .big_container {
+        padding: 0 10%;
+      }
+      
       .pattern {
         background: #FFFBE5!important;
       }
 
       #std_timline_form {
         display: none;
-      }
-
-      #add-timeline-btn {
-        border: none;
-        padding: 8px 18px;
-        background: #7cb342;
-        border-radius: 5px; 
-        color: #ffff;
-        cursor: pointer;
-      }
-
-      #add-timeline-btn:hover {
-        background: #8bc34a;
-      }
-
-      .big_container {
-        padding: 0 10%;
-      }
-
-      #label-category{
-        background-color: white;
-        align-self: flex-start;
-        width: 18%;
-        height: 60px;
-        padding-top: 8px;
-        margin-top: 5px;
-        border-radius: 10px 10px 0 0;  
-        border: none;     
-      }
-      
-      #label-category p{
-        font-weight: bold;
-        opacity: 0.4;
       }
 
       .icon-circle{
@@ -78,652 +49,29 @@
         z-index: 99;
         cursor: pointer;
       }
+
       .icon-circle a{
         color: black;
         opacity: 0.6;
       }
+
       .navbar-expand-lg .navbar-nav .nav-link {
         color: black !important;
         opacity: 0.5;
       }
+
       .navbar-expand-lg .navbar-nav .nav-link:active{
         color: gold !important;
         opacity: 0.5;
-      }
-
-      #btn-register{
-      	border-radius: 10px;
-      	height: 40px;
-      	background-color: green;
-      	color: white;		
-      }
-
-      #btn-seemore{
-      	border-radius: 10px;
-      	height: 40px;
-      	background-color: blue;
-		    color: white;
-      }
-
-      #edit-icon {
-        opacity: 0.7;
-        cursor: pointer;
-      }
-
-      #edit-icon:hover {
-        opacity: 0.9;
-      }
-
-      #myTimeline {
-        width: 100%!important;
-        background: #fbfcfc;
-        border-radius: 4px;
-      }
-
-      #timeline {
-        width: 89%!important;
-      }
-
-      .no_timeline {
-        padding: 20px 20px;
-      }
-
-      .no_timeline>span {
-        opacity: 0.8;
-      }
-
-      .panel-title {
-        border: 0.05em solid #cfd8dc;
-        border-radius: 5px;
-        height: 30px;
-        width: 100%;
-        margin-left: 20px;
-        margin-top: 15px;
-        margin-bottom: -20px;
-        padding: 5px 10px;
-        font-weight: bold;
-        color: white;
-      }
-      /*green*/
-      .approve { 
-        background: #8bc34a;
-      }
-      /*yellow*/
-      .pending {
-        background: #ffca28;
-      }
-      /*red*/
-      .disapproved {
-        background: #f44336;
-      }
-
-      .timeline-date {
-        font-style: italic;
-        font-size: 1.2em;
-      }
-
-      .card{
-        background-color: rgba (255,255,55,0.6)!important;
-      }
-
-      .std-link {
-        text-decoration: none;
-        color: #cfd8dc;
-      }
-
-      .std-link:hover {
-        color: #90a4ae;
-      }
-
-
-      .std-btn {
-        padding: 10px 20px;
-        background: #09ce61;
-        color: white;
-        border: none;
-        cursor: pointer;
-        border-radius: 5px;
-        margin-right: 10px;
-        float: left;
-        height: 100%;
-      }
-
-      .std-btn:hover {
-        background: #09bf5a;
-      }
-
-      .std-timeline-banner {
-        position: relative;
-        height: auto;
-        background: #ffff;        
-        padding: 20px 20px;
-        border-radius: 5px;
-        -moz-box-shadow: 0 0 5px #888;
-        -webkit-box-shadow: 0 0 5px#888;
-        box-shadow: 0 0 2px #888;
-        margin: 20px 0 5px 0;
-      }
-
-      #std-timeline-banner-option-popup {
-        position: absolute;
-        top: 35px;
-        right: 15px;
-        width: 200px;
-        height: 60px;
-        background: white;
-        -moz-box-shadow: 0 0 5px #888;
-        -webkit-box-shadow: 0 0 5px#888;
-        box-shadow: 0 0 2px #888;
-        z-index: 99;
-        padding: 10px 15px;
-        display: none;
-      }
-
-      #std-timeline-banner-option-popup-content {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-      }
-
-      .std-timeline-banner-option-popup-content-text {
-        opacity: 0.5;
-        cursor: pointer;
-      }
-
-      .std-timeline-banner-option-popup-content-text:hover {
-        opacity: 0.8;
-      }
-
-      .std-timeline-banner-header{
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-      }
-
-      .std-timeline-banner-transaction {
-        width: 100%;
-        padding: 10px 14px;
-        /*background: green;*/
-        display: flex;
-        flex-direction: column;
-        font-family: Optima, Segoe, Segoe UI, Candara, Calibri, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 20px;
-        margin-bottom: 15px;
-      }
-
-      .std-timeline-banner-info {
-        width: 100%;
-        padding: 20px 20px;
-        font-size: 14px;
-      }
-
-      .std-timeline-sidebar {
-        background: #ffff;        
-        padding: 20px 20px;
-        border-radius: 3px;
-        -moz-box-shadow: 0 0 5px #888;
-        -webkit-box-shadow: 0 0 5px#888;
-        box-shadow: 0 0 2px #888;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-      }
-
-      .std-timeline {
-        width: 100%;
-        min-height: 250px;
-        background: #ffff;        
-        padding: 20px 20px;
-        border-radius: 3px;
-        -moz-box-shadow: 0 0 5px #888;
-        -webkit-box-shadow: 0 0 5px#888;
-        box-shadow: 0 0 2px #888;
-      }
-
-      .std-timeline-body {
-        width: 100%!important;
-        background: #ffff;
-        border: 0.05em solid #cfd8dc;
-        border-radius: 5px;
-        /*box-shadow: 0 0 2px #888;*/
-        margin-left: 20px;
-        margin-top: 15px;
-        cursor: pointer;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-      }
-
-      .std-timeline-body:hover {
-        background: #fbfcfc;
-        /*box-shadow: 0 0 2px #888;*/
-      }
-
-      .std-timeline-sidebar-btn {
-        border: 0.05em solid #cfd8dc;
-        border-radius: 1px;
-        padding: 5px 10px;
-        /*color: #fff;*/
-        background: #f5f5f5;
-        float: right;
-        cursor: pointer;
-      }
-
-      .std-timeline-sidebar-btn:hover {
-        background: #EEEEEE;
-      }
-
-      .notification-tcard-header {
-        border-top-right-radius: 5px;
-        border-top-left-radius: 5px;
-        padding: 6px 10px;
-        color: #fff;
-        font-weight: bold;
-        font-size: 12px;
-      }
-
-      .notification-tcard-content {
-        background: #fff;
-        border-radius: 2px;
-        padding: 10px 10px;
-        border: 0.05em solid #cfd8dc;
-        margin-bottom: 10px;
-        font-size: 12px;
-        min-height: 50px;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-      }
-
-      .vendors-tcard {
-        position: relative;
-        /*padding: 0 10%;*/
-        border: 0.05em solid #cfd8dc;
-        border-radius: 2px;
-        width: 100%;
-        min-height: 28%;
-        margin-bottom: 5px;
-        cursor: pointer;
-        font-size: 13px;
-        /*background: green;*/
-      }
-
-      .vendors-tcard:hover {
-        -moz-box-shadow: 0 0 1px #888;
-        -webkit-box-shadow: 0 0 1px#888;
-        box-shadow: 0 0 1px #888;
-      }
-
-      .vendors-tcard-name {
-        width: 93%;
-        position: absolute;
-        margin-right: 0;
-        -webkit-transition: margin-right 0.2s, opacity 0.2s;
-      }
-
-      .vendors-tcard-name-contact {
-        width: 100%;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        opacity: 1;
-        margin: auto;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        /*background: red;*/
-        padding: 0 5%;
-      }
-
-      .vendors-tcard-name-invite-alert {
-        width: 100%;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        opacity: 1;
-        margin: auto;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        background: #e74c3c;
-        color: white;
-        padding: 0 5%;
-      }
-
-      .vendors-tcard-name-invite-alert:hover {
-        opacity: 0.9;
-      }
-
-      .vendors-tcard:hover  .vendors-tcard-name {
-        margin-right: -15%;
-        opacity: 0;
-      }
-
-      .vendors-tcard-add-contact {
-        position: absolute;
-        opacity: 0;
-        margin-left: -11%;
-        -webkit-transition: margin-left 0.2s, opacity 0.3s
-      }
-
-      .vendors-tcard:hover .vendors-tcard-add-contact {
-        margin-left: 0;
-        opacity: 1;
-      }
-
-      .vendors-tcard-disable {
-        padding: 8px 10px;
-        border: 0.05em solid #f7f7f7;
-        background: #f7f7f7;
-        border-radius: 2px;
-        width: 100%;
-        margin-bottom: 5px;
-        font-size: 13px;
-      }
-
-      .approve_btn {
-        padding: 10px 15px;
-        margin-left: 15px;
-        border: none;
-        cursor: pointer;
-        background: #689F38;
-        color: white;
-      }
-
-      .disapprove_btn {
-        padding: 10px 15px;
-        margin-left: 15px;
-        border: none;
-        cursor: pointer;
-        background: #d32f2f;
-        color: white;
-      }
-
-      #confirm_update {
-        position: fixed;
-        background: white;
-        top: 25%;
-        left: 40%;
-        height: 180px;
-        width: 300px;
-        -moz-box-shadow: 0 0 30px #888;
-        -webkit-box-shadow: 0 0 30px#888;
-        box-shadow: 0 0 30px #888;
-        z-index: 999;
-        display: none;
-      }
-
-      .main_timeline_col {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        flex-wrap: wrap;
-      }
-
-      .col_notification {
-        width: 25%;
-      }
-
-      .col_timeline {
-        width: 75%;
-        padding-right: 0!important;
-        padding-left: 5px!important;
-      }
-
-      .std-timeline-banner-info-detail {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-      }
-
-      .filter_row {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        align-items: center;
-      }
-
-      .vendor_select {
-        margin-left: 30px;
-        height: 30px;
-        width: 200px;
-        padding-left: 10px;
-      }
-
-      .timeline_form_child_1 {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        margin-top: 15px;
-      }
-
-      .timeline_form_child_4 {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        margin-top: 10px;
-      }
-
-      .timeline_form_child_4 div {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-      }
-
-      #approve_invite_container {
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        background: rgba(255,255,255, 0.8);
-        z-index: 999;
-        display: none;
-      }
-
-      #approve_invite_form {
-        position: absolute;
-        top: 40%;
-        left: 40%;
-        width: 20%;
-        height: 20%;
-        background: white;
-        border-radius: 5px;
-        -moz-box-shadow: 0 0 30px #888;
-        -webkit-box-shadow: 0 0 30px#888;
-        box-shadow: 0 0 30px #888;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        padding: 10px 15px;
-      }
-
-      .approve_button_yes {
-        padding: 5px 10px;
-        border: none;
-        background: #2ecc71;
-        color: white;
-        border-radius: 3px;
-        cursor: pointer;
-      }
-
-      .approve_button_yes:hover {
-        opacity: 0.9;
-      }
-
-      .approve_button_no {
-        padding: 5px 10px;
-        border: none;
-        background: #e74c3c;
-        color: white;
-        border-radius: 3px;
-        cursor: pointer;
-      }
-
-      .approve_button_no:hover {
-        opacity: 0.9;
-      }
-
-      .close_approve_container {
-        cursor: pointer;
-      }
-
-      @media (max-width: 560px) {
-        .big_container {
-          margin-top: 7%;
-          padding: 20px 2.5%;
-        }
-
-        .std-timeline-banner {
-          margin: 0;
-          width: 100%;
-          margin-bottom: 10px;
-        }
-
-        .std-timeline-banner-info-detail {
-          height: 150px;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-        }
-
-        .col_notification {
-          width: 100%;
-          margin-bottom: 2.5%;
-        }
-
-        .col_timeline {
-          width: 100%;
-          margin: 0;
-          padding: 0;
-          padding-left: 0!important;
-        }
-
-        .filter_row {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          align-items: flex-start;
-          height: 20%;
-        }
-
-        .vendor_select {
-          margin-left: 0;
-          height: 30px;
-          width: 100%;
-          margin-bottom: 15%;
-          padding-left: 10px;
-        }
-
-        #edit-icon {
-          display: none;
-        }
-
-        .timeline_form_child_1 {
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          margin-top: 15px;
-        }
-
-        .timeline_form_child_1 div {
-          width: 100%;
-          display: flex;
-          flex-direction: row;
-          justify-content: space-between;
-          margin-bottom: 15px;
-        }
-
-        .timeline_form_child_4 {
-          width: 100%;
-          height: 100px;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          margin-top: 10px;
-        }
-
-        .timeline_form_child_4 > div {
-          display: flex;
-          flex-direction: column;
-          justify-content: flex-start;
-          align-items: flex-start;
-          width: 100%;
-        }
       }
     </style>
   </head>
   <body class="pattern">
 
-    <!-- Update event reminder popup -->
-
-    <div id="confirm_update">
-      <div style="padding: 10px 10px;display: flex;flex-direction: column;justify-content: flex-start;height: 100%;width: 100%;align-items: center;">
-        <div style="padding: 10px 0;border-bottom: 0.05em solid #d4af37;margin-bottom: 10px;width: 100%;">Notes</div>
-        <div style="padding: 10px 0;">
-          <p>Your event has been successfully updated!</p>
-        </div>
-        <div><button class="approve_btn" id="okey_update">Okey</button></div>
-      </div>      
-    </div>
-
-    <!-- =============================== Form for creating event ===================================== -->
-
-    <div id="create_event_form" style="height: 490px;">
-      <div class="row">
-        <span>Create new event</span><span class="close-action-icon"><i class="fas fa-times"></i></span>
-        <hr>
-      </div>
-      <div class="row">
-        <label>Select Package</label>
-        <select class="form-std" id="package">
-          <option value=""></option>
-          <option value="C">Custom</option>
-          @foreach($package_data as $package)
-          <option value="{{ $package['package_id'] }}">{{ $package['package_title'] }}</option>
-          @endforeach
-        </select>
-        <br>
-        <label>Event Name</label>
-        <input type="text" name="we_title" class="form-std" placeholder="event name" id="title" value="{{ $data_event['we_title'] }}" />
-        <label>Description</label>
-        <textarea class="form-std" id="description"></textarea><br>
-        <label>Address</label>
-        <input type="text" name="we_title" class="form-std" placeholder="event venue address" id="address" value="{{ $data_event['we_venue'] }}" />
-        <div class="three-inline-box-std">
-          <div>
-            <label>Date</label>
-            <input type='text' class="form-std datepicker-here" data-position="right top" data-language='en' data-date-format='d-m-yyyy' id="date" value="{{ $data_event['we_date_airdatepicker'] }}" />
-          </div>
-          <div>
-            <label>Time Start</label>
-            <div class="input-group bootstrap-timepicker timepicker">
-              <input id="timepicker" class="form-std" data-provide="timepicker" data-minute-step="1" type="text" value="{{ $data_event['we_time1_timepicker'] }}" />
-            </div>
-          </div>
-          <div>
-            <label>Time End</label>
-            <div class="input-group bootstrap-timepicker timepicker">
-              <input id="timepicker2" class="form-std" data-provide="timepicker" data-minute-step="1" type="text" value="{{ $data_event['we_time2_timepicker'] }}" />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <button class="std-btn" id="reg_event">Update Event</button> 
-      </div>
-    </div>
-
     <!-- Header Area wrapper Starts -->
     <header id="header-wrap">
       @include('templates.navbar')
     </header>
-    <!-- Header Area wrapper End -->
     <br>
 
     <!-- ====================== Timeline header EVENT INFO ============================== -->
@@ -731,7 +79,7 @@
     <!-- Feature Section Start -->
     <div class="section-padding">
       <div class="big_container">
-        <div class="std-timeline-banner">
+        <div class="std-timeline-banner animated fadeInDown fast">
           <div class="std-timeline-banner-header">
             <div id="std-timeline-banner-option-popup">
               <div id="std-timeline-banner-option-popup-content">
@@ -774,9 +122,9 @@
         <!-- ========= Notification sidebar ==================  -->
 
         <div class="main_timeline_col">
-          <div class="col_notification std-timeline-sidebar" style="padding-bottom: 100px;">
+          <div class="col_notification std-timeline-sidebar animated fadeInLeft fast">
             
-            <div style="padding: 8px 15px;max-height: 50vh;overflow: auto;">
+            <div style="padding: 8px 15px;max-height: 60vh;overflow: auto;">
               <span style="opacity: 0.7;"><i class="fas fa-bell" style="margin-right: 10px;"></i> Timeline Notification</span>
               <hr>
 
@@ -828,84 +176,93 @@
               </table>
             </div>
 
-            <!-- ========= Event Vendors sidebar ==============  -->
+            <!-- ============================================= Event Vendors sidebar =============================================  -->
 
-            <div style="padding: 10px 10px;">
-              <div style="display: flex;flex-direction: row;justify-content: space-between;width: 100%;">
-                <div style="opacity: 0.7;"><i class="fas fa-users" style="margin-right: 10px;"></i> Event Vendors</div>
+            <div class="std-timeline-banner-vendors">
+              <div style="display: flex;flex-direction: row;justify-content: space-between;width: 100%;height: 25px;margin-bottom: 15px;">
+                <div style="opacity: 0.7;"><p><i class="fas fa-users" style="margin-right: 10px;"></i> Event Vendors</p></div>
                 <div class="plus_btn" id="add_vendors_btn"><i class="fas fa-plus"></i></div>
               </div>
-              <hr>
 
-                @if($data_event['user_id'] != 0)
+              @if($data_event['user_id'] != 0)
 
-                  @if($data_event['user_is_contact'] == 'yes')
+              @if($data_event['user_is_contact'] == 'yes')
 
-                    <div class="vendors-tcard">
-                      <div class="vendors-tcard-name-contact"><div>{{ $data_event['client']['name'] }}</div><div><i class="far fa-handshake"></i></div></div>
-                    </div>
+              <div class="vendors-tcard">
+                <div class="vendors-tcard-name-contact">
+                  <div>{{ $data_event['client']['name'] }}</div>
+                  <div><i class="far fa-handshake"></i></div>
+                </div>
+              </div>
 
+              @else
+
+              @if($data_event['user_id'] != Auth::user()->id)
+              <div class="vendors-tcard" onclick="addContactClient('{{ $data_event['client']['name'] }}','{{ $data_event['client']['id'] }}')">
+              @else
+              <div class="vendors-tcard-disable">
+              @endif
+
+                <div class="vendors-tcard-name">{{ $data_event['client']['name'] }}</div>
+                <div class="vendors-tcard-add-contact"><i class="fas fa-plus"></i> Add as contact</div>
+              </div>
+
+              @endif
+
+              @endif
+
+              @foreach($data_vendors as $vendor)
+
+              @if($vendor['company_id'] == $data_event['company_id'])
+
+                <div class="vendors-tcard-disable">
+                  <div class="vendors-tcard-name">{{ $vendor['vendor']['company_name'] }}</div>
+                </div>
+
+              @else
+
+                @if($vendor['contact'] == 'yes')
+
+                  <div class="vendors-tcard">
+                    <div class="vendors-tcard-name-contact"><div>{{ $vendor['vendor']['company_name'] }}</div><div><i class="far fa-handshake"></i></div></div>
+                  </div>
+
+                @else
+
+                  @if($vendor['company_id'] != Auth::user()->company_id)
+                  <div class="vendors-tcard" onclick="addContactVendor('{{ $vendor['vendor']['company_id'] }}','{{ $vendor['vendor']['company_name'] }}')">
                   @else
-
-                    <div class="vendors-tcard" onclick="addContactClient('{{ $data_event['client']['name'] }}','{{ $data_event['client']['id'] }}')">
-                      <div class="vendors-tcard-name">{{ $data_event['client']['name'] }}</div>
-                      <div class="vendors-tcard-add-contact"><i class="fas fa-plus"></i> Add as contact</div>
-                    </div>
-
+                  <div class="vendors-tcard-disable">
                   @endif
+
+                    <div class="vendors-tcard-name">{{ $vendor['vendor']['company_name'] }}</div>
+                    <div class="vendors-tcard-add-contact"><i class="fas fa-plus"></i> Add as contact</div>
+                  </div>
 
                 @endif
+                
 
-                @foreach($data_vendors as $vendor)
+              @endif
 
-                  @if($vendor['company_id'] == $data_event['company_id'])
+              @endforeach
 
-                    <div class="vendors-tcard-disable">
-                      {{ $vendor['vendor']['company_name'] }}
+              @if(Auth::user()->id == '5')
+
+                @foreach($inbox_data as $inbox)
+
+                  <div class="vendors-tcard" onclick="approveInvite('{{ $inbox['i_id'] }}')">
+                    <div class="vendors-tcard-name-invite-alert">
+                      <span>{{ $inbox['invited']['company_name'] }}</span> <i class="fas fa-exclamation-circle"></i>
                     </div>
-
-                  @else
-
-                    @if($vendor['contact'] == 'yes')
-
-                      <div class="vendors-tcard">
-                        <div class="vendors-tcard-name-contact"><div>{{ $vendor['vendor']['company_name'] }}</div><div><i class="far fa-handshake"></i></div></div>
-                      </div>
-
-                    @else
-
-                      <div class="vendors-tcard" onclick="addContactVendor('{{ $vendor['vendor']['company_id'] }}','{{ $vendor['vendor']['company_name'] }}')">
-                        <div class="vendors-tcard-name">{{ $vendor['vendor']['company_name'] }}</div>
-                        <div class="vendors-tcard-add-contact"><i class="fas fa-plus"></i> Add as contact</div>
-                      </div>
-
-                    @endif
-                    
-
-                  @endif
+                  </div>
 
                 @endforeach
 
-                @if(Auth::user()->id == '5')
-
-                  @foreach($inbox_data as $inbox)
-
-                    <div class="vendors-tcard" onclick="approveInvite('{{ $inbox['i_id'] }}')">
-                      <div class="vendors-tcard-name-invite-alert">
-                        <span>{{ $inbox['invited']['company_name'] }}</span> <i class="fas fa-exclamation-circle"></i>
-                      </div>
-                    </div>
-
-                  @endforeach
-
-                @endif
-
+              @endif
             </div>
           </div> 
 
-        <!-- ======== ADD TImeline form -->
-
-          <div class="col_timeline">
+          <div class="col_timeline animated fadeIn fast">
             <div class="std-timeline">
               @if($data_event['user_id'] != 0)              
               <div class="form_switch" id="form-switch">
@@ -935,7 +292,7 @@
                       data-language='en' 
                       data-date-format='d-m-yyyy' 
                       data-time-format='h:ii aa' 
-                      />
+                      id="date_t" />
                   </div>
 
                   <div>
@@ -1017,6 +374,67 @@
       </div>
     </div>
 
+    <!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| ALL POPUPS SECTION |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+    <!-- Update event reminder popup -->
+
+    <div id="confirm_update">
+      <div style="padding: 10px 10px;display: flex;flex-direction: column;justify-content: flex-start;height: 100%;width: 100%;align-items: center;">
+        <div style="padding: 10px 0;border-bottom: 0.05em solid #d4af37;margin-bottom: 10px;width: 100%;">Notes</div>
+        <div style="padding: 10px 0;">
+          <p>Your event has been successfully updated!</p>
+        </div>
+        <div><button class="approve_btn" id="okey_update">Okey</button></div>
+      </div>      
+    </div>
+
+    <!-- Edit information -->
+
+    <div id="create_event_form" style="height: auto;">
+      <div class="row">
+        <span>Edit Information</span><span class="close-action-icon"><i class="fas fa-times"></i></span>
+        <hr>
+      </div>
+      <div class="row">
+        <label>Select Package</label>
+        <select class="form-std" id="package">
+          <option value=""></option>
+          <option value="C">Custom</option>
+          @foreach($package_data as $package)
+          <option value="{{ $package['package_id'] }}">{{ $package['package_title'] }}</option>
+          @endforeach
+        </select>
+        <br>
+        <label>Event Name</label>
+        <input type="text" name="we_title" class="form-std" placeholder="event name" id="title" value="{{ $data_event['we_title'] }}" />
+        <label>Description</label>
+        <textarea class="form-std" id="description"></textarea><br>
+        <label>Address</label>
+        <input type="text" name="we_title" class="form-std" placeholder="event venue address" id="address" value="{{ $data_event['we_venue'] }}" />
+        <div class="three-inline-box-std">
+          <div>
+            <label>Date</label>
+            <input type='text' class="form-std datepicker-here" data-position="right top" data-language='en' data-date-format='d-m-yyyy' id="date" value="{{ $data_event['we_date_airdatepicker'] }}" />
+          </div>
+          <div>
+            <label>Time Start</label>
+            <div class="input-group bootstrap-timepicker timepicker">
+              <input id="timepicker" class="form-std" data-provide="timepicker" data-minute-step="1" type="text" value="{{ $data_event['we_time1_timepicker'] }}" />
+            </div>
+          </div>
+          <div>
+            <label>Time End</label>
+            <div class="input-group bootstrap-timepicker timepicker">
+              <input id="timepicker2" class="form-std" data-provide="timepicker" data-minute-step="1" type="text" value="{{ $data_event['we_time2_timepicker'] }}" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <button class="std-btn" id="reg_event">Update Event</button> 
+      </div>
+    </div>
+
     <!-- Creating timeline reminder popup -->  
 
     <div id="send_alert">
@@ -1060,8 +478,8 @@
         </select>
         <br><br>
         <div style="width: 100%;display: flex;flex-direction: row;justify-content: flex-end;">
-          <div><button class="btn-alert-cancel" id="cancel_invite">Cancel</button></div>
-          <div><button class="btn-alert" style="" id="proceed_invite">Invite</button></div>
+          <div><button class="btn-alert-cancel" style="padding: 5px 15px;" id="cancel_invite">Cancel</button></div>
+          <div><button class="btn-alert" style="padding: 5px 15px;" id="proceed_invite">Invite</button></div>
         </div>
       </div>
     </div>
@@ -1094,8 +512,8 @@
         <div style="display: flex;flex-direction: row;justify-content: space-between;">
           <div><span id="tsubject"></span></div>
           <div id="sub_contain">
-            <button class="approve_btn">APPROVE</button>
-            <button class="disapprove_btn">DISAPPROVE</button>
+            <button class="approve_btn">Approve</button>
+            <button class="disapprove_btn">Disapprove</button>
           </div>
         </div>
       </div>
@@ -1299,7 +717,6 @@
 
       $('#timeline_loader').show();
       $('#myTimeline').hide();
-      $('#banner_we_title').textillate({ in: { effect: 'bounceInDown', shuffle: true,  delay: 20 } });
 
       $(document).ready(function () {
 
@@ -1403,7 +820,6 @@
 
       });
 
-
       $('.approve_button_no').click(function(){
 
         url = APP_URL + '/approveinvitation';
@@ -1415,7 +831,6 @@
         });
 
       });
-
 
       function approveInvite(i_id){
 
@@ -1614,8 +1029,6 @@
 
         location.reload();
       }
-
-
     </script>
 
     <script src="{{asset('myasset/js/global_notification.js')}}"></script>  

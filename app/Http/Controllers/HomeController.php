@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use App\Company;
 use App\CompanyCategoryTag;
 use App\CompanyPackage;
+use App\EventExternal;
 use App\TimelineCategory;
+use App\User;
 use App\WEvent;
 use App\WEventInbox;
 use App\Http\Controllers\AdminControllerHome as Admin;
@@ -125,7 +126,11 @@ class HomeController extends Controller
 
         }else if(Auth::user()->role_id == '5' || Auth::user()->role_id == '4'){
 
-            return view('internal.profile');
+            $event = new EventExternal;
+            $event_data = $event->get();
+            $event_count = $event->count();
+
+            return view('internal.profile',compact('event_data','event_count'));
             // echo "No page yet";
         }
     }

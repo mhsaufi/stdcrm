@@ -110,6 +110,7 @@ Route::get('/profile', 'HomeController@profile');
 Route::post('/profile/update', 'HomeController@updateProfile');
 Route::get('/profile/gallery','GalleryController@index');
 Route::post('/uploading','GalleryController@uploadPhoto'); // vendor upload photo unto gallery
+Route::post('/removeimg','GalleryController@removePhoto'); // vendor delete photo from gallery
 Route::post('/newlogo','GalleryController@newLogo'); // upload new company logo
 Route::post('/newdp','GalleryController@newDP'); // upload new profile picture
 Route::post('/listphoto', 'GalleryController@listPhotoJSON'); // data for unifiedgallery plugin in JSON

@@ -259,6 +259,10 @@ class TimelineController extends Controller
         $we_id = $request->input('we_id');
         $subject = $request->input('subject');
 
+        if(!$payment){
+            $payment = 0;
+        }
+
         $dt = Carbon::createFromFormat('d-m-Y H:i A', $datetime);
 
         $wevent_timeline = new WEventTimeline;
