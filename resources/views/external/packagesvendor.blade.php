@@ -58,7 +58,8 @@
       margin: 0 10%;
       padding: 20px 0;
       display: flex;
-      flex-flow: row wrap;
+      flex-direction: column;
+      justify-content: flex-start;
     }
 
     .vendor_cards_info {
@@ -82,29 +83,6 @@
     .company_name {
       font-size: 12px;
       opacity: 0.7;
-    }
-
-    .company_logo {
-      position: absolute;
-      border-radius: 50%;
-      border: 0.05em solid white;
-      height: 200px;
-      width: 200px;
-      top: 15%;
-      right: 6%;
-      z-index: 81;
-    }
-
-    .company_logo_base {
-      position: absolute;
-      border-radius: 50%;
-      border: 0.05em solid white;
-      height: 200px;
-      width: 200px;
-      background: white;
-      top: 15%;
-      right: 6%;
-      z-index: 80;
     }
 
     @media (max-width: 480px){
@@ -368,18 +346,18 @@
           </div>
           <div style="position: absolute;bottom: 0;width: 100%;">
             
-            @include('templates.external_footer')
+            
           </div>
         </div>
       </div>
     </div>
-
-    <div class="ssk-sticky ssk-left ssk-center ssk-lg">
+    @include('templates.external_footer')
+    <<div class="ssk-sticky ssk-left ssk-center ssk-lg">
         <a href="" class="ssk ssk-facebook"></a>
         <a href="" class="ssk ssk-twitter"></a>
         <a href="" class="ssk ssk-linkedin"></a>
         <a href="" class="ssk ssk-google-plus"></a>
-        <a href="" class="ssk ssk-pinterest"></a>
+        <a href="" class="ssk ssk-whatsapp"></a>
     </div>
 
 

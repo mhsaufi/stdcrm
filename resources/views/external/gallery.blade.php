@@ -136,7 +136,6 @@
 
     .content_company_content {
       padding: 8% 10%;
-      padding-bottom: 20vh;
     }
 
     .vendor_title_info h1 {
@@ -198,17 +197,17 @@
                 </div>
               @endif
           </div>
-          @include('templates.external_footer')
+          
         </div>
       </div>
     </div>
-
+    @include('templates.external_footer')
     <div class="ssk-sticky ssk-left ssk-center ssk-lg">
         <a href="" class="ssk ssk-facebook"></a>
         <a href="" class="ssk ssk-twitter"></a>
         <a href="" class="ssk ssk-linkedin"></a>
         <a href="" class="ssk ssk-google-plus"></a>
-        <a href="" class="ssk ssk-pinterest"></a>
+        <a href="" class="ssk ssk-whatsapp"></a>
     </div>
 
 

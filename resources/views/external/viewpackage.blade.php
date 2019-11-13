@@ -36,13 +36,6 @@
     	height: 250px !important;
     }
 
-    .big_container {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-    }
-
     .footer_result_container {
       width: 80%;
       min-height: 10%;
@@ -121,7 +114,7 @@
         width: 100%;
         height: 100%;
         margin: 0;
-        padding: 20px 20px;
+        padding: 5px 5px;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -269,7 +262,7 @@
         <a href="" class="ssk ssk-twitter"></a>
         <a href="" class="ssk ssk-linkedin"></a>
         <a href="" class="ssk ssk-google-plus"></a>
-        <a href="" class="ssk ssk-pinterest"></a>
+        <a href="" class="ssk ssk-whatsapp"></a>
     </div>
 
     <script>

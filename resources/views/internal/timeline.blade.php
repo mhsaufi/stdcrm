@@ -504,11 +504,11 @@
     <!-- Timeline content popup -->
 
     <div id="view_timeline_content">
-      <div style="padding: 15px 0;border-bottom: 0.01em solid grey;">
+      <div style="padding: 15px 0;border-bottom: 0.01em solid #d4af37;">
         <div style="display: flex;flex-direction: row;justify-content: space-between;">
           <div><span style="opacity: 0.5;font-style: italic;">Subject</span></div>
           <div id="close_tdetail"><i class="fas fa-times"></i></div>
-        </div><br>
+        </div>
         <div style="display: flex;flex-direction: row;justify-content: space-between;">
           <div><span id="tsubject"></span></div>
           <div id="sub_contain">
@@ -518,9 +518,9 @@
         </div>
       </div>
       <div style="display: flex;flex-direction: row;justify-content: space-between;padding: 15px 0;">
-        <div><i class="far fa-clock"></i>&nbsp&nbsp <span style="font-style: italic;" id="datetime"></span></div>
-        <div><i class="fas fa-user-alt"></i>&nbsp&nbsp <span style="font-style: italic;" id="user"></span></div>
-        <div style="color: green;" id="payment_element"><i class="fas fa-sort-amount-up-alt"></i>&nbsp&nbsp <span style="font-style: italic;" id="payment_value"></span></div>
+        <div class="view_timeline_content_info_label"><i class="far fa-clock"></i>&nbsp&nbsp <span id="datetime"></span></div>
+        <div class="view_timeline_content_info_label"><i class="fas fa-user-alt"></i>&nbsp&nbsp <span id="user"></span></div>
+        <div class="view_timeline_content_info_label" style="color: green;" id="payment_element"><i class="fas fa-sort-amount-up-alt"></i>&nbsp&nbsp <span id="payment_value"></span></div>
         <div id="print_btn_section">
           <a href="" id="print_btn" target="_blank"><i class="fas fa-print"></i>&nbsp&nbsp Print </a>
         </div>
@@ -872,7 +872,7 @@
           }else{
 
             $('#payment_element').show();
-            $('#payment_value').html(" <b>MYR " + obj.wet_payment + "</b>");
+            $('#payment_value').html("MYR " + obj.wet_payment);
           }
 
           if(obj.user_id == self){

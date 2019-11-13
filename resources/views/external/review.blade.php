@@ -52,6 +52,10 @@
       flex-flow: row wrap;
     }
 
+    .content_company {
+      justify-content: flex-start;
+    }
+
     .result_container {
       position: relative;
       width: 80%;
@@ -60,7 +64,9 @@
       margin: 0 10%;
       padding: 20px 0;
       display: flex;
-      flex-flow: row wrap;
+      flex-direction: column;
+      justify-content: flex-start;
+      /*background: red;*/
     }
 
     .vendor_cards_info {
@@ -70,7 +76,7 @@
       flex-direction: column;
       justify-content: flex-end;
       padding: 15px 40px;
-      background: blue;
+      /*background: blue;*/
     }
 
     .vendor_cards:hover ~ .vendor_cards_info {
@@ -345,12 +351,12 @@
           </div>      
           <div style="position: absolute;bottom: 0;width: 100%;">
         
-            @include('templates.external_footer')
+            
           </div>
         </div>
       </div>
     </div>
-
+    @include('templates.external_footer')
 
     @include('templates.footer')
 

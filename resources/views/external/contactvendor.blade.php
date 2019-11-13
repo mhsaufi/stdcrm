@@ -282,11 +282,12 @@
             </div>
             
           </div>
-          @include('templates.external_footer')
+          
         </div>
       </div>
     </div>
 
+    @include('templates.external_footer')
 
     @include('templates.footer')
 

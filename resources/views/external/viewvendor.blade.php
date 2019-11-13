@@ -405,10 +405,11 @@
             </div>
             
           </div>
-          @include('templates.external_footer')
         </div>
       </div>
     </div>
+
+    @include('templates.external_footer')
 
     <div class="staff_info_container">
       <div class="staff_info_container_child">
@@ -431,7 +432,7 @@
         <a href="" class="ssk ssk-twitter"></a>
         <a href="" class="ssk ssk-linkedin"></a>
         <a href="" class="ssk ssk-google-plus"></a>
-        <a href="" class="ssk ssk-pinterest"></a>
+        <a href="" class="ssk ssk-whatsapp"></a>
     </div>
 
 

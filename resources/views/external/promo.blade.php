@@ -86,7 +86,7 @@
       .search-result-panel {
         box-sizing: border-box;
         /*background: green;*/
-      	margin: 1% 5%;
+      	margin: 1% 5% 10% 5%;
         height: auto;
       	display: flex;
         flex-direction: row;
@@ -210,7 +210,7 @@
           justify-content: center;
           width: 100%;
           padding: 20px 5px;
-          margin-top: 10px;
+          margin-top: 15vh;
           /*background: blue;*/
         }
 
@@ -231,7 +231,7 @@
         .search-result-panel {
           box-sizing: border-box;
           /*background: pink;*/
-          margin: 0% 1%!important;
+          margin: 0 1% 10% 1%!important;
           height: auto;
           display: flex;
           flex-direction: column;
@@ -385,7 +385,7 @@
         <a href="" class="ssk ssk-twitter"></a>
         <a href="" class="ssk ssk-linkedin"></a>
         <a href="" class="ssk ssk-google-plus"></a>
-        <a href="" class="ssk ssk-pinterest"></a>
+        <a href="" class="ssk ssk-whatsapp"></a>
     </div>
 
     <script>
