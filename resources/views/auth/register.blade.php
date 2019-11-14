@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>SaveTheDate | Registration</title>
+	<title>Save The Date | Sign Up</title>
     <link rel="icon" href="{{asset('myasset/img/tab-icon2.png')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('myasset/loginvendor/bootstrap/css/bootstrap.min.css')}}">
 	<!-- <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"> -->
@@ -94,7 +94,7 @@
             }
 
             .pattern{
-                background-image: url("{{asset('myasset/img/IMG_7092.jpg')}}");
+                background-image: none!important;
                 background-repeat: no-repeat;
                 background-size: cover;
                 background-position: fixed!important;

@@ -18,6 +18,7 @@
 			height: 70%;
 			position: absolute;
 			right:0;
+			background: red;
 		}		
 		.section-profile-img {
 			background: #fff;
@@ -32,7 +33,7 @@
 			justify-content: space-around;
 			align-items: left !important; 
 			-moz-box-shadow: 0 0 5px #888;
-	        -webkit-box-shadow: 0 0 5px#888;
+	        -webkit-box-shadow: 0 0 5px #888;
 	        box-shadow: 0 0 2px #888;
 		}
 		
@@ -56,18 +57,17 @@
 			min-height: 100%;
 			top: 0;
 			padding-top: 7%; 
-			background-color: lightyellow; 
-			
+			background: url("{{asset('myasset/img/babout.jpg')}}");
+			background-repeat: no-repeat;
+        	background-size: cover;
+			/*background-color: lightyellow; */
 		}
 
 		.left-space{
 			position: relative;
-			/*min-height: 500px;
-			max-height: 900px;*/
 			height: 550px;
 			width: 20%;
 			 /*background: green; */
-			
 		}
 
 		.right-space{
@@ -96,23 +96,27 @@
 	        height: 250px;
 	        background: blue;
 	        margin-bottom: 5%;
+	        box-shadow: 0 0 2px #888;
+	        border-radius: 10px;
 	        /*position: fixed;*/
-	      }
+	    }
 
-	      .swiper-image {
+	    .swiper-image {
 	        height: 250px!important;
 	        width: 300px!important;
-	      }
+	    }
 
-	      .swiper-button-next {
+	    .swiper-button-next {
 	        color: #fff;
-	      }
+	        display: none;
+	    }
 
-	      .swiper-button-prev {
-	        color: #fff;        
-	      }
+	    .swiper-button-prev {
+	        color: #fff;
+	        display: none;        
+	    }
 
-		 .middle-step{			 
+		.middle-step{			 
 			margin-bottom: 5%;
 			width: 100%;
 			height: auto;
@@ -121,77 +125,76 @@
 			/*border: 1px solid #d4af37;*/
 			background: #fff;
 			padding: 20px;
-		 }
+		}
 
 		
 		 /* ================== tab styling */
-		section {
-		position: relative;
-		width: 100%;
-		z-index: 0;
-		/* color: #fff; */
-		background: #eee;
-		}
-
-
 
 		.tbutton {
-		cursor: pointer;
-		width: 199px;
-		display: inline-block;
-		background-color: #d4af37;
-		color: #fff;
-		text-align: center;
-		transition: .25s ease;
-		border: none;
-		padding: 10px;
-		border-radius: 12px 12px 0 0;
-		
+			cursor: pointer;
+			width: 199px;
+			display: inline-block;
+			background-color: #d4af37;
+			color: #fff;
+			text-align: center;
+			transition: .25s ease;
+			border: none;
+			padding: 10px;
+			border-radius: 12px 12px 0 0;
 		}
 
 
 		div:focus .tbutton, .tbutton:focus {
-		background-color: #fff;
-		color: #d4af37;
-		outline: none;
+			background-color: #fff;
+			color: #d4af37;
+			outline: none;
 		}
 
 		.tbutton-active{
-		background-color: #fff;
-		border-top: 1px solid #d4af37;
-		border-left: 1px solid #d4af37;
-		border-right: 1px solid #d4af37;
-		color: #d4af37;
-		outline: none;
+			background-color: #fff;
+			border-top: 1px solid #d4af37;
+			border-left: 1px solid #d4af37;
+			border-right: 1px solid #d4af37;
+			color: #d4af37;
+			outline: none;
 		}
 		
 
 		.tbutton:focus + .tp, div:focus .tP, .tp {
-		display: block;
-		position: absolute;
-		border-radius:10px;
-		border: 1px solid #d4af37;
-		background-color: #fff;
-		color: #d4af37;
-		min-height: 100%;
-		width: 100%;
-		left: 0;
-		z-index: 2;
-		outline: none;
-		/* top: 38px; */
-		text-align: center;
-		padding-top: 20px;
-		/* margin-bottom: 20px; */
+			display: block;
+			position: absolute;
+			box-shadow: 0 0 4px #888;
+			border-radius: 10px;
+			border: 1px solid #d4af37;
+			background-color: #fff;
+			height: auto;
+			width: 50%;
+			bottom: 1;
+			left: 0;
+			z-index: 2;
+			outline: none;
+			text-align: center;
+			padding-top: 20px;
 		}
 
-		#tp-form{
-			margin-top: -34.5%;			
+		#tp-form{			
 			z-index: 99 !important;
 			position: absolute;
+			bottom: 0;
+			height: auto!important;
+			background: #fff;
+			width: 100%;
+			padding: 2% 10%;
 		}
 
 		#background_tp{
-			background: rgba(0,0,0,0.5);
+			display: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(212,175,55,0.6);
 		}
 
 		.tp {
@@ -201,15 +204,15 @@
 
 
 		div {
-		display: inline-block;
+			display: inline-block;
 		}
 
 		div:focus {
-		outline: none;
+			outline: none;
 		}
 
 		body {
-		padding: 3em;
+			padding: 3em;
 		}
 
 		/* --------------------------- PERSONAL INFO */
@@ -256,10 +259,79 @@
 
 		/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
 		@media screen and (max-width: 600px) {
+			.big-space{
+				position: absolute;			
+				display: flex;
+				flex-direction: column;
+				justify-content: space-around;
+				min-width: 100%;
+				min-height: 100%;
+				top: 0;
+				margin-top: 20%;
+				margin-bottom: 10px!important;
+				padding-top: 7%; 
+				background: url("{{asset('myasset/img/babout.jpg')}}");
+				background-repeat: no-repeat;
+	        	background-size: cover;
+			}
+
 			.col-25, .col-75, input[type=submit] {
 				width: 100%;
 				margin-top: 0;
 			}
+
+			.left-space{
+				position: relative;
+				height: 550px;
+				width: 100%;
+				border-radius: 0;
+				 /*background: green; */
+			}
+
+			.right-space{
+				position: relative;
+				width: 100%;
+				border-radius: 0;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				align-items: center;
+				padding: 10px 0;
+			}
+
+			.middle-space{
+				width: 100%;
+				height: auto!important;
+				padding: 20px;
+				border-radius: 0;
+				box-shadow: 0 0 2px #888;
+				background: #fff;
+			}
+
+			.section-profile-img {
+				background: #fff;
+				border-radius: 0;
+				z-index: 99;
+				min-height: 100%;
+				width: 100%;
+				margin-top: 0 !important;
+				margin-left: 0 !important;	
+				display: flex;
+				flex-direction: column;
+				justify-content: space-around;
+				align-items: left !important; 
+				-moz-box-shadow: 0 0 5px #888;
+		        -webkit-box-shadow: 0 0 5px #888;
+		        box-shadow: 0 0 2px #888;
+			}
+
+			.swiper-container {
+		        height: auto;
+		        margin-bottom: 5%;
+		        box-shadow: 0 0 2px #888;
+		        border-radius: 0;
+		        /*position: fixed;*/
+		    }
 		}
 	
 
@@ -316,9 +388,7 @@
     <div class="section-padding" style="display:flex; flex-direction:row; justify-content: center;">
     	<!-- <div class="container" style="background:red;"> -->
     		<div class="big-space">
-
-		 		<div class="left-space">
-
+		 		<div class="left-space animated fadeInLeft fast">
 					<div class="section-profile-img">
 						<img class="vend_pic" src="{{asset('myasset/img/default.jpeg')}}">
 
@@ -337,27 +407,27 @@
 
 				</div>
 
-				<div class="middle-space" id="calendar">
+				<div class="middle-space animated fadeInUp fast" id="calendar">
 					<!-- <p>Testing</p> -->
 				</div>
 
+				<div class="right-space animated fadeInRight fast">
 
-				<div class="right-space">
-
-					<div class="swiper-container">
-						<!-- Slider main container -->
+					@if($event_count > 0)
+		            <!-- Slider main container -->
+		            <div class="swiper-container">
 		                <!-- Additional required wrapper -->
 		                <div class="swiper-wrapper">
-		                    <!-- Slides -->
+
+		                    @foreach($event_data as $e)
+
 		                    <div class="swiper-slide">
-		                      <img src="{{ asset('myasset/img/event1.JPG') }}" class="swiper-image" />
+		                      <a href="{{ $e['url'] }}" target="_blank">
+		                        <img src="{{ asset('storage/'.$e['poster']) }}" class="swiper-image" />
+		                      </a>
 		                    </div>
-		                    <div class="swiper-slide">
-		                      <img src="{{ asset('myasset/img/event-1.JPG') }}" class="swiper-image" />
-		                    </div>
-		                    <div class="swiper-slide">
-		                      <img src="{{ asset('myasset/img/event2.JPG') }}" class="swiper-image" />
-		                    </div>
+
+		                    @endforeach
 		                </div>
 		                <!-- If we need pagination -->
 		                <div class="swiper-pagination"></div>
@@ -368,7 +438,9 @@
 
 		                <!-- If we need scrollbar -->
 		                <div class="swiper-scrollbar"></div>
-					</div>
+		            </div>
+
+		            @endif
 
 					<div class="middle-step">
 						<h6>How To Start?</h6>
@@ -378,96 +450,88 @@
 						<p><b>Step #4</b><br>If aprroved! You can start planning your wedding at your dashboard.</p>
 						<p><em>** visit <b>How it Works</b> tab for more explanation. **</em></p>							
 					</div> 
-
-						<!-- <section> -->
-						<!-- PERSONAL INFO -->
-							<div tabindex="0" id="background_tp">
-								<!-- <button class="tbutton tbutton-active" id="pi">Personal Information</button> -->
-								
-								<div class="tp tp-active" id="tp-form" style="display:none;">
-									<div class="p-info">
-									<i class="fa fa-times" onclick="closePro()" style="position:absolute;right:4%;top:4%;cursor:pointer;"></i>
-
-										<div class="row">
-											<div class="col-25">
-												<label for="fullname">Full Name</label>
-											</div>
-											<div class="col-75">
-												<input type="text" id="fullname" name="fullname" value="{{ Auth::user()->fullname }}" placeholder="{{ Auth::user()->fullname }}">
-											</div>
-										</div>
-
-										<div class="row">
-											<div class="col-25">
-												<label for="phone">Phone No.</label>
-											</div>
-											<div class="col-75">
-												<input type="text" id="phonenum" name="phonenum" value="{{ Auth::user()->phone }}" placeholder="{{ Auth::user()->phone }}">
-											</div>
-										</div>
-
-										<div class="row">
-											<div class="col-25">
-												<label for="dob">D.O.B</label>
-											</div>
-											<div class="col-75">
-												<input type="date" id="dob" name="dob" value="{{ Auth::user()->dob }}" placeholder="{{ Auth::user()->dob }}">
-											</div>
-										</div>
-
-										<div class="row">
-											<div class="col-25">
-												<label for="address">Address</label>
-											</div>
-											<div class="col-75">
-												<input type="text" id="addr" name="addr" value="{{ Auth::user()->address }}" placeholder="{{ Auth::user()->address }}">
-											</div>
-										</div>
-
-										<div class="row">
-											<div class="col-25">
-												<label for="state">State</label>
-											</div>
-											<div class="col-75">
-												<select id="state" name="state" value="{{ Auth::user()->state }}">
-													<option value="">Please choose your state</option>
-													<option value="Johor">Johor</option>
-													<option value="Kedah">Kedah</option>
-													<option value="Kelantan">Kelantan</option>
-													<option value="Melaka">Melaka</option>
-													<option value="Negeri">Negeri Sembilan</option>
-													<option value="Pahang">Pahang</option>
-													<option value="Perak">Perak</option>
-													<option value="Perlis">Perlis</option>
-													<option value="Pulau Pinang">Pulau Pinang</option>
-													<option value="Sabah">Sabah</option>
-													<option value="Sarawak">Sarawak</option>
-													<option value="Selangor">Selangor</option>
-													<option value="Terengganu">Terengganu</option>
-													<option value="Wilayah">Wilayah Persekutuan</option>
-													<option value="International">International</option>
-												</select>
-											</div>
-										</div>
-								
-									</div>
-
-									<button class="btn_form" id="pi_update" onclick="updateProfile()" style="margin-top:2%; margin-left:80%;">Update</button>
-									
-								</div>								
-								
-							</div>
-					
-						<!-- </section> -->
-					
 				</div>
 				
-		    	
 		    </div>
     	<!-- </div> -->
     </div>
 
+    <!-- PERSONAL INFO -->
+	<div id="background_tp">
+		<!-- <button class="tbutton tbutton-active" id="pi">Personal Information</button> -->
+		
+		<div class="animated fadeInUp faster" id="tp-form">
+			<div class="p-info">
+			<i class="fa fa-times" onclick="closePro()" style="position:absolute;right:4%;top:4%;cursor:pointer;"></i>
 
+				<div class="row">
+					<div class="col-25">
+						<label for="fullname">Full Name</label>
+					</div>
+					<div class="col-75">
+						<input type="text" id="fullname" name="fullname" value="{{ Auth::user()->fullname }}" placeholder="{{ Auth::user()->fullname }}">
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-25">
+						<label for="phone">Phone No.</label>
+					</div>
+					<div class="col-75">
+						<input type="text" id="phonenum" name="phonenum" value="{{ Auth::user()->phone }}" placeholder="{{ Auth::user()->phone }}">
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-25">
+						<label for="dob">D.O.B</label>
+					</div>
+					<div class="col-75">
+						<input type="date" id="dob" name="dob" value="{{ Auth::user()->dob }}" placeholder="{{ Auth::user()->dob }}">
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-25">
+						<label for="address">Address</label>
+					</div>
+					<div class="col-75">
+						<input type="text" id="addr" name="addr" value="{{ Auth::user()->address }}" placeholder="{{ Auth::user()->address }}">
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-25">
+						<label for="state">State</label>
+					</div>
+					<div class="col-75">
+						<select id="state" name="state" value="{{ Auth::user()->state }}">
+							<option value="">Please choose your state</option>
+							<option value="Johor">Johor</option>
+							<option value="Kedah">Kedah</option>
+							<option value="Kelantan">Kelantan</option>
+							<option value="Melaka">Melaka</option>
+							<option value="Negeri">Negeri Sembilan</option>
+							<option value="Pahang">Pahang</option>
+							<option value="Perak">Perak</option>
+							<option value="Perlis">Perlis</option>
+							<option value="Pulau Pinang">Pulau Pinang</option>
+							<option value="Sabah">Sabah</option>
+							<option value="Sarawak">Sarawak</option>
+							<option value="Selangor">Selangor</option>
+							<option value="Terengganu">Terengganu</option>
+							<option value="Wilayah">Wilayah Persekutuan</option>
+							<option value="International">International</option>
+						</select>
+					</div>
+				</div>
+		
+			</div>
+
+			<button class="btn_form" id="pi_update" onclick="updateProfile()" style="margin-top:2%; margin-left:80%;">Update</button>
+			
+		</div>								
+	</div>	
 
     @include('templates.footer')
 
@@ -494,36 +558,20 @@
 		        direction: 'horizontal',
 		        loop: true,
 
-		        // If we need pagination
-		        pagination: {
-		          // el: '.swiper-pagination',
-		        },
-
-		        // Navigation arrows
-		        navigation: {
-		          nextEl: '.swiper-button-next',
-		          prevEl: '.swiper-button-prev',
-		        },
-
 		        autoplay: {
 		          delay: 3000,
-		        },
-
-		        // And if we need scrollbar
-		        scrollbar: {
-		          el: '.swiper-scrollbar',
-		        },
+		        }
 		      })
 
 		});
 
 
 		function updatePro() {
-			$('#tp-form').fadeToggle('fast');
+			$('#background_tp').fadeToggle('fast');
 		}
 
 		function closePro() {
-			$('#tp-form').fadeToggle('fast');
+			$('#background_tp').fadeToggle('fast');
 		}
 
 		// $(document).ready(function(){	
@@ -541,7 +589,7 @@
 
 				$.post(url, {fname:fullname,phonenum:phoneno,dob:dateob,addr:addrs,state:states,_token:token},function(){
 					alert('Profile successfully updated');
-					$('#tp-form').fadeToggle('fast');				
+					$('#background_tp').fadeToggle('fast');				
 				});			
 			});
 

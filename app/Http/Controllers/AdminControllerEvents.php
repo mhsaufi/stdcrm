@@ -67,6 +67,104 @@ class AdminControllerEvents extends Controller
         $event = new EventExternal;
 
         $update = $event->where('ee_id',$eventid)->update(['poster'=>$path]);
+    }
+
+    public function listAll(Request $request){
+
+        $length = $request->input('length'); // how many records per retrieve
+        $offset = $request->input('start'); // start retrieve from which row
+        $draw = $request->input('draw'); // for dataTables security reason
+        $order = $request->input('order'); // for dataTables sorting
+        $search = $request->input('search');
+        $search_value = $search['value'];
+
+        $sortBy = $order[0]['column'];
+        $sortDir = $order[0]['dir'];
+
+        $event = new EventExternal;
+        $query = $event->skip($offset)->take($length);
+
+        // for search purpose --------------------------------------------
+
+        if($search_value <> ''){
+
+            $query = $query->where('ee_title','like', $search_value.'%')
+                            ->orWhere('ee_title','like','%'.$search_value)
+                            ->orWhere('ee_title','like','%'.$search_value.'%')
+                            ->orWhere('location','like',$search_value.'%')
+                            ->orWhere('location','like','%'.$search_value)
+                            ->orWhere('location','like','%'.$search_value.'%')
+                            ->orWhere('description','like',$search_value.'%')
+                            ->orWhere('description','like','%'.$search_value)
+                            ->orWhere('description','like','%'.$search_value.'%')
+                            ->orWhere('date_start','like',$search_value.'%')
+                            ->orWhere('date_start','like','%'.$search_value)
+                            ->orWhere('date_start','like','%'.$search_value.'%')
+                            ->orWhere('date_end','like',$search_value.'%')
+                            ->orWhere('date_end','like','%'.$search_value)
+                            ->orWhere('date_end','like','%'.$search_value.'%')
+                            ->orWhere('url','like',$search_value.'%')
+                            ->orWhere('url','like','%'.$search_value)
+                            ->orWhere('url','like','%'.$search_value.'%');
+        }
+
+        // for sorting purpose -------------------------------------------
+
+        if($sortBy == '0'){
+
+            $query = $query->orderBy('ee_title',$sortDir);
+
+        }else if($sortBy == '1'){
+
+            $query = $query->orderBy('date_start',$sortDir);
+
+        }else if($sortBy == '2'){
+
+            $query = $query->orderBy('date_end',$sortDir);
+
+        }else if($sortBy == '3'){
+
+            $query = $query->orderBy('time_start',$sortDir);
+
+        }else if($sortBy == '4'){
+
+            $query = $query->orderBy('location',$sortDir);
+
+        }else if($sortBy == '5'){
+
+            $query = $query->orderBy('created_at',$sortDir);
+
+        }else{
+
+            $query = $query->orderBy('created_at',$sortDir);
+        }
+
+        $data = $query->get();
+
+        $total = $event->count();
+
+        $data_arr = array();
+
+        $i = 0;
+
+        foreach($data as $d){
+
+            $data_arr[$i] = [ 
+                    'DT_RowId' => $d['ee_id'],
+                    'ee_title' => $d['ee_title'], 
+                    'date_start' => $d['date_start'], 
+                    'date_end' => $d['date_end'], 
+                    'time_start' => $d['time_start'], 
+                    'location' => $d['location'], 
+                    'url' => $d['url'], 
+                    'created_at' => $d['created_at']];
+
+            $i++;
+        }
+
+        $main_array = ['draw'=>$draw,'recordsTotal'=>$total,'recordsFiltered'=>$total,'data'=>$data_arr];
+
+        return json_encode($main_array);
 
     }
 }

@@ -33,7 +33,7 @@ td{
   <tr>
     <td><b>Step 2</b><br>Fill up the login form with your registered email and password. After you have logged in,
      you will be able to access your account and continue explore our platform</td>    
-    <td><img src="myasset/features/login.jpg" width="100%" style="border:1px solid #d4af37;"></td>
+    <td><img src="myasset/features/login.JPG" width="100%" style="border:1px solid #d4af37;"></td>
   </tr>
 </table>
 <br>
@@ -51,12 +51,12 @@ td{
 <table>
   <tr>
     <td><b>Forgot Password- Step 2</b><br>Fill up your email then our support team will email you the reset password link</td>    
-    <td><img src="myasset/features/forgot.jpg" width="100%" style="border:1px solid #d4af37;"></td>
+    <td><img src="myasset/features/forgot.JPG" width="100%" style="border:1px solid #d4af37;"></td>
   </tr>
 </table>
 <table>
   <tr>
-    <td><img src="myasset/features/reset3.jpg" width="100%" style="border:1px solid #d4af37;"></td>
+    <td><img src="myasset/features/reset3.JPG" width="100%" style="border:1px solid #d4af37;"></td>
     <td><b>Forgot Password - Step 3</b><br>You will be received an email from our online support team. Please check your
      <b>Inbox</b> or <b>Spam</b> at your email.</td>
  </tr>
@@ -64,12 +64,12 @@ td{
 <table>
   <tr>
     <td><b>Forgot Password- Step 4</b><br>Type your new password in the form provided and submit.</td>    
-    <td><img src="myasset/features/reset4.jpg" width="100%" style="border:1px solid #d4af37;"></td>
+    <td><img src="myasset/features/reset4.JPG" width="100%" style="border:1px solid #d4af37;"></td>
   </tr>
 </table>
 <table>
   <tr>
-    <td><img src="myasset/features/reset5.jpg" width="100%" style="border:1px solid #d4af37;"></td>
+    <td><img src="myasset/features/reset5.JPG" width="100%" style="border:1px solid #d4af37;"></td>
     <td><b>Forgot Password - Step 5</b><br>Your password has been reset. You can now login to your account using new password.</td>
  </tr>
 </table>

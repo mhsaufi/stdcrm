@@ -1,19 +1,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="imagetoolbar" content="no" />
 
 <!-- Navbar Start -->
-  <nav class="navbar navbar-expand-lg fixed-top scrolling-navbar indigo bg-white animated bounceInDown faster" 
+  <nav class="navbar navbar-expand-lg fixed-top scrolling-navbar indigo bg-white animated fadeInDown faster" 
     style="height: 80px!important;">
     <div class="navbar-container">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
-        <a href="{{ url('/') }}" class="navbar-brand"><img src="{{asset('myasset/img/logo.png')}}" alt=""></a>
+        <a href="{{ url('/') }}" class="navbar-brand animated zoomIn fast"><img src="{{asset('myasset/img/logo.png')}}" alt=""></a>
       </div>
 
       <div class="collapse navbar-collapse" id="main-navbar">
         <ul class="navbar-nav mr-auto w-100 justify-content-end clearfix">
           <li class="nav-item">
             <a class="nav-link black" href="{{ url('/listvendor') }}" data-list-name="Our Vendors" data-content-category="Header">Vendors</a>
-          </li>
+          </li> 
 
           <li class="nav-item">
             <a class="nav-link black" href="{{ url('/packages') }}">
@@ -60,12 +61,16 @@
                       </a>
                     </li>
 
-                    @endif   
+                  @endif   
 
                 @endif
 
                 <li class="nav-item">
+                  @if(Auth::user()->role_id == 5)
+                  <a class="nav-link black" href="{{ url('/dashboard') }}">
+                  @else
                   <a class="nav-link black" href="{{ url('/home') }}">
+                  @endif
                     <i class="fas fa-columns"></i>
                     Dashboard <span class="badge_notification" id="global_notification">.</span>
                   </a>
@@ -138,6 +143,7 @@
           <div id="event_page">Events</div>
           <div id="islamic_page">Islamic Affair</div>
           <div style="height: 15px;width:100%;border-bottom: 0.05em solid white;"></div>
+          <div id="features">How It Works</div>
           <div id="about_page">About</div>
           <!-- <div id="feature_page">Features</div>
           <div id="member_page">Members</div> -->

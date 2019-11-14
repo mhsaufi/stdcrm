@@ -58,7 +58,8 @@
       margin: 0 10%;
       padding: 20px 0;
       display: flex;
-      flex-flow: row wrap;
+      flex-direction: column;
+      justify-content: flex-start;
     }
 
     .vendor_cards_info {
@@ -82,29 +83,6 @@
     .company_name {
       font-size: 12px;
       opacity: 0.7;
-    }
-
-    .company_logo {
-      position: absolute;
-      border-radius: 50%;
-      border: 0.05em solid white;
-      height: 200px;
-      width: 200px;
-      top: 15%;
-      right: 6%;
-      z-index: 81;
-    }
-
-    .company_logo_base {
-      position: absolute;
-      border-radius: 50%;
-      border: 0.05em solid white;
-      height: 200px;
-      width: 200px;
-      background: white;
-      top: 15%;
-      right: 6%;
-      z-index: 80;
     }
 
     @media (max-width: 480px){
@@ -135,38 +113,16 @@
         flex-flow: row wrap;
       }
 
-      .company_logo {
-        position: absolute;
-        border-radius: 50%;
-        border: 0.05em solid white;
-        height: 70px;
-        width: 70px;
-        top: 170px;
-        right: 8%;
-        z-index: 81;
-      }
-
-      .company_logo_base {
-        position: absolute;
-        border-radius: 50%;
-        border: 0.05em solid white;
-        height: 70px;
-        width: 70px;
-        background: white;
-        top: 170px;
-        right: 8%;
-        z-index: 80;
-      }
-
       .package_cards {
         position: relative;
         height: 330px!important;
-        width: 80%!important;
+        width: 100%!important;
         border-radius: 2px;
         -moz-box-shadow: 0 0 6px #888;
         -webkit-box-shadow: 0 0 6px#888;
         box-shadow: 0 0 4px #888;
         margin-bottom: 20px;
+        margin-right: 0!important;
         display: flex;
         flex-direction: column;
       }
@@ -350,7 +306,6 @@
               <div style="height: 75%;width: 100%;background: url('{{ asset('myasset/img/back.jpg') }}');background-size: cover;background-position: center;"></div>
               <div style="height: 10%;width: 100%;z-index: 71;background: white" id="p_company">
                 <div id="p_company_info">
-                  <div class="company_name">by</div>
                   <div class="company_logo_mini" style="background: url('{{ asset('storage/'.$p['company']['company_logo']) }}');background-position: center;background-size: cover;">
                   </div>
                   <div class="company_name">{{ $p['company']['company_name'] }}</div>
@@ -366,16 +321,20 @@
             </div>
             @endforeach
           </div>
+          <div style="position: absolute;bottom: 0;width: 100%;">
+            
+            
+          </div>
         </div>
       </div>
     </div>
-
-    <div class="ssk-sticky ssk-left ssk-center ssk-lg">
+    @include('templates.external_footer')
+    <<div class="ssk-sticky ssk-left ssk-center ssk-lg">
         <a href="" class="ssk ssk-facebook"></a>
         <a href="" class="ssk ssk-twitter"></a>
         <a href="" class="ssk ssk-linkedin"></a>
         <a href="" class="ssk ssk-google-plus"></a>
-        <a href="" class="ssk ssk-pinterest"></a>
+        <a href="" class="ssk ssk-whatsapp"></a>
     </div>
 
 

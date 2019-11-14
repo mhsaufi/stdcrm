@@ -79,7 +79,7 @@ class EventController extends Controller
 
         $package_data = $package->where('company_id', Auth::user()->company_id)->get();
 
-        return view('internal.event',compact('data_event','data_inbox','count_inbox','package_data')); 
+        return view('internal.event',compact('data_event','data_inbox','count_inbox','package_data'));
     }
 
     public function bookingForm($package_id){
@@ -383,5 +383,41 @@ class EventController extends Controller
         })->get();
 
         return $result;
+    }
+
+    public function pastEvent(){
+
+        $inbox = new WEventInbox;
+        // $data_inbox = $inbox->where('i_recipient_id',Auth::user()->company_id)->where('i_status_id',0)->get();
+
+        $count_inbox = $inbox->where(function($query){
+
+                $query->where('i_recipient_id',Auth::user()->company_id)
+                ->whereIn('i_type_id',[3,4,5,6])
+                ->where('i_status_id',0);
+
+            })->orWhere(function($query){
+
+                $query->where('i_recipient_id',Auth::user()->user_id)
+                ->whereIn('i_type_id',[2,7])
+                ->where('i_status_id',0);
+
+            })->count();
+
+        // package data to list within create event form
+        $package = new CompanyPackage;
+
+        $package_data = $package->where('company_id', Auth::user()->company_id)->get();
+
+        // all past events under this company_id
+        $wevent = new WEventVendors;
+        $data_event = $wevent
+                        ->where('company_id',Auth::user()->company_id)
+                        ->whereHas('event', function ($query) {
+                            $query->whereIn('wes_id',[5]);
+                        })
+                        ->get();
+
+        return view('internal.pastevent',compact('count_inbox','package_data','data_event'));
     }
 }

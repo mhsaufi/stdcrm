@@ -58,16 +58,20 @@
 			display: flex;
 			flex-direction: row;
 			justify-content: space-between;
-			align-items: center;
+			align-items: flex-start;
 			border-bottom: 0.05em solid #dcdcdc;
 			margin-bottom: 20px;
+		}
+
+		.contact_container > .header > div {
+			width: 25%;
 		}
 
 		.company_logo_insider {
 		  border-radius: 50%;
 		  border: 0.05em solid white;
-		  height: 150px;
-		  width: 150px;
+		  height: 170px!important;
+		  width: 170px!important;
 		}
 
 		.insider {
@@ -331,31 +335,33 @@
     <div class="big_container">
     	<div class="contact_container">
     		<div class="header">
-    			<div>
+    			<div class="animated fadeInDown fast">
     				<h4 style="color: #d4af37;">{{ $company_info['company_name'] }}</h4>
     				<p><i class="fas fa-envelope"></i> &nbsp&nbsp{{ $company_info['company_email'] }}</p>
     				<p><i class="fas fa-phone"></i> &nbsp&nbsp{{ $company_info['company_contact'] }}</p>
     				<p><i class="fas fa-map-marker-alt"></i> &nbsp&nbsp{{ $company_info['company_address'] }}</p>
     			</div>
+
 				@if($company_info['company_logo'] == '')
 				<div class="company_logo_insider" style="background: url('{{ asset('myasset/img/null.jpg') }}');background-position: center;background-size: cover;"></div>
 				@else
 				<div class="company_logo_insider" style="background: url('{{ asset('storage/'.$company_info['company_logo']) }}');background-position: center;background-size: cover;"></div>
       			@endif
 
-      			<div>
+      			<div class="animated fadeInDown fast">
     				<h4 style="color: #d4af37;">{{ $company_info['userreverse']['name'] }}</h4>
     				<p><i class="fas fa-id-card"></i> &nbsp&nbsp{{ $company_info['userreverse']['fullname'] }}</p>
     				<p><i class="fas fa-envelope"></i> &nbsp&nbsp{{ $company_info['userreverse']['email'] }}</p>
     				<p><i class="fas fa-phone"></i> &nbsp&nbsp{{ $company_info['userreverse']['phone'] }}</p>
     			</div>
+
 				@if($company_info['company_logo'] == '')
 				<div class="company_logo_insider" style="background: url('{{asset('myasset/img/default.jpeg')}}');background-position: center;background-size: cover;"></div>
 				@else
 				<div class="company_logo_insider" style="background: url('{{asset('storage/'.$company_info['userreverse']['dp'])}}');background-position: center;background-size: cover;"></div>
       			@endif
     		</div>
-    		<div class="insider">
+    		<div class="insider animated fadeInUp fast">
     			<div class="insider_header">
     				<div class="insider_tab_button active-tab" id="tab_2">New Staff Application</div>
     				<div class="insider_tab_button" id="tab_1">Staff Member</div>
@@ -613,7 +619,13 @@
 
 	
 	<script>
+		var token = '{{ csrf_token() }}';
+		var APP_URL = '{!! url("/") !!}';
+		var url = '';
+		
 		$(document).ready(function(){
+
+			globalNotification();
 
 			$('#tab_1').click(function(){
 
@@ -728,5 +740,6 @@
 		});
 
 	</script>
+	<script src="{{ asset('myasset/js/global_notification.js') }}"></script>
 </body>
 </html>

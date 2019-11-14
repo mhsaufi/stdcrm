@@ -32,16 +32,6 @@
     	height: 250px !important;
     }
 
-
-    .big_container {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      min-height: 100vh;
-      /*background: yellow;*/
-    }
-
     .footer_result_container {
       width: 80%;
       min-height: 10%;
@@ -52,6 +42,10 @@
       flex-flow: row wrap;
     }
 
+    .content_company {
+      justify-content: flex-start;
+    }
+
     .result_container {
       position: relative;
       width: 80%;
@@ -60,7 +54,9 @@
       margin: 0 10%;
       padding: 20px 0;
       display: flex;
-      flex-flow: row wrap;
+      flex-direction: column;
+      justify-content: flex-start;
+      /*background: red;*/
     }
 
     .vendor_cards_info {
@@ -70,25 +66,15 @@
       flex-direction: column;
       justify-content: flex-end;
       padding: 15px 40px;
-      background: blue;
+      /*background: blue;*/
     }
 
-    .vendor_cards:hover ~ .vendor_cards_info {
-      height: 90%;
-    }
-
-    .vendor_cards_info div h4 {
-      color: white;
-      text-shadow: 1px 1px 2px black;
-    }
-
-    .vendor_cards_info div p {
-      color: white;
-      text-shadow: 5px 5px 10px black!important;
+    .content_company {
+      justify-content: flex-start!important;
     }
 
     .content_company_content {
-      padding: 8vh 70px;
+      padding: 10vh 8vh;
     }
 
     .vendor_title_info h1 {
@@ -178,29 +164,6 @@
         padding: 5% 0!important;
         display: flex;
         flex-flow: row wrap;
-      }
-
-      .company_logo {
-        position: absolute;
-        border-radius: 50%;
-        border: 0.05em solid white;
-        height: 70px;
-        width: 70px;
-        top: 170px;
-        right: 8%;
-        z-index: 81;
-      }
-
-      .company_logo_base {
-        position: absolute;
-        border-radius: 50%;
-        border: 0.05em solid white;
-        height: 70px;
-        width: 70px;
-        background: white;
-        top: 170px;
-        right: 8%;
-        z-index: 80;
       }
 
       .package_cards {
@@ -340,13 +303,17 @@
 
                 @endforeach
               </div>
-              
             </div>
+
+          </div>      
+          <div style="position: absolute;bottom: 0;width: 100%;">
+        
+            
           </div>
         </div>
       </div>
     </div>
-
+    @include('templates.external_footer')
 
     @include('templates.footer')
 
@@ -378,6 +345,14 @@
 
       function viewReviews(vendorID, vendorName){
         var url = '{{ url("/vendor") }}' + '/' + vendorName.split(' ').join('_')+'/review/'+vendorID;
+      }
+
+      function viewGalleries(vendorID,vendorName){
+        
+        var url = '{{ url("/vendor") }}'+ '/' + vendorName.split(' ').join('_')+'/gallery/'+vendorID;
+        
+        window.location.replace(url);
+
       }
 
       $('#login_to_review').click(function(){

@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
+    <meta http-equiv="imagetoolbar" content="no" />
     <title>Save The Date</title>
 
     @include('templates.header')
@@ -235,9 +235,8 @@
           <div id="event_page">Events</div>
           <div id="islamic_page">Islamic Affair</div>
           <div style="height: 15px;width:100%;border-bottom: 0.05em solid white;"></div>
+          <div id="features">How It Works</div>
           <div id="about_page">About</div>
-          <!-- <div id="feature_page">Features</div>
-          <div id="member_page">Members</div> -->
           @if (Route::has('login'))  
 
           @auth
@@ -363,7 +362,6 @@
                               </div>
                           </div>
 
-
                       </div>
                       </div>
                       <!----------------------------------------------------------------------- Category Section End -->
@@ -439,17 +437,17 @@
                 </div>            
 
                 <!-- <div class="drpdown"> -->
-                  <li class="nav-item">
-                      <a class="nav-link black" href="{{ url('/iaffair') }}" data-list-name="iAffair" data-content-category="Header">
-                      <i class="fas fa-mosque"></i> Islamic Affairs
-                      </a>
-                  </li>
+                <li class="nav-item">
+                    <a class="nav-link black" href="{{ url('/iaffair') }}" data-list-name="iAffair" data-content-category="Header">
+                    <i class="fas fa-mosque"></i> Islamic Affairs
+                    </a>
+                </li>
 
-                  <li class="nav-item">
-                      <a class="nav-link black" href="{{ url('/features') }}" data-list-name="How it works" data-content-category="Header">
-                      <i class="fas fa-question-circle"></i> How it works
-                      </a>
-                  </li>
+                <li class="nav-item">
+                    <a class="nav-link black" href="{{ url('/features') }}" data-list-name="How it works" data-content-category="Header">
+                    <i class="fas fa-question-circle"></i> How it works
+                    </a>
+                </li>
 
                 <!-- </div>  -->
                             

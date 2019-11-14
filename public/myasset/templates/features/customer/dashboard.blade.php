@@ -84,7 +84,7 @@
 	</div>
 	<div class="second_o">
 		<h6>Event Vendors</h6>
-		<img src="myasset/features/start_planning/8.jpg">
+		<img src="myasset/features/start_planning/8.JPG">
 		<p>This is the list of vendors involved with this event. Click the <i class="fas fa-plus"></i> icon to add more vendors to the events.</p>
 	</div>
 </div>

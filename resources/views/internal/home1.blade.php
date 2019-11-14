@@ -9,7 +9,7 @@
     <meta name="page_type" content="Dashboard Vendor">
     <meta name="user_id" content="{{ Auth::user()->id }}">
     <meta name="user_email" content="{{ Auth::user()->email }}">
-    <title>Dashboard</title>
+    <title>Dashboard </title>
 
     @include('templates.header')
     <link rel="stylesheet" type="text/css" href="{{asset('myasset/bootstrap-timepicker/css/bootstrap-timepicker.min.css')}}">
@@ -181,7 +181,7 @@
 
               @endif
             </div>
-            <div class="view-btn-history"><i class="fas fa-history"></i> Past Events</div>
+            <div class="view-btn-history" id="ended_event"><i class="fas fa-history"></i> Past Events</div>
           </div>
         </div>
         <div class="std-row">
@@ -237,6 +237,12 @@
         $('#list_event').click(function(){
 
           var url  = "{{ url('/all') }}";
+
+          window.location.replace(url);
+        });
+
+        $('#ended_event').click(function(){
+          url = APP_URL + '/past';
 
           window.location.replace(url);
         });

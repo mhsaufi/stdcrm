@@ -63,9 +63,10 @@
       min-height: 100vh;
       background: white;
       margin: 0 10%;
-      padding: 20px 0;
+      padding: 20px 0 0 0;
       display: flex;
-      flex-flow: row wrap;
+      flex-direction: column;
+      justify-content: flex-start;
     }
 
     @media (max-width: 600px){
@@ -82,30 +83,8 @@
         margin: 0;
         padding: 5% 0;
         display: flex;
-        flex-flow: row wrap;
-      }
-
-      .company_logo {
-        position: absolute;
-        border-radius: 50%;
-        border: 0.05em solid white;
-        height: 70px;
-        width: 70px;
-        top: 170px;
-        right: 8%;
-        z-index: 81;
-      }
-
-      .company_logo_base {
-        position: absolute;
-        border-radius: 50%;
-        border: 0.05em solid white;
-        height: 70px;
-        width: 70px;
-        background: white;
-        top: 170px;
-        right: 8%;
-        z-index: 80;
+        flex-direction: column;
+        justify-content: flex-start;
       }
 
     }
@@ -135,8 +114,7 @@
     }
 
     .content_company_content {
-      padding: 8% 10%;
-      padding-bottom: 20vh;
+      padding: 8% 5%;
     }
 
     .vendor_title_info h1 {
@@ -184,10 +162,10 @@
                 
               @if($count == 0)
 
-                <span>No gallery yet</span>
+                <div class="result_container_empty">No gallery yet</div>
 
               @else
-                <div id="gallery" style="display:none;">
+                <div id="gallery" style="display:none;" class="animated fadeInUp fast">
                 @foreach($galleries as $gallery)
 
                 <img alt="Gallery" src="{{ asset('storage/'.$gallery['att_path']) }}"
@@ -197,20 +175,18 @@
                 @endforeach
                 </div>
               @endif
-              
-            
-            
           </div>
+          
         </div>
       </div>
     </div>
-
+    @include('templates.external_footer')
     <div class="ssk-sticky ssk-left ssk-center ssk-lg">
         <a href="" class="ssk ssk-facebook"></a>
         <a href="" class="ssk ssk-twitter"></a>
         <a href="" class="ssk ssk-linkedin"></a>
         <a href="" class="ssk ssk-google-plus"></a>
-        <a href="" class="ssk ssk-pinterest"></a>
+        <a href="" class="ssk ssk-whatsapp"></a>
     </div>
 
 

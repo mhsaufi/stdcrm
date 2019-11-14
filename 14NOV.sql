@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 30, 2019 at 09:06 AM
+-- Generation Time: Nov 14, 2019 at 09:44 AM
 -- Server version: 10.1.39-MariaDB
 -- PHP Version: 7.3.5
 
@@ -44,16 +44,12 @@ CREATE TABLE `attachment` (
 --
 
 INSERT INTO `attachment` (`att_id`, `att_name`, `att_filename`, `att_path`, `item_type`, `item_id`, `created_at`, `updated_at`) VALUES
-(1, 'example-slide-1.jpg', 'example-slide-1.jpg', 'gallery/company/2/bisZkWKtwydlVPTDaOprv5iSK54b5X0aFmYKuVtT.jpeg', 'gallery', 2, '2019-10-20 03:20:07', '2019-10-20 03:20:07'),
-(2, 'IMG_6255.JPG', 'IMG_6255.JPG', 'gallery/company/2/tfv72wWIbZeupP87itPv9OLOqGHjgTlEWze7MF3j.jpeg', 'gallery', 2, '2019-10-20 03:21:20', '2019-10-20 03:21:20'),
-(3, 'IMG_6560.JPG', 'IMG_6560.JPG', 'gallery/company/2/p7aCdePnaSv2HD2TZxlPnUVXKlBiQBjBXcz1wYIm.jpeg', 'gallery', 2, '2019-10-20 03:21:22', '2019-10-20 03:21:22'),
-(4, 'IMG_6708.JPG', 'IMG_6708.JPG', 'gallery/company/2/Sr6i0a3FnRWuXMLSHgMz3786cqn96HZ3ZFqdOUvu.jpeg', 'gallery', 2, '2019-10-20 03:21:22', '2019-10-20 03:21:22'),
-(5, 'IMG_7156.JPG', 'IMG_7156.JPG', 'gallery/company/2/ZucNKMNiKTYZ2PAH88wuZx7UC2wWui8BmUkWBbvr.jpeg', 'gallery', 2, '2019-10-20 03:21:23', '2019-10-20 03:21:23'),
-(6, 'meja.jpg', 'meja.jpg', 'gallery/company/2/0pLzCatmy95uC4mJeufyvmNyGBGKFAbKHorjWwGJ.jpeg', 'gallery', 2, '2019-10-20 03:21:24', '2019-10-20 03:21:24'),
-(7, 'ad.jpg', 'ad.jpg', 'gallery/company/2/4EL0yKMNmxb7NnzqqAXYT4b7Oc5GnTRduSBfVR8J.jpeg', 'gallery', 2, '2019-10-20 03:23:02', '2019-10-20 03:23:02'),
-(8, 'Cool Stream Moss Coverd Rocks Wp TW.png', 'Cool Stream Moss Coverd Rocks Wp TW.png', 'gallery/company/2/9h7XF1CuQsap6OU06um1ECNVk8Ecvo3B2MMtTUvY.png', 'gallery', 2, '2019-10-20 03:23:03', '2019-10-20 03:23:03'),
-(9, 'cool-sunflowers-HD_wallpapers.jpg', 'cool-sunflowers-HD_wallpapers.jpg', 'gallery/company/2/I9xsYpv2YqIIzouSP9HWGt2KNCn8dIGQH23VvqD2.jpeg', 'gallery', 2, '2019-10-20 03:23:03', '2019-10-20 03:23:03'),
-(10, 'cool-wallpaper- (200).jpg', 'cool-wallpaper- (200).jpg', 'gallery/company/2/T77gxFjHywPP1BGFn8D2O4eiDHSXrzNbvIMFwEB4.jpeg', 'gallery', 2, '2019-10-20 03:23:03', '2019-10-20 03:23:03');
+(15, '81fmJOLZBGL._SR500,500_.jpg', '81fmJOLZBGL._SR500,500_.jpg', 'gallery/company/2/WLVQEKjEF0iEbGYkPw3wB4yyPIsQDOBZB44DSqUY.jpeg', 'gallery', 2, '2019-11-10 22:35:57', '2019-11-10 22:35:57'),
+(16, '51HdQsRdSJL._SR500,500_.jpg', '51HdQsRdSJL._SR500,500_.jpg', 'gallery/company/2/RV3AZ0gxFk0f0zGfq0FgQqKjPoCqPoJNgnAtEdQ2.jpeg', 'gallery', 2, '2019-11-10 22:36:22', '2019-11-10 22:36:22'),
+(21, '01-All-0192.jpg', '01-All-0192.jpg', 'gallery/company/1/Hx4bnCXfmPnRljZCb9mOYty1zw0wutV3fcF3Lkqq.jpeg', 'gallery', 1, '2019-11-12 00:20:07', '2019-11-12 00:20:07'),
+(26, 'index.jpg', 'index.jpg', 'gallery/company/1/MvoKjnHIAHyVKs9BSNBwfet7HFdrHkE2mw90jJY4.jpeg', 'gallery', 1, '2019-11-12 00:34:10', '2019-11-12 00:34:10'),
+(27, 'index.jpg', 'index.jpg', 'gallery/company/1/sE0u8om4yl01HvIfPc5KCLiVN9JhZGjMeyRGyjgH.jpeg', 'gallery', 1, '2019-11-12 00:38:29', '2019-11-12 00:38:29'),
+(28, '01-All-0192.jpg', '01-All-0192.jpg', 'gallery/company/1/tkY9G0MxdC0SSwt0ZnKu667pIqdw073c3MobUcEH.jpeg', 'gallery', 1, '2019-11-12 00:38:35', '2019-11-12 00:38:35');
 
 -- --------------------------------------------------------
 
@@ -81,9 +77,10 @@ CREATE TABLE `company` (
 --
 
 INSERT INTO `company` (`company_id`, `company_name`, `company_contact`, `company_email`, `company_ssm`, `company_website`, `company_address`, `company_logo`, `company_type_id`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 'Puri Pujangga Hotel', '0389274128', 'sales@puripujangga.com.my', '0123890248', NULL, 'Puri Pujangga Hotel, UKM Bangi, Selangor', 'avatar/company/1/FZavOINp0Jdyfr2lKqEvQLc3ZZt9PKMPn3EnTflJ.jpeg', 'wp', 1, '2019-10-12 05:19:09', '2019-10-12 05:20:30'),
-(2, 'CT3 Catering & Canopy', '0374924854', 'ct3cnc@gmail.com', '0147185114', NULL, '252 Jalan Seri Melati, Kuantan, Pahang', 'avatar/company/2/RNBhVepcxkQ62K9eGg67lThmOWhdKtluskVB5gwl.jpeg', 'wp', 2, '2019-10-12 05:31:33', '2019-10-17 06:03:18'),
-(3, 'Rasa Nusantara', '0183557736', 'rasanusantara7@gmail.com', '22221468000', NULL, '22-G Jalan 4 Taman Industri Lembah Jaya, Ampang', 'avatar/company/3/2Evqx2kEnyV94GPaghkdgYqIeZxBCH7b6xjMr6DZ.jpeg', 'wp', 3, '2019-10-12 05:47:17', '2019-10-12 05:48:16');
+(1, 'Hani Catering & Wedding Planner', '032556548', 'humaira@gmail.com', '221458654485', 'https://www.instagram.com/anicateringweddingplaner/?hl=en', 'No. 15/1, Jalan Reko Sentral 2, Reko Sentral Bandar Baru Bangi, 43000 Kajang, Selangor', 'avatar/company/1/v9WiOjMeWJswxfgsdxlYeJxRcmCEG7M1ZfZGyUM0.png', 'wp', 14, '2019-11-10 22:05:53', '2019-11-11 06:13:44'),
+(2, 'Awesome Wedding Card', '03221546859', 'saifuld@gmail.com', '123456789', 'https://m.facebook.com/Amz.Kadkahwin', 'UNIT C-G, GROUND FLOOR BLOCK C, SUNWAY PJ51A, JALAN SS9A/14, SERI SETIA', 'avatar/company/2/dMYfwDmU2HrSeZ8O8NEbBlYZPD0kZkBx7HvCEASH.png', 'wp', 15, '2019-11-10 22:30:36', '2019-11-10 22:31:45'),
+(3, 'Vistana Banquet Hall', '0132564587', 'vistana@gmail.com', '12345678', 'http://astanabanquetcyberjaya.blogspot.com/?m=1', 'Cyberjaya, 62000 Cyberjaya, Selangor', 'avatar/company/3/0bHdgcT5e82ghjECyGRaEzlggS0GgisQNWDGwNXk.png', 'wp', 16, '2019-11-10 22:39:50', '2019-11-10 22:40:32'),
+(4, 'Avillian Admiral Cove', '0321125465', 'jamalkh@gmail.com', '12345678', 'https://www.avillionadmiralcove.com', '5½ Mile, Jalan Pantai 71050 Port Dickson', 'avatar/company/4/TKMssbiI7iKuCplxfJH1N8vVRf6z6GDvkjBAjpFT.jpeg', 'wp', 17, '2019-11-10 23:07:55', '2019-11-10 23:11:51');
 
 -- --------------------------------------------------------
 
@@ -162,11 +159,17 @@ INSERT INTO `company_category_tag` (`cct_id`, `cc_id`, `company_id`) VALUES
 (13, 19, 3),
 (14, 24, 3),
 (15, 26, 3),
-(16, 3, 4),
-(17, 21, 4),
-(18, 2, 5),
-(19, 2, 6),
-(20, 2, 7);
+(21, 7, 1),
+(22, 8, 1),
+(23, 13, 1),
+(24, 20, 1),
+(25, 14, 2),
+(26, 9, 3),
+(27, 20, 3),
+(28, 8, 4),
+(29, 9, 4),
+(30, 22, 4),
+(31, 23, 4);
 
 -- --------------------------------------------------------
 
@@ -186,9 +189,7 @@ CREATE TABLE `company_contact` (
 --
 
 INSERT INTO `company_contact` (`company_contact_id`, `company_id`, `contact_id`, `contact_type`) VALUES
-(6, 2, 5, 2),
-(7, 2, 4, 2),
-(8, 2, 2, 1);
+(1, 1, 18, 2);
 
 -- --------------------------------------------------------
 
@@ -228,10 +229,7 @@ CREATE TABLE `company_package` (
 --
 
 INSERT INTO `company_package` (`package_id`, `package_title`, `package_detail`, `package_price`, `package_pax`, `package_category`, `package_post`, `company_id`, `created_at`, `updated_at`) VALUES
-(1, 'Package : Basic', 'PGRpdiBhbGlnbj0iY2VudGVyIj48b2w+PGxpPi0gTWFsYXkgQnVmZmV0IE1lbnU8L2xpPjxsaT4tIEJhc2ljIERlY29yYXRpb248L2xpPjxsaT4tIE1lamEgQmVyYWRhYiBmb3IgMTAgcGF4PC9saT48bGk+LSBTdGFuZGFyZCBQQSBTeXN0ZW08L2xpPjxsaT4tIFJvc3RydW0gYW5kIG1pY3JvcGhvbmU8L2xpPjxsaT4tIFN0YWdlPC9saT48bGk+LSBSZWQgY2FycGV0IHRvIHBlbGFtaW48YnI+PC9saT48bGk+LSBTdGFuZGFyZCB0YWJsZSBzZXR1cCB3aXRoIHRhYmxlIGNsb3RoLCBjaGFpciBjb3ZlciBhbmQgbmFwa2luPC9saT48bGk+LSBGdWxseSBhaXIgY29uZGl0aW9uZWQgaGFsbDwvbGk+PGxpPi0gVklQIGRvbWUgc2V0IGZvciAyIHRhYmxlczwvbGk+PGxpPjxicj48L2xpPjxsaT4gPGJyPjwvbGk+PC9vbD48L2Rpdj4=', 19, 1000, NULL, 0, 1, '2019-10-12 05:27:24', '2019-10-12 05:27:24'),
-(2, 'Pakej WOW CT3', 'PHA+PGI+TWVudTwvYj48L3A+PHVsPjxsaT4tIE5hc2kgTWlueWFrIGF0YXUgQmVyaWFuaSA4MCU8L2xpPjxsaT4tIE5hc2kgUHV0aWggMjAlPC9saT48bGk+LSBBeWFtIE1hc2FrIE1lcmFoPC9saT48bGk+LSBEYWdpbmcgTWFzYWsgSGl0YW08L2xpPjxsaT4tIERhbGNhIENhbXB1cjwvbGk+PGxpPi0gUGFwYWRvbTwvbGk+PGxpPi0gQWlyIEtvcmRpYWwgU2lyYXA8L2xpPjxsaT4tIEJ1YWg8L2xpPjwvdWw+PHA+PGI+Q2F0ZXJpbmc8L2I+PC9wPjx1bD48bGk+LSAyNSBtZWphIGJ1bGF0ICsgMjUwIGtlcnVzaSBiZXJzYXJ1bmc8L2xpPjxsaT4tIDIgbWVqYSBWVklQICsga2VydXNpIGJlcnNhcnVuZzwvbGk+PGxpPi0gbWVqYSBiZXJhZGFiICsgZGVjbyArIG1ha2FuYW4gcGVuZ2FudGluICh1ZGFuZyBwYW5qYXQsIGF5YW0gZ29sZWssIGJ1YWggZGVjbyk8L2xpPjxsaT4tIGtlayAyIHRpbmdrYXQ8L2xpPjxsaT4tIDIgc3Rlc2VuIGJ1ZmZldDwvbGk+PGxpPi0gMTAgcHJhbXVzYWppPC9saT48L3VsPjxwPjxiPlBlbGFtaW48L2I+PC9wPjx1bD48bGk+LSAxIHNldCBwZWxhbWluPC9saT48bGk+LSBiYW50YWwgKyBraXBhcyB0YW5nYW48L2xpPjxsaT4tIHNldCByZW5qaXM8L2xpPjxsaT4tIGhpYXNhbiBwaW50dSBnZXJiYW5nPC9saT48bGk+LSBzZXBhc2FuZyBwZXJzYWxpbmFuIEwvUDwvbGk+PGxpPi0gMXggbWFrZXVwPGJyPjwvbGk+PC91bD48cD48Yj5QaG90b2dyYXBoeTwvYj48L3A+PHVsPjxsaT4tIG5pa2FoIHNhbmRpbmcgaGFyaSB5YW5nIHNhbWE8L2xpPjxsaT4tIGN1c3RvbSBhbGJ1bTwvbGk+PGxpPi0gZnJhbWUgZ2FtYmFyIDhSPC9saT48bGk+LSB1bmxpbWl0ZWQgcGljdHVyZSB0YWtlbjwvbGk+PGxpPi0gYWxsIGltYWdlIGluIHBlbmRyaXZlIDhHQjwvbGk+PC91bD48cD48Yj5LYWQgamVtcHV0YW48L2I+PC9wPjx1bD48bGk+LSAzNTAga2VwaW5nIGthZCArIGVudmVsb3A8L2xpPjxsaT4tIEJ1bnRpbmc8L2xpPjxsaT4tIGRlc2lnbjwvbGk+PC91bD48cD48Yj5ESi8gUEEgc3lzdGVtPC9iPjxicj48L3A+', 14000, 1000, NULL, 0, 2, '2019-10-12 05:39:28', '2019-10-12 05:39:28'),
-(3, 'Pakej Terbaik CT3', 'PHA+PHA+PGI+TWVudTwvYj48L3A+PHVsPjxsaT4tIE5hc2kgTWlueWFrIGF0YXUgQmVyaWFuaSA4MCU8L2xpPjxsaT4tIE5hc2kgUHV0aWggMjAlPC9saT48bGk+LSBBeWFtIE1hc2FrIE1lcmFoPC9saT48bGk+LSBEYWdpbmcgTWFzYWsgSGl0YW08L2xpPjxsaT4tIERhbGNhIENhbXB1cjwvbGk+PGxpPi0gUGFwYWRvbTwvbGk+PGxpPi0gQWlyIEtvcmRpYWwgU2lyYXA8L2xpPjxsaT4tIFRlaCBUYXJpazxicj48L2xpPjxsaT4tIEJ1YWg8L2xpPjxsaT4tIEFnYXItYWdhciA1MCU8L2xpPjxsaT4tIEJ1YnVyIHB1bHV0IGhpdGFtIDUwJTxicj48L2xpPjwvdWw+PHA+PGI+Q2F0ZXJpbmc8L2I+PC9wPjx1bD48bGk+LSAyNSBtZWphIGJ1bGF0ICsgMjUwIGtlcnVzaSBiZXJzYXJ1bmc8L2xpPjxsaT4tIDIgbWVqYSBWVklQICsga2VydXNpIGJlcnNhcnVuZzwvbGk+PGxpPi0gbWVqYSBiZXJhZGFiICsgZGVjbyArIG1ha2FuYW4gcGVuZ2FudGluICh1ZGFuZyBwYW5qYXQsIGF5YW0gZ29sZWssIGJ1YWggZGVjbywgaWthbiBzaWFrYXAgc3dlZXQgc291cik8L2xpPjxsaT4tIGtlayAzIHRpbmdrYXQ8L2xpPjxsaT4tIDIgc3Rlc2VuIGJ1ZmZldDwvbGk+PGxpPi0gMTAgcHJhbXVzYWppPC9saT48L3VsPjxwPjxiPlBlbGFtaW48L2I+PC9wPjx1bD48bGk+LSAxIHNldCBwZWxhbWluPC9saT48bGk+LSBiYW50YWwgKyBraXBhcyB0YW5nYW48L2xpPjxsaT4tIHNldCByZW5qaXM8L2xpPjxsaT4tIGhpYXNhbiBwaW50dSBnZXJiYW5nPC9saT48bGk+LSBzZXBhc2FuZyBwZXJzYWxpbmFuIEwvUDwvbGk+PGxpPi0gMXggbWFrZXVwPC9saT48bGk+LSByZWQgY2FycGV0PC9saT48bGk+LSBBaXNsZSBXYWxrd2F5PGJyPjwvbGk+PC91bD48cD48Yj5QaG90b2dyYXBoeTwvYj48L3A+PHVsPjxsaT4tIG5pa2FoIHNhbmRpbmc8YnI+PC9saT48bGk+LSBjdXN0b20gYWxidW08L2xpPjxsaT4tIGZyYW1lIGdhbWJhciA4UjwvbGk+PGxpPi0gdW5saW1pdGVkIHBpY3R1cmUgdGFrZW48L2xpPjxsaT4tIGFsbCBpbWFnZSBpbiBwZW5kcml2ZSA4R0I8L2xpPjwvdWw+PHA+PGI+S2FkIGplbXB1dGFuPC9iPjwvcD48dWw+PGxpPi0gMzUwIGtlcGluZyBrYWQgKyBlbnZlbG9wPC9saT48bGk+LSBCdW50aW5nPC9saT48bGk+LSBkZXNpZ248L2xpPjwvdWw+PGI+REovIFBBIHN5c3RlbTwvYj48L3A+PHA+PGI+UEVSQ1VNQSBLYW1iaW5nIEdvbGVrIFNlZWtvcjxicj48L2I+PC9wPg==', 16800, 1000, NULL, 0, 2, '2019-10-12 05:43:08', '2019-10-12 05:43:08'),
-(4, 'Pakej Perkahwinan Lengkap', 'PHA+PGI+TWVudTwvYj48L3A+PHVsPjxsaT4tIE5hc2kgTWlueWFrPC9saT48bGk+LSBOYXNpIFB1dGloIDEwJTwvbGk+PGxpPi0gQXlhbSBNYXNhayBNZXJhaDwvbGk+PGxpPi0gRGFnaW5nIE1hc2FrIEhpdGFtPC9saT48bGk+LSBEYWxjYSBTYXl1cjwvbGk+PGxpPi0gQWNhciBCdWFoPC9saT48bGk+LSBNaW51bWFuIFNlanVrIENvcmRpYWw8L2xpPjxsaT4tIFRlaCBUYXJpazwvbGk+PGxpPi0gQnVidXIgUHVsdXQgSGl0YW08L2xpPjxsaT4tIEJ1YWggT3JlbjwvbGk+PGxpPi0ga2VrIDMgVGluZ2thdDwvbGk+PC91bD48cD48Yj5NZWphIFBlbmdhbnRpbiA8L2I+PC9wPjx1bD48bGk+LSAxIE1lamEgTWFrYW4gQmVyYWRhYjwvbGk+PGxpPi0gMiBLZXJ1c2kgTWVtcGVsYWk8L2xpPjwvdWw+PHA+PGI+TWVqYSBUZXRhbXU8L2I+PC9wPjx1bD48bGk+LSAzMCBtZWphIGJ1bGF0ICsgYWxhczwvbGk+PGxpPi0gMzAwIGtlcnVzaTwvbGk+PGxpPi0gMiBzZXQgbWVqYSBidWZmZXQ8L2xpPjxsaT4tIHBlbGF5YW4gYmVydW5pZm9ybTwvbGk+PC91bD48cD48Yj5QZWxhbWluPC9iPjwvcD48dWw+PGxpPi0gUGVsYW1pbiwgZGV3YW4gYXRhdSBydW1haDwvbGk+PGxpPi0gd2Fsa3dheTwvbGk+PGxpPi0ga2FycGV0PC9saT48bGk+LSBzZXQgcmVuamlzPC9saT48L3VsPjxwPjxiPkFuZGFtYW48L2I+PC9wPjx1bD48bGk+LSBCYWp1IHNhbmRpbmcgTFAgMTwvbGk+PGxpPi0gTWFrZXVwIExQIDE8L2xpPjwvdWw+PHA+PGI+UEEgU3lzdGVtICZhbXA7IERKPC9iPjwvcD48cD48Yj5QaG90b2dyYXBoZXI8L2I+PC9wPjxwPi0gc2FuZGluZyArIG91dGRvb3I8L3A+PHA+PHNwYW4gc3R5bGU9ImJhY2tncm91bmQtY29sb3I6IHJnYigyNTUsIDI1NSwgMjU1KTsiPjxzcGFuIHN0eWxlPSJjb2xvcjogcmdiKDI1NSwgMCwgMCk7Ij48Yj48c3BhbiBzdHlsZT0iZm9udC1zaXplOiAxOHB4OyI+UEVSQ1VNQSBCRVJMSUFOIDAuMWN0PC9zcGFuPjwvYj48L3NwYW4+PC9zcGFuPjxicj48L3A+PHA+PGJyPjwvcD48cD48YnI+PC9wPg==', 20000, 1000, NULL, 0, 3, '2019-10-12 05:56:16', '2019-10-12 05:56:16');
+(1, 'Pakej Jimat RM13,600', 'PHA+TmFzaSBCZXJpeWFuaS8gQmVyYXMgQmFzbWF0aGk8L3A+PHA+TmFzaSBQdXRpaC8gQXlhbSBNZXJhaDwvcD48cD5BeWFtIE1lcmFoIC8gR29yZW5nIFJlbXBhaDwvcD48cD5BY2FyIEJ1YWggLyBBY2FyIFJhbXBhaTxicj48L3A+', 13600, 500, NULL, 0, 1, '2019-11-12 20:06:52', '2019-11-12 20:06:52');
 
 -- --------------------------------------------------------
 
@@ -251,29 +249,7 @@ CREATE TABLE `company_package_category_tag` (
 
 INSERT INTO `company_package_category_tag` (`cpct_id`, `package_id`, `cc_id`) VALUES
 (1, 1, 8),
-(2, 1, 9),
-(3, 1, 27),
-(4, 1, 28),
-(5, 2, 1),
-(6, 2, 3),
-(7, 2, 8),
-(8, 2, 14),
-(9, 2, 27),
-(10, 2, 28),
-(11, 3, 1),
-(12, 3, 3),
-(13, 3, 8),
-(14, 3, 14),
-(15, 3, 22),
-(16, 3, 28),
-(17, 4, 1),
-(18, 4, 3),
-(19, 4, 8),
-(20, 4, 12),
-(21, 4, 19),
-(22, 4, 20),
-(23, 4, 27),
-(24, 4, 28);
+(2, 1, 22);
 
 -- --------------------------------------------------------
 
@@ -326,8 +302,38 @@ CREATE TABLE `company_reviews` (
 --
 
 INSERT INTO `company_reviews` (`review_id`, `review_user_id`, `review_user`, `review_rate`, `review_text`, `company_id`, `created_at`, `updated_at`) VALUES
-(1, 5, 'Siti Sarah', 3, 'Saya bagi 3 star sebab saya dengar dari orang, company ni bagus. Tapi saya sendiri x try pun lagi..huhu', 2, '2019-10-20 02:01:11', '2019-10-20 02:01:11'),
-(2, 4, 'Mustaqim', 5, 'Terbaik terbaik! Saya kawin dulu amik dengan dorang la...i totally recommend this company untuk korang. Nanti dorang akan bagi beriyani free...', 2, '2019-10-20 02:23:56', '2019-10-20 02:23:56');
+(1, 14, 'humaira', 4, 'Good company', 2, '2019-11-14 00:23:24', '2019-11-14 00:23:24');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `event_external`
+--
+
+CREATE TABLE `event_external` (
+  `ee_id` int(11) NOT NULL,
+  `ee_title` text NOT NULL,
+  `location` text,
+  `description` text,
+  `date_start` date DEFAULT NULL,
+  `date_end` date DEFAULT NULL,
+  `time_start` time DEFAULT NULL,
+  `time_end` time DEFAULT NULL,
+  `poster` text,
+  `url` text,
+  `posted_by` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `event_external`
+--
+
+INSERT INTO `event_external` (`ee_id`, `ee_title`, `location`, `description`, `date_start`, `date_end`, `time_start`, `time_end`, `poster`, `url`, `posted_by`, `created_at`, `updated_at`) VALUES
+(1, '23rd KLPJ Wedding Fair 2020', 'Kuala Lumpur Convention Centre', '23rd KLPJ Wedding Fair 2020 on 11 & 12 January 2020 at Kuala Lumpur Convention Centre (KLCC), Kuala Lumpur is the premium wedding expo in Malaysia since 2008. For couples who wish to tie-the-knot in Year 2020 and beyond, begin your wedding planning here! Find your preferred Pre-Wedding Photography Studio from Malaysia\'s Award Winning Top Bridal Houses here from PJ SS2, Damansara, Kuala Lumpur, Johor Bahru and Penang. Walk and sit wherever you wish - there will be no limitations of where you must go or sit! Our hopes and desires are for couples to make their wedding planning experience an exciting, meaningful and comfortable in a unique and inspiring space!', '2020-01-11', '2019-11-12', '09:00:00', '23:00:00', 'admin/event/1/Rs3SICbP4LrfNkY429mvDKwM55kU51PAtgayoyE9.jpeg', 'https://www.klpj.com.my/', 13, '2019-11-10 21:36:33', '2019-11-10 21:36:33'),
+(2, 'Pameran Pengatin KahwinJe', 'Midvalley Exhibition Center', 'Pameran Pengantin Kahwinje by KLPJ merupakan festival perkahwinan original yang terunggul di Malaysia. Hanya dianjurkan dua kali setahun di Mid Valley, Pameran Pengantin Kahwinje by KLPJ 2018 memaparkan gabungan pakej-pakej perkahwinan terbaik dari Perak, Pahang, Negeri Sembilan, Johor dan juga Selangor, terutamanya dari kawasan Klang Valley (Gombak, Melawati, Wangsa Maju, Ampang, Kepong, Cheras, Kuala Lumpur, Petaling Jaya, Subang, Puchong, Seri Kembangan, Kajang, Bangi, Shah Alam & Klang).', '2019-09-21', '2019-09-23', '09:00:00', '23:00:00', 'admin/event/2/vPN4RdZGoryjHswO6xHxVICon7O8DP16Q9QxR8So.jpeg', 'https://www.ticket2u.com.my/event/10971/pameran-pengantin-kahwinje-by-klpj-(september-2018)', 13, '2019-11-10 21:41:08', '2019-11-10 21:41:08'),
+(3, 'BRIDAL SHOWCASE 2019', 'The Regency, Kuala Lumpur', 'Dengan mengetengahkan tagline “Heritage Of The Urban City” – The Regency Hotel, Kuala Lumpur membuka peluang kepada usahawan-usahawan Industri Kecil dan Sederhana ( IKS ) dengan menyediakan ruang kepada perniagaan yang berkaitan dengan penyediaan kelengkapan majlis perkahwinan seperti katering, baju dan solekan pengantin juga cenderahati bagi memudahkan para pelanggan membuat pilihan. Mudah bukan bila semuanya di bawah satu bumbung', '2019-08-16', '2019-08-18', '09:00:00', '23:00:00', 'admin/event/3/YFN1tISRZMYJs5zC0KcMoXRJYNPXdTYz41UoZl9N.jpeg', 'http://www.atiehilmi.com/2019/08/bridal-showcase-2019festival-kahwin.html', 13, '2019-11-10 21:50:08', '2019-11-10 21:50:08');
 
 -- --------------------------------------------------------
 
@@ -445,6 +451,9 @@ CREATE TABLE `users` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `phone` text COLLATE utf8mb4_unicode_ci,
   `fullname` text COLLATE utf8mb4_unicode_ci,
+  `dob` date DEFAULT NULL,
+  `address` text COLLATE utf8mb4_unicode_ci,
+  `state` text COLLATE utf8mb4_unicode_ci,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `dp` text COLLATE utf8mb4_unicode_ci,
@@ -460,23 +469,13 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `phone`, `fullname`, `email_verified_at`, `password`, `dp`, `created_at`, `updated_at`, `remember_token`, `status_id`, `role_id`, `company_id`) VALUES
-(1, 'Asnaniar', 'sales@puripujangga.com.my', '0129191553', 'Asnaniar Ahmad', NULL, '$2y$10$Yf30ZLVHo9jGVHf6LnViO.fiCqpCmlWc4KGC4Rad01nyFi9QhVV9S', NULL, '2019-10-12 05:19:09', '2019-10-12 05:19:10', NULL, '1', 3, 1),
-(2, 'Muzaimah', 'muzaimahuhammad@gmail.com', '0173914073', 'Muzaimah Muhammad', NULL, '$2y$10$Z/eYbdiNau5nFPRA4YbUkOduhk/umvQdZ5CtfXPCgwTbzKYFndAZi', 'avatar/user/2/WZNXp6P2jx1PmxyJ45UbC4NN36FwHuERzzDtcMpz.jpeg', '2019-10-12 05:31:33', '2019-10-17 06:10:43', NULL, '1', 3, 2),
-(3, 'Dina', 'dina@gmail.com', '0183557736', 'Nurdina Kamalasari', NULL, '$2y$10$WaPowhhno9/G61DMxGnc2epKtVvEol/9vleS2i3UGlp3OOf7ztI52', NULL, '2019-10-12 05:47:17', '2019-10-12 05:47:17', NULL, '1', 3, 3),
-(4, 'Mustaqim', 'mustaqimwow@gmail.com', NULL, 'Mustaqim Ahmad bin Abdul Rashid', NULL, '$2y$10$W1234vOsns5GTgJ5egv54uvoKqb/jvu1Zxv.L//ib48QVERnQkpbS', NULL, '2019-10-12 05:59:37', '2019-10-12 05:59:37', NULL, '1', 5, 0),
-(5, 'Siti Sarah', 'ctsara@gmail.com', NULL, 'Siti Sarah binti Saidin', NULL, '$2y$10$tnm.W4FobHhMmnWTZJ8LkORPBQCafI/9MZX7zCfFmsTcuYEUYsVaS', NULL, '2019-10-12 06:00:38', '2019-10-12 06:00:38', NULL, '1', 5, 0),
-(6, 'Jamal', 'jamal@gmail.com', NULL, 'Jamal Abdillah', NULL, '$2y$10$4Ebw30b3oDM3FA4rxSZ5GORofa68DhfNk89Xw9P.zBA/NfkSjFMlG', NULL, '2019-10-12 20:51:57', '2019-10-12 20:51:57', NULL, '1', 5, 0),
-(7, 'Alyn Azren', 'alynazren@gmail.com', '5', 'a', NULL, '$2y$10$Yf30ZLVHo9jGVHf6LnViO.fiCqpCmlWc4KGC4Rad01nyFi9QhVV9S', NULL, '2019-10-12 21:29:24', '2019-10-29 22:37:16', 'niqhGgtMWW8CCdLM4Y1naedefL7krv', '1', 3, 2),
-(8, 'asd', 'aasd@gmail.com', '5', 'asddas', NULL, '$2y$10$9YjbzLWQW1m3gj3Dxu0cWewUsrl9yGf1MfV50ySCcyUAu71./urYi', NULL, '2019-10-12 21:35:28', '2019-10-12 21:35:28', NULL, '1', 3, 5),
-(9, 'ass', 'sdfsd@gmail.com', '566', 'asd', NULL, '$2y$10$UeNfj8X6iRXkNxDYjWviV.pr.Q4oE4lIszW3fy5OVzridRFvOgnU2', NULL, '2019-10-12 21:37:02', '2019-10-12 21:37:03', NULL, '1', 3, 6),
-(10, 'asda', 'asdas@gmail.com', '4584', 'asdasdas', NULL, '$2y$10$yKZ/6q4VzgvnNXkx2lBe7eHkfbNVGzJ4x76wB6J3vWb.GQ7WTwyaC', NULL, '2019-10-12 21:39:50', '2019-10-12 21:39:50', NULL, '1', 3, 7),
-(11, 'Abdul Rahman', 'rahman@gmail.com', NULL, 'Abdul Rahman bin Rashid', NULL, '$2y$10$1NhyFpfaIjdH/RYgaWAmkuKgcJpxOEUYKV5EMWHmWmtgaSvQwJI1C', NULL, '2019-10-13 00:48:30', '2019-10-13 00:48:30', NULL, '1', 5, 0),
-(12, 'Habib Saufi', 'habibmohdsaufi@gmail.com', '0126547382', 'Muhammad Habib bin Mohd Saufi', NULL, '$2y$10$AeevUuOWjZyOCNmDwBBBh.I1geU4WBUMCic0ca1PGaP1woFWRFn5m', NULL, '2019-10-17 05:48:30', '2019-10-24 23:42:28', 'qRRMICJk63ZznDVNIm6Mc9nmoRNtHW', '2', 3, 2),
-(13, 'hasan', 'habib@kasatria.com', '0125546548', 'Mohd hassan', NULL, '$2y$10$y79n1cf3bsE.5sYqWxWEVuWgjFxKHQUolptpaZwzSXKOZOgMEriiW', NULL, '2019-10-23 22:08:07', '2019-10-24 23:44:39', NULL, '1', 3, 2),
-(14, 'Muhammad Habib', 'ahmadnasri@gmail.com', '0123456788', 'Saasa', NULL, '$2y$10$en0yx3q.kdD66JdPqdYlROgO558m1fR1qQtZj9ey2lmH5t3asELvW', NULL, '2019-10-23 23:40:15', '2019-10-23 23:40:15', NULL, '1', 5, 0),
-(15, 'Muhammad Habib', 'nafisah@gmail.com', '0122222222', 'SAS', NULL, '$2y$10$Hct9QBXvXq7Cr1AMBO.MdO8HF1CjLsh7IkhEOrmsLEdlJrG8oWKka', NULL, '2019-10-23 23:45:21', '2019-10-23 23:45:21', NULL, '1', 5, 0),
-(16, 'Muhammad Habib', 'jennylyn.abubo@gmail.com', '0123333333', 'Muhammad Habib Saufi', NULL, '$2y$10$wHCGR5EMj.RY8AvJKndyrebIQ.1R0cW89ox.setPZcEITjdSPoIe2', NULL, '2019-10-23 23:54:57', '2019-10-23 23:54:57', NULL, '1', 3, 2);
+INSERT INTO `users` (`id`, `name`, `email`, `phone`, `fullname`, `dob`, `address`, `state`, `email_verified_at`, `password`, `dp`, `created_at`, `updated_at`, `remember_token`, `status_id`, `role_id`, `company_id`) VALUES
+(13, 'Alyn Azren', 'admin@savethedate-my.com', NULL, 'Nur Amalina binti Azren', '0000-00-00', '', '', NULL, '$2y$10$Z/eYbdiNau5nFPRA4YbUkOduhk/umvQdZ5CtfXPCgwTbzKYFndAZi', NULL, '2019-11-08 16:28:10', '2019-11-08 16:28:10', NULL, '1', 0, 0),
+(14, 'humaira', 'humaira@gmail.com', '0176554589', 'Nur Humaira Khadijah binti Khalid', NULL, NULL, NULL, NULL, '$2y$10$pbeTikqC7LdH.rTN4tLtLuOVtYW8P4uL8knCgS2oKN4AezicNhfZG', 'avatar/user/14/HGZvZiT6bXCdQLan6AH0K1UkZM8Zj9gOIQpqVKc5.jpeg', '2019-11-10 22:05:53', '2019-11-10 22:09:16', NULL, '1', 3, 1),
+(15, 'Saiful86', 'saifuld@gmail.com', '0135526458', 'Saiful Raheem bin Deraman', NULL, NULL, NULL, NULL, '$2y$10$mTMoTFIgxbYLP3M68M/w9eS5HNTgB3Lfgh9Tw5zBIokSvB.YA3Zoe', 'avatar/user/15/m17ZStCDOTtwFbyfJXJigvIfJilguxOMSoyra8cG.png', '2019-11-10 22:30:36', '2019-11-10 22:32:32', NULL, '1', 3, 2),
+(16, 'Christine', 'christine80@gmail.com', '0165565254', 'Christine Liu', NULL, NULL, NULL, NULL, '$2y$10$EWySRz3lNv4AbI1reBQ/AeOB4CII6ATC/fgKAymTm8zjGlBanswAu', 'avatar/user/16/ckWh8NbZG1pOVwZ45f5aEOImdXmS8BjFUgMpsQU3.jpeg', '2019-11-10 22:39:50', '2019-11-10 22:41:37', NULL, '1', 3, 3),
+(17, 'Jamal Khaz', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '$2y$10$rroyRc4Nm0QjIhaEmWWtzurwwoHnvvE.uCRiI4gp8GXmz/MRk0u7W', 'avatar/user/17/3kf9mWoEALXCBzjzfz2CBUMeLJ8lJcWfsW0ZBUHA.jpeg', '2019-11-10 23:07:54', '2019-11-10 23:13:42', NULL, '1', 3, 4),
+(18, 'Habib', 'habib@kasatria.com', '0123556458', 'Muhammad Habib bin Mohd Saufi', NULL, NULL, NULL, NULL, '$2y$10$2aacpgUzwJKxW.0ukOFJFeb4iTdXWIdg7LbV2Gr1kdvaDJuPthjKG', NULL, '2019-11-10 23:46:39', '2019-11-10 23:46:39', NULL, '1', 5, 0);
 
 -- --------------------------------------------------------
 
@@ -517,8 +516,7 @@ CREATE TABLE `users_status` (
 
 INSERT INTO `users_status` (`status_id`, `status_title`) VALUES
 (1, 'Active'),
-(2, 'Inactive'),
-(3, 'Pending');
+(2, 'Inactive');
 
 -- --------------------------------------------------------
 
@@ -548,10 +546,7 @@ CREATE TABLE `wevent` (
 --
 
 INSERT INTO `wevent` (`we_id`, `we_title`, `we_date`, `we_time1`, `we_time2`, `we_venue`, `we_desc`, `we_remark`, `package_id`, `company_id`, `user_id`, `wes_id`, `created_at`, `updated_at`) VALUES
-(1, 'Siti Sarah & Shuib', '2020-01-31', '00:00:00', '00:00:00', 'Dewan Serbaguna MPA Ampang', NULL, NULL, 3, 2, 5, 1, '2019-10-12 14:18:26', '2019-10-12 06:18:26'),
-(2, 'Mustaqim Muslihah', '2020-03-20', '11:00:00', '16:30:00', 'Dewan Veillaris Bangi', 'Perkahwinan Mustaqim dan Muslihah', NULL, 4, 3, 4, 5, '2019-10-22 00:48:45', '2019-10-22 00:48:45'),
-(3, 'Romio dan juler', '2019-10-11', '00:00:00', '00:00:00', NULL, 'Mooo gurau jaa', NULL, 3, 2, 5, 4, '2019-10-12 16:17:16', '2019-10-12 08:17:16'),
-(4, 'Jamal Kahwin', '2019-11-23', '12:52:00', '12:52:00', 'Jalan Merbuta 2', 'Perkahwinan Jamal dan isteri ketiga', NULL, 2, 2, 6, 1, '2019-10-13 04:58:31', '2019-10-12 20:58:31');
+(1, 'Abdul Qahar & Aisyah Zahira', '2020-03-28', '15:00:00', '15:00:00', 'Lot 1866, Jalan Harmonis 4, Taman Harmonis, 53100 Kuala Lumpur, Selangor', NULL, NULL, 1, 1, 18, 5, '2019-11-14 08:15:31', '2019-11-14 08:15:31');
 
 -- --------------------------------------------------------
 
@@ -565,7 +560,7 @@ CREATE TABLE `wevent_agreement` (
   `party_id` int(11) NOT NULL,
   `party_type` text NOT NULL,
   `party_agree` int(1) NOT NULL DEFAULT '0',
-  `remark` text NOT NULL
+  `remark` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -573,11 +568,9 @@ CREATE TABLE `wevent_agreement` (
 --
 
 INSERT INTO `wevent_agreement` (`a_id`, `we_id`, `party_id`, `party_type`, `party_agree`, `remark`) VALUES
-(1, 1, 2, 'company', 0, ''),
-(2, 1, 5, 'client', 0, ''),
-(3, 2, 3, 'company', 0, ''),
-(4, 2, 2, 'company', 1, 'Not used'),
-(5, 2, 4, 'client', 1, '');
+(1, 1, 1, 'company', 1, 'Not reliable'),
+(2, 1, 2, 'company', 0, NULL),
+(3, 1, 18, 'client', 1, 'Not reliable also');
 
 -- --------------------------------------------------------
 
@@ -603,13 +596,8 @@ CREATE TABLE `wevent_inbox` (
 --
 
 INSERT INTO `wevent_inbox` (`i_id`, `i_sender_id`, `i_recipient_id`, `i_type_id`, `i_subject`, `i_content`, `i_item_id`, `i_status_id`, `created_at`, `updated_at`) VALUES
-(1, 'ctsara@gmail.com', 2, 8, 'Tukar Menu', 'Boleh tukar menu tak? Sebab ada yang allergic', 8, 1, '2019-10-30 06:12:48', '2019-10-29 22:12:48'),
-(2, '3', 4, 2, '', '', 2, 1, '2019-10-12 14:31:42', '2019-10-12 06:31:42'),
-(3, '3', 2, 4, '', '', 2, 1, '2019-10-12 14:32:48', '2019-10-12 06:32:48'),
-(4, '2', 6, 2, '', '', 4, 1, '2019-10-13 04:58:31', '2019-10-12 20:58:31'),
-(5, '2', 1, 4, '', '', 1, 2, '2019-10-30 06:08:48', '2019-10-30 06:08:48'),
-(6, '2', 1, 4, '', '', 1, 2, '2019-10-29 22:50:59', '2019-10-29 22:50:59'),
-(7, '2', 3, 4, '', '', 1, 2, '2019-10-29 22:50:59', '2019-10-29 22:50:59');
+(1, '1', 18, 2, '', '', 1, 1, '2019-11-12 01:48:15', '2019-11-11 17:48:15'),
+(2, '0', 2, 4, '', '', 1, 1, '2019-11-12 02:39:11', '2019-11-11 18:39:11');
 
 -- --------------------------------------------------------
 
@@ -629,9 +617,7 @@ CREATE TABLE `wevent_status` (
 INSERT INTO `wevent_status` (`wes_id`, `wes_title`) VALUES
 (1, 'Active'),
 (2, 'Inactive'),
-(3, 'Pending'),
-(4, 'Rejected'),
-(5, 'Cancelled');
+(3, 'Pending');
 
 -- --------------------------------------------------------
 
@@ -660,14 +646,8 @@ CREATE TABLE `wevent_timeline` (
 --
 
 INSERT INTO `wevent_timeline` (`wet_id`, `wet_subject`, `wet_desc`, `wet_datetime`, `we_id`, `wet_owner`, `user_id`, `wet_payment`, `tc_id`, `ts_id`, `wet_remark`, `created_at`, `updated_at`) VALUES
-(7, 'Subject 2', 'PHA+VGhpczxicj48L3A+', '2019-10-17 23:46:00', 1, 2, 5, 0, 1, 2, NULL, '2019-10-12 15:46:32', '2019-10-12 07:46:32'),
-(8, 'Subject 3', 'PHA+U3ViamVjdCBjcm9zcyBldmVudDwvcD4=', '2019-10-17 23:47:00', 2, 4, 2, 0, 1, 2, NULL, '2019-10-12 15:48:08', '2019-10-12 07:48:08'),
-(9, 'Subject 4', 'PHA+T29vPGJyPjwvcD4=', '2019-11-21 10:01:00', 1, 2, 5, 0, 4, 3, 'Doesnt fit', '2019-10-15 03:48:33', '2019-10-14 19:48:33'),
-(10, 'Subject 5', 'PHA+T29vPGJyPjwvcD4=', '2019-12-24 10:01:00', 1, 2, 5, 0, 4, 1, NULL, '2019-10-15 02:01:53', '2019-10-14 18:01:53'),
-(11, 'Subject 6', 'PHA+T29vb29zc3M8YnI+PC9wPg==', '2019-10-24 23:52:00', 1, 2, 5, 8000, 7, 2, NULL, '2019-10-17 13:51:10', '2019-10-17 05:51:10'),
-(12, 'Subject 7', 'PHA+dGhpcyBpcyBzdWJqZWN0IDc8YnI+PC9wPg==', '2020-01-16 23:56:00', 1, 2, 5, 0, 7, 2, NULL, '2019-10-19 06:18:47', '2019-10-19 06:18:47'),
-(13, 'Di sini', 'PHA+VGVzdGluZyBmdWxsIGZpbHRlcjxicj48L3A+', '2020-01-11 11:23:00', 2, 2, 3, 300, 2, 1, NULL, '2019-10-19 06:18:57', '2019-10-19 06:18:57'),
-(14, 'Try Reflecting the last timeline', 'PHA+SGVyZSB0aGUgYXR0YWNobWVudDxicj48L3A+', '2019-12-26 11:48:00', 1, 5, 2, 3500, 2, 2, NULL, '2019-10-15 03:52:53', '2019-10-14 19:52:53');
+(1, 'Organizing and Meeting', 'PHA+d2lsbCBiZSBoZWxkIGF0IFJlc3RvcmFuIE5lbGF5YW4gQW1wYW5nLiBNaWdodCBuZWVkIHRvIGRpc2N1c3MgbW9yZSBhYm91dCBib290aCBhZGRpdGlvbi48YnI+PC9wPg==', '2019-11-28 14:05:00', 1, 15, 18, 0, 1, 2, NULL, '2019-11-12 06:21:08', '2019-11-11 22:21:08'),
+(2, 'Payment Online Transfer', 'PHA+SW5mb3JtIG9uIHBheW1lbnQgbWFkZTxicj48L3A+', '2019-11-30 14:21:00', 1, 18, 14, 1200, 3, 2, NULL, '2019-11-12 06:23:15', '2019-11-11 22:23:15');
 
 -- --------------------------------------------------------
 
@@ -678,21 +658,16 @@ INSERT INTO `wevent_timeline` (`wet_id`, `wet_subject`, `wet_desc`, `wet_datetim
 CREATE TABLE `wevent_vendors` (
   `wev_id` int(11) NOT NULL,
   `company_id` int(11) NOT NULL,
-  `we_id` int(11) NOT NULL,
-  `wev_status` int(11) NOT NULL
+  `we_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `wevent_vendors`
 --
 
-INSERT INTO `wevent_vendors` (`wev_id`, `company_id`, `we_id`, `wev_status`) VALUES
-(1, 2, 1, 0),
-(2, 3, 2, 0),
-(3, 2, 2, 0),
-(4, 2, 3, 0),
-(5, 2, 4, 0),
-(6, 3, 5, 0);
+INSERT INTO `wevent_vendors` (`wev_id`, `company_id`, `we_id`) VALUES
+(1, 1, 1),
+(2, 2, 1);
 
 --
 -- Indexes for dumped tables
@@ -763,6 +738,12 @@ ALTER TABLE `company_promotion`
 --
 ALTER TABLE `company_reviews`
   ADD PRIMARY KEY (`review_id`);
+
+--
+-- Indexes for table `event_external`
+--
+ALTER TABLE `event_external`
+  ADD PRIMARY KEY (`ee_id`);
 
 --
 -- Indexes for table `inbox_type`
@@ -856,13 +837,13 @@ ALTER TABLE `wevent_vendors`
 -- AUTO_INCREMENT for table `attachment`
 --
 ALTER TABLE `attachment`
-  MODIFY `att_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `att_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
-  MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `company_category`
@@ -874,13 +855,13 @@ ALTER TABLE `company_category`
 -- AUTO_INCREMENT for table `company_category_tag`
 --
 ALTER TABLE `company_category_tag`
-  MODIFY `cct_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `cct_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `company_contact`
 --
 ALTER TABLE `company_contact`
-  MODIFY `company_contact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `company_contact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `company_crm`
@@ -892,13 +873,13 @@ ALTER TABLE `company_crm`
 -- AUTO_INCREMENT for table `company_package`
 --
 ALTER TABLE `company_package`
-  MODIFY `package_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `package_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `company_package_category_tag`
 --
 ALTER TABLE `company_package_category_tag`
-  MODIFY `cpct_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `cpct_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `company_package_post`
@@ -916,7 +897,13 @@ ALTER TABLE `company_promotion`
 -- AUTO_INCREMENT for table `company_reviews`
 --
 ALTER TABLE `company_reviews`
-  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `event_external`
+--
+ALTER TABLE `event_external`
+  MODIFY `ee_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `inbox_type`
@@ -952,7 +939,7 @@ ALTER TABLE `timeline_status`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `users_role`
@@ -964,43 +951,43 @@ ALTER TABLE `users_role`
 -- AUTO_INCREMENT for table `users_status`
 --
 ALTER TABLE `users_status`
-  MODIFY `status_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `status_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `wevent`
 --
 ALTER TABLE `wevent`
-  MODIFY `we_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `we_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `wevent_agreement`
 --
 ALTER TABLE `wevent_agreement`
-  MODIFY `a_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `a_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `wevent_inbox`
 --
 ALTER TABLE `wevent_inbox`
-  MODIFY `i_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `i_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `wevent_status`
 --
 ALTER TABLE `wevent_status`
-  MODIFY `wes_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `wes_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `wevent_timeline`
 --
 ALTER TABLE `wevent_timeline`
-  MODIFY `wet_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `wet_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `wevent_vendors`
 --
 ALTER TABLE `wevent_vendors`
-  MODIFY `wev_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `wev_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

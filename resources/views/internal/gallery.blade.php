@@ -14,7 +14,7 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('myasset/std_rating/std_rating.css')}}">
 	<style type="text/css">
 
-
+ 
 		.grey-background {
 			background: #FFFBE5;
 		}
@@ -100,7 +100,22 @@
 	        box-shadow: 0 0 2px #888;
 	    }
 
+	    #done_upload {
+	    	background: #00bfa5;
+	    	margin-top: 15px;
+	    	height: 30px;
+	    	width: 100%;
+	    	cursor: pointer;
+	    	display: flex;
+	    	flex-direction: row;
+	    	justify-content: space-around;
+	    	align-items: center;
+	    	color: #fff;
+	    }
 
+	    #done_upload:hover {
+	    	opacity: 0.9;
+	    }
 	</style>
 </head>
 <body class="grey-background">
@@ -139,7 +154,9 @@
 
 							<img alt="Gallery" src="{{ asset('storage/'.$photo['att_path']) }}"
 								data-image="{{ asset('storage/'.$photo['att_path']) }}"
-								data-description="Image 1 Description">
+								data-description="Image 1 Description" 
+								data-att="{{ $photo['att_id'] }}" 
+								>
 
 							@endforeach
 						
@@ -164,10 +181,20 @@
 					<input name="file" type="file" multiple />
 				</div>
 			</form>
-
-			
 		</div>
-		
+		<div id="done_upload">
+			<span>DONE</span>
+		</div>
+	</div>
+
+	<div class="unite_gallery_custom_option_container">
+		<div class="unite_gallery_custom_option animated bounceInRight fast">
+			<div id="delete_loading"><img src="{{ asset('myasset/img/carrier/loading5.gif') }}"></div>
+			<div>
+				<div id="remove_image_btn"><i class="fa fa-trash" style="margin-right: 15px"></i> Remove</div>
+				<div id="email_image_btn"><i class="fa fa-share-alt" style="margin-right: 15px"></i> Share</div>
+			</div>
+		</div>
 	</div>
 
     @include('templates.footer')
@@ -184,21 +211,72 @@
 			globalNotification();
 		});
     	
-    	$("#gallery").unitegallery({
+    	var api = $("#gallery").unitegallery({
 			lightbox_type: "compact",
 			tiles_type: "justified",		//example how to change only skin for slider bullets
+		});
+
+		var img_data;
+		var img_att;
+
+		console.log(api);
+
+		api.on("open_lightbox",function(num,data){	//on enter fullscreen
+			$('.unite_gallery_custom_option_container').show();
+		});
+
+		api.on("close_lightbox",function(){	//on exit fulscreen
+			$('.unite_gallery_custom_option_container').hide();
+		});
+
+		api.on("item_change",function(num, data){		//on item change, get item number and item data
+			img_data = data.urlImage;
+			img_att = data.att;
+
+			$('.unite_gallery_custom_option_container').fadeOut(10,function(){
+				$('.unite_gallery_custom_option_container').fadeIn("fast");
+			});
+		});
+
+		$('#remove_image_btn').click(function(){
+
+			var img_name = img_data.split('/').pop();
+
+			url = APP_URL + '/removeimg';
+
+			$('#delete_loading').show();
+
+			$.post(url,{_token:token,img:img_name,att:img_att},function(result){
+
+				if(result == 0){
+
+					location.reload();
+
+				}else{
+
+					api.nextItem();
+
+					$('#delete_loading').hide();
+				}
+			});
 		});
 
 		$('#close_uploader_container').click(function(){
 
 			$('#uploader_container').fadeToggle();
+		});
 
+		$('#done_upload').click(function(){
+			location.reload();
+		});
+
+		$('#email_image_btn').click(function(){
+			alert('This features is currently not available');
 		});
 
 		function upload_image(){
 
 			$('#uploader_container').fadeToggle();
-
 		}
 
     	function profilemenu(id){
@@ -222,7 +300,10 @@
     		{
     			window.location.replace(urlMarketing);
     		}
+    	}
 
+    	function customAction(){
+    		alert('lab');
     	}
     </script>
 

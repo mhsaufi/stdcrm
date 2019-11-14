@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>SaveTheDate | Islamic Affairs</title>
+	<title>Save The Date | Islamic Affairs</title>
 	<meta name="page_site" content="savethedate-my.com">
 	<meta name="page_language" content="English">
 	<meta name="page_type" content="iAffair">
@@ -62,7 +62,8 @@
 			}
 
 			#directory_col {
-				width: 100%!important;margin-bottom: 100px;
+				width: 70%!important;
+				margin-bottom: 100px;
 				/*background: green;*/
 				display: flex;
 				flex-direction: column;
@@ -72,7 +73,7 @@
 			}
 
 			#content_col {
-				width: 100%;
+				width: 85%!important;
 				/*background: blue;*/
 				display: flex;
 				flex-direction: column;
@@ -274,7 +275,6 @@
 						<div id="replacable_content">
 							
 						</div>
-
 					</div>
 				</div>
 			</div>
@@ -282,14 +282,16 @@
 			
 			
 		<!-- </div> -->
-	</div>		
+	</div>
+
+	@include('templates.external_footer')		
 
 	<div class="ssk-sticky ssk-left ssk-center ssk-lg">
         <a href="" class="ssk ssk-facebook"></a>
         <a href="" class="ssk ssk-twitter"></a>
         <a href="" class="ssk ssk-linkedin"></a>
         <a href="" class="ssk ssk-google-plus"></a>
-        <a href="" class="ssk ssk-pinterest"></a>
+        <a href="" class="ssk ssk-whatsapp"></a>
     </div>	
 
     @include('templates.footer')
@@ -369,51 +371,62 @@
 
 		$(document).ready(function(){
 
-			$('#replacable_content').load('myasset/templates/iaffair/jabatanagama.blade.php').effect('slide');
+			var page_ = '{{ $page }}';
 
-			$("#johor").click(function(){
-				$("#info-johor").slideToggle();
-			});
-			$("#kedah").click(function(){
-				$("#info-kedah").slideToggle();
-			});
-			$("#kelantan").click(function(){
-				$("#info-kelantan").slideToggle();
-			});
-			$("#melaka").click(function(){
-				$("#info-melaka").slideToggle();
-			});
-			$("#negeri").click(function(){
-				$("#info-negeri").slideToggle();
-			});
-			$("#pahang").click(function(){
-				$("#info-pahang").slideToggle();
-			});
-			$("#perak").click(function(){
-				$("#info-perak").slideToggle();
-			});
-			$("#perlis").click(function(){
-				$("#info-perlis").slideToggle();
-			});
-			$("#pulau").click(function(){
-				$("#info-pulau").slideToggle();
-			});
-			$("#sabah").click(function(){
-				$("#info-sabah").slideToggle();
-			});
-			$("#sarawak").click(function(){
-				$("#info-sarawak").slideToggle();
-			});
-			$("#selangor").click(function(){
-				$("#info-selangor").slideToggle();
-			});
-			$("#tereng").click(function(){
-				$("#info-tereng").slideToggle();
-			});
-			$("#wilayah").click(function(){
-				$("#info-wilayah").slideToggle();
-			});
+			if(page_ == 'download'){
 
+				$('#replacable_content').load('myasset/templates/iaffair/downloadable.blade.php').fadeIn();
+				$('#title_text_replacable').html("Wedding Checklist");
+				$('.directory').removeClass('active_directory');
+				$('#download').addClass('active_directory');
+
+			}else{
+
+				$('#replacable_content').load('myasset/templates/iaffair/jabatanagama.blade.php').effect('slide');
+
+				$("#johor").click(function(){
+					$("#info-johor").slideToggle();
+				});
+				$("#kedah").click(function(){
+					$("#info-kedah").slideToggle();
+				});
+				$("#kelantan").click(function(){
+					$("#info-kelantan").slideToggle();
+				});
+				$("#melaka").click(function(){
+					$("#info-melaka").slideToggle(); 
+				});
+				$("#negeri").click(function(){
+					$("#info-negeri").slideToggle();
+				});
+				$("#pahang").click(function(){
+					$("#info-pahang").slideToggle();
+				});
+				$("#perak").click(function(){
+					$("#info-perak").slideToggle();
+				});
+				$("#perlis").click(function(){
+					$("#info-perlis").slideToggle();
+				});
+				$("#pulau").click(function(){
+					$("#info-pulau").slideToggle();
+				});
+				$("#sabah").click(function(){
+					$("#info-sabah").slideToggle();
+				});
+				$("#sarawak").click(function(){
+					$("#info-sarawak").slideToggle();
+				});
+				$("#selangor").click(function(){
+					$("#info-selangor").slideToggle();
+				});
+				$("#tereng").click(function(){
+					$("#info-tereng").slideToggle();
+				});
+				$("#wilayah").click(function(){
+					$("#info-wilayah").slideToggle();
+				});
+			}
 		});
 	</script>
 

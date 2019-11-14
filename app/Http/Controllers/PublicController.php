@@ -118,7 +118,7 @@ class PublicController extends Controller
 
             $update = $merchant->where('id', $merchant->id)->update(['company_id'=>$company->id]);
 
-            if($c_category <> null || $c_category <> ''){
+            if(is_array($c_category)){
 
                 foreach($c_category as $category){
 
@@ -311,38 +311,45 @@ class PublicController extends Controller
 
     public function allVendorPackages(Request $request){
 
-        if($request->input()){
+        if($request->input('c') <> 'null'){
+
             $selectedCategory = $request->input('c');
-            $selectedCompany = $request->input('cm');
+
         }else{
+
             $selectedCategory = '';
+        }
+
+        if($request->input('cm') <> 'null'){
+
+            $selectedCompany = $request->input('cm');
+
+        }else{
+
             $selectedCompany = '';
         }
+
+        //--------------------------------------------------------------------
 
         if($selectedCategory <> ''){
 
             $selectedC = explode(',', $selectedCategory);
-            // echo "2";
 
         }else{
 
             $selectedC = array();
-            // echo "1";
         }
 
         if($selectedCompany <> ''){
 
             $selectedCM = explode(',', $selectedCompany);
-            // echo "2a";
 
         }else{
 
             $selectedCM = array();
-
-            // echo "1a";
         }
 
-        // print_r($selectedC);
+        //--------------------------------------------------------------------
 
         $category = new CompanyCategory;
 
@@ -360,31 +367,24 @@ class PublicController extends Controller
 
         if(!empty($selectedC)){
 
-            // echo "Ada";
-
             $packageTag = new CompanyPackageTag;
             $packageTagData = $packageTag->whereIn('cc_id',$selectedC)->get();
 
             foreach($packageTagData as $tagData){
 
                 array_push($package_id_arr, $tagData['package_id']);
-
             }
-
-            // print_r($package_id_arr);
 
             $query = $packages->whereIn('package_id',$package_id_arr);
 
             if(!empty($selectedCM)){
-
-                // echo "company ada";
 
                 $query = $query->whereIn('company_id',$selectedCM);
             }
 
         }else{
 
-            // echo "Tiada";
+            echo "2";
 
             if(!empty($selectedCM)){
 
@@ -392,10 +392,7 @@ class PublicController extends Controller
 
             }else{
 
-                // echo "Memang tiada";
-
                 $query = $packages;
-
             }
 
         }
@@ -515,5 +512,12 @@ class PublicController extends Controller
         $update = $user->where('id',$id)->update(['password'=>Hash::make($pw)]);
 
         return "200";
+    }
+
+    public function iaffairDownload(Request $request){
+
+        $page = 'download';
+
+        return view('external.iaffair',compact('page'));
     }
 }

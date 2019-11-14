@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>SaveTheDate | Terms & Conditions</title>
+    <title>Terms And Conditions</title>
 
     @include('templates.header')
 
@@ -32,30 +32,31 @@
         width: 100px;
         padding-top: 10px;
         border-radius: 50%;
-      } 
+    } 
 
-      .icon-circle:hover{
+    .icon-circle:hover{
         background-color: white;
         color: #d4af37  ; 
         /* #ff1b4e */
         border: 3px inset #d4af37 ;
         z-index: 99;
         cursor: pointer;
-      }
+    }
 
-      .icon-circle a{
+    .icon-circle a{
         color: black;
         opacity: 0.6;
-      }
+    }
 
-      .navbar-expand-lg .navbar-nav .nav-link {
+    .navbar-expand-lg .navbar-nav .nav-link {
         color: black !important;
-      }
-      .navbar-expand-lg .navbar-nav .nav-link:active{
-        color: gold !important;
-      }
+    }
 
-      .drpdown {
+    .navbar-expand-lg .navbar-nav .nav-link:active{
+        color: gold !important;
+    }
+
+    .drpdown {
         float: left;
         overflow: hidden;
     }
@@ -109,24 +110,38 @@
         left:0;
         width:100%;
         height:100%;
-        margin-bottom:5%;
-        background: url("{{asset('myasset/img/babout.jpg')}}");
+        margin: 5% 0;
         background-repeat: no-repeat;
         background-size: cover;
-        background-attachment: fixed;
-        /* padding-top:100px;
-        padding-left:50px; */
-        /* padding: 130px 60px 10px 70px; */        
+        background-attachment: fixed;      
     }
 
     .layer{
       background: #fff;
       padding: 100px 30px 10px 30px;
       width: 80%;
-      /* height: 30% !important;
-      overflow: scroll; */
       margin-left: 10%;
-      /* background:yellow; */
+    }
+
+    @media (max-width: 600px) {
+        .biglayer{
+            position: relative;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            margin: 5% 0;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;      
+        }
+
+        .layer{
+          background: #fff;
+          padding: 100px 20px 10px 20px;
+          width: 100%;
+          margin-left: 0!important;
+        }
     }
 
 
@@ -172,10 +187,8 @@
 
     <!-- Header Area wrapper Starts -->
     <header id="header-wrap">
-      <!-- Navbar Start -->
       
-    <!-- Navbar End -->
-      @include('templates.frontnav')
+    @include('templates.navbar')
     </header>
     
     <!------------------- Header Area wrapper End ----------------------------------------------------->
@@ -185,75 +198,10 @@
       </div>
     </div>   
     
-    
-    @include('templates.footer')
-    
-    <!------------------------------------------------------------------------ Footer Section End-->
+    @include('templates.external_footer')
 
-    <div class="credit">
-        <!-- Container Starts -->
-        <div class="container" style="padding:1px;">
-          <!-- Row Starts -->
-          <div class="row section" style="padding:1px;">
-            <!-- Footer Widget Starts -->
-            <div class="footer-widget col-lg-3 col-md-6 col-xs-12 wow fadeIn">
-              <h5 class="small-tajuk">
-                SAVETHEDATE
-              </h5>
-              <ul>
-                <li><a href="{{ url('/aboutSTD') }}" class="small-isi">About</a></li>
-                
-              </ul>
-            </div>
-            <!-- Footer Widget Ends -->
 
-            <!-- Footer Widget Starts -->
-            <div class="footer-widget col-lg-3 col-md-6 col-xs-12 wow fadeIn">
-              <h5 class="small-tajuk">
-              PRODUCT
-              </h5>
-              <ul>
-                <li><a href="{{ url('/features') }}" class="small-isi">Features</a></li>
-                <!-- <li><a href=""class="small-isi">Marketplace</a></li> -->
-              </ul>            
-                          
-            </div>
-            <!-- Footer Widget Ends -->
-
-            <!-- Footer Widget Starts -->
-            <div class="footer-widget col-lg-3 col-md-6 col-xs-12 wow fadeIn">
-              <h5 class="small-tajuk">
-              DISCOVER
-              </h5>
-              <ul>
-                <li><a href="{{ url('/members') }}" class="small-isi">Members</a></li>
-                <!-- <li><a href="" class="small-isi">Pricing</a></li> -->
-              </ul>
-
-            </div>
-            <!-- Footer Widget Ends -->
-
-            <!-- Footer Widget Starts -->
-            <div class="footer-widget col-lg-3 col-md-6 col-xs-12 wow fadeIn" data-wow-delay=".8s">
-              <h5 class="small-tajuk">
-                READ MORE
-              </h5>
-              <ul>                
-                <li><a href="{{ url('/terms') }}" class="small-isi">Terms & Conditions</a></li>
-              </ul>
-            </div>
-            <!-- Footer Widget Ends -->
-          </div>
-          <!-- Row Ends -->
-
-          <div class="row" style="padding:0px!important;">
-              <p class="small-p">All copyrights reserved © 2019 - Designed &amp; Developed by <a rel="nofollow" href="https://uideck.com">UIdeck</a>
-              </p>
-          </div>
-        </div>
-        <!-- Container Ends -->
-    </div>
-    
+    <script src="{{asset('myasset/mobile_menu/mobile_menu.js')}}"></script>
 
     <!-- Javascript  -->
     <script type="text/javascript">         

@@ -49,6 +49,21 @@ class GalleryController extends Controller
     	$attachment->save();
     }
 
+    public function removePhoto(Request $request){
+
+        $img_name = $request->input('img');
+        $img_att = $request->input('att');
+
+        $gallery = new Attachment;
+        $delete = $gallery->where('att_id',$img_att)->delete();
+
+        Storage::delete('public/gallery/company/'.Auth::user()->company_id.'/'.$img_name);
+
+        $count = $gallery->where('item_type','gallery')->where('item_id',Auth::user()->company_id)->count();
+
+        return $count;
+    }
+
     public function listPhotoJSON(Request $request){
 
     	$gallery = new Attachment;

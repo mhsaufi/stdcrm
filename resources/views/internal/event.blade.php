@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Dashboard</title>
+    <title>Dashboard | Events</title>
 
     @include('templates.header')
     <link rel="stylesheet" type="text/css" href="{{asset('myasset/bootstrap-timepicker/css/bootstrap-timepicker.min.css')}}">
@@ -347,7 +347,7 @@
 
               @endif
             </div>
-            <div class="view-btn-history"><i class="fas fa-history"></i> Past Events</div>
+            <div class="view-btn-history" id="ended_event"><i class="fas fa-history"></i> Past Events</div>
           </div>
         </div><br>
         <div class="row row-forecast">
@@ -606,6 +606,12 @@
         $('#list_timeline').click(function(){
 
           url  = APP_URL + '/home';
+
+          window.location.replace(url);
+        });
+
+        $('#ended_event').click(function(){
+          url = APP_URL + '/past';
 
           window.location.replace(url);
         });

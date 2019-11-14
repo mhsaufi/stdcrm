@@ -32,7 +32,7 @@ can help you to plan your wedding. Join us now. It's <b>FREE</b> and <b>EASY</b>
 </table>
 <table>
   <tr>
-    <td><img src="myasset/features/register.jpg" width="100%" style="border:1px solid #d4af37;"></td>
+    <td><img src="myasset/features/register.JPG" width="100%" style="border:1px solid #d4af37;"></td>
     <td><b>Step 2</b><br>Fill in the registration form.</td>    
  </tr>
 </table>
@@ -44,7 +44,7 @@ can help you to plan your wedding. Join us now. It's <b>FREE</b> and <b>EASY</b>
 </table>
 <table>
   <tr>
-    <td><img src="myasset/features/register5.jpg" width="100%" style="border:1px solid #d4af37;"></td>
+    <td><img src="myasset/features/register5.JPG" width="100%" style="border:1px solid #d4af37;"></td>
     <td><b>Step 4</b><br>After you have finished fill in all field in the form, button 'Register' will be accessible to register.</td>    
  </tr>
 </table>

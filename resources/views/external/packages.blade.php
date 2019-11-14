@@ -2,18 +2,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Packages</title>
+  <title>Save The Date | Packages</title>
    @include('templates.header')
 
    <link rel="stylesheet" type="text/css" href="{{asset('myasset/select2/dist/css/select23.css')}}">
 
    <style>
-    .bg {
-      /*background: linear-gradient(#039be5,#006064);*/
-      background: #009688;
-      color: #fff;
-    }
-
     .navbar-expand-lg .navbar-nav .nav-link {
       color: white!important;
     }
@@ -324,6 +318,31 @@
           min-width: 100%!important;
           max-width: 100%!important;
       }
+
+      .result_container {
+        padding: 0 5%;
+        width: 100%;
+        box-sizing: border-box!important;
+        margin: 0 0!important;
+      }
+
+      .package_cards {
+        position: relative;
+        height: 330px!important;
+        width: 100%!important;
+        border-radius: 2px;
+        -moz-box-shadow: 0 0 6px #888;
+        -webkit-box-shadow: 0 0 6px#888;
+        box-shadow: 0 0 4px #888;
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        z-index: 98;
+      }
+
+      .below_2 > .package_cards {
+        margin-right: 0!important;
+      }
     }
    </style>
 
@@ -338,9 +357,9 @@
 
     <!-- Feature Section Start -->
     <div class="section-padding">
-      <div class="big_container_o bg">
-        <div style="opacity: 0.7;padding: 20px 10% 5px 10%;">
-          <p style="color: #fff">Browse for all available packages on our site offered by our vendors. All of our vendors comprises of best reviewed companies 
+      <div class="big_container_o bg animated fadeInDown faster">
+        <div style="padding: 3% 10% 5px 10%;">
+          <p>Browse for all available packages on our site offered by our vendors. All of our vendors comprises of best reviewed companies 
           to make sure your wedding happening the way you wished for</p>
         </div>
         <div class="search-engine-panel">   
@@ -364,53 +383,61 @@
             <button id="std_search_btn">Search &nbsp&nbsp<i class="fas fa-search"></i></button>
           </div>
         </div>
-        <p style="margin-left: 10%;color: #fff">{{ $p_count }} result(s) found</p>   
+        <p style="margin-left: 10%">{{ $p_count }} result(s) found</p>   
       </div>
       <div class="big_container_o">
-        @if($p_count > 2)
-        <div class="result_container above_2">
-        @else
-        <div class="result_container below_2">
-        @endif
-        
-          @foreach($p_result as $p)
-          <div class="package_cards" data-pid="{{ $p['package_id'] }}" data-name="{{ $p['package_title'] }}" data-item-name="{{ $p['package_title'] }}" data-content-category="View Package" data-content-author="{{ $p['company']['company_name'] }}">
-            <div style="height: 20%;width: 100%;background: white;z-index: 71;display: flex;flex-direction: column;justify-content: space-between;" id="p_title">
-              <div>{{ $p['package_title'] }}</div>
-              <div style="width: 100%;display: flex;flex-direction: row;justify-content: space-between;" id="sub_p_title">
-                <div><span id="p_price">RM{{ $p['package_price'] }}</span></div>
-                @if($p['package_pax'] == 0)
-                  <div></div>
-                @else
-                  <div>({{ $p['package_pax'] }} pax)</div>
-                @endif
-                
-              </div>
-            </div>
-            <div style="height: 70%;width: 100%;background: url('{{ asset('myasset/img/back.jpg') }}');background-size: cover;background-position: center;"></div>
-            <div style="height: 10%;width: 100%;z-index: 71;background: white" id="p_company">
-              <div id="p_company_info">
-                <!-- <div class="company_name">by</div> -->
-                <div class="company_logo_mini" style="background: url('{{ asset('storage/'.$p['company']['company_logo']) }}');background-position: center;background-size: cover;">
+        @if($p_count > 0)
+          @if($p_count > 2)
+          <div class="result_container above_2">
+          @else
+          <div class="result_container below_2">
+          @endif
+          
+            @foreach($p_result as $p)
+            <div class="package_cards" data-pid="{{ $p['package_id'] }}" data-name="{{ $p['package_title'] }}" data-item-name="{{ $p['package_title'] }}" data-content-category="View Package" data-content-author="{{ $p['company']['company_name'] }}">
+              <div style="height: 20%;width: 100%;background: white;z-index: 71;display: flex;flex-direction: column;justify-content: space-between;" id="p_title">
+                <div>{{ $p['package_title'] }}</div>
+                <div style="width: 100%;display: flex;flex-direction: row;justify-content: space-between;" id="sub_p_title">
+                  <div><span id="p_price">RM{{ $p['package_price'] }}</span></div>
+                  @if($p['package_pax'] == 0)
+                    <div></div>
+                  @else
+                    <div>({{ $p['package_pax'] }} pax)</div>
+                  @endif
+                  
                 </div>
-                <div class="company_name">{{ $p['company']['company_name'] }}</div>
               </div>
-              <div class="p_book_btn" data-pid="{{ $p['package_id'] }}" data-name="{{ $p['package_title'] }}">
-                <div id="btn_book1"></div>
-                <div id="btn_book2"> BOOK </div>
+              <div style="height: 70%;width: 100%;background: url('{{ asset('myasset/img/back.jpg') }}');background-size: cover;background-position: center;"></div>
+              <div style="height: 10%;width: 100%;z-index: 71;background: white" id="p_company">
+                <div id="p_company_info">
+                  <!-- <div class="company_name">by</div> -->
+                  <div class="company_logo_mini" style="background: url('{{ asset('storage/'.$p['company']['company_logo']) }}');background-position: center;background-size: cover;">
+                  </div>
+                  <div class="company_name">{{ $p['company']['company_name'] }}</div>
+                </div>
+                <div class="p_book_btn" data-pid="{{ $p['package_id'] }}" data-name="{{ $p['package_title'] }}">
+                  <div id="btn_book1"></div>
+                  <div id="btn_book2"> BOOK </div>
+                </div>
+              </div>
+              <div id="p_detail">
+                {!! $p['package_detail_short'] !!}
               </div>
             </div>
-            <div id="p_detail">
-              {!! $p['package_detail_short'] !!}
-            </div>
+            @endforeach
           </div>
-          @endforeach
-        </div>
-        <div class="footer_result_container">
-        
-        </div>
+          <div class="footer_result_container">
+          
+          </div>
+        @else
+          <div class="result_container_empty">
+            <p>No package found</p>
+          </div>
+        @endif
       </div>
     </div>
+
+    @include('templates.external_footer')
 
     <script>
       var APP_URL = '{{ url("/") }}';

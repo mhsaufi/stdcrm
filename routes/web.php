@@ -33,8 +33,10 @@ Route::post('/clearcart','EventController@clearCart'); // after booking rejected
 
 Route::get('/events','PublicController@events');
 Route::get('/iaffair',function(){
-    return view('external.iaffair');
+    $page = 'general';
+    return view('external.iaffair',compact('page'));
 });
+Route::get('/downloads','PublicController@iaffairDownload');
 
 // ---------------------------------------  FOOTER ROUTE
 
@@ -94,6 +96,7 @@ Route::get('company/{id}/{filename}', function ($id,$filename){
 // ---------------------------------------  DASHBOARD (WITH CALENDAR)
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'HomeController@dashboard');
 Route::post('/load_t','UtilitiesController@dashboardController'); // main calendar data
 Route::post('/regEvent','EventController@newEvent'); // to create new event
 Route::post('/accept','EventController@acceptInvitation');
@@ -108,6 +111,7 @@ Route::get('/profile', 'HomeController@profile');
 Route::post('/profile/update', 'HomeController@updateProfile');
 Route::get('/profile/gallery','GalleryController@index');
 Route::post('/uploading','GalleryController@uploadPhoto'); // vendor upload photo unto gallery
+Route::post('/removeimg','GalleryController@removePhoto'); // vendor delete photo from gallery
 Route::post('/newlogo','GalleryController@newLogo'); // upload new company logo
 Route::post('/newdp','GalleryController@newDP'); // upload new profile picture
 Route::post('/listphoto', 'GalleryController@listPhotoJSON'); // data for unifiedgallery plugin in JSON
@@ -152,6 +156,8 @@ Route::post('/end','AgreementController@end');
 
 Route::get('/all','EventController@index');
 
+Route::get('/past','EventController@pastEvent');
+
 // ---------------------------------------  CONTACT
 
 Route::get('/contact','ContactController@index')->middleware('auth');
@@ -177,3 +183,4 @@ Route::post('/cardsdata','AdminControllerHome@dashboardData');
 Route::post('/barddata','AdminControllerHome@companyEventsTimeline');
 Route::get('/userslist','AdminControllerUsers@listAll');
 Route::get('/vendorslist','AdminControllerVendors@listAll');
+Route::get('/eventslist','AdminControllerEvents@listAll');

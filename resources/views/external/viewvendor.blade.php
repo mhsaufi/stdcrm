@@ -63,7 +63,7 @@
       min-height: 100vh;
       background: white;
       margin: 0 10%;
-      padding: 20px 0;
+      padding: 20px 0 0 0;
       display: flex;
       flex-flow: row wrap;
     }
@@ -108,29 +108,6 @@
         padding: 5% 0;
         display: flex;
         flex-flow: row wrap;
-      }
-
-      .company_logo {
-        position: absolute;
-        border-radius: 50%;
-        border: 0.05em solid white;
-        height: 70px;
-        width: 70px;
-        top: 170px;
-        right: 8%;
-        z-index: 81;
-      }
-
-      .company_logo_base {
-        position: absolute;
-        border-radius: 50%;
-        border: 0.05em solid white;
-        height: 70px;
-        width: 70px;
-        background: white;
-        top: 170px;
-        right: 8%;
-        z-index: 80;
       }
 
       .staff_info_container {
@@ -207,7 +184,7 @@
     }
 
     .content_company_content {
-      padding: 8% 10%;
+      padding: 8% 5%;
       padding-bottom: 20vh;
     }
 
@@ -409,6 +386,8 @@
       </div>
     </div>
 
+    @include('templates.external_footer')
+
     <div class="staff_info_container">
       <div class="staff_info_container_child">
         <div class="staff_card_dp">
@@ -430,7 +409,7 @@
         <a href="" class="ssk ssk-twitter"></a>
         <a href="" class="ssk ssk-linkedin"></a>
         <a href="" class="ssk ssk-google-plus"></a>
-        <a href="" class="ssk ssk-pinterest"></a>
+        <a href="" class="ssk ssk-whatsapp"></a>
     </div>
 
 

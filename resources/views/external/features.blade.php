@@ -12,14 +12,14 @@
     <style type="text/css">
       .features_container {
         width: 100%;
-        height: auto;
+        min-height: auto!important;
         /*background: pink;*/
-        padding: 10% 10%;
+        padding: 10% 10% 0 10%;
       }
 
       .features_container_child {
         width: 100%;
-        height: 100vh;
+        height: auto;
         /*background: purple;*/
         display: flex;
         flex-direction: column;
@@ -38,7 +38,7 @@
 
       .features_container_body {
         width: 100%;
-        height: 100vh;
+        height: auto!important;
         position: relative;
         /*background: green;*/
         display: flex;
@@ -52,7 +52,7 @@
         width: 15%;
         margin-top: 5%;
         /*background: blue;*/
-        height: 200px;
+        height: auto;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -87,9 +87,24 @@
         .features_content {
           width: 100%!important;
           /*background: yellow;*/
-          height: auto;
           margin: 0!important;
           padding: 1% 0!important;
+        }
+
+        .features_container {
+          width: 100%;
+          min-height: auto!important;
+          /*background: pink;*/
+          padding: 10% 5%;
+        }
+
+        .features_container_child {
+          width: 100%;
+          height: auto;
+          /*background: purple;*/
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
         }
       }
 
@@ -117,7 +132,7 @@
       .features_content {
         width: 80%;
         /*background: yellow;*/
-        height: 200px;
+        height: auto!important;
         margin-left: 20%;
         padding: 1% 1%;
       }
@@ -140,11 +155,11 @@
 
     <div class="features_container">
       <div class="features_container_child">
-        <div class="features_container_header">
+        <div class="features_container_header animated fadeInDown fast">
           <h3>How it works?</h3>
         </div>
         <div class="features_container_body">
-          <div class="features_directory">
+          <div class="features_directory animated fadeInLeft fast">
             <div class="features_directory_main">
               <div class="directory_active"><a href="{{ url('/features') }}">Customers</a></div>
               <div><a href="{{ url('/vendorfeatures') }}">Vendors</a></div>
@@ -155,21 +170,20 @@
               <div id="profile" class="directory">Profile</div>
               <div id="start" class="directory">Start Planning</div>
               <div id="dashboard" class="directory">Dashboard</div>
-              <div id="feedback" class="directory">Feedback</div>
+              <!-- <div id="feedback" class="directory">Feedback</div> -->
             </div>
           </div>
-          <div class="features_content">
+          <div class="features_content animated fadeIn fast">
             
           </div>
         </div>
       </div>
     </div>
-    
-    @include('templates.footer')  
+
+    @include('templates.external_footer')
 
     <script src="{{ asset('myasset/js/features.js') }}"></script>  
-
-    <!-- Javascript  -->
+    <script src="{{asset('myasset/mobile_menu/mobile_menu.js')}}"></script>
     <script type="text/javascript">         
       $(document).ready(function(){
 	
@@ -195,6 +209,5 @@
       });
      
     </script>
-
   </body>
 </html>
