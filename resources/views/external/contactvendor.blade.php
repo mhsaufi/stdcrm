@@ -66,7 +66,7 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding: 15px 40px;
+      padding: 15px 20px;
       background: blue;
     }
 
@@ -109,11 +109,10 @@
     .contact_form_container {
       width: 100%;
       height: auto;
-      padding: 10px 25px;
+      padding: 10px 0;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      padding-bottom: 100px;
     }
 
     .submit_form_alert {
@@ -190,29 +189,6 @@
         display: flex;
         flex-flow: row wrap;
       }
-
-      .company_logo {
-        position: absolute;
-        border-radius: 50%;
-        border: 0.05em solid white;
-        height: 70px;
-        width: 70px;
-        top: 170px;
-        right: 8%;
-        z-index: 81;
-      }
-
-      .company_logo_base {
-        position: absolute;
-        border-radius: 50%;
-        border: 0.05em solid white;
-        height: 70px;
-        width: 70px;
-        background: white;
-        top: 170px;
-        right: 8%;
-        z-index: 80;
-      }
     }
 	 </style>
 
@@ -282,11 +258,12 @@
             </div>
             
           </div>
-          @include('templates.external_footer')
+          
         </div>
       </div>
     </div>
 
+    @include('templates.external_footer')
 
     @include('templates.footer')
 

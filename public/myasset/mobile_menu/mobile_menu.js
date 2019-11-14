@@ -25,7 +25,7 @@
   });
 
   $('#islamic_page').click(function(){
-    window.location.replace(APP_URL + '/islamic_center');
+    window.location.replace(APP_URL + '/iaffair');
   });
 
   $('#about_page').click(function(){
@@ -38,6 +38,10 @@
 
   $('#member_page').click(function(){
     window.location.replace(APP_URL + '/members');
+  });
+
+  $('#features').click(function(){
+    window.location.replace(APP_URL + '/features');
   });
 
   $('#logout').click(function(){

@@ -94,7 +94,7 @@
             }
 
             .pattern{
-                background-image: url("{{asset('myasset/img/IMG_7092.jpg')}}");
+                background-image: none!important;
                 background-repeat: no-repeat;
                 background-size: cover;
                 background-position: fixed!important;

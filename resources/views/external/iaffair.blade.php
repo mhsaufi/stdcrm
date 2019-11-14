@@ -62,7 +62,8 @@
 			}
 
 			#directory_col {
-				width: 100%!important;margin-bottom: 100px;
+				width: 70%!important;
+				margin-bottom: 100px;
 				/*background: green;*/
 				display: flex;
 				flex-direction: column;
@@ -72,7 +73,7 @@
 			}
 
 			#content_col {
-				width: 100%;
+				width: 85%!important;
 				/*background: blue;*/
 				display: flex;
 				flex-direction: column;
@@ -274,7 +275,6 @@
 						<div id="replacable_content">
 							
 						</div>
-
 					</div>
 				</div>
 			</div>
@@ -291,7 +291,7 @@
         <a href="" class="ssk ssk-twitter"></a>
         <a href="" class="ssk ssk-linkedin"></a>
         <a href="" class="ssk ssk-google-plus"></a>
-        <a href="" class="ssk ssk-pinterest"></a>
+        <a href="" class="ssk ssk-whatsapp"></a>
     </div>	
 
     @include('templates.footer')

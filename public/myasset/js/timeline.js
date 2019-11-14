@@ -268,6 +268,7 @@ $(document).ready(function(){
 
       var obj = JSON.parse(data);
       var str = '';
+      var img_url = '';
 
       $.each(obj.main_data,function(key, value){
 
@@ -275,11 +276,15 @@ $(document).ready(function(){
 
         if(value.dp == '' || value.dp === null){
 
-          str += '<div><img src="myasset/img/default.png"/></div>';
+          img_url = 'myasset/img/default.png';
+
+          str += '<div><div style="background-image: url('+ img_url +');background-position: center;background-size: cover;"></div></div>';
 
         }else{
 
-          str += '<div><img src="storage/' + value.dp + '"/></div>';
+          img_url = 'storage/' + value.dp;
+
+          str += '<div><div style="background-image: url('+ img_url +');background-position: center;background-size: cover;"></div></div>';
         }
         
         str += '<div>'+ value.name +'</div>';
@@ -294,7 +299,7 @@ $(document).ready(function(){
 
             }else{
 
-              str += '<div class="voted">Voted <i class="fas fa-check"></i></div>';
+              str += '<div class="voted"><i class="fas fa-check"></i></div>';
 
             }
 
@@ -306,7 +311,7 @@ $(document).ready(function(){
 
             }else{
 
-              str += '<div class="voted">Voted <i class="fas fa-check"></i></div>';
+              str += '<div class="voted"><i class="fas fa-check"></i></div>';
 
             }
 
@@ -322,7 +327,7 @@ $(document).ready(function(){
 
             }else{
 
-              str += '<div class="voted">Voted <i class="fas fa-check"></i></div>';
+              str += '<div class="voted"><i class="fas fa-check"></i></div>';
 
             }
 
@@ -334,7 +339,7 @@ $(document).ready(function(){
 
             }else{
 
-              str += '<div class="voted">Voted <i class="fas fa-check"></i></div>';
+              str += '<div class="voted"><i class="fas fa-check"></i></div>';
 
             }
 
@@ -355,6 +360,7 @@ $(document).ready(function(){
     });
 
     $('#end_event_container').fadeToggle('fast');
+    $('#end_event_container').css('display','flex');
 
   });
 

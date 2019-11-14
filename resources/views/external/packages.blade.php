@@ -318,6 +318,31 @@
           min-width: 100%!important;
           max-width: 100%!important;
       }
+
+      .result_container {
+        padding: 0 5%;
+        width: 100%;
+        box-sizing: border-box!important;
+        margin: 0 0!important;
+      }
+
+      .package_cards {
+        position: relative;
+        height: 330px!important;
+        width: 100%!important;
+        border-radius: 2px;
+        -moz-box-shadow: 0 0 6px #888;
+        -webkit-box-shadow: 0 0 6px#888;
+        box-shadow: 0 0 4px #888;
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        z-index: 98;
+      }
+
+      .below_2 > .package_cards {
+        margin-right: 0!important;
+      }
     }
    </style>
 

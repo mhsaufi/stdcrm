@@ -1,4 +1,5 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="imagetoolbar" content="no" />
 
 <!-- Navbar Start -->
   <nav class="navbar navbar-expand-lg fixed-top scrolling-navbar indigo bg-white animated fadeInDown faster" 
@@ -13,7 +14,7 @@
         <ul class="navbar-nav mr-auto w-100 justify-content-end clearfix">
           <li class="nav-item">
             <a class="nav-link black" href="{{ url('/listvendor') }}" data-list-name="Our Vendors" data-content-category="Header">Vendors</a>
-          </li>
+          </li> 
 
           <li class="nav-item">
             <a class="nav-link black" href="{{ url('/packages') }}">
@@ -142,6 +143,7 @@
           <div id="event_page">Events</div>
           <div id="islamic_page">Islamic Affair</div>
           <div style="height: 15px;width:100%;border-bottom: 0.05em solid white;"></div>
+          <div id="features">How It Works</div>
           <div id="about_page">About</div>
           <!-- <div id="feature_page">Features</div>
           <div id="member_page">Members</div> -->

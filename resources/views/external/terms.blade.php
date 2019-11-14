@@ -32,30 +32,31 @@
         width: 100px;
         padding-top: 10px;
         border-radius: 50%;
-      } 
+    } 
 
-      .icon-circle:hover{
+    .icon-circle:hover{
         background-color: white;
         color: #d4af37  ; 
         /* #ff1b4e */
         border: 3px inset #d4af37 ;
         z-index: 99;
         cursor: pointer;
-      }
+    }
 
-      .icon-circle a{
+    .icon-circle a{
         color: black;
         opacity: 0.6;
-      }
+    }
 
-      .navbar-expand-lg .navbar-nav .nav-link {
+    .navbar-expand-lg .navbar-nav .nav-link {
         color: black !important;
-      }
-      .navbar-expand-lg .navbar-nav .nav-link:active{
-        color: gold !important;
-      }
+    }
 
-      .drpdown {
+    .navbar-expand-lg .navbar-nav .nav-link:active{
+        color: gold !important;
+    }
+
+    .drpdown {
         float: left;
         overflow: hidden;
     }
@@ -110,23 +111,37 @@
         width:100%;
         height:100%;
         margin: 5% 0;
-        /*background: url("{{asset('myasset/img/babout.jpg')}}");*/
         background-repeat: no-repeat;
         background-size: cover;
-        background-attachment: fixed;
-        /* padding-top:100px;
-        padding-left:50px; */
-        /* padding: 130px 60px 10px 70px; */        
+        background-attachment: fixed;      
     }
 
     .layer{
       background: #fff;
       padding: 100px 30px 10px 30px;
       width: 80%;
-      /* height: 30% !important;
-      overflow: scroll; */
       margin-left: 10%;
-      /* background:yellow; */
+    }
+
+    @media (max-width: 600px) {
+        .biglayer{
+            position: relative;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            margin: 5% 0;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;      
+        }
+
+        .layer{
+          background: #fff;
+          padding: 100px 20px 10px 20px;
+          width: 100%;
+          margin-left: 0!important;
+        }
     }
 
 
@@ -184,6 +199,9 @@
     </div>   
     
     @include('templates.external_footer')
+
+
+    <script src="{{asset('myasset/mobile_menu/mobile_menu.js')}}"></script>
 
     <!-- Javascript  -->
     <script type="text/javascript">         

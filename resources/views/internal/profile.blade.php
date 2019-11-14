@@ -61,17 +61,13 @@
 			background-repeat: no-repeat;
         	background-size: cover;
 			/*background-color: lightyellow; */
-			
 		}
 
 		.left-space{
 			position: relative;
-			/*min-height: 500px;
-			max-height: 900px;*/
 			height: 550px;
 			width: 20%;
 			 /*background: green; */
-			
 		}
 
 		.right-space{
@@ -103,24 +99,24 @@
 	        box-shadow: 0 0 2px #888;
 	        border-radius: 10px;
 	        /*position: fixed;*/
-	      }
+	    }
 
-	      .swiper-image {
+	    .swiper-image {
 	        height: 250px!important;
 	        width: 300px!important;
-	      }
+	    }
 
-	      .swiper-button-next {
+	    .swiper-button-next {
 	        color: #fff;
 	        display: none;
-	      }
+	    }
 
-	      .swiper-button-prev {
+	    .swiper-button-prev {
 	        color: #fff;
 	        display: none;        
-	      }
+	    }
 
-		 .middle-step{			 
+		.middle-step{			 
 			margin-bottom: 5%;
 			width: 100%;
 			height: auto;
@@ -129,57 +125,56 @@
 			/*border: 1px solid #d4af37;*/
 			background: #fff;
 			padding: 20px;
-		 }
+		}
 
 		
 		 /* ================== tab styling */
 
 		.tbutton {
-		cursor: pointer;
-		width: 199px;
-		display: inline-block;
-		background-color: #d4af37;
-		color: #fff;
-		text-align: center;
-		transition: .25s ease;
-		border: none;
-		padding: 10px;
-		border-radius: 12px 12px 0 0;
-		
+			cursor: pointer;
+			width: 199px;
+			display: inline-block;
+			background-color: #d4af37;
+			color: #fff;
+			text-align: center;
+			transition: .25s ease;
+			border: none;
+			padding: 10px;
+			border-radius: 12px 12px 0 0;
 		}
 
 
 		div:focus .tbutton, .tbutton:focus {
-		background-color: #fff;
-		color: #d4af37;
-		outline: none;
+			background-color: #fff;
+			color: #d4af37;
+			outline: none;
 		}
 
 		.tbutton-active{
-		background-color: #fff;
-		border-top: 1px solid #d4af37;
-		border-left: 1px solid #d4af37;
-		border-right: 1px solid #d4af37;
-		color: #d4af37;
-		outline: none;
+			background-color: #fff;
+			border-top: 1px solid #d4af37;
+			border-left: 1px solid #d4af37;
+			border-right: 1px solid #d4af37;
+			color: #d4af37;
+			outline: none;
 		}
 		
 
 		.tbutton:focus + .tp, div:focus .tP, .tp {
-		display: block;
-		position: absolute;
-		box-shadow: 0 0 4px #888;
-		border-radius: 10px;
-		border: 1px solid #d4af37;
-		background-color: #fff;
-		height: auto;
-		width: 50%;
-		bottom: 1;
-		left: 0;
-		z-index: 2;
-		outline: none;
-		text-align: center;
-		padding-top: 20px;
+			display: block;
+			position: absolute;
+			box-shadow: 0 0 4px #888;
+			border-radius: 10px;
+			border: 1px solid #d4af37;
+			background-color: #fff;
+			height: auto;
+			width: 50%;
+			bottom: 1;
+			left: 0;
+			z-index: 2;
+			outline: none;
+			text-align: center;
+			padding-top: 20px;
 		}
 
 		#tp-form{			
@@ -209,15 +204,15 @@
 
 
 		div {
-		display: inline-block;
+			display: inline-block;
 		}
 
 		div:focus {
-		outline: none;
+			outline: none;
 		}
 
 		body {
-		padding: 3em;
+			padding: 3em;
 		}
 
 		/* --------------------------- PERSONAL INFO */
@@ -264,10 +259,79 @@
 
 		/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
 		@media screen and (max-width: 600px) {
+			.big-space{
+				position: absolute;			
+				display: flex;
+				flex-direction: column;
+				justify-content: space-around;
+				min-width: 100%;
+				min-height: 100%;
+				top: 0;
+				margin-top: 20%;
+				margin-bottom: 10px!important;
+				padding-top: 7%; 
+				background: url("{{asset('myasset/img/babout.jpg')}}");
+				background-repeat: no-repeat;
+	        	background-size: cover;
+			}
+
 			.col-25, .col-75, input[type=submit] {
 				width: 100%;
 				margin-top: 0;
 			}
+
+			.left-space{
+				position: relative;
+				height: 550px;
+				width: 100%;
+				border-radius: 0;
+				 /*background: green; */
+			}
+
+			.right-space{
+				position: relative;
+				width: 100%;
+				border-radius: 0;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				align-items: center;
+				padding: 10px 0;
+			}
+
+			.middle-space{
+				width: 100%;
+				height: auto!important;
+				padding: 20px;
+				border-radius: 0;
+				box-shadow: 0 0 2px #888;
+				background: #fff;
+			}
+
+			.section-profile-img {
+				background: #fff;
+				border-radius: 0;
+				z-index: 99;
+				min-height: 100%;
+				width: 100%;
+				margin-top: 0 !important;
+				margin-left: 0 !important;	
+				display: flex;
+				flex-direction: column;
+				justify-content: space-around;
+				align-items: left !important; 
+				-moz-box-shadow: 0 0 5px #888;
+		        -webkit-box-shadow: 0 0 5px #888;
+		        box-shadow: 0 0 2px #888;
+			}
+
+			.swiper-container {
+		        height: auto;
+		        margin-bottom: 5%;
+		        box-shadow: 0 0 2px #888;
+		        border-radius: 0;
+		        /*position: fixed;*/
+		    }
 		}
 	
 
@@ -324,9 +388,7 @@
     <div class="section-padding" style="display:flex; flex-direction:row; justify-content: center;">
     	<!-- <div class="container" style="background:red;"> -->
     		<div class="big-space">
-
 		 		<div class="left-space animated fadeInLeft fast">
-
 					<div class="section-profile-img">
 						<img class="vend_pic" src="{{asset('myasset/img/default.jpeg')}}">
 
@@ -349,7 +411,6 @@
 					<!-- <p>Testing</p> -->
 				</div>
 
-
 				<div class="right-space animated fadeInRight fast">
 
 					@if($event_count > 0)
@@ -367,8 +428,6 @@
 		                    </div>
 
 		                    @endforeach
-
-
 		                </div>
 		                <!-- If we need pagination -->
 		                <div class="swiper-pagination"></div>
@@ -391,10 +450,8 @@
 						<p><b>Step #4</b><br>If aprroved! You can start planning your wedding at your dashboard.</p>
 						<p><em>** visit <b>How it Works</b> tab for more explanation. **</em></p>							
 					</div> 
-
 				</div>
 				
-		    	
 		    </div>
     	<!-- </div> -->
     </div>
@@ -474,11 +531,7 @@
 			<button class="btn_form" id="pi_update" onclick="updateProfile()" style="margin-top:2%; margin-left:80%;">Update</button>
 			
 		</div>								
-		
-	</div>
-
-<!-- </section> -->
-					
+	</div>	
 
     @include('templates.footer')
 

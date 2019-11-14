@@ -58,16 +58,20 @@
 			display: flex;
 			flex-direction: row;
 			justify-content: space-between;
-			align-items: center;
+			align-items: flex-start;
 			border-bottom: 0.05em solid #dcdcdc;
 			margin-bottom: 20px;
+		}
+
+		.contact_container > .header > div {
+			width: 25%;
 		}
 
 		.company_logo_insider {
 		  border-radius: 50%;
 		  border: 0.05em solid white;
-		  height: 150px;
-		  width: 150px;
+		  height: 170px!important;
+		  width: 170px!important;
 		}
 
 		.insider {
@@ -337,6 +341,7 @@
     				<p><i class="fas fa-phone"></i> &nbsp&nbsp{{ $company_info['company_contact'] }}</p>
     				<p><i class="fas fa-map-marker-alt"></i> &nbsp&nbsp{{ $company_info['company_address'] }}</p>
     			</div>
+
 				@if($company_info['company_logo'] == '')
 				<div class="company_logo_insider" style="background: url('{{ asset('myasset/img/null.jpg') }}');background-position: center;background-size: cover;"></div>
 				@else
@@ -349,6 +354,7 @@
     				<p><i class="fas fa-envelope"></i> &nbsp&nbsp{{ $company_info['userreverse']['email'] }}</p>
     				<p><i class="fas fa-phone"></i> &nbsp&nbsp{{ $company_info['userreverse']['phone'] }}</p>
     			</div>
+
 				@if($company_info['company_logo'] == '')
 				<div class="company_logo_insider" style="background: url('{{asset('myasset/img/default.jpeg')}}');background-position: center;background-size: cover;"></div>
 				@else

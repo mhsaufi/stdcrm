@@ -10,6 +10,7 @@ use App\CompanyPackage;
 use App\CompanyPackagePost;
 use App\CompanyPackageTag;
 use App\WEvent;
+use App\Http\Controllers\UtilitiesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,7 +30,11 @@ class PackageController extends Controller
 
         $tag_list = $tag->where('company_id',Auth::user()->company_id)->get();
 
-        return view('internal.packages',compact('result','categories','tag_list'));        
+        $utilities = new UtilitiesController;
+
+        $rate = $utilities->companyRating(Auth::user()->company_id);
+
+        return view('internal.packages',compact('result','categories','tag_list','rate'));        
         
     }
 

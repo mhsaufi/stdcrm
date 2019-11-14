@@ -12,14 +12,14 @@
     <style type="text/css">
       .features_container {
         width: 100%;
-        height: auto;
+        min-height: auto!important;
         /*background: pink;*/
-        padding: 10% 10%;
+        padding: 10% 10% 0 10%;
       }
 
       .features_container_child {
         width: 100%;
-        height: 100vh;
+        height: auto;
         /*background: purple;*/
         display: flex;
         flex-direction: column;
@@ -52,7 +52,7 @@
         width: 15%;
         margin-top: 5%;
         /*background: blue;*/
-        height: 200px;
+        height: auto;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -87,9 +87,24 @@
         .features_content {
           width: 100%!important;
           /*background: yellow;*/
-          height: auto;
           margin: 0!important;
           padding: 1% 0!important;
+        }
+
+        .features_container {
+          width: 100%;
+          min-height: auto!important;
+          /*background: pink;*/
+          padding: 10% 5%;
+        }
+
+        .features_container_child {
+          width: 100%;
+          height: auto;
+          /*background: purple;*/
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
         }
       }
 
@@ -155,23 +170,20 @@
               <div id="profile" class="directory">Profile</div>
               <div id="start" class="directory">Start Planning</div>
               <div id="dashboard" class="directory">Dashboard</div>
-              <div id="feedback" class="directory">Feedback</div>
+              <!-- <div id="feedback" class="directory">Feedback</div> -->
             </div>
           </div>
           <div class="features_content animated fadeIn fast">
             
           </div>
         </div>
-
-        @include('templates.external_footer')
       </div>
-
-
     </div>
 
-    <script src="{{ asset('myasset/js/features.js') }}"></script>  
+    @include('templates.external_footer')
 
-    <!-- Javascript  -->
+    <script src="{{ asset('myasset/js/features.js') }}"></script>  
+    <script src="{{asset('myasset/mobile_menu/mobile_menu.js')}}"></script>
     <script type="text/javascript">         
       $(document).ready(function(){
 	

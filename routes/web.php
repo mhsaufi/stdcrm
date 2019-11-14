@@ -156,6 +156,8 @@ Route::post('/end','AgreementController@end');
 
 Route::get('/all','EventController@index');
 
+Route::get('/past','EventController@pastEvent');
+
 // ---------------------------------------  CONTACT
 
 Route::get('/contact','ContactController@index')->middleware('auth');

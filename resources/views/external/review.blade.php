@@ -42,6 +42,10 @@
       flex-flow: row wrap;
     }
 
+    .content_company {
+      justify-content: flex-start;
+    }
+
     .result_container {
       position: relative;
       width: 80%;
@@ -50,7 +54,9 @@
       margin: 0 10%;
       padding: 20px 0;
       display: flex;
-      flex-flow: row wrap;
+      flex-direction: column;
+      justify-content: flex-start;
+      /*background: red;*/
     }
 
     .vendor_cards_info {
@@ -60,7 +66,7 @@
       flex-direction: column;
       justify-content: flex-end;
       padding: 15px 40px;
-      background: blue;
+      /*background: blue;*/
     }
 
     .content_company {
@@ -158,29 +164,6 @@
         padding: 5% 0!important;
         display: flex;
         flex-flow: row wrap;
-      }
-
-      .company_logo {
-        position: absolute;
-        border-radius: 50%;
-        border: 0.05em solid white;
-        height: 70px;
-        width: 70px;
-        top: 170px;
-        right: 8%;
-        z-index: 81;
-      }
-
-      .company_logo_base {
-        position: absolute;
-        border-radius: 50%;
-        border: 0.05em solid white;
-        height: 70px;
-        width: 70px;
-        background: white;
-        top: 170px;
-        right: 8%;
-        z-index: 80;
       }
 
       .package_cards {
@@ -325,12 +308,12 @@
           </div>      
           <div style="position: absolute;bottom: 0;width: 100%;">
         
-            @include('templates.external_footer')
+            
           </div>
         </div>
       </div>
     </div>
-
+    @include('templates.external_footer')
 
     @include('templates.footer')
 
@@ -362,6 +345,14 @@
 
       function viewReviews(vendorID, vendorName){
         var url = '{{ url("/vendor") }}' + '/' + vendorName.split(' ').join('_')+'/review/'+vendorID;
+      }
+
+      function viewGalleries(vendorID,vendorName){
+        
+        var url = '{{ url("/vendor") }}'+ '/' + vendorName.split(' ').join('_')+'/gallery/'+vendorID;
+        
+        window.location.replace(url);
+
       }
 
       $('#login_to_review').click(function(){

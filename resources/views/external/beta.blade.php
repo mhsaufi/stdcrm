@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -118,28 +117,26 @@
       /*margin-top: 5px;*/
     }
 
-    .company_logo_2 {
+    .company_logo_list {
       position: absolute;
       border-radius: 50%;
-      border: 3px solid white;
-      height: 80px;
-      width: 80px;
-      background: blue;
-      bottom: 4%;
-      right: 6%;
+      border: 0.05em solid white;
+      height: 70px;
+      width: 70px;
+      top: 160px;
+      right: 10px;
       z-index: 81;
     }
 
-    .company_logo_base_2 {
+    .company_logo_base_list {
       position: absolute;
       border-radius: 50%;
-      border: 3px solid white;
-      height: 80px;
-      width: 80px;
-      background: blue;
-      bottom: 4%;
-      right: 6%;
+      border: 0.05em solid white;
+      height: 70px;
+      width: 70px;
       background: white;
+      top: 160px;
+      right: 10px;
       z-index: 80;
     }
 
@@ -236,6 +233,53 @@
         min-width: 100%!important;
         max-width: 70%!important;
       }
+
+      .company_logo_list {
+        position: absolute;
+        border-radius: 50%;
+        border: 0.05em solid white;
+        height: 50px;
+        width: 50px;
+        top: 190px;
+        right: 10px;
+        z-index: 81;
+      }
+
+      .company_logo_base_list {
+        position: absolute;
+        border-radius: 50%;
+        border: 0.05em solid white;
+        height: 50px;
+        width: 50px;
+        background: white;
+        top: 190px;
+        right: 10px;
+        z-index: 80;
+      }
+
+      .vendor_cards {
+        position: relative;
+        width: 100%;
+        height: 250px;
+        min-height: 220px;
+        /*background: yellow;*/
+        margin: 15px 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        border-radius: 5px;
+        -moz-box-shadow: 0 0 6px #888;
+        -webkit-box-shadow: 0 0 6px#888;
+        box-shadow: 0 0 4px #888;
+        transition: margin-top 0.1s;
+      }
+
+      .result_container {
+        padding: 0 5%;
+        width: 100%;
+        box-sizing: border-box!important;
+        margin: 0 0!important;
+      }
     }
 	 </style>
 
@@ -319,12 +363,12 @@
                 @endphp
               </div>
               @if($r['company_logo'] == '')
-              <div class="company_logo_2" style="background: url('{{ asset('myasset/img/null.jpg') }}');background-position: center;background-size: cover;"></div>
+              <div class="company_logo_list" style="background: url('{{ asset('myasset/img/null.jpg') }}');background-position: center;background-size: cover;"></div>
               @else
-              <div class="company_logo_2" style="background: url('{{ asset('storage/'.$r['company_logo']) }}');background-position: center;background-size: cover;"></div>
+              <div class="company_logo_list" style="background: url('{{ asset('storage/'.$r['company_logo']) }}');background-position: center;background-size: cover;"></div>
               @endif
               
-              <div class="company_logo_base_2"></div>
+              <div class="company_logo_base_list"></div>
             </div>
             @endforeach
           </div>

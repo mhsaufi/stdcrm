@@ -32,7 +32,7 @@
   font-weight: bold;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 991px) {
   .drawable_menu_trigger {
     font-size: 20px;
     color: #d4af37;

@@ -23,7 +23,7 @@
       <a href="https://www.eventbrite.com/" target="_blank">Eventbrite</a>
     </div>
     <div>
-      <div style="margin-bottom: 20px;color: #fff">Find Us</div>
+      <div style="margin-bottom: 20px;color: #2b2b28">Find Us</div>
       <div class="social_page">
         <div><img src="{{ asset('myasset/img/social/instagram2.png') }}"></div>
         <div><img src="{{ asset('myasset/img/social/facebook2.png') }}"></div>
