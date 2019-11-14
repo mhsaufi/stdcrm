@@ -451,6 +451,12 @@
       </div>
     </div>
 
+    <div class="mobile_alert_view">
+      <div class="mobile_alert_view_content">
+        <p>We are very sorry, merchant registration via mobile view is not allowed. Swith to desktop application to register as merchant.</p>
+      </div>
+    </div>
+
     <div id="tnc_container">
       <div id="termandcondition">
         <div id="content_termandcondition">
@@ -474,6 +480,12 @@
     <script src="{{asset('myasset/select2/dist/js/select2.js')}}"></script>
     <script src="{{asset('myasset/js/email_validator.js')}}"></script>
     <script type="text/javascript">
+
+      if($(window).width() < 600){
+          $('.merchant-option').hide();
+      }
+
+
       $('#signup').attr("disabled",true);
       $('#next').attr("disabled",true).addClass('next_btn_disabled');
       $('#agreetnc').prop('checked', false);

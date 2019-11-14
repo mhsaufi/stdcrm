@@ -110,29 +110,6 @@
         flex-flow: row wrap;
       }
 
-      .company_logo {
-        position: absolute;
-        border-radius: 50%;
-        border: 0.05em solid white;
-        height: 70px;
-        width: 70px;
-        top: 170px;
-        right: 8%;
-        z-index: 81;
-      }
-
-      .company_logo_base {
-        position: absolute;
-        border-radius: 50%;
-        border: 0.05em solid white;
-        height: 70px;
-        width: 70px;
-        background: white;
-        top: 170px;
-        right: 8%;
-        z-index: 80;
-      }
-
       .staff_info_container {
         border: 1px solid #d4af37;
         padding: 10px 10px!important;
@@ -207,7 +184,7 @@
     }
 
     .content_company_content {
-      padding: 8% 10%;
+      padding: 8% 5%;
       padding-bottom: 20vh;
     }
 

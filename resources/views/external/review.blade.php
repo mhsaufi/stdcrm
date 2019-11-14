@@ -186,29 +186,6 @@
         flex-flow: row wrap;
       }
 
-      .company_logo {
-        position: absolute;
-        border-radius: 50%;
-        border: 0.05em solid white;
-        height: 70px;
-        width: 70px;
-        top: 170px;
-        right: 8%;
-        z-index: 81;
-      }
-
-      .company_logo_base {
-        position: absolute;
-        border-radius: 50%;
-        border: 0.05em solid white;
-        height: 70px;
-        width: 70px;
-        background: white;
-        top: 170px;
-        right: 8%;
-        z-index: 80;
-      }
-
       .package_cards {
         position: relative;
         height: 330px!important;
@@ -388,6 +365,14 @@
 
       function viewReviews(vendorID, vendorName){
         var url = '{{ url("/vendor") }}' + '/' + vendorName.split(' ').join('_')+'/review/'+vendorID;
+      }
+
+      function viewGalleries(vendorID,vendorName){
+        
+        var url = '{{ url("/vendor") }}'+ '/' + vendorName.split(' ').join('_')+'/gallery/'+vendorID;
+        
+        window.location.replace(url);
+
       }
 
       $('#login_to_review').click(function(){

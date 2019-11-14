@@ -65,7 +65,8 @@
       margin: 0 10%;
       padding: 20px 0 0 0;
       display: flex;
-      flex-flow: row wrap;
+      flex-direction: column;
+      justify-content: flex-start;
     }
 
     @media (max-width: 600px){
@@ -82,30 +83,8 @@
         margin: 0;
         padding: 5% 0;
         display: flex;
-        flex-flow: row wrap;
-      }
-
-      .company_logo {
-        position: absolute;
-        border-radius: 50%;
-        border: 0.05em solid white;
-        height: 70px;
-        width: 70px;
-        top: 170px;
-        right: 8%;
-        z-index: 81;
-      }
-
-      .company_logo_base {
-        position: absolute;
-        border-radius: 50%;
-        border: 0.05em solid white;
-        height: 70px;
-        width: 70px;
-        background: white;
-        top: 170px;
-        right: 8%;
-        z-index: 80;
+        flex-direction: column;
+        justify-content: flex-start;
       }
 
     }
@@ -135,7 +114,7 @@
     }
 
     .content_company_content {
-      padding: 8% 10%;
+      padding: 8% 5%;
     }
 
     .vendor_title_info h1 {

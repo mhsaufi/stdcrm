@@ -13,6 +13,79 @@
 
     <style type="text/css">
 
+      .merchant-section-1 {
+        width: 20%;
+      }
+
+      .merchant-section-2 {
+        width: 70%;
+      }
+
+      .merchant-section-btn {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        margin-top: 5%;
+      }
+
+      @media (max-width: 600px){
+        .merchant-option {
+          position: absolute;
+          top: 6%;
+          /*background: yellow;*/
+          /*background-image: url("{{asset('myasset/img/silk2.jpg')}}");*/
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-size: cover;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          height: auto!important;
+          width: 100%;
+        }
+
+        .merchant-section {
+          display: flex;
+          flex-direction: column!important;
+          justify-content: flex-start!important;
+          align-items: center;
+          height: auto;
+          width: 90%;
+          padding-top: 50px!important;
+          margin-bottom: 40px!important;
+        }
+
+        .merchant-section-1 {
+          width: 100%;
+          margin-left: -10%;
+          margin-bottom: 20px;
+        }
+
+        .merchant-section-2 {
+          width: 100%;
+        }
+
+        .merchant-section-btn {
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-end;
+          margin-top: 20px;
+        }
+
+        #reg-btn {
+          padding: 15px 20px;
+          color: white;
+          width: 100%;
+          /* background: #3498db; */
+          background: #d4af37;
+          border: none;
+          border-radius: 2%;
+          cursor: pointer;
+        }
+      }
+
       #label-category{
         background-color: white;
         align-self: flex-start;
@@ -40,28 +113,27 @@
       }
 
       .merchant-option {
-        position: absolute;
-        top: 5%;
         /*background: yellow;*/
-        background-image: url("{{asset('myasset/img/silk2.jpg')}}");
+        /*background-image: url("{{asset('myasset/img/silk2.jpg')}}");*/
         background-repeat: no-repeat;
         background-attachment: fixed;
       	background-size: cover;
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
         align-items: center;
-        height: 95%;
+        height: 100vh;
         width: 100%;
       }
 
       .merchant-section {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
-        /* background: yellow; */
+        justify-content: flex-start;
         align-items: center;
         height: 100%;
         width: 80%;
+        padding-top: 5%;
       }
 
       .navbar-expand-lg .navbar-nav .nav-link {
@@ -106,13 +178,13 @@
     <div class="merchant-option">
 
       <div class="merchant-section">
-        <div style="width: 20%; margin-top:-7%;"><img src="{{asset('myasset/img/pm.png')}}" id="pm" class="animated rollIn slow" /></div>
+        <div class="merchant-section-1"><img src="{{asset('myasset/img/pm.png')}}" id="pm" class="animated rollIn slow" /></div>
 
-        <div style="width: 70%;" class="animated fadeIn slow" >
+        <div class="merchant-section-2" class="animated fadeIn slow" >
           <p>Client relationships are extremely important for vendors to master. The experience you provide for them often determines how smooth the event completion is. Not only that, but how clients feel about your service stand to greatly impact your reputation with future customers.</p>
           <p>That’s not to say that vendors are solely responsible for managing the client. Clients also have a duty to be clear in what they expect so that there can be no miscommunication going forward.</p>
           <p>In order to help your business, we’ve set a standard ways to manage your clients straight via our service.</p>
-          <div style="width: 100%;display: flex;flex-direction: row;justify-content: flex-end;margin-top: 5%;" class="animated fadeInDown fast" >
+          <div class="merchant-section-btn" style="" class="animated fadeInDown fast" >
             <button id="reg-btn">Register Now</button>
           </div>
         </div>

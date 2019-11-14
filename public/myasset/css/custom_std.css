@@ -326,20 +326,19 @@
 	border: 0.05em solid white;
 	height: 200px;
 	width: 200px;
-	top: 100px;
-	right: 6%;
+	top: 20vh;
+	right: 5vh;
 	z-index: 81;
 }
 
 .company_logo_base {
 	position: absolute;
 	border-radius: 50%;
-	border: 0.05em solid white;
+	border: 0.5em solid green;
 	height: 200px;
 	width: 200px;
-	background: white;
-	top: 100px;
-	right: 6%;
+	top: 20vh;
+	right: 5vh;
 	z-index: 80;
 }
 
@@ -367,7 +366,6 @@
 .content_company_menu {
 	display: flex;
 	flex-direction: row;
-	flex-wrap: wrap;
 	justify-content: space-around;
 	align-items: center;
 	width: 70%;
@@ -989,6 +987,26 @@
     align-items:flex-start!important;
 }
 
+.mobile_alert_view {
+	position: absolute;
+	top: 0;
+	height: 100vh;
+	width: 100%;
+	/*background: green;*/
+}
+
+.mobile_alert_view_content {
+	height: 100%;
+	width: 100%;
+	padding: 40% 5%;
+	/*background: pink;*/
+}
+
+.mobile_alert_view_content > p {
+	font-weight: 600;
+	color: red;
+}
+
 #myTimeline {
 	width: 100%!important;
 	background: #fbfcfc;
@@ -1148,7 +1166,7 @@
 }
 
 .result_container_empty {
-	padding: 3% 10%;
+	padding: 1% 5%;
 	min-height: 35vh;
 }
 
@@ -1711,6 +1729,29 @@
 		padding-left: 0!important;
     }
 
+    .company_logo {
+		position: absolute;
+		border-radius: 50%;
+		border: 0.05em solid white;
+		height: 70px!important;
+		width: 70px!important;
+		top: 25vh!important;
+		right: 3vh;
+		z-index: 81;
+	}
+
+	.company_logo_base {
+		position: absolute;
+		border-radius: 50%;
+		border: 0.5em solid #dcdc!important;
+		height: 70px!important;
+		width: 70px!important;
+		top: 25vh!important;
+		right: 3vh;
+		z-index: 80;
+		background: green!important;
+	}
+
 	.content_company {
 		display: flex;
 		flex-direction: column;
@@ -1727,7 +1768,7 @@
 		width: 100%;
 		font-size: 17px;
 		letter-spacing: 4px;
-		height: 40%!important;
+		height: 250px!important;
 	}
 
 	.content_company_menu > div {
