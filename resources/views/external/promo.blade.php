@@ -230,8 +230,7 @@
 
         .search-result-panel {
           box-sizing: border-box;
-          /*background: pink;*/
-          margin: 0% 1%!important;
+          margin: 0% 1% 1% 1%!important;
           height: auto;
           display: flex;
           flex-direction: column;

@@ -334,8 +334,7 @@ class UtilitiesController extends Controller
         return $status;
     }
 
-    public function html_cut($text, $max_length)
-    {
+    public function html_cut($text, $max_length){
         $tags   = array();
         $result = "";
 

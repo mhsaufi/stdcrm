@@ -27,53 +27,15 @@ class HomeController extends Controller
 
     public function index(Request $request)
     {
-        if(Auth::user()->role_id == '5'){
+        if(Auth::user()->role_id == '5'){ // if user, redirecting to profile page
 
-            $wevent = new WEvent;
-            $count = $wevent->where('user_id',Auth::user()->id)->count();
+            $event = new EventExternal;
+            $event_data = $event->get();
+            $event_count = $event->count();
 
-            // if there is any event attached to this user
+            return view('internal.profile',compact('event_data','event_count'));
 
-            if($count == 0){
-
-                // check if there is invitations
-                
-                $inbox = new WEventInbox;
-                $data_inbox = $inbox->where('i_recipient_id',Auth::user()->id)->where('i_type_id','2')->where('i_status_id','0')->get();
-
-                $count_inbox = $inbox->where('i_recipient_id',Auth::user()->id)->where('i_type_id','2')->where('i_status_id','0')->count();
-
-                return view('internal.clienttemp',compact('data_inbox','count','count_inbox'));
-
-            }else{
-
-                $event = new WEvent;
-                $data_event = $event->where('user_id',Auth::user()->id)->first();
-
-                $we_id = $data_event['we_id']; 
-
-                // if wes_id 3, it means the event are still in pending booking mode. Need acceptance or approval from vendor
-                // if wes_id 4, it means the event had been rejected by vendors
-
-                if($data_event['wes_id'] == '3'){
-
-                    return view('internal.clienttemp',compact('data_event','count'));
-
-                }else if($data_event['wes_id'] == '4'){
-
-                    return view('internal.clienttemp',compact('data_event','count'));
-
-                }else{
-
-                    return redirect()->action(
-                        'TimelineController@index', ['ax' => $we_id]
-                    );
-
-                }
-
-            }
-
-        }else if(Auth::user()->role_id == '3'){
+        }else if(Auth::user()->role_id == '3'){ // if vendor, direct to dashboard
 
             if(Auth::user()->status_id == '1'){ // if active
 
@@ -101,6 +63,53 @@ class HomeController extends Controller
             $admin_page = $admin->index();
 
             return $admin_page;
+        }
+    }
+
+    public function dashboard(Request $request){
+
+        $wevent = new WEvent;
+        $count = $wevent->where('user_id',Auth::user()->id)->count();
+
+        // if there is any event attached to this user
+
+        if($count == 0){
+
+            // check if there is invitations
+            
+            $inbox = new WEventInbox;
+            $data_inbox = $inbox->where('i_recipient_id',Auth::user()->id)->where('i_type_id','2')->where('i_status_id','0')->get();
+
+            $count_inbox = $inbox->where('i_recipient_id',Auth::user()->id)->where('i_type_id','2')->where('i_status_id','0')->count();
+
+            return view('internal.clienttemp',compact('data_inbox','count','count_inbox'));
+
+        }else{
+
+            $event = new WEvent;
+            $data_event = $event->where('user_id',Auth::user()->id)->first();
+
+            $we_id = $data_event['we_id']; 
+
+            // if wes_id 3, it means the event are still in pending booking mode. Need acceptance or approval from vendor
+            // if wes_id 4, it means the event had been rejected by vendors
+
+            if($data_event['wes_id'] == '3'){
+
+                return view('internal.clienttemp',compact('data_event','count'));
+
+            }else if($data_event['wes_id'] == '4'){
+
+                return view('internal.clienttemp',compact('data_event','count'));
+
+            }else{
+
+                return redirect()->action(
+                    'TimelineController@index', ['ax' => $we_id]
+                );
+
+            }
+
         }
     }
 

@@ -79,7 +79,7 @@ class EventController extends Controller
 
         $package_data = $package->where('company_id', Auth::user()->company_id)->get();
 
-        return view('internal.event',compact('data_event','data_inbox','count_inbox','package_data')); 
+        return view('internal.event',compact('data_event','data_inbox','count_inbox','package_data'));
     }
 
     public function bookingForm($package_id){

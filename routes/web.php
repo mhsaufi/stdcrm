@@ -96,6 +96,7 @@ Route::get('company/{id}/{filename}', function ($id,$filename){
 // ---------------------------------------  DASHBOARD (WITH CALENDAR)
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'HomeController@dashboard');
 Route::post('/load_t','UtilitiesController@dashboardController'); // main calendar data
 Route::post('/regEvent','EventController@newEvent'); // to create new event
 Route::post('/accept','EventController@acceptInvitation');

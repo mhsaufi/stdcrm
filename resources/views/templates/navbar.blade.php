@@ -60,12 +60,16 @@
                       </a>
                     </li>
 
-                    @endif   
+                  @endif   
 
                 @endif
 
                 <li class="nav-item">
+                  @if(Auth::user()->role_id == 5)
+                  <a class="nav-link black" href="{{ url('/dashboard') }}">
+                  @else
                   <a class="nav-link black" href="{{ url('/home') }}">
+                  @endif
                     <i class="fas fa-columns"></i>
                     Dashboard <span class="badge_notification" id="global_notification">.</span>
                   </a>

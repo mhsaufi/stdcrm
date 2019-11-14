@@ -32,16 +32,6 @@
     	height: 250px !important;
     }
 
-
-    .big_container {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      min-height: 100vh;
-      /*background: yellow;*/
-    }
-
     .footer_result_container {
       width: 80%;
       min-height: 10%;
@@ -73,22 +63,12 @@
       background: blue;
     }
 
-    .vendor_cards:hover ~ .vendor_cards_info {
-      height: 90%;
-    }
-
-    .vendor_cards_info div h4 {
-      color: white;
-      text-shadow: 1px 1px 2px black;
-    }
-
-    .vendor_cards_info div p {
-      color: white;
-      text-shadow: 5px 5px 10px black!important;
+    .content_company {
+      justify-content: flex-start!important;
     }
 
     .content_company_content {
-      padding: 8vh 70px;
+      padding: 10vh 8vh;
     }
 
     .vendor_title_info h1 {
