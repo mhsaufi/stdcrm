@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Dashboard | Events</title>
+    <title>Dashboard | Past Events</title>
 
     @include('templates.header')
     <link rel="stylesheet" type="text/css" href="{{asset('myasset/bootstrap-timepicker/css/bootstrap-timepicker.min.css')}}">
@@ -273,9 +273,17 @@
         cursor: pointer;
         margin-left: 5px;
       }
+
+      .event_table th, .event_table td {
+        -webkit-border: 0.05em solid #dcdcdc;
+        border: 0.05em solid #dcdcdc;
+        padding: 10px 15px;
+        font-size: 12px;
+      }
     </style>
   </head>
   <body class="pattern">
+
     <!-- ========================================================== Form for creating event -->
 
     <div id="create_event_form">
@@ -339,7 +347,7 @@
           <div>
             <button class="view-btn-history" id="add_event_btn"><i class="fas fa-plus"></i> New Event</button> 
             <div class="view-btn-history" id="list_timeline"><i class="fas fa-calendar-alt"></i> Timeline</div>
-            <div class="view-btn-history" id="list_event" style="background: #cfd8dc;">
+            <div class="view-btn-history" id="list_event">
               <i class="fas fa-th-list"></i> Events 
               @if($count_inbox > 0)
 
@@ -347,165 +355,39 @@
 
               @endif
             </div>
-            <div class="view-btn-history" id="ended_event"><i class="fas fa-history"></i> Past Events</div>
+            <div class="view-btn-history" id="ended_event" style="background: #cfd8dc;"><i class="fas fa-history"></i> Past Events</div>
           </div>
         </div><br>
         <div class="row row-forecast">
-          <p>All events listed here are within your company only. Refer to Past Events to view all ended events.</p>
+          <p>Access all ended and past events</p>
           <br>
           <div class="events_table_container">
+            @php
+
+              $i = 1;
+
+            @endphp
             <table class="event_table">
-              <thead>
-                <tr>
-                  <th style="width: 1%;" colspan="2">#</th>
-                  <th style="width: 13%;">Event</th>
-                  <th style="width: 5%;">Category</th>
-                  <th style="width: 10%;">Users</th>
-                  <th style="width: 5%;">Contact</th>
-                  <th style="width: 10%;">Packages</th>
-                  <th style="width: 5%;">Price (MYR)</th>
-                  <th style="width: 5%;">Status</th>
-                  <th style="width: 10%;">Action</th>
-                </tr>
-              </thead>
-              <tbody>
+              @foreach($data_event as $event)
 
-                @php
+              <tr onclick="viewTimeline('{{ $event['we_id'] }}')">
+                <td>{{ $i }}</td>
+                <td>{{ $event['event']['we_title'] }}</td>
+                <td>{{ $event['event']['client']['name'] }}</td>
+                <td>{{ $event['event']['client']['phone'] }}</td>
+                <td>{{ $event['event']['client']['email'] }}</td>
+                <td>{{ $event['event']['package']['package_title'] }}</td>
+                <td>{{ $event['event']['package']['package_price'] }}</td>
+                <td>Ended on {{ $event['event']['updated_at'] }}</td>
+              </tr>
 
-                  $i = 1;
-
-                @endphp
-
-                @foreach($data_inbox as $inbox)
-
-                  @if($inbox['i_type_id'] == 4)
-                  <tr>
-                    <td>{{ $i }}</td>
-                    <td style="background: #ec7063;"></td>
-                    <td>{{ $inbox['event']['we_title'] }}</td>
-                    <td>Invitation</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>{{ $inbox['event']['package']['package_title'] }}</td>
-                    <td>{{ $inbox['event']['package']['package_price'] }}</td>
-                    <td>Pending</td>
-                    <td>
-                      <button class="btn-alert" id="accept" onclick="accept('{{ $inbox['i_id'] }}')">ACCEPT</button> 
-                      <button class="btn-alert-cancel" id="decline" onclick="decline('{{ $inbox['i_id'] }}')">DECLINE</button>
-                    </td>
-                  </tr>
-                  @elseif($inbox['i_type_id'] == 5)
-                  <tr>
-                    <td>{{ $i }}</td>
-                    <td style="background: #ec7063;"></td>
-                    <td>{{ $inbox['event']['we_title'] }}</td>
-                    <td>Declination</td>
-                    <td>{{ $inbox['company']['company_name'] }}</td>
-                    <td>-</td>
-                    <td>{{ $inbox['event']['package']['package_title'] }}</td>
-                    <td>{{ $inbox['event']['package']['package_price'] }}</td>
-                    <td>Declined</td>
-                    <td><button class="btn-alert-cancel" onclick="acknowledge('{{ $inbox['i_id'] }}')">Acknowledge</button></td>
-                  </tr>
-                  @else
-                  <tr>
-                    <td>{{ $i }}</td>
-                    <td style="background: #ec7063;"></td>
-                    <td>{{ $inbox['event']['we_title'] }}</td>
-                    <td>Declination</td>
-                    <td>{{ $inbox['user']['name'] }}</td>
-                    <td>{{ $inbox['user']['phone'] }}</td>
-                    <td>{{ $inbox['event']['package']['package_title'] }}</td>
-                    <td>{{ $inbox['event']['package']['package_price'] }}</td>
-                    <td>Declined</td>
-                    <td><button class="btn-alert-cancel" onclick="acknowledge('{{ $inbox['i_id'] }}')">Acknowledge</button></td>
-                  </tr>
-                  @endif
-
-                  @php
-
-                    $i++;
-
-                  @endphp
-
-                @endforeach
-
-                @foreach($data_event as $event)
-
-                  @if($event['event']['wes_id'] == 3)
-
-                    <tr class="animated fast ani_row">
-                      <td>{{ $i }}</td>
-                      <td style="background: #f1c40f;"></td>
-                      <td>{{ $event['event']['we_title'] }}</td>
-                      <td>Booking Request</td>
-                      <td>{{ $event['event']['client']['name'] }}</td>
-                      <td>{{ $event['event']['client']['phone'] }}</td>
-                      <td>{{ $event['event']['package']['package_title'] }}</td>
-                      <td>{{ $event['event']['package']['package_price'] }}</td>
-                      <td>Pending</td>
-                      <td>
-                        <button class="event_requested_action_btn reject" style="background: #e74c3c;" data-event-id="{{ $event['event']['we_id'] }}">
-                          REJECT
-                        </button>
-                        <button class="event_requested_action_btn accept" style="background: #2ecc71;" data-event-id="{{ $event['event']['we_id'] }}">
-                          ACCEPT
-                        </button>
-                      </td>
-                    </tr>
-
-                  @elseif($event['event']['wes_id'] == 1)
-
-                    <tr onclick="viewTimeline('{{ $event['we_id'] }}')" class="animated fast ani_row">
-                      <td>{{ $i }}</td>
-                      <td style="background: #7dcea0;"></td>
-                      <td>{{ $event['event']['we_title'] }}</td>
-                      <td>Current</td>
-                      <td>{{ $event['event']['client']['name'] }}</td>
-                      <td>{{ $event['event']['client']['phone'] }}</td>
-                      <td>{{ $event['event']['package']['package_title'] }}</td>
-                      <td>{{ $event['event']['package']['package_price'] }}</td>
-                      <td>Active</td>
-                      <td></td>
-                    </tr>
-
-                  @endif
-
-                  @php
-
-                    $i++;
-
-                  @endphp
-
-                @endforeach
-                
-              </tbody>
+              @endforeach
             </table>
           </div>
-
-
-        
         </div>
       </div>
     </div>
     <!-- Feature Section End --> 
-
-    <!-- Reject Timeline Remark Form -->
-
-    <div id="reject_remark_container">
-      <div id="reject_remark">
-        <div style="padding: 10px 0;border-bottom: 0.05em solid #d4af37;margin-bottom: 10px;">Reject</div>
-        <div style="margin-bottom: 5px;"><p>Reason for your rejection : </p></div>
-        <input type="hidden" name="" id="rejected_event_id" val="">
-        <input type="hidden" name="" id="action_booking_id" val="">
-        <div><textarea class="form-control" id="remark"></textarea></div>
-        <div style="display: flex;flex-direction: row;justify-content: flex-end;">
-          <button class="std-btn-plain" style="margin-right: 20px;" id="cancel_reject_btn">Cancel</button>
-          <button class="std-btn-plain" onclick="rejectEvent()">Reject</button>
-        </div>
-      </div>
-      
-    </div>
          
     @include('templates.quick-access')
 
@@ -540,68 +422,25 @@
 
         $('.ani_row').each(function(i){
 
-        var tag = $(this);
-        var time = 20;
+          var tag = $(this);
+          var time = 20;
 
-        setTimeout(function(i){ 
+          setTimeout(function(i){ 
 
-          tag.addClass('bounceInLeft');
-          tag.show();
+            tag.addClass('bounceInLeft');
+            tag.show();
 
-        }, time*i); 
-      });
+          }, time*i); 
+        });
 
         globalNotification();
 
-        url = APP_URL + '/actiononbooking';
+        $('#list_event').click(function(){
 
-        $('.accept').each(function(){
+          var url  = "{{ url('/all') }}";
 
-          var accept_btn = $(this);
-
-          accept_btn.click(function(){
-
-            var we_id = $(this).data('event-id'); 
-
-            var action = '1';
-
-            $.post(url,{_token:token,action:action,we_id:we_id},function(result){
-
-              var new_url = APP_URL + '/timeline' + '?ax=' + we_id;
-
-              window.location.replace(new_url);
-
-            });
-
-          });
-
+          window.location.replace(url);
         });
-
-        $('.reject').each(function(){
-
-          var reject_btn = $(this);
-
-          reject_btn.click(function(){
-
-            var we_id = $(this).data('event-id'); 
-
-            var action = '2';
-
-            $('#rejected_event_id').val(we_id);
-            $('#action_booking_id').val('2');
-            $('#reject_remark_container').fadeToggle('fast');
-
-          });
-
-        });
-
-        $('#cancel_reject_btn').click(function(){
-
-          $('#reject_remark_container').fadeToggle('fast');
-
-        });
-
-
 
         $('#list_timeline').click(function(){
 
@@ -613,7 +452,7 @@
         $('#ended_event').click(function(){
           url = APP_URL + '/past';
 
-          window.location.replace(url);
+          window.loaction.replace(url);
         });
 
         $('#add_event_btn,.close-action-icon,#cancel_button1').click(function(){
@@ -665,58 +504,9 @@
         });
       });
 
-      function rejectEvent(){
-
-        var we_id = $('#rejected_event_id').val();
-        var action = $('#action_booking_id').val();
-        var remark = $('#remark').val();
-
-        $.post(url,{_token:token,action:action,we_id:we_id,remark:remark},function(result){
-
-          location.reload();
-
-        });
-
-      }
-
       function viewTimeline(id){
 
         window.location.replace(APP_URL + '/timeline?ax='+id);
-      }
-
-      function accept(id){
-
-        url = APP_URL + '/_accept';
-
-        $.post(url,{id:id,_token:token},function(result){
-
-          var url = '{{ url('/home') }}' + '?ax=' + result;
-
-          window.location.replace(url);
-
-        });
-      }
-
-      function decline(id){
-
-        var url = "{{ url('/_decline') }}";
-        var token = '{{ csrf_token() }}';
-
-        $.post(url,{id:id,_token:token},function(){
-
-          location.reload();
-        });
-      }
-
-      function acknowledge(id){
-
-        var url = "{{ url('/_ack') }}";
-        var token = '{{ csrf_token() }}';
-
-        $.post(url,{id:id,_token:token},function(){
-
-          location.reload();
-        });
       }
 
     </script>

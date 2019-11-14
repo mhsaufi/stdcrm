@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 12, 2019 at 09:40 AM
+-- Generation Time: Nov 14, 2019 at 09:44 AM
 -- Server version: 10.1.39-MariaDB
 -- PHP Version: 7.3.5
 
@@ -184,6 +184,13 @@ CREATE TABLE `company_contact` (
   `contact_type` int(11) NOT NULL COMMENT '1 for company, 2 for user'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `company_contact`
+--
+
+INSERT INTO `company_contact` (`company_contact_id`, `company_id`, `contact_id`, `contact_type`) VALUES
+(1, 1, 18, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -217,6 +224,13 @@ CREATE TABLE `company_package` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `company_package`
+--
+
+INSERT INTO `company_package` (`package_id`, `package_title`, `package_detail`, `package_price`, `package_pax`, `package_category`, `package_post`, `company_id`, `created_at`, `updated_at`) VALUES
+(1, 'Pakej Jimat RM13,600', 'PHA+TmFzaSBCZXJpeWFuaS8gQmVyYXMgQmFzbWF0aGk8L3A+PHA+TmFzaSBQdXRpaC8gQXlhbSBNZXJhaDwvcD48cD5BeWFtIE1lcmFoIC8gR29yZW5nIFJlbXBhaDwvcD48cD5BY2FyIEJ1YWggLyBBY2FyIFJhbXBhaTxicj48L3A+', 13600, 500, NULL, 0, 1, '2019-11-12 20:06:52', '2019-11-12 20:06:52');
+
 -- --------------------------------------------------------
 
 --
@@ -228,6 +242,14 @@ CREATE TABLE `company_package_category_tag` (
   `package_id` int(11) NOT NULL,
   `cc_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `company_package_category_tag`
+--
+
+INSERT INTO `company_package_category_tag` (`cpct_id`, `package_id`, `cc_id`) VALUES
+(1, 1, 8),
+(2, 1, 22);
 
 -- --------------------------------------------------------
 
@@ -274,6 +296,13 @@ CREATE TABLE `company_reviews` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `company_reviews`
+--
+
+INSERT INTO `company_reviews` (`review_id`, `review_user_id`, `review_user`, `review_rate`, `review_text`, `company_id`, `created_at`, `updated_at`) VALUES
+(1, 14, 'humaira', 4, 'Good company', 2, '2019-11-14 00:23:24', '2019-11-14 00:23:24');
 
 -- --------------------------------------------------------
 
@@ -517,7 +546,7 @@ CREATE TABLE `wevent` (
 --
 
 INSERT INTO `wevent` (`we_id`, `we_title`, `we_date`, `we_time1`, `we_time2`, `we_venue`, `we_desc`, `we_remark`, `package_id`, `company_id`, `user_id`, `wes_id`, `created_at`, `updated_at`) VALUES
-(1, 'Abdul Qahar & Aisyah Zahira', '2020-03-28', '10:00:00', '15:00:00', 'Lot 1866, Jalan Harmonis 4, Taman Harmonis, 53100 Kuala Lumpur, Selangor', 'Marriage', NULL, 0, 1, 18, 1, '2019-11-12 01:48:15', '2019-11-11 17:48:16');
+(1, 'Abdul Qahar & Aisyah Zahira', '2020-03-28', '15:00:00', '15:00:00', 'Lot 1866, Jalan Harmonis 4, Taman Harmonis, 53100 Kuala Lumpur, Selangor', NULL, NULL, 1, 1, 18, 5, '2019-11-14 08:15:31', '2019-11-14 08:15:31');
 
 -- --------------------------------------------------------
 
@@ -531,8 +560,17 @@ CREATE TABLE `wevent_agreement` (
   `party_id` int(11) NOT NULL,
   `party_type` text NOT NULL,
   `party_agree` int(1) NOT NULL DEFAULT '0',
-  `remark` text NOT NULL
+  `remark` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `wevent_agreement`
+--
+
+INSERT INTO `wevent_agreement` (`a_id`, `we_id`, `party_id`, `party_type`, `party_agree`, `remark`) VALUES
+(1, 1, 1, 'company', 1, 'Not reliable'),
+(2, 1, 2, 'company', 0, NULL),
+(3, 1, 18, 'client', 1, 'Not reliable also');
 
 -- --------------------------------------------------------
 
@@ -823,7 +861,7 @@ ALTER TABLE `company_category_tag`
 -- AUTO_INCREMENT for table `company_contact`
 --
 ALTER TABLE `company_contact`
-  MODIFY `company_contact_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `company_contact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `company_crm`
@@ -835,13 +873,13 @@ ALTER TABLE `company_crm`
 -- AUTO_INCREMENT for table `company_package`
 --
 ALTER TABLE `company_package`
-  MODIFY `package_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `package_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `company_package_category_tag`
 --
 ALTER TABLE `company_package_category_tag`
-  MODIFY `cpct_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cpct_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `company_package_post`
@@ -859,7 +897,7 @@ ALTER TABLE `company_promotion`
 -- AUTO_INCREMENT for table `company_reviews`
 --
 ALTER TABLE `company_reviews`
-  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `event_external`
@@ -925,7 +963,7 @@ ALTER TABLE `wevent`
 -- AUTO_INCREMENT for table `wevent_agreement`
 --
 ALTER TABLE `wevent_agreement`
-  MODIFY `a_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `a_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `wevent_inbox`

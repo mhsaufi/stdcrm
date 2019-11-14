@@ -343,6 +343,7 @@ class TimelineController extends Controller
 
         //------------------------------------------------------------------------------------
 
+        // to call all events related to this company
         $weventvendors = new WEventVendors;
         $data_event_vendors = $weventvendors->where('company_id',Auth::user()->company_id)->get();
 
@@ -352,9 +353,16 @@ class TimelineController extends Controller
             array_push($arr_we_id, $dev['we_id']);
         }
 
+        // to get all timeline under all events related to this company
         $timeline = new WEventTimeline;
 
-        $datas = $timeline->whereIn('we_id',$arr_we_id)->whereMonth('wet_datetime',$month)->whereYear('wet_datetime',$year)->get();
+        $datas = $timeline->whereIn('we_id',$arr_we_id)
+                        ->whereMonth('wet_datetime',$month)
+                        ->whereYear('wet_datetime',$year)
+                        ->whereHas('event', function ($query) {
+                            $query->whereNotIn('wes_id',[5]);
+                        })
+                        ->get();
 
         //------------------------------------------------------------------------------------
 
@@ -660,7 +668,7 @@ class TimelineController extends Controller
 
     public function getTotalTimelineCOunt(){
 
-         //get total timeline count
+        //get total timeline count
         $weventvendors = new WEventVendors;
         $data_event_vendors = $weventvendors->where('company_id',Auth::user()->company_id)->get();
 
@@ -672,7 +680,12 @@ class TimelineController extends Controller
 
         $timeline = new WEventTimeline;
 
-        $datas = $timeline->whereIn('we_id',$arr_we_id)->count();
+        $datas = $timeline
+                ->whereIn('we_id',$arr_we_id)
+                ->whereHas('event', function ($query) {
+                            $query->whereNotIn('wes_id',[5]);
+                        })
+                ->count();
 
         return $datas;
     }

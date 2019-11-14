@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+  <head> 
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -64,6 +64,14 @@
         color: gold !important;
         opacity: 0.5;
       }
+
+    @media (max-width: 600px){
+        .big_container {
+          margin-top: 7%;
+          padding: 20px 2.5%;
+        }
+
+      }
     </style>
   </head>
   <body class="pattern">
@@ -73,18 +81,30 @@
       @include('templates.navbar')
     </header>
     <br>
-
     <!-- ====================== Timeline header EVENT INFO ============================== -->
 
     <!-- Feature Section Start -->
     <div class="section-padding">
+      @if($data_event['wes_id'] == 5)
+      
+      <div class="big_container" style="opacity: 0.7!important;">
+
+      @else
+
       <div class="big_container">
+
+      @endif
         <div class="std-timeline-banner animated fadeInDown fast">
           <div class="std-timeline-banner-header">
             <div id="std-timeline-banner-option-popup">
               <div id="std-timeline-banner-option-popup-content">
+                @if($data_event['wes_id'] != 5)
                 <div class="std-timeline-banner-option-popup-content-text" id="edit_info">Edit Information</div>
                 <div class="std-timeline-banner-option-popup-content-text" id="cancel_event">Cancel Event</div>
+
+                @else
+                <div class="std-timeline-banner-option-popup-content-text" id="print_event_info">Print Information</div>
+                @endif
               </div>
             </div>
             
@@ -94,7 +114,15 @@
               @else
               <a href="{{ url('/home') }}" class="std-link"><i class="fas fa-columns"></i> Back to Dashboard</a><br><br>
               @endif
-              <h4 style="opacity: 0.7;" id="banner_we_title">{{ $data_event['we_title'] }}</h4>
+              <h4 style="opacity: 0.7;" id="banner_we_title">
+                {{ $data_event['we_title'] }}
+
+                @if($data_event['wes_id'] == 5)
+
+                (Ended on {{ $data_event['updated_at'] }})
+
+                @endif
+              </h4>
             </div>
             <div id="edit-icon"><i class="fas fa-ellipsis-h"></i></div>
           </div>
@@ -181,7 +209,9 @@
             <div class="std-timeline-banner-vendors">
               <div style="display: flex;flex-direction: row;justify-content: space-between;width: 100%;height: 25px;margin-bottom: 15px;">
                 <div style="opacity: 0.7;"><p><i class="fas fa-users" style="margin-right: 10px;"></i> Event Vendors</p></div>
+                @if($data_event['wes_id'] =! 5)
                 <div class="plus_btn" id="add_vendors_btn"><i class="fas fa-plus"></i></div>
+                @endif
               </div>
 
               @if($data_event['user_id'] != 0)
@@ -264,89 +294,95 @@
 
           <div class="col_timeline animated fadeIn fast">
             <div class="std-timeline">
-              @if($data_event['user_id'] != 0)              
-              <div class="form_switch" id="form-switch">
-                <div><i class="fas fa-angle-down" id="arrow_icon"></i><span id="form-switch-text">Show timeline form</span></div>
-              </div>
-              @endif
-              <div id="std_timline_form">
-                
-                <div class="timeline_form_child_1">
 
-                  <div style="margin-bottom: 15px;">
-                    <label>Category </label>
-                    <select class="date_form" id="category">
-                      <option value=""></option>
-                      @foreach($categories as $category)
-                        <option value="{{ $category['tc_id'] }}">{{ $category['tc_title'] }}</option>
-                      @endforeach
-                    </select>
-                  </div>
+              @if($data_event['wes_id'] =! 5)
 
-                  <div>
-                    <label>Date & Time </label>
-                    <input type='text' 
-                      class="date_form datepicker-here" 
-                      data-timepicker="true" 
-                      data-position="bottom right" 
-                      data-language='en' 
-                      data-date-format='d-m-yyyy' 
-                      data-time-format='h:ii aa' 
-                      id="date_t" />
-                  </div>
-
-                  <div>
-                    Assign to 
-                    <select class="date_form" style="width: 200px!important;margin-left: 10px!important;" id="select_opt">
-                      
-                      @foreach($vendors_users as $vu)
-
-                        @if($vu['name'] == 'Client' && Auth::user()->role_id == '5')
-
-                        @else
-
-                        <optgroup label="{{ $vu['name'] }}">
-                          
-                          @foreach($vu['users'] as $v)
-
-                            <option value="{{ $v['id'] }}">{{ $v['name'] }}</option>
-
-                          @endforeach
-
-                        </optgroup>
-
-                        @endif
-
-                      @endforeach
-                    </select>
-                  </div>                  
+                @if($data_event['user_id'] != 0)              
+                <div class="form_switch" id="form-switch">
+                  <div><i class="fas fa-angle-down" id="arrow_icon"></i><span id="form-switch-text">Show timeline form</span></div>
                 </div>
+                @endif
+                <div id="std_timline_form">
+                  
+                  <div class="timeline_form_child_1">
 
-                <div style="width: 100%;padding: 10px 0;">
-                  <label>Subject</label>
+                    <div style="margin-bottom: 15px;">
+                      <label>Category </label>
+                      <select class="date_form" id="category">
+                        <option value=""></option>
+                        @foreach($categories as $category)
+                          <option value="{{ $category['tc_id'] }}">{{ $category['tc_title'] }}</option>
+                        @endforeach
+                      </select>
+                    </div>
+
+                    <div>
+                      <label>Date & Time </label>
+                      <input type='text' 
+                        class="date_form datepicker-here" 
+                        data-timepicker="true" 
+                        data-position="bottom right" 
+                        data-language='en' 
+                        data-date-format='d-m-yyyy' 
+                        data-time-format='h:ii aa' 
+                        id="date_t" />
+                    </div>
+
+                    <div>
+                      Assign to 
+                      <select class="date_form" style="width: 200px!important;margin-left: 10px!important;" id="select_opt">
+                        
+                        @foreach($vendors_users as $vu)
+
+                          @if($vu['name'] == 'Client' && Auth::user()->role_id == '5')
+
+                          @else
+
+                          <optgroup label="{{ $vu['name'] }}">
+                            
+                            @foreach($vu['users'] as $v)
+
+                              <option value="{{ $v['id'] }}">{{ $v['name'] }}</option>
+
+                            @endforeach
+
+                          </optgroup>
+
+                          @endif
+
+                        @endforeach
+                      </select>
+                    </div>                  
+                  </div>
+
+                  <div style="width: 100%;padding: 10px 0;">
+                    <label>Subject</label>
+                    <br>
+                    <input type="text" name="Subject" id="subject" class="date_form" style="width: 100%!important;" />
+                  </div>
+
+                  <div id="editor_container">
+                    <textarea id="editor"></textarea>
+                  </div>
                   <br>
-                  <input type="text" name="Subject" id="subject" class="date_form" style="width: 100%!important;" />
+                  <div class="timeline_form_child_4">
+                    <div>
+                        <div>
+                          <input type="checkbox" name="involve_payment" id="involve_payment">
+                          <span style="margin-left: 10px;margin-right: 15px;">Include Payment</span>
+                        </div>
+                        <div id="payment_input">
+                          <span style="font-weight: bold;">MYR</span> <input type="text" name="payment_amount" class="date_form" id="payment">
+                        </div>
+                    </div>
+                    <div>
+                        <button id="add-timeline-btn">Add Timeline</button>
+                    </div>
+                  </div>
                 </div>
 
-                <div id="editor_container">
-                  <textarea id="editor"></textarea>
-                </div>
-                <br>
-                <div class="timeline_form_child_4">
-                  <div>
-                      <div>
-                        <input type="checkbox" name="involve_payment" id="involve_payment">
-                        <span style="margin-left: 10px;margin-right: 15px;">Include Payment</span>
-                      </div>
-                      <div id="payment_input">
-                        <span style="font-weight: bold;">MYR</span> <input type="text" name="payment_amount" class="date_form" id="payment">
-                      </div>
-                  </div>
-                  <div>
-                      <button id="add-timeline-btn">Add Timeline</button>
-                  </div>
-                </div>
-              </div>
+              @endif
+
               <hr>
               <div class="filter_row">
                 <select class="vendor_select" id="select_vendor">
@@ -653,7 +689,10 @@
     <div id="end_event_container">
       <div id="end_event_form">
         <div id="end_event_header"><div>Cancel Event</div><div id="close_end_event" style="cursor: pointer;"><i class="fas fa-times"></i></div></div>
-        <div style="margin-top: 15px;"><p>You are about to cancel this event. Votes from others will be needed to officially cancel this event. Once you manage to get majority of the participant to vote, this event will be officially cancelled and ended</p></div>
+        <div style="margin-top: 15px;">
+          <p>You are about to cancel this event. Votes from others will be needed to officially cancel this event. 
+          Once you manage to get majority of the participant to vote, this event will be officially cancelled and ended</p>
+        </div>
         <div id="end_event_content">
           <div id="eec_1">
            
