@@ -209,7 +209,7 @@
             <div class="std-timeline-banner-vendors">
               <div style="display: flex;flex-direction: row;justify-content: space-between;width: 100%;height: 25px;margin-bottom: 15px;">
                 <div style="opacity: 0.7;"><p><i class="fas fa-users" style="margin-right: 10px;"></i> Event Vendors</p></div>
-                @if($data_event['wes_id'] =! 5)
+                @if($data_event['wes_id'] != 5)
                 <div class="plus_btn" id="add_vendors_btn"><i class="fas fa-plus"></i></div>
                 @endif
               </div>
@@ -276,7 +276,7 @@
 
               @endforeach
 
-              @if(Auth::user()->id == '5')
+              @if(Auth::user()->role_id == 5)
 
                 @foreach($inbox_data as $inbox)
 
@@ -295,7 +295,7 @@
           <div class="col_timeline animated fadeIn fast">
             <div class="std-timeline">
 
-              @if($data_event['wes_id'] =! 5)
+              @if($data_event['wes_id'] != 5)
 
                 @if($data_event['user_id'] != 0)              
                 <div class="form_switch" id="form-switch">
