@@ -483,6 +483,10 @@
 
       if($(window).width() < 600){
           $('.merchant-option').hide();
+          $('.mobile_alert_view').fadeIn();
+      }else{
+          $('.merchant-option').fadeIn();
+          $('.mobile_alert_view').hide();
       }
 
 

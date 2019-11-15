@@ -792,7 +792,7 @@
 }
 
 .external_footer > div > a:hover {
-	color: #33691e;
+	color: #fff;
 }
 
 .external_footer_bottom {
@@ -990,6 +990,7 @@
 }
 
 .mobile_alert_view {
+	display: none;
 	position: absolute;
 	top: 0;
 	height: 100vh;

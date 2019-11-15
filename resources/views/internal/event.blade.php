@@ -540,16 +540,10 @@
 
         $('.ani_row').each(function(i){
 
-        var tag = $(this);
-        var time = 20;
+          var tag = $(this);
+          var time = 20;
 
-        setTimeout(function(i){ 
-
-          tag.addClass('bounceInLeft');
-          tag.show();
-
-        }, time*i); 
-      });
+        });
 
         globalNotification();
 

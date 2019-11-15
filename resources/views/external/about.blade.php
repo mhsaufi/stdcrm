@@ -242,14 +242,12 @@
 
         <div class="backtext-about">
             <div class="text-about">
-                <p> Save The Date is a platform for both customers and vendors to manage their wedding planning. 
-                Save The Date is a platform for both customers and vendors to manage their wedding planning. 
-                Save The Date is a platform for both customers and vendors to manage their wedding planning.<br>
-                <br>
-                Save The Date is a platform for both customers and vendors to manage their wedding planning. 
-                Save The Date is a platform for both customers and vendors to manage their wedding planning. 
-                Save The Date is a platform for both customers and vendors to manage their wedding planning.
-                
+                <p> Save The Date is a platform designed specifically for wedding planning. By assembling together all the vendors and 
+                    brides, Save The Date makes everything happening along the day until the wedding day transparent. Subjective benefits applied to 
+                    different roles. <br>Market chances and publicities, will surely help vendors and companies to grow and serve better.<br>
+                    Our platform policies will secures customers from scammings and any unwanted frauds. <br><br>
+                    By incorporating the basic conceptual modern CRM, Save The Date benefits both vendors and customers to have a better experiences in events management. 
+                    
                 </p>
                 
             </div>
