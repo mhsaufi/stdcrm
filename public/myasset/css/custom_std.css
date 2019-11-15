@@ -1655,9 +1655,10 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background: #e74c3c;
+    background: #e65100;
     color: #fff;
     padding: 0 5%;
+    border-radius: 3px;
 }
 
 .vendors-tcard-name-invite-alert:hover {
@@ -1667,8 +1668,9 @@
 #view_timeline_content {
 	display: none;
 	position: fixed;
-	top: 15%;
-	left: 15%;
+	top: 50%;
+	left: 50%;
+    transform: translate(-50%, -50%);
 	padding: 0.6% 1.5%!important;
 	min-height: 20%;
 	width: 70%;
@@ -1678,13 +1680,15 @@
 	-webkit-box-shadow:0 0 30px #888;
 	box-shadow: 0 0 30px #888;
 	margin-bottom: 15%;
-	z-index: 99;
+	z-index: 999999;
 }
 
 #view_timeline_content_desc {
 	padding: 10px;
 	border: 0.05em solid #dcdcdc;
 	opacity: 0.8;
+	max-height: 500px;
+	overflow-x: scroll;
 }
 
 .view_timeline_content_info_label {

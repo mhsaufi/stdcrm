@@ -51,6 +51,7 @@ class UtilitiesController extends Controller
 				$main_data[$i]['month_text'] = $text_month;
                 $main_data[$i]['year'] = $date->format('Y');
 				$main_data[$i]['month_digit'] = $int_month;
+                $main_data[$i]['prev_btn'] = 0;
 
 				$timeline_data = $this->getMonthlyTimeline($date->format('Y'), $int_month, $company_id);
 
@@ -85,6 +86,8 @@ class UtilitiesController extends Controller
     			$last_month -= 7;
     		}
 
+            $lm_tag = new Carbon();
+
     		$date = new Carbon();
     		$year = $date->create()->year($last_year)->format('Y');
     		$day = $date->format('d');
@@ -101,6 +104,12 @@ class UtilitiesController extends Controller
     			}else{
 
     				$text_month = $date->format('M');
+
+                    if($date->format('m') == $lm_tag->format('m') && $date->format('Y') == $lm_tag->format('Y')){
+                        $prev_btn = 0;
+                    }else{
+                        $prev_btn = 1;
+                    }
     			}
 
 				$int_month = $date->format('m');
@@ -108,6 +117,7 @@ class UtilitiesController extends Controller
     			// parent layer array
 				$main_data[$i]['month_text'] = $text_month;
 				$main_data[$i]['month_digit'] = $int_month;
+                $main_data[$i]['prev_btn'] = $prev_btn;
                 $main_data[$i]['year'] = $date->format('Y');
 
 				$timeline_data = $this->getMonthlyTimeline($date->format('Y'), $int_month, $company_id);
