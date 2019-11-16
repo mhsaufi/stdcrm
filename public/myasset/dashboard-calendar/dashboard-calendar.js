@@ -5,7 +5,7 @@ var last_month = 0;
 var last_year = 0;
 url = APP_URL + '/load_t';
 
-// when page load, auto call for data for forecast calendar
+// when page load, auto call for data for forecast calendar ========================================================================================================================================
 $.post(url,function(result){
 
   var data = JSON.parse(result); // convert response from server to JSON
@@ -19,6 +19,15 @@ $.post(url,function(result){
     string += '<div class="col-forecast"><div class="header-forecast forecast-first main-forecast">';
     string += '<span class="title-forecast">'+ value.month_text +'</span>';
     string += '<span class="sub-title-forecast">'+ value.timeline_count +' event(s)</span></div>';
+
+    if(value.prev_btn == 0){
+
+      $('#minus').hide();
+
+    }else{
+
+      $('#minus').show();
+    }
 
     // to check if this month got timeline or not
     if(value.timeline_count != 0){
@@ -83,7 +92,7 @@ $.post(url,function(result){
   $('#dashboard_loading').hide();
 });
 
-// when clicked plus
+// when clicked plus ===============================================================================================================================================================================
 
 $('#plus').click(function(){
 
@@ -100,6 +109,15 @@ $('#plus').click(function(){
       string += '<div class="col-forecast"><div class="header-forecast forecast-first main-forecast">';
       string += '<span class="title-forecast">'+ value.month_text +'</span>';
       string += '<span class="sub-title-forecast">'+ value.timeline_count +' event(s)</span></div>';
+
+      if(value.prev_btn == 0){
+
+        $('#minus').hide();
+
+      }else{
+
+        $('#minus').show();
+      }
 
       if(value.timeline_count != 0){
         
@@ -157,7 +175,7 @@ $('#plus').click(function(){
   });
 });
 
-// when clicked minus
+// when clicked minus ==============================================================================================================================================================================
 
 $('#minus').click(function(){
 
@@ -174,6 +192,15 @@ $('#minus').click(function(){
       string += '<div class="col-forecast"><div class="header-forecast forecast-first main-forecast">';
       string += '<span class="title-forecast">'+ value.month_text +'</span>';
       string += '<span class="sub-title-forecast">'+ value.timeline_count +' event(s)</span></div>';
+
+      if(value.prev_btn == 0){
+
+        $('#minus').hide();
+
+      }else{
+
+        $('#minus').show();
+      }
 
       if(value.timeline_count != 0){
         

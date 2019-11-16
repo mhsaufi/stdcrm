@@ -241,7 +241,7 @@
               <label>(Optional) Any additional notes for {{ $package_data['company']['company_name'] }}</label><br>
               <textarea class="form-std" id="notes"></textarea>
               <br>
-              <input type="checkbox" name="agreement" id="agreement" req> I hereby Agree to the Term n Conditions applied to the package
+              <input type="checkbox" name="agreement" id="agreement" req> I hereby Agree to the Term and Conditions applied to the package
             </div>
             <div id="book_now">
               <button id="book_now_btn">

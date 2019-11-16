@@ -185,9 +185,9 @@
           </div>
         </div>
         <div class="std-row">
-          <a href="#" class="slide_btn previous round" id="minus">&#8249;</a>
+          <div><a href="#" class="slide_btn previous round" id="minus">&#8249;</a></div>
           <div id="year_label" style="padding: 5px 10px;border-bottom: 0.05em solid #d4af37;"></div>
-          <a href="#" class="slide_btn next round" id="plus">&#8250;</a>
+          <div><a href="#" class="slide_btn next round" id="plus">&#8250;</a></div>
         </div><br>     
         <div class="row-forecast animated faster" id='event_cal'>
           

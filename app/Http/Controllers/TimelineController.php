@@ -62,9 +62,13 @@ class TimelineController extends Controller
 
             $inbox_data = $inbox->where('i_item_id',$we_id)->where('i_type_id','4')->where('i_status_id','2')->get();
 
+            // echo "ada";
+
         }else{
 
             $inbox_data = '';
+
+            // echo "tiada";
 
         }
 
@@ -245,8 +249,7 @@ class TimelineController extends Controller
 
         //--------------------------------------------------
 
-    	return view('internal.timeline', 
-            compact('data_event','d_vendors','data_vendors','data_noti','categories','vendors_users','all_users_data','all_company_data','package_data','payment_data','inbox_data'));
+    	return view('internal.timeline', compact('data_event','d_vendors','data_vendors','data_noti','categories','vendors_users','all_users_data','all_company_data','package_data','payment_data','inbox_data'));
     }
 
     public function createTimeline(Request $request){
