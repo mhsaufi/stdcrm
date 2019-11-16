@@ -655,6 +655,7 @@
 			$('#editform').fadeToggle('fast');
 		}		
 
+		
 		// send data from new form
 		$('#submit').click(function(){
 			var ptitle = $('#ptitle').val();
