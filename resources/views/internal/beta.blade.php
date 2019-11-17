@@ -20,7 +20,7 @@
 			background: white;
 			display: flex;
 			flex-direction: row;
-			justify-content: space-between;
+			justify-content: space-around;
 			width: 100%;
 			height: 70vh;
 			position: relative;
@@ -65,6 +65,7 @@
 			/*background: blue;*/
 			margin-right: 30px;
 			margin-top: 20px;
+			width: 40%;
 		}
 		
 	    .company_logo_container {
@@ -94,6 +95,63 @@
 	    	color: white;
 	    	font-weight: bold;
 	    }
+
+	    #edit_profile_container {
+	    	position: fixed;
+	    	top: 0;
+	    	left: 0;
+	    	height: 100%;
+	    	width: 100%;
+	    	background: rgba(255,255,255,0.7);
+	    	z-index: 999;
+	    	display: none;
+	    }
+
+	    #edit_profile_popup {
+	    	position: absolute;
+	    	bottom: 10px!important;
+	    	left: 0;
+	    	width: 100%;
+	    	height: auto;
+	    	display: flex;
+	    	flex-direction: row;
+	    	justify-content: space-around;
+	    	align-items: flex-start;
+	    	background: #fff;
+	    	padding: 25px 0;
+	    	-moz-box-shadow:0 0 30px #888;
+			-webkit-box-shadow:0 0 30px #888;
+			box-shadow: 0 0 30px #888;
+	    }
+	    .po {
+	    	width: 24%;
+	    	display: flex;
+	    	flex-direction: column;
+	    	justify-content: space-around;
+	    }
+
+	    .closing_modal {
+	    	display: flex;
+	    	flex-direction: row;
+	    	justify-content: flex-end;
+	    }
+	    .form-popup {
+	    	padding: 5px 10px;
+	    	border: 0.05em solid #dcdcdc;
+	    	margin-bottom: 10px;
+	    	width: 100%;
+	    }
+	    .update_btn {
+	    	padding: 10px 20px;
+	    	border: none;
+	    	border-radius: 3px;
+	    	background: #4caf50;
+	    	cursor: pointer;
+	    	color: #fff;
+	    }
+	    .update_btn:hover {
+	    	opacity: 0.9;
+	    }
 	</style>
 </head>
 <body class="grey-background">
@@ -109,72 +167,57 @@
 		<div class="section-header">
 	    	<div class="section-sub-header">
 	    		<div class="header-company">
+	    			<div class="header-company-tab-active" onclick="profilemenu('0')">PERSONAL INFO</div>
 	    			<div class="header-company-tab" onclick="profilemenu('1')">BUSINESS INFO</div>
 	    			<div class="header-company-tab" onclick="profilemenu('2')">GALLERY</div>
 	    			<div class="header-company-tab" onclick="profilemenu('3')">PACKAGES</div>
 	    			<div class="header-company-tab" onclick="profilemenu('4')">MARKETING</div>
 	    		</div>
 	    		<div class="header-company-logo">
-	    			<div>
-	    				<label class="std-label">Bussiness Name</label>
+	    			<div class="info-content">
+	    				<label class="std-label">Fullname</label>
 	    				<br>
-	    				<span class="std_info">{{ $c_info[0]->company_name }}</span>
+	    				<span class="std_info">{{ Auth::user()->fullname }}</span>
+	    				<br><br>
+	    				<label class="std-label">Name</label>
+	    				<br>
+	    				<span class="std_info">{{ Auth::user()->name }}</span>
+	    				<br>
+	    				<label class="std-label">Contact Number</label>
+	    				<br>
+	    				<span class="std_info">{{ Auth::user()->phone }}</span>
+	    				<br><br>
+	    				<label class="std-label">Email</label>
+	    				<br>
+	    				<span class="std_info">{{ Auth::user()->email }}</span>
+	    			</div>
+	    			<div class="info-content">
+	    				<div style="display: flex;flex-direction: row;justify-content: flex-end;">
+	    					<div>
+		    					<button onclick="edit_profile()" class="btn_style btn-six"><i class="fas fa-edit"></i><span>EDIT INFO </span></button>
+		    				</div>
+	    				</div>
+	    				<br><br>
+	    				<label class="std-label">DOB</label>
+	    				<br>
+	    				<span class="std_info">{{ Auth::user()->dob }}</span>
 	    				<br><br>
 	    				<label class="std-label">Address</label>
 	    				<br>
-	    				<span class="std_info">{{ $c_info[0]->company_address }}</span>
-	    				<br>
-	    				<div class="info-content">
-	    				<label class="std-label">Contact</label>
-	    				<br>
-	    				<span class="std_info">{{ $c_info[0]->company_contact }}</span>
+	    				<span class="std_info">{{ Auth::user()->address }}</span>
 	    				<br><br>
-	    				<label class="std-label">SSM</label>
+	    				<label class="std-label">State</label>
 	    				<br>
-	    				<span class="std_info">{{ $c_info[0]->company_ssm }}</span>
-	    			</div>
-	    			<div class="info-content">
-	    				<label class="std-label">Email</label>
-	    				<br>
-	    				@if($c_info[0]->company_email == '')
-	    				<span class="std_info">{{ Auth::user()->email }}</span>
-	    				@else
-	    				<span class="std_info">{{ $c_info[0]->company_email }}</span>
-	    				@endif
+	    				<span class="std_info">{{ Auth::user()->state }}</span>
 	    				<br><br>
 	    				<label class="std-label">Registered at</label>
 	    				<br>
 	    				<span class="std_info">{{ $c_info[0]->created_at }}</span>
 	    			</div>
 	    			</div>
-	    			<div style="position: relative;">
-	    				<div class="company_logo_container" style="">
-	    				
-		    			</div>
-
-		    			<div class="company_logo_container_2">
-		    				<div style="font-size: 100px;margin: 22% 26%;"><i class="fas fa-plus"></i></div>
-		    			</div>
-	    			</div>
 	    		</div>
 	    	</div>
 	    </div>
-	</div>
-
-	<div id="logo_uploader_container">
-		<div style="padding-bottom: 15px;border-bottom: 0.05em solid #FFD54F;display: flex;flex-direction: row;justify-content:space-between;">
-			<div>NEW LOGO</div>
-			<div style="opacity: 0.6;"><i class="fas fa-times" id="close_uploader"></i></div>
-		</div>
-		<div style="padding-bottom: 20px;margin-top: 15px;">
-			<form action="{{ url('/newlogo') }}" method="POST" class="dropzone">
-				<input type="hidden" name="_token" value="{{ csrf_token() }}">
-				<div class="fallback">
-					<input name="file" type="file" multiple />
-				</div>
-			</form>
-		</div>
-		<div class="ok_upload">DONE</div>
 	</div>
 
 	<div id="dp_uploader_container">
@@ -193,7 +236,51 @@
 		<div class="ok_upload_dp">DONE</div>
 	</div>
 
-    
+    <div id="edit_profile_container">
+    	<div id="edit_profile_popup" class="animated fadeInUp fast">
+    		<div class="po">
+    			<button class="update_btn">UPDATE INFO</button>
+    		</div>
+    		<div class="po">
+    			<div>Fullname</div>
+    			<div><input type="text" name="name" id="fullname" class="form-popup" value="{{ Auth::user()->fullname }}"/></div>
+    			<div>Contact</div>
+    			<div><input type="text" name="name" id="phone" class="form-popup" value="{{ Auth::user()->phone }}"/></div>
+    			<div>State</div>
+    			<div>
+    				<select class="form-popup" id="state">
+    					<option value="">Please choose your state</option>
+						<option value="Johor">Johor</option>
+						<option value="Kedah">Kedah</option>
+						<option value="Kelantan">Kelantan</option>
+						<option value="Melaka">Melaka</option>
+						<option value="Negeri">Negeri Sembilan</option>
+						<option value="Pahang">Pahang</option>
+						<option value="Perak">Perak</option>
+						<option value="Perlis">Perlis</option>
+						<option value="Pulau Pinang">Pulau Pinang</option>
+						<option value="Sabah">Sabah</option>
+						<option value="Sarawak">Sarawak</option>
+						<option value="Selangor">Selangor</option>
+						<option value="Terengganu">Terengganu</option>
+						<option value="Wilayah">Wilayah Persekutuan</option>
+						<option value="International">International</option>
+    				</select>
+    			</div>
+    		</div>
+    		<div class="po">
+    			<div>DOB</div>
+    			<div><input type="date" name="name" class="form-popup" value="{{ Auth::user()->dob }}" id="dob" /></div>
+    			<div>Address</div>
+    			<div><textarea class="form-popup" id="address"></textarea></div>
+    			
+    			
+    		</div>
+    		<div class="po closing_modal">
+    			<div style="width: 50px;cursor: pointer;" id="close_popup_edit"><i class="fas fa-times"></i></div>
+    		</div>
+    	</div>
+    </div>
 
 
     @include('templates.footer')
@@ -240,7 +327,8 @@
 
     	function profilemenu(id){
 
-    		var urlCompany = '{{ url("/profile") }}';
+    		var urlPersonal = '{{ url("/profile") }}';
+    		var urlCompany = '{{ url("/profile/business") }}';
     		var urlGallery = '{{ url("/profile/gallery") }}';
     		var urlPackage = '{{ url("/profile/package") }}';
     		var urlMarketing = '{{ url("/profile/marketing") }}';
@@ -249,18 +337,50 @@
     		{
     			window.location.replace(urlCompany);
     		}
-    		else if(id == 2){
+    		else if(id == 0)
+    		{
+    			window.location.replace(urlPersonal);
+    		}
+    		else if(id == 2)
+    		{
     			window.location.replace(urlGallery);
     		}
-    		else if(id == 3){
+    		else if(id == 3)
+    		{
     			window.location.replace(urlPackage);
     		}
     		else
     		{
     			window.location.replace(urlMarketing);
     		}
-
     	}
+
+    	function edit_profile(){
+
+    		$('#edit_profile_container').fadeIn();
+    	}
+
+    	$('#close_popup_edit').click(function(){
+
+    		$('#edit_profile_container').fadeOut();
+    	});
+
+    	$('.update_btn').click(function(){
+
+    		url = APP_URL + '/profile/update';
+    		var fname = $('#fullname').val();
+    		var phonenum = $('#phone').val();
+    		var dob = $('#dob').val();
+    		var addr = $('#address').val();
+    		var state = $('#state').val();
+
+    		// console.log(dob);
+
+    		$.post(url,{_token:token,fname:fname,phonenum:phonenum,dob:dob,addr:addr,state:state},function(result){
+
+    			location.reload();
+    		});
+    	});
     </script>
     <script src="{{asset('myasset/js/global_notification.js')}}"></script> 
 </body>

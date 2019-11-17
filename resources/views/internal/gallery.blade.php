@@ -132,6 +132,7 @@
 		<div class="section-header">
 	    	<div class="section-sub-header">
 	    		<div class="header-company">
+	    			<div class="header-company-tab" onclick="profilemenu('0')">PERSONAL INFO</div>
 	    			<div class="header-company-tab" onclick="profilemenu('1')">BUSINESS INFO</div>
 	    			<div class="header-company-tab" onclick="profilemenu('2')">GALLERY</div>
 	    			<div class="header-company-tab" onclick="profilemenu('3')">PACKAGES</div>
@@ -281,7 +282,8 @@
 
     	function profilemenu(id){
 
-    		var urlCompany = '{{ url("/profile") }}';
+    		var urlPersonal = '{{ url("/profile") }}';
+    		var urlCompany = '{{ url("/profile/business") }}';
     		var urlGallery = '{{ url("/profile/gallery") }}';
     		var urlPackage = '{{ url("/profile/package") }}';
     		var urlMarketing = '{{ url("/profile/marketing") }}';
@@ -290,10 +292,16 @@
     		{
     			window.location.replace(urlCompany);
     		}
-    		else if(id == 2){
+    		else if(id == 0)
+    		{
+    			window.location.replace(urlPersonal);
+    		}
+    		else if(id == 2)
+    		{
     			window.location.replace(urlGallery);
     		}
-    		else if(id == 3){
+    		else if(id == 3)
+    		{
     			window.location.replace(urlPackage);
     		}
     		else

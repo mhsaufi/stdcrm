@@ -1,3 +1,23 @@
+<style type="text/css">
+	.tags {
+		background: #888;
+		color: #fff;
+		padding: 8px 10px;
+		font-size: 0.7em;
+		border-radius: 5px;
+		border: 0.1em solid #999;
+		margin-right: 1px;      
+	}
+
+	.tags-space {
+		/*background: blue;*/
+		height: 2.3em;
+		/*margin-top: 40px;*/
+		margin-left: 300px;     
+	}
+</style>
+
+
 <div class="section-padding">
 	<div class="container">
 		<div class="section-header">

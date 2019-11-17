@@ -303,7 +303,7 @@
   					<i class="fa fa-search icon"></i>
   				</div>                            
   				<div class="search-engine-panel-footer">
-  					<button class="btn-search">Search Events</button>
+  					<button class="btn-search" id="search_event">Search Events</button>
   				</div>
   			</div> 
 
@@ -409,7 +409,17 @@
         autoplay: {
           delay: 3000,
         },
-      })
+      });
+
+      $('#search_event').click(function(){
+
+        var query = $('#query-input').val();
+        var url = APP_URL + '/events?search=' + query;
+
+        window.location.replace(url);
+
+      });
+
     </script>
 </body>
 </html>
