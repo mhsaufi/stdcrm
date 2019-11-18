@@ -92,15 +92,168 @@
 			padding: 5px 10px;
 			border: 0.05em solid #dcdcdc;
 			font-size: 12px;
+			/*height: 40px;*/
 		}
 
 		.action_icon {
-			opacity: 0.5;
+			opacity: 0.3;
 			cursor: pointer;
 		}
 
 		.action_icon:hover {
-			opacity: 0.8;
+			opacity: 1;
+			color: #009688;
+		}
+
+		.user_profile_container {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(255,255,255, 0.7);
+			display: none;
+		}
+
+		.user_profile_modal {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 30%;
+			height: auto;
+			transform: translate(-50%, -50%);
+			border-radius: 5px;
+			background: #fff;
+			-moz-box-shadow: 0 0  30px #888;
+			-webkit-box-shadow: 0 0  30px #888;
+			box-shadow: 0 0  30px #888;
+			padding: 20px 20px;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+		}
+
+		.user_profile_modal_content {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+		}
+
+		.user_profile_modal_info {
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+		}
+
+		.user_profile_modal_info > div {
+			margin-bottom: 10px;
+		}
+
+		.user_profile_modal_close, .user_promotion_modal_close {
+			width: 100%;
+			display: flex;
+			flex-direction: row;
+			justify-content: flex-end;
+			/*background: blue;*/
+			margin-bottom: 15px;
+		}
+
+		.close_modal, .close_modal_promotion {
+			width: 50px;
+			cursor: pointer;
+			opacity: 0.5;
+			display: flex;
+			flex-direction: row;
+			justify-content: flex-end;
+		}
+
+		.close_modal:hover, .close_modal_promotion:hover {
+			opacity: 1.0;
+		}
+
+		#user_dp {
+			width: 150px;
+			height: 150px;
+			border-radius: 50%;
+			background-size: cover;
+			background-position: center;
+		}
+
+		.user_label {
+			opacity: 0.5;
+			font-style: italic;
+			font-size: 0.9em;
+		}
+
+		.user_promotion_container {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(255,255,255, 0.7);
+			display: none;
+		}
+
+		.user_promotion_modal {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 40%;
+			height: auto;
+			transform: translate(-50%, -50%);
+			border-radius: 5px;
+			background: #fff;
+			-moz-box-shadow: 0 0  30px #888;
+			-webkit-box-shadow: 0 0  30px #888;
+			box-shadow: 0 0  30px #888;
+			padding: 20px 20px;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+		}
+
+		.user_promotion_modal_content {
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+		}
+
+		.user_promotion_modal_content > div {
+			margin-bottom: 10px;
+		}
+
+		.promotion_select {
+			padding: 5px 10px;
+			border: 0.05em solid #dcdcdc;
+			width: 200px;
+			height: auto;
+		}
+
+		.extra_mg {
+			margin-bottom: 20px;
+		}
+
+		.user_promotion_modal_footer {
+			padding: 10px 0;
+			display: flex;
+			flex-direction: row;
+			justify-content: flex-end;
+		}
+
+		.user_promotion_modal_footer > button {
+			margin-left: 15px;
+		}
+
+		.promotion_btn {
+			padding: 5px 10px;
+			border: none;
+			border-radius: 3px;
+			color: #fff;
+		}
+
+		.promotion_btn:hover {
+			opacity: 0.9;
 		}
 	 </style>
 
@@ -148,9 +301,9 @@
     								@endif
     								<td>
     									<div style="width: 100%;display: flex;flex-direction: row;justify-content: space-around;">
-    										<div class="action_icon"><i class="fas fa-search-plus"></i></div>
-    										<div class="action_icon"><i class="fas fa-link"></i></div>
-    										<div class="action_icon"><i class="fas fa-volume-mute"></i></div>
+    										<div class="action_icon user_info" data-id="{{ $user['id'] }}"><i class="fas fa-search-plus"></i></div>
+    										<div class="action_icon user_promote" data-id="{{ $user['id'] }}"><i class="fas fa-link"></i></div>
+    										<div class="action_icon" data-id="{{ $user['id'] }}"><i class="fas fa-volume-mute"></i></div>
     									</div>
     								</td>
     							</tr>
@@ -187,6 +340,45 @@
     					</table>
     				</div>
     			</div>
+    		</div>
+    	</div>
+    </div>
+
+    <div class="user_profile_container">
+    	<div class="user_profile_modal">
+    		<div class="user_profile_modal_close"><div class="close_modal"><i class="fas fa-times"></i></div></div>
+    		<div class="user_profile_modal_content">
+    			<div class="user_profile_modal_info">
+	    			<div class="user_label">Name</div>
+	    			<div id="user_name"></div>
+	    			<div class="user_label">Username</div>
+	    			<div id="user_fullname"></div>
+	    			<div class="user_label">Email</div>
+	    			<div id="user_email"></div>
+	    			<div class="user_label">Phone</div>
+	    			<div id="user_phone"></div>
+	    		</div>
+	    		<div>
+	    			<div id="user_dp"></div>
+	    		</div>
+    		</div>
+    	</div>
+    </div>
+
+    <div class="user_promotion_container">
+    	<div class="user_promotion_modal">
+    		<div class="user_promotion_modal_close"><div class="close_modal_promotion"><i class="fas fa-times"></i></div></div>
+    		<div class="user_promotion_modal_content">
+    			<div>Promotion Package</div>
+    			<div>
+    				<select class="promotion_select extra_mg" id="promotion">
+    					<option>- select promotion -</option>
+    				</select>
+    			</div>
+    			<div><input type="checkbox" name=""> Email this user each time new Promotion released</div>
+    		</div>
+    		<div class="user_promotion_modal_footer">
+    			<button class="promotion_btn" style="background: #9933FF;">Save Setting</button><button class="promotion_btn" style="background: #33CC99;">Email Promotion</button>
     		</div>
     	</div>
     </div>
@@ -233,6 +425,59 @@
 			   $('#client_tab span').last().remove();
 			}
 		})
+
+		$('.user_info').each(function(){
+
+			var icon = $(this);
+
+			icon.click(function(){
+
+				var url = APP_URL + '/infouser';
+				var id = icon.data('id');
+
+				$.post(url,{_token:token,id:id},function(result){
+
+					var obj = JSON.parse(result);
+
+					$('#user_name').html(obj.name);
+					$('#user_fullname').html(obj.fullname);
+					$('#user_email').html(obj.email);
+					$('#user_phone').html(obj.phone);
+
+					if(obj.dp === null){
+
+						$('#user_dp').css('background-image','url("'+ APP_URL +'/myasset/img/default.png")');
+
+					}else{
+
+						$('#user_dp').css('background-image','url("'+ APP_URL +'/storage/'+ obj.dp +'")');
+					}
+
+					$('.user_profile_container').fadeIn('fast');
+				});
+			});
+		});
+
+		$('.user_promote').each(function(){
+
+			var icon = $(this);
+
+			icon.click(function(){
+
+				$('.user_promotion_container').fadeIn('fast');
+			});
+
+		});
+
+		$('.close_modal').click(function(){
+
+			$('.user_profile_container').fadeOut('fast');
+		});
+
+		$('.close_modal_promotion').click(function(){
+
+			$('.user_promotion_container').fadeOut('fast');
+		});
 	</script>
 
 	<script src="{{ asset('myasset/js/global_notification.js') }}"></script>

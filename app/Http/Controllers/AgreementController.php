@@ -47,7 +47,29 @@ class AgreementController extends Controller
                                     ->where('party_type','company')
                                     ->first();
 
-                $vendor_info[$i]['agreement_data'] = $data_agreement;
+                if($data_agreement){
+
+                    $vendor_info[$i]['agreement_data'] = $data_agreement;
+
+                }else{
+
+                    $agreement1 = new WEventAgreement;
+
+                    $agreement1->we_id = $we_id;
+                    $agreement1->party_id = $vendor['vendor']['company_id'];
+                    $agreement1->party_type = "company";
+                    $agreement1->party_agree = '0';
+
+                    $agreement1->save();
+
+                    $data_agreement = $agreement3->where('we_id',$we_id)
+                                    ->where('party_id',$vendor['vendor']['company_id'])
+                                    ->where('party_type','company')
+                                    ->first();
+
+                    $vendor_info[$i]['agreement_data'] = $data_agreement;
+                }
+                
 
                 $i++; 
 

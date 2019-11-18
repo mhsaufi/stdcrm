@@ -274,7 +274,7 @@
                                   <div class="icon-circle" id="all">
                                     <div>
                                       <i class="fas fa-bars fa-3x"></i>
-                                      <p><a href="{{ url('/booking') }}">All</a></p> 
+                                      <p><a href="#">All</a></p> 
                                     </div>
                                   </div>                           
                                   </div>
@@ -448,8 +448,6 @@
                     <i class="fas fa-question-circle"></i> How it works
                     </a>
                 </li>
-
-                <!-- </div>  -->
                             
               @if (Route::has('login'))                
                   @auth
@@ -671,7 +669,39 @@
 
       $('#all').click(function(){
         window.location.replace("{{ url('/listvendor') }}");
-      })
+      });
+
+      $('#photo').click(function(){
+        window.location.replace("{{ url('/listvendor') }}?c=1");
+      });
+
+      $('#dj').click(function(){
+        window.location.replace("{{ url('/listvendor') }}?c=3");
+      });
+
+      $('#catering').click(function(){
+        window.location.replace("{{ url('/listvendor') }}?c=8");
+      });
+
+      $('#pelamin').click(function(){
+        window.location.replace("{{ url('/listvendor') }}?c=29,28,9");
+      });
+
+      $('#dress').click(function(){
+        window.location.replace("{{ url('/listvendor') }}?c=24,26");
+      });
+
+      $('#hall').click(function(){
+        window.location.replace("{{ url('/listvendor') }}?c=9");
+      });
+
+      $('#cards').click(function(){
+        window.location.replace("{{ url('/listvendor') }}?c=14,30");
+      });
+
+      $('#booth').click(function(){
+        window.location.replace("{{ url('/listvendor') }}?c=16");
+      });
 
       $('#btn-register').click(function(){
         window.location.replace("{{ route('register') }}");

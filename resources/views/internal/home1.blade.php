@@ -201,7 +201,7 @@
 
     <div id="dashboard_loading">
       <div>
-        <img src="{{ asset('myasset/img/carrier/loading.gif') }}"> 
+        <img src="{{ asset('myasset/img/carrier/loading.gif') }}" width="10%"> 
       </div>
     </div>
 

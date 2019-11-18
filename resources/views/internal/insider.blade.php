@@ -53,7 +53,6 @@
 		.contact_container > .header {
 			position: relative;
 			width: 100%;
-			height: 200px!important;
 			height: auto;
 			display: flex;
 			flex-direction: row;

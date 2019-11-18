@@ -84,4 +84,15 @@ class ContactController extends Controller
 
     	return "success";
     }
+
+    public function infoUser(Request $request){
+
+    	$id = $request->input('id');
+
+    	$user = new User;
+
+    	$data = $user->where('id',$id)->first();
+
+    	return json_encode($data);
+    }
 }

@@ -162,6 +162,7 @@ Route::get('/past','EventController@pastEvent');
 // ---------------------------------------  CONTACT
 
 Route::get('/contact','ContactController@index')->middleware('auth');
+Route::post('/infouser','ContactController@infoUser');
 
 // ---------------------------------------  INSIDER
 

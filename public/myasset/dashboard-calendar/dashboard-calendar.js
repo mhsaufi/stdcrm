@@ -8,6 +8,8 @@ url = APP_URL + '/load_t';
 // when page load, auto call for data for forecast calendar ========================================================================================================================================
 $.post(url,function(result){
 
+  $('#dashboard_loading').show();
+
   var data = JSON.parse(result); // convert response from server to JSON
 
   var string = ''; // defined empty string to build HTML string later
@@ -56,7 +58,7 @@ $.post(url,function(result){
 
         string += '</div>';
         string += '<span class="event-date">'+ val.datetime +'</span><br>';
-        string += '<span class="event-title">'+ val.we_title +'</span> ';
+        string += '<span class="event-title">'+ val.we_title +'</span><br> ';
         string += '<span class="event-date"><em><small>'+ val.we_date+'</small></em></span><br>';
         // string += '<span class="event-venue">'+ val.we_venue +'</span>';
         string += '</div>';
@@ -95,6 +97,8 @@ $.post(url,function(result){
 // when clicked plus ===============================================================================================================================================================================
 
 $('#plus').click(function(){
+
+  $('#dashboard_loading').show();
 
   $.post(url,{'lm':last_month,'ly':last_year,'ld':'plus',_token:token},function(result){
 
@@ -165,6 +169,8 @@ $('#plus').click(function(){
 
     });
 
+    $('#dashboard_loading').hide();
+
     // $('#event_cal').html(string).effect('slide',{direction:"right"},'fast');
     $('#event_cal').html(string).addClass('bounceInRight').one('animationend',function(){
 
@@ -180,6 +186,8 @@ $('#plus').click(function(){
 $('#minus').click(function(){
 
   url = APP_URL + '/load_t';
+
+  $('#dashboard_loading').show();
 
   $.post(url,{'lm':last_month,'ly':last_year,'ld':'minus',_token:token},function(result){
 
@@ -245,6 +253,8 @@ $('#minus').click(function(){
       last_year = value.year;
       $('#year_label').html(value.year_text);
     });
+
+    $('#dashboard_loading').hide();
 
     // $('#event_cal').html(string).effect('slide','fast');
     $('#event_cal').html(string).addClass('bounceInLeft').one('animationend',function(){

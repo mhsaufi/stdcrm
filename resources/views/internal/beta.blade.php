@@ -118,7 +118,7 @@
 	    	justify-content: space-around;
 	    	align-items: flex-start;
 	    	background: #fff;
-	    	padding: 25px 0;
+	    	padding: 50px 0;
 	    	-moz-box-shadow:0 0 30px #888;
 			-webkit-box-shadow:0 0 30px #888;
 			box-shadow: 0 0 30px #888;
@@ -357,12 +357,12 @@
 
     	function edit_profile(){
 
-    		$('#edit_profile_container').fadeIn();
+    		$('#edit_profile_container').fadeIn('fast');
     	}
 
     	$('#close_popup_edit').click(function(){
 
-    		$('#edit_profile_container').fadeOut();
+    		$('#edit_profile_container').fadeOut('fast');
     	});
 
     	$('.update_btn').click(function(){

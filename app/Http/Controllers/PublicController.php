@@ -219,38 +219,149 @@ class PublicController extends Controller
 
     public function listVendor(Request $request){
 
-        $search_query = $request->input('query');
+        if($request->input('c') <> 'null'){
+
+            $selectedCategory = $request->input('c');
+
+        }else{
+
+            $selectedCategory = '';
+        }
+
+        if($request->input('cm') <> 'null'){
+
+            $selectedCompany = $request->input('cm');
+
+        }else{
+
+            $selectedCompany = '';
+        }
+
+        //--------------------------------------------------------------------
+
+        if($selectedCategory <> ''){
+
+            $selectedC = explode(',', $selectedCategory);
+
+        }else{
+
+            $selectedC = array();
+        }
+
+        if($selectedCompany <> ''){
+
+            $selectedCM = explode(',', $selectedCompany);
+
+        }else{
+
+            $selectedCM = array();
+        }
+
+        //--------------------------------------------------------------------
 
         $category = new CompanyCategory;
 
         $category_data = $category->get();
 
+        $company_category_tag = new CompanyCategoryTag;
+
+        $query = $company_category_tag;
+
         $company = new Company;
 
-        if($search_query == ''){
+        $result = $company->get();
 
-            $result = $company->get();
+        $query_2 = $company;
 
-            $p_count = $company->count();
+        $company_id_arr = array();
 
-            $i = 0;
+        if(!empty($selectedC)){
 
-            foreach($result as $r){
+            $query = $query->whereIn('cc_id',$selectedC)->get();
 
-                $utilities = new UtilitiesController;
-
-                $rating = $utilities->companyRating($r['company_id']);
-
-                $result[$i]['rating'] = $rating;
-
-                $i++;
+            foreach($query as $q)
+            {
+                array_push($company_id_arr, $q['company_id']);
             }
+
+            if(!empty($selectedCM))
+            {
+                foreach($selectedCM as $sm)
+                {
+                    if(!in_array($sm, $company_id_arr))
+                    {
+                        array_push($company_id_arr, $sm);
+                    }
+                }
+            }
+
+            $query_2 = $query_2->whereIn('company_id',$company_id_arr);
 
         }else{
 
+            if(!empty($selectedCM)){
+
+                foreach($selectedCM as $sm)
+                {
+                    if(!in_array($sm, $company_id_arr))
+                    {
+                        array_push($company_id_arr, $sm);
+                    }
+                }
+
+                $query_2 = $query_2->whereIn('company_id',$company_id_arr);
+            }
         }
 
-        return view('external.beta',compact('result','category_data','p_count'));
+        $p_result = $query_2->get();
+        $p_count = $query_2->count();
+
+        $i = 0;
+
+        foreach($p_result as $r){
+
+            $utilities = new UtilitiesController;
+
+            $rating = $utilities->companyRating($r['company_id']);
+
+            $p_result[$i]['rating'] = $rating;
+
+            $i++;
+        }
+
+
+        //--------------------------------------------------------------------
+
+        // $category = new CompanyCategory;
+
+        // $category_data = $category->get();
+
+        // $company = new Company;
+
+        // if($search_query == ''){
+
+        //     $result = $company->get();
+
+        //     $p_count = $company->count();
+
+        //     $i = 0;
+
+        //     foreach($result as $r){
+
+        //         $utilities = new UtilitiesController;
+
+        //         $rating = $utilities->companyRating($r['company_id']);
+
+        //         $result[$i]['rating'] = $rating;
+
+        //         $i++;
+        //     }
+
+        // }else{
+
+        // }
+
+        return view('external.beta',compact('result','p_result','category_data','p_count'));
     }
 
     public function viewVendor($company_name, $company_id){
@@ -400,8 +511,6 @@ class PublicController extends Controller
             }
 
         }else{
-
-            echo "2";
 
             if(!empty($selectedCM)){
 

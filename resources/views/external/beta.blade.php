@@ -288,7 +288,7 @@
 
 	  <!-- Header Area wrapper Starts -->
     <header id="header-wrap">
-      @include('templates.navbar')
+      @include('templates.navbar') 
     </header>
     <!-- Header Area wrapper End -->
 
@@ -330,7 +330,7 @@
           <div class="result_container below_2">
           @endif
             
-            @foreach($result as $r)
+            @foreach($p_result as $r)
             <div class="vendor_cards" onclick="viewVendors('{{ $r['company_id'] }}','{{ $r['company_name']}}')">
               <div class="vendor_cards_info" style="background: url('{{ asset('myasset/img/back.jpg') }}');background-size: cover;">
                 <div style="height: 25%;">
@@ -405,6 +405,17 @@
         window.location.replace(url);
 
       }
+
+      $('#std_search_btn').click(function(){
+
+        var selectedCategory = $('#select_company_category').val();
+        var company_id = $( "#select_company_name option:selected" ).val();
+
+        var url = '{{ url("/listvendor") }}'+ '?c=' + selectedCategory + '&cm=' + company_id;
+
+        window.location.replace(url);
+
+      });
     </script>
 </body>
 </html>
