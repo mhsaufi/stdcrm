@@ -175,11 +175,28 @@ class PublicController extends Controller
         return $status;
     }
 
-    public function events(){
+    public function events(Request $request){
 
-        $event = new EventExternal;
-        $event_data = $event->get();
-        $event_count = $event->count();
+        $query = $request->input('search');
+
+        $equery = new EventExternal;
+
+        if($query){
+
+            $equery = $equery
+                        ->where('ee_title','like','%'.$query)
+                        ->orWhere('ee_title','like','%'.$query.'%')
+                        ->orWhere('ee_title','like',$query.'%')
+                        ->orWhere('description','like','%'.$query)
+                        ->orWhere('description','like','%'.$query.'%')
+                        ->orWhere('description','like',$query.'%')
+                        ->orWhere('location','like','%'.$query)
+                        ->orWhere('location','like','%'.$query.'%')
+                        ->orWhere('location','like',$query.'%');
+        }
+
+        $event_data = $equery->get();
+        $event_count = $equery->count();
 
         $i = 0;
 

@@ -589,7 +589,8 @@
 
 				$.post(url, {fname:fullname,phonenum:phoneno,dob:dateob,addr:addrs,state:states,_token:token},function(){
 					alert('Profile successfully updated');
-					$('#background_tp').fadeToggle('fast');				
+					$('#background_tp').fadeToggle('fast');
+					location.reload();				
 				});			
 			});
 

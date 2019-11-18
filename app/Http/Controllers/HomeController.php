@@ -140,8 +140,26 @@ class HomeController extends Controller
             $event_count = $event->count();
 
             return view('internal.profile',compact('event_data','event_count'));
-            // echo "No page yet";
         }
+    }
+
+    public function business(Request $request){
+
+        $company = new Company;
+
+        $c_info = $company->where('company_id',Auth::user()->company_id)->get();
+
+        $logo = $c_info[0]['company_logo'];
+
+        $tag = new CompanyCategoryTag;
+
+        $tag_list = $tag->where('company_id',Auth::user()->company_id)->get();
+
+        $utilities = new UtilitiesController;
+
+        $rate = $utilities->companyRating(Auth::user()->company_id);
+
+        return view('internal.business',compact('c_info','logo','tag_list','rate'));
     }
 
     public function vendorHome(){

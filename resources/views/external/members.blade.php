@@ -60,33 +60,6 @@
         overflow: hidden;
     }
 
-    .drpdown {
-        font-size: 16px;  
-        border: none;
-        outline: none;
-        color: white;
-        padding: 1px 3px;
-        font: inherit;
-        margin: 0;
-    }
-
-    .drpdown:hover{
-        color: #d4af37 ;
-    }
-
-    .drpdown-content {
-        display: none;
-        position: absolute;
-        background: url("{{asset('myasset/img/movg.mp4')}}");  
-        width: 100%;
-        left: 0;
-        z-index: 1;
-    }
-
-    .drpdown:hover .drpdown-content {
-        display: block;
-    }
-
     .fade-in {
         animation: fadeIn ease 1s;
         -webkit-animation: fadeIn ease 1s;
@@ -138,6 +111,7 @@
         width:50%;
         height:100%;
         z-index:86;
+        background: none!important;
     }
 
     .rightlayer{
@@ -147,6 +121,7 @@
         width:50%;
         height:100%;
         z-index:86;
+        background: none!important;
     }
 
     /* ------------------------------ shape styling */
@@ -312,7 +287,7 @@
 
         <div class="rightlayer">
           <div class="ocard-right">
-            <img src="{{asset('myasset/img/default.jpeg')}}" alt="Avatar" style="width:100%" class="oimg">
+            <img src="{{asset('myasset/img/4177.jpg')}}" alt="Avatar" style="width:100%" class="oimg">
             <div class="ocontainer">
               <h4><b>Dr Aznan Zuhid</b></h4> 
               <p>Supervisor</p> 
