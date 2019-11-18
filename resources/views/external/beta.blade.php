@@ -86,8 +86,8 @@
 
     .vendor_cards {
       position: relative;
-      width: 380px;
-      height: 250px;
+      width: 350px;
+      height: 210px;
       min-height: 220px;
       /*background: yellow;*/
       margin: 15px 10px;
@@ -95,9 +95,10 @@
       flex-direction: column;
       justify-content: flex-start;
       border-radius: 5px;
-      -moz-box-shadow: 0 0 6px #888;
+      border: 0.05em solid #dcdcdc;
+      /*-moz-box-shadow: 0 0 6px #888;
       -webkit-box-shadow: 0 0 6px#888;
-      box-shadow: 0 0 4px #888;
+      box-shadow: 0 0 4px #888;*/
       transition: margin-top 0.1s;
     }
 
@@ -111,9 +112,9 @@
     }
 
     .vendor_cards:hover {
-      -moz-box-shadow: 0 0 20px #888;
-      -webkit-box-shadow: 0 0 20px#888;
-      box-shadow: 0 0 20px #888;
+      -moz-box-shadow: 0 0 5px #888;
+      -webkit-box-shadow: 0 0 5px#888;
+      box-shadow: 0 0 5px #888;
       /*margin-top: 5px;*/
     }
 
@@ -121,9 +122,9 @@
       position: absolute;
       border-radius: 50%;
       border: 0.05em solid white;
-      height: 70px;
-      width: 70px;
-      top: 160px;
+      height: 50px;
+      width: 50px;
+      top: 150px;
       right: 10px;
       z-index: 81;
     }
@@ -132,10 +133,10 @@
       position: absolute;
       border-radius: 50%;
       border: 0.05em solid white;
-      height: 70px;
-      width: 70px;
+      height: 50px;
+      width: 50px;
       background: white;
-      top: 160px;
+      top: 150px;
       right: 10px;
       z-index: 80;
     }
@@ -240,7 +241,7 @@
         border: 0.05em solid white;
         height: 50px;
         width: 50px;
-        top: 190px;
+        top: 170px;
         right: 10px;
         z-index: 81;
       }
@@ -252,7 +253,7 @@
         height: 50px;
         width: 50px;
         background: white;
-        top: 190px;
+        top: 170px;
         right: 10px;
         z-index: 80;
       }

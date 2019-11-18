@@ -553,7 +553,7 @@
           </div>
         </div>
       </div>
-      <div style="display: flex;flex-direction: row;justify-content: space-between;padding: 15px 0;">
+      <div class="view_timeline_content_info">
         <div class="view_timeline_content_info_label"><i class="far fa-clock"></i>&nbsp&nbsp <span id="datetime"></span></div>
         <div class="view_timeline_content_info_label"><i class="fas fa-user-alt"></i>&nbsp&nbsp <span id="user"></span></div>
         <div class="view_timeline_content_info_label" style="color: green;" id="payment_element"><i class="fas fa-sort-amount-up-alt"></i>&nbsp&nbsp <span id="payment_value"></span></div>

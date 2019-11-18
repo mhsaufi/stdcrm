@@ -193,6 +193,9 @@ class PublicController extends Controller
                         ->orWhere('location','like','%'.$query)
                         ->orWhere('location','like','%'.$query.'%')
                         ->orWhere('location','like',$query.'%');
+        }else{
+
+            $query = '';
         }
 
         $event_data = $equery->get();
@@ -214,7 +217,7 @@ class PublicController extends Controller
             $i++;
         }
 
-        return view('external.promo',compact('event_data','event_count'));
+        return view('external.promo',compact('event_data','event_count','query'));
     }
 
     public function listVendor(Request $request){

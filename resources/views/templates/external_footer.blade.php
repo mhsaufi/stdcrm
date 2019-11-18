@@ -3,6 +3,8 @@
     <div>
       <a href="{{ url('/') }}">Save The Date My</a>
       <a href="{{ url('/features') }}">How it works?</a>
+      <a href="{{ route('login') }}">Sign In</a>
+      <a href="{{ route('register') }}">Free Registration</a>
       <a href="{{ url('/aboutSTD') }}">About Us</a>
       <a href="{{ url('/members') }}">Members</a>
       <a href="{{ url('/terms') }}">Terms And Conditions</a>
@@ -11,9 +13,8 @@
       <a href="{{ url('/events') }}">Happening!</a>
       <a href="{{ url('/packages') }}">Wedding Packages</a>
       <a href="{{ url('/listvendor') }}">Vendors and Companies</a>
-      <a href="{{ route('register') }}">Free Registration</a>
       <a href="{{ url('/merchant') }}">Merchant Center</a>
-      <a href="{{ route('login') }}">Sign In</a>
+      <a href="{{ url('/iaffair') }}">Islamic Affairs</a>
       <a href="{{ url('/downloads') }}">Downloads</a>
     </div>
     <div>

@@ -138,6 +138,16 @@
         /*border-radius: 5px;*/
       }
 
+      .event_card_date_label {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        /*align-items: center;*/
+        padding: 10px 80px;
+        margin-bottom: 20px;
+      }
+
       .event_card_date {
         width: 15%;
         display: flex;
@@ -203,6 +213,10 @@
         min-height: 40vh;
       }
 
+      .search_result_label {
+        opacity: 0.7;
+      }
+
       @media (max-width: 600px){
         .search-engine-panel {
           display: flex;
@@ -266,6 +280,15 @@
           padding: 10px 20px;
         }
 
+        .event_card_date_label {
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          /*align-items: center;*/
+          padding: 10px 20px;
+        }
+
         .event_card_date > div:nth-child(1){
           font-size: 20px;
           opacity: 0.5;
@@ -310,6 +333,20 @@
         <div class="search-result-panel">
           <div class="search_result_list">
             <!-- repeated section -->
+            <div class="event_card">
+              <div class="event_card_date_label animated fadeInLeft fast">
+
+                <span class="search_result_label">
+                  {{ $event_count }} result(s) found 
+                  @if($query != '')
+
+                  with keyword <b>{{ $query }}</b>
+
+                  @endif
+                </span>
+
+              </div>
+            </div>
             @if($event_count > 0)
 
               @foreach($event_data as $event)
@@ -336,7 +373,7 @@
             @else
 
             <div class="result_container_empty">
-              <p>No event found</p>
+              
             </div>
 
             @endif
