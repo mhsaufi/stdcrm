@@ -1413,8 +1413,20 @@
 	margin-bottom: 5px;
 }
 
+.std-timeline-banner-option-popup-content-text > a {
+	opacity: 0.5!important;
+	cursor: pointer!important;
+	margin-bottom: 5px!important;
+	color: #000!important;
+}
+
 .std-timeline-banner-option-popup-content-text:hover {
 	opacity: 0.8;
+}
+
+.std-timeline-banner-option-popup-content-text > a:hover {
+	opacity: 0.8;
+	color: #000!important;
 }
 
 .std-timeline-banner-transaction {

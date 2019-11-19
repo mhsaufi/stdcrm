@@ -23,4 +23,9 @@ class WEventTimeline extends Model
     {
         return $this->hasOne('App\User','id','wet_owner');
     }
+
+    public function user()
+    {
+        return $this->hasOne('App\User','id','user_id');
+    }
 }

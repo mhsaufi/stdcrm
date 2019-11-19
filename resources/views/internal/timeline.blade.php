@@ -101,9 +101,9 @@
                 @if($data_event['wes_id'] != 5)
                 <div class="std-timeline-banner-option-popup-content-text" id="edit_info">Edit Information</div>
                 <div class="std-timeline-banner-option-popup-content-text" id="cancel_event">Cancel Event</div>
-
+                <div class="std-timeline-banner-option-popup-content-text" id="print_event_info"><a href="{{ url('/printfull?e='.$data_event['we_id']) }}">Print Information</a></div>
                 @else
-                <div class="std-timeline-banner-option-popup-content-text" id="print_event_info">Print Information</div>
+                <div class="std-timeline-banner-option-popup-content-text" id="print_event_info"><a href="{{ url('/printfull?e='.$data_event['we_id']) }}">Print Information</a></div>
                 @endif
               </div>
             </div>
@@ -868,6 +868,16 @@
         $.post(url,{_token:token,i_id:i_id,action:action},function(data){
             location.reload();
         });
+
+      });
+
+      $('#print_event_info').click(function(){
+
+        var e_id = '{{ $data_event["we_id"] }}';
+
+        url = APP_URL + '/printfull?e=' + e_id;
+
+        window.location.replace(url);
 
       });
 

@@ -8,6 +8,7 @@ use App\Company;
 use App\CompanyPackage;
 use App\WEvent;
 use App\WEventInbox;
+use App\WEventTimeline;
 use App\WEventVendors;
 use App\User;
 use App\Http\Controllers\InboxController;
@@ -419,5 +420,42 @@ class EventController extends Controller
                         ->get();
 
         return view('internal.pastevent',compact('count_inbox','package_data','data_event'));
+    }
+
+    public function printEvent(Request $request){
+
+        $we_id = $request->input('e');
+
+        //--------------------------------------------------------------------------------
+
+        $wevent = new WEvent;
+
+        $data_event = $wevent->where('we_id', $we_id)->first();
+
+        //--------------------------------------------------------------------------------
+
+        $vendors = new WEventVendors;
+
+        $data_vendors = $vendors->where('we_id',$we_id)->get();
+
+        //--------------------------------------------------------------------------------
+
+        $timeline = new WEventTimeline;
+
+        $datas = $timeline->where('we_id',$we_id)->orderBy('created_at','desc')->get();
+        $datas_count = $timeline->where('we_id',$we_id)->orderBy('created_at','desc')->count();
+
+        $i = 0;
+
+        foreach($datas as $data){
+
+            $carbon = new Carbon($data['wet_datetime']);
+
+            $datas[$i]['wet_dt'] = $carbon->format('d M , Y');
+
+            $i++;
+        }
+
+        return view('internal.printevent', compact('data_event','data_vendors','datas','datas_count'));
     }
 }

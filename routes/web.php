@@ -151,6 +151,7 @@ Route::post('/approveinvitation','EventController@approveinvite');
 Route::post('/addcontact','ContactController@addContact'); // add vendor as contact
 
 Route::post('/updateevent','EventController@updateEvent');
+Route::get('/printfull','EventController@printEvent');
 
 Route::post('/eeinfo','AgreementController@read');
 Route::post('/end','AgreementController@end');
