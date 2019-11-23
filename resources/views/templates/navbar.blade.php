@@ -43,9 +43,11 @@
           @if (Route::has('login'))                
               @auth
 
-                @if(Auth::user()->role_id == 3)
+                @if(in_array(Auth::user()->role_id,array('3','4')))
 
                   @if(Auth::user()->status_id == 1)
+
+                    @if(Auth::user()->role_id == 3)
 
                     <li class="nav-item">
                       <a class="nav-link black" href="{{ url('/insider') }}">
@@ -53,6 +55,8 @@
                         Insider
                       </a>
                     </li>
+
+                    @endif
 
                     <li class="nav-item">
                       <a class="nav-link black" href="{{ url('/contact') }}">

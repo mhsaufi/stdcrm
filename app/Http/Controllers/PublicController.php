@@ -134,7 +134,7 @@ class PublicController extends Controller
             
         }else{
 
-            $update = $merchant->where('id', $merchant->id)->update(['company_id'=>$cid,'status_id'=>'3']);
+            $update = $merchant->where('id', $merchant->id)->update(['company_id'=>$cid,'status_id'=>'4']);
 
         }
 

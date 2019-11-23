@@ -235,7 +235,7 @@
       text-align: center;
     }
 
-    #p_book_btn {
+    .p_book_btn {
       display: flex;
       flex-direction: row;
       justify-content: flex-end;
@@ -247,7 +247,7 @@
       z-index: 99;
     }
 
-    #p_book_btn:hover {
+    .p_book_btn:hover {
       opacity: 1;
     }
 	 </style>
@@ -310,7 +310,7 @@
                   </div>
                   <div class="company_name">{{ $p['company']['company_name'] }}</div>
                 </div>
-                <div id="p_book_btn">
+                <div class="p_book_btn" data-pid="{{ $p['package_id'] }}" data-name="{{ $p['package_title'] }}">
                   <div id="btn_book1"></div>
                   <div id="btn_book2"> BOOK </div>
                 </div>
@@ -323,7 +323,7 @@
           </div>
           <div style="position: absolute;bottom: 0;width: 100%;">
             
-            
+             
           </div>
         </div>
       </div>
@@ -341,6 +341,26 @@
     @include('templates.footer')
     <script type="text/javascript" src="{{ asset('myasset/socialsharekit/dist/js/social-share-kit.js') }}"></script>
     <script>
+
+
+      $(".p_book_btn").each(function(){
+
+        var th = $(this);
+
+        th.on('click',function(e){
+
+          e.stopPropagation();
+
+          var package_id = th.data('pid');
+          
+          var url = "{{ url('/booking') }}" + "/" + package_id;  
+
+          window.location.replace(url);       
+
+        });
+
+      });
+
       function viewVendors(vendorID,vendorName){
         
         var url = '{{ url("/vendor") }}'+ '/' + vendorName.split(' ').join('_')+'/'+vendorID;

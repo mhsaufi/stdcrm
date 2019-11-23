@@ -293,7 +293,7 @@
 	    }
 
 	    .confirm_activation, .confirm_approval , .confirm_rejection {
-	    	height: 22%!important;
+	    	height: auto!important;
 	    	width: 20%!important;
 	    	position: absolute;
 		    top: 50%;
@@ -349,6 +349,7 @@
 
       			<div class="animated fadeInDown fast">
     				<h4 style="color: #d4af37;">{{ $company_info['userreverse']['name'] }}</h4>
+    				<div style="margin-bottom: 15px!important;opacity: 0.7; ">Administrator</div>
     				<p><i class="fas fa-id-card"></i> &nbsp&nbsp{{ $company_info['userreverse']['fullname'] }}</p>
     				<p><i class="fas fa-envelope"></i> &nbsp&nbsp{{ $company_info['userreverse']['email'] }}</p>
     				<p><i class="fas fa-phone"></i> &nbsp&nbsp{{ $company_info['userreverse']['phone'] }}</p>

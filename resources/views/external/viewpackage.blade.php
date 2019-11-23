@@ -242,6 +242,8 @@
               <p>({{ $result['package_pax'] }} pax)</p>
               @endif
             </div>
+
+            
             <div id="book_now">
               BOOK NOW
             </div>

@@ -98,6 +98,7 @@
 			border-bottom: 0.05em solid #fa8072;
 			margin-bottom: 15px;
 			padding: 10px 0;
+			height: 70px;
 		}
 
 		.pbutton {
@@ -419,9 +420,14 @@
 	    		<div class="info-company" style="background: #fff;">
 	    		
 					<div class="pcontainer">
-	  					<div></div>
-						<!-- <div class="pbutton" onclick="openForm()"><span><i class="fas fa-plus" >&nbsp </i></span></div> -->
+						<div></div>
+
+						@if(Auth::user()->role_id != 4)
+
 						<button onclick="openForm()" class="btn_style btn-six"><i class="fas fa-plus"></i><span> ADD PACKAGE </span></button>
+
+						@endif
+
 	    				
 						<div class="search-engine-panel">
 							<div class="sep-search">
@@ -440,7 +446,9 @@
 										<th>Package Title</th>
 										<th>Price</th>
 										<th>Details</th>
-										<th>Action</th>										
+										@if(Auth::user()->role_id != 4)
+										<th>Action</th>
+										@endif										
 									</tr>
 								</thead>
 								<tbody id="myTable">
@@ -451,6 +459,7 @@
 										<td style="text-align:left!important;padding-left:20px;">											
 											<div><p>{!! base64_decode( $r['package_detail'] ) !!}</p></div>
 										</td>
+										@if(Auth::user()->role_id != 4)
 										<td style="width:15%;vertical-align: top;padding-top: 20px;">										
 											<div style="margin-bottom: 15px;">												
 												<button class="btn_style" style="margin-bottom: 15px;" onclick="editForm('{{ $r['package_id'] }}') "><i class="fa fa-edit" >&nbspEdit</i></button>
@@ -458,7 +467,8 @@
 											<div>												
 												<button class="btn_style" onclick="deleteForm('{{ $r['package_id'] }}') "><i class="fa fa-trash-alt" >&nbspDelete</i></button>
 											</div>
-										</td>								
+										</td>
+										@endif								
 									</tr>									
 								@endforeach
 								</tbody>

@@ -452,7 +452,7 @@
 	top:15%;
 	left:20%;
 	width: 60%;
-	height: 560px;
+	height: auto;
 	background: white;
 	-moz-box-shadow: 0 0  30px #888;
 	-webkit-box-shadow: 0 0  30px #888;
@@ -1128,7 +1128,7 @@
 	position: fixed;
 	top: 28%;
 	left: 30%;
-	height: 37%;
+	height: auto;
 	width: 40%;
 	display: flex;
 	flex-direction: column;
@@ -1138,6 +1138,7 @@
 	box-shadow: 0 0 30px #888;
 	border-radius: 5px;
 	padding: 15px 20px;
+	padding-bottom: 25px!important;
 }
 
 #reject_remark_clearcart {
@@ -1703,7 +1704,7 @@
 	-webkit-box-shadow:0 0 30px #888;
 	box-shadow: 0 0 30px #888;
 	margin-bottom: 15%;
-	z-index: 999999;
+	z-index: 999;
 }
 
 #view_timeline_content_desc {

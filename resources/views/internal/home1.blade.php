@@ -29,10 +29,11 @@
       }
 
       .pattern{
-        /*background-image: url("{{asset('myasset/img/bg1.jpg')}}");*/
-        background-repeat: no-repeat;
-        background-size: cover;
-        background: #FFFBE5;
+        background-image: url("{{asset('myasset/img/hy.png')}}");
+        background-repeat: repeat;
+        /*background-size: cover;*/
+        /*background: rgba(0,0,0,0.2);*/
+        /*background: #FFFBE5;*/
         height: 250px !important;
       }
 
@@ -186,7 +187,7 @@
         </div>
         <div class="std-row">
           <div><a href="#" class="slide_btn previous round" id="minus">&#8249;</a></div>
-          <div id="year_label" style="padding: 5px 10px;border-bottom: 0.05em solid #d4af37;"></div>
+          <div id="year_label" style="padding: 5px 10px;border-bottom: 0.05em solid #d4af37;font-weight: bold;"></div>
           <div><a href="#" class="slide_btn next round" id="plus">&#8250;</a></div>
         </div><br>     
         <div class="row-forecast animated faster" id='event_cal'>

@@ -37,5 +37,10 @@ class WEvent extends Model
     {
         return $this->hasOne('App\CompanyPackage','package_id','package_id');
     }
+
+    public function status()
+    {
+        return $this->hasOne('App\WEventStatus','wes_id','wes_id');
+    }
 }
 

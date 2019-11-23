@@ -35,7 +35,7 @@ class HomeController extends Controller
 
             return view('internal.profile',compact('event_data','event_count'));
 
-        }else if(Auth::user()->role_id == '3'){ // if vendor, direct to dashboard
+        }else if(Auth::user()->role_id == '3' || Auth::user()->role_id == '4'){ // if vendor, direct to dashboard
 
             if(Auth::user()->status_id == '1'){ // if active
 
@@ -115,7 +115,7 @@ class HomeController extends Controller
 
     public function profile(){
 
-        if(Auth::user()->role_id == '3'){
+        if(in_array(Auth::user()->role_id,array('3','4'))){
 
             $company = new Company;
 

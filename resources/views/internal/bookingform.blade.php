@@ -219,69 +219,101 @@
       <div class="big_container">
         <div class="result_container">
 
-          @if($booking_count == 0)
+          @if(in_array(Auth::user()->role_id,array('3','4')))
 
-          <div class="booking_form_container">
-            <div style="margin-bottom: 10px;">
-              <span style="cursor: pointer;" onclick="back()">< Back </span>
+            <div class="booking_form_container" style="height: 400px;">
+              <div style="margin-bottom: 10px;">
+                <span style="cursor: pointer;" onclick="back()">< Back </span>
+              </div>
+              <div style="border-bottom: 0.05em solid #f1f1f1;margin-bottom: 10px;padding: 15px 0;display: flex;flex-direction: row;justify-content: space-between;align-items: center;">
+
+              </div>
+              <div style="margin-bottom: 20px;padding: 15px 0;">
+                Package : <span style="font-weight: bold;color: green;">{{ strtoupper($package_data['package_title']) }}</span>
+              </div>
+              <div style="margin-bottom: 20px;">
+                <p>This booking form is for customer only</p>
+              </div>
             </div>
-            <div style="border-bottom: 0.05em solid #f1f1f1;margin-bottom: 10px;padding: 15px 0;display: flex;flex-direction: row;justify-content: space-between;align-items: center;">
-              <div>BOOKING FORM </div>
-              <div class="company_logo_mini" style="background: url('{{ asset('storage/'.$package_data['company']['company_logo']) }}');background-position: center;background-size: cover;"></div>
-            </div>
-            <div style="margin-bottom: 20px;padding: 15px 0;">
-              Package : <span style="font-weight: bold;color: green;">{{ strtoupper($package_data['package_title']) }}</span>
-            </div>
-            <div style="margin-bottom: 20px;">
-              <label>Bride's & Groom's name</label><br>
-              <input type="text" name="title" class="form-std req" id="title" placeholder="Romie & Julie">
-              <br>
-              <label>Expected wedding date</label><br>
-              <input type="text" name="date" class="form-std datepicker-here req" data-position="bottom right" data-language='en' data-date-format='d-m-yyyy' id="date" ><br>
-              <label>(Optional) Any additional notes for {{ $package_data['company']['company_name'] }}</label><br>
-              <textarea class="form-std" id="notes"></textarea>
-              <br>
-              <input type="checkbox" name="agreement" id="agreement" req> I hereby Agree to the Term and Conditions applied to the package
-            </div>
-            <div id="book_now">
-              <button id="book_now_btn">
-                BOOK
-              </button>
-            </div>
-          </div>
 
           @else
 
-          <div class="booking_form_container">
-            <div style="margin-bottom: 10px;">
-              <span style="cursor: pointer;" onclick="back()">< Back </span>
+            @if($booking_count == 0)
+
+            <div class="booking_form_container">
+              <div style="margin-bottom: 10px;">
+                <span style="cursor: pointer;" onclick="back()">< Back </span>
+              </div>
+              <div style="border-bottom: 0.05em solid #f1f1f1;margin-bottom: 10px;padding: 15px 0;display: flex;flex-direction: row;justify-content: space-between;align-items: center;">
+                <div>BOOKING FORM </div>
+                <div class="company_logo_mini" style="background: url('{{ asset('storage/'.$package_data['company']['company_logo']) }}');background-position: center;background-size: cover;"></div>
+              </div>
+              <div style="margin-bottom: 20px;padding: 15px 0;">
+                Package : <span style="font-weight: bold;color: green;">{{ strtoupper($package_data['package_title']) }}</span>
+              </div>
+              <div style="margin-bottom: 20px;">
+                <label>Bride's & Groom's name</label><br>
+                <input type="text" name="title" class="form-std req" id="title" placeholder="Romie & Julie">
+                <br>
+                <label>Expected wedding date</label><br>
+                <input type="text" name="date" class="form-std datepicker-here req" data-position="bottom right" data-language='en' data-date-format='d-m-yyyy' id="date" ><br>
+                <label>(Optional) Any additional notes for {{ $package_data['company']['company_name'] }}</label><br>
+                <textarea class="form-std" id="notes"></textarea>
+                <br>
+                <input type="checkbox" name="agreement" id="agreement" req> I hereby Agree to the Term and Conditions applied to the package
+              </div>
+              <div id="book_now">
+                <button id="book_now_btn">
+                  BOOK
+                </button>
+              </div>
             </div>
-            <div style="border-bottom: 0.05em solid #f1f1f1;margin-bottom: 10px;padding: 4px 0;display: flex;flex-direction: row;justify-content: space-between;align-items: center;">
+   
+            @else
+
+            <div class="booking_form_container">
+              <div style="margin-bottom: 10px;">
+                <span style="cursor: pointer;" onclick="back()">< Back </span>
+              </div>
+              <div style="border-bottom: 0.05em solid #f1f1f1;margin-bottom: 10px;padding: 4px 0;display: flex;flex-direction: row;justify-content: space-between;align-items: center;">
+              </div>
+              <div>
+                <p>You are not allowed to book new package because you have another booking currently waiting for approval. 
+                  Once approved by the company, you will be redirected to the timeline pages. Your booking detail : </p>
+                  <table class="booking_info">
+                    <tr>
+                      <td>Title</td>
+                      <th> {{ $booking['we_title'] }} </th>
+                    </tr>
+                    <tr>
+                      <td>Package</td>
+                      <th>{{ $booking['package']['package_title'] }} - ({{ $booking['package']['package_pax'] }} pax) - MYR {{ $booking['package']['package_price'] }}</th>
+                    </tr>
+                    <tr>
+                      <td>Company</td><th><span style="color: #d4af37;">{{ $booking['company']['company_name'] }}</span></th>
+                    </tr>
+                    <tr>
+                      <td>Status</td>
+                      <th>
+
+                        @if($booking['wes_id'] == 3)
+                        <span style="color: #d4af37;">PENDING</span>
+                        @elseif($booking['wes_id'] == 4)
+                        <span style="color: red;">REJECTED</span>
+                        @else
+                        lalaa
+                        @endif
+
+                      </th>
+                    </tr>
+                    <tr>
+                      <td>Remark</td><th><span style="color: #d4af37;">{{ $booking['we_remark'] }}</span></th>
+                    </tr>
+                  </table>
+              </div>
             </div>
-            <div>
-              <p>You are not allowed to book new package because you have another booking currently waiting for approval. 
-                Once approved by the company, you will be redirected to the timeline pages. Your booking detail : </p>
-                <table class="booking_info">
-                  <tr>
-                    <td>Title</td>
-                    <th> {{ $booking['we_title'] }} </th>
-                  </tr>
-                  <tr>
-                    <td>Package</td>
-                    <th>{{ $booking['package']['package_title'] }} - ({{ $booking['package']['package_pax'] }} pax) - MYR {{ $booking['package']['package_price'] }}</th>
-                  </tr>
-                  <tr>
-                    <td>Company</td><th><span style="color: #d4af37;">{{ $booking['company']['company_name'] }}</span></th>
-                  </tr>
-                  <tr>
-                    <td>Status</td><th><span style="color: #d4af37;">PENDING</span></th>
-                  </tr>
-                  <tr>
-                    <td>Remark</td><th><span style="color: #d4af37;"></span></th>
-                  </tr>
-                </table>
-            </div>
-          </div>
+
+            @endif
 
           @endif
 

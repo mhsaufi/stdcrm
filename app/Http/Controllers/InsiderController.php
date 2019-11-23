@@ -62,11 +62,11 @@ class InsiderController extends Controller
 
             // echo $info['email'];
 
-            Mail::send('emails.application_approval_mail',['dashboard_url' => $dashboard_url,'company_name' => $data['company_name'],'name' => $info['name']],function($m) use ($info){
+            // Mail::send('emails.application_approval_mail',['dashboard_url' => $dashboard_url,'company_name' => $data['company_name'],'name' => $info['name']],function($m) use ($info){
 
-                $m->to($info['email'], $info['name'])->subject('Account Application');
+            //     $m->to($info['email'], $info['name'])->subject('Account Application');
 
-            });
+            // });
         }
 
         if($action == 'reject'){
