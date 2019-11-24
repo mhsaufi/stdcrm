@@ -16,7 +16,9 @@
 
  
 		.grey-background {
-			background: #FFFBE5;
+			background: url("{{asset('myasset/img/bg1y.jpg')}}");
+			background-repeat: no-repeat;
+        	background-size: cover;
 		}
 		.half-vertical {
 			width: 100%;

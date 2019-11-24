@@ -11,7 +11,9 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('myasset/std_rating/std_rating.css')}}">
 	<style type="text/css">
 		.grey-background {
-			background: #FFFBE5;
+			background: url("{{asset('myasset/img/bg1y.jpg')}}");
+			background-repeat: no-repeat;
+        	background-size: cover;
 		}
 		.half-vertical {
 			width: 100%;

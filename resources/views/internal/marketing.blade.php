@@ -10,7 +10,7 @@
 	<style type="text/css">
 		.grey-background {
 			/*background: #EEE;*/
-			background: url("{{asset('myasset/img/babout.jpg')}}");
+			background: url("{{asset('myasset/img/bg1y.jpg')}}");
 			background-repeat: no-repeat;
         	background-size: cover;
 		}
