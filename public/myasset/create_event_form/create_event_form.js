@@ -1,6 +1,7 @@
 $('#add_event_btn,.close-action-icon,#cancel_button1').click(function(){
 
   $('#create_event_form').fadeToggle('fast');
+  $('.form-std').val('');
 
 });
 
