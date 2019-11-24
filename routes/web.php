@@ -122,6 +122,8 @@ Route::post('/profile/package/edit','PackageController@edit');
 Route::post('/profile/package/update','PackageController@update');
 Route::post('/deletepackage','PackageController@delete');
 Route::get('/profile/marketing','MarketingController@index');
+Route::post('/packagedata','MarketingController@packageData');
+Route::post('/newpromotion','MarketingController@newPromotion');
 
 // ---------------------------------------  MAILBOX
 

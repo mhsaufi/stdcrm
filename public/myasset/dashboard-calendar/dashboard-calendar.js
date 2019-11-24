@@ -36,7 +36,7 @@ $.post(url,function(result){
       
       $.each(value.timeline, function(ind, val){
 
-        string += '<div class="content-forecast" onclick="viewTimeline('+ val.we_id +')">';
+        string += '<div class="content-forecast" onclick="viewTimeline('+ val.we_id +')" draggable="true">';
         string += '<div class="timeline-title-div"><span class="timeline-title">'+ val.subject +'</span>';
 
         if(val.status != '2'){

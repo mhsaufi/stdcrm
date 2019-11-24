@@ -7,7 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('myasset/std_rating/std_rating.css')}}">
 	<style type="text/css">
 		.grey-background {
-			background: #FFFBE5;
+			background: #f1f1f1;
 		}
 		.half-vertical {
 			width: 100%;
@@ -102,7 +102,7 @@
 	    	left: 0;
 	    	height: 100%;
 	    	width: 100%;
-	    	background: rgba(255,255,255,0.7);
+	    	background: rgba(0,0,0,0.5);
 	    	z-index: 999;
 	    	display: none;
 	    }
@@ -191,7 +191,7 @@
 	    				<br>
 	    				<span class="std_info">{{ Auth::user()->email }}</span>
 	    			</div>
-	    			<div class="info-content">
+	    			<div class="info-content" draggable="true">
 	    				<div style="display: flex;flex-direction: row;justify-content: flex-end;">
 	    					<div>
 		    					<button onclick="edit_profile()" class="btn_style btn-six"><i class="fas fa-edit"></i><span>EDIT INFO </span></button>
