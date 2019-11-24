@@ -58,9 +58,9 @@
 			min-height: 100%;
 			top: 0;
 			padding-top: 7%; 
-			background: url("{{asset('myasset/img/babout.jpg')}}");
-			background-repeat: no-repeat;
-        	background-size: cover;
+			background: url("{{asset('myasset/img/ll.jpg')}}");
+			background-repeat: repeat;
+        	/*background-size: cover;*/
 			/*background-color: lightyellow; */
 		}
 
