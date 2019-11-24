@@ -110,7 +110,7 @@
 	    	<div class="section-sub-header">
 	    		<div class="header-company">
 	    			<div class="header-company-tab" onclick="profilemenu('0')">PERSONAL INFO</div>
-	    			<div class="header-company-tab" onclick="profilemenu('1')">BUSINESS INFO</div>
+	    			<div class="header-company-tab-active" onclick="profilemenu('1')">BUSINESS INFO</div>
 	    			<div class="header-company-tab" onclick="profilemenu('2')">GALLERY</div>
 	    			<div class="header-company-tab" onclick="profilemenu('3')">PACKAGES</div>
 	    			<div class="header-company-tab" onclick="profilemenu('4')">MARKETING</div>
