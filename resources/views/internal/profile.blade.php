@@ -8,6 +8,7 @@
 	<link href="{{ asset('myasset/fullcalendar/core/main.css') }}"  rel='stylesheet' />
 	<link rel="stylesheet" href="{{ asset('myasset/swiper/css/swiper.min.css') }}" />
     <link href="{{ asset('myasset/fullcalendar/daygrid/main.css') }}" rel='stylesheet' />
+    <link rel='stylesheet' 	href="{{asset('myasset/dropzone-master/dist/dropzone.css')}}"/>
 
 	<style type="text/css">
 		.grey-background {
@@ -356,6 +357,30 @@
 			margin-right: 10px;
 		}
 
+		.ok_upload {
+	    	width: 100%;
+	    	background: #48c9b0;
+	    	cursor: pointer;
+	    	border-radius: 5px;
+	    	height: 30px;
+	    	text-align: center;
+	    	padding: 2% 0;
+	    	color: white;
+	    	font-weight: bold;
+	    }
+
+	    .ok_upload_dp {
+	    	width: 100%;
+	    	background: #48c9b0;
+	    	cursor: pointer;
+	    	border-radius: 5px;
+	    	height: 30px;
+	    	text-align: center;
+	    	padding: 2% 0;
+	    	color: white;
+	    	font-weight: bold;
+	    }
+
 		/* ==================================================================== */
 		 #tp-wi-form, #gi-form, #fi-form{
 			 display:none;
@@ -365,10 +390,8 @@
 			 display: flex;
 			 flex-direction: column;
 			 justify-content: center;
-			 /*align-items:center;*/
 			 width: 100%;
-			 padding-top: 10px;
-			 padding-left: 10%;
+			 padding: 10px 10%;
 			 margin-bottom: 10%;
 			  /*background: blue; */
 			 /* border-bottom: 1px solid #d4af37;			  */
@@ -385,12 +408,26 @@
     <!-- Header Area wrapper End -->
     <br>
 
+    
+
     <div class="section-padding" style="display:flex; flex-direction:row; justify-content: center;">
+
+
     	<!-- <div class="container" style="background:red;"> -->
     		<div class="big-space">
 		 		<div class="left-space animated fadeInLeft fast">
-					<div class="section-profile-img">
-						<img class="vend_pic" src="{{asset('myasset/img/default.jpeg')}}">
+					<div class="section-profile-img" >
+
+						<div id="uploader_trigger">
+							@if(Auth::user()->dp == '')
+							<img class="vend_pic"  src="{{asset('myasset/img/profile.jpg')}}">
+							@else
+							<img class="vend_pic"  src="{{asset('storage/'.Auth::user()->dp)}}">
+							@endif
+						</div>
+
+						
+						<!-- <img class="vend_pic"  src="{{asset('myasset/img/profile.jpg')}}"> -->
 
 						<div class="name-space">
 	 						<p><b>Name:</b>&nbsp {{ Auth::user()->fullname }}</p>
@@ -455,6 +492,26 @@
 		    </div>
     	<!-- </div> -->
     </div>
+
+    <!-- dropzone Change profile picture -->
+    <div id="bg_dp_uploader" style="background:rgba(0,0,0,0.5); width:100%; height:100%; position:fixed; top:0; left:0;display:none;">
+    	<div id="dp_uploader_container">
+			<div style="padding-bottom: 15px;border-bottom: 0.05em solid #FFD54F;display: flex;flex-direction: row;justify-content:space-between;">
+				<div>NEW PROFILE PICTURE</div>
+				<div style="opacity: 0.6; cursor: pointer;"><i class="fas fa-times" id="close_uploader_dp"></i></div>
+			</div>
+			<div style="padding-bottom: 20px;margin-top: 15px; width: 100%; align-items: center;">
+				<form action="{{ url('/newdp') }}" method="POST" class="dropzone">
+					<input type="hidden" name="_token" value="{{ csrf_token() }}">
+					<div class="fallback">
+						<input name="file" type="file" multiple />
+					</div>
+				</form>
+			</div>
+			<div class="ok_upload_dp">DONE</div>
+		</div>
+    </div>
+    
 
     <!-- PERSONAL INFO -->
 	<div id="background_tp">
@@ -538,6 +595,7 @@
     <script src="{{ asset('myasset/fullcalendar/core/main.js') }}"></script>
     <script src="{{ asset('myasset/fullcalendar/daygrid/main.js') }}"></script>
     <script src="{{ asset('myasset/swiper/js/swiper.min.js') }}"></script>
+     <script src="{{asset('myasset/dropzone-master/dist/dropzone.js')}}"></script>
 
 	<script>
 
@@ -562,6 +620,23 @@
 		          delay: 3000,
 		        }
 		      })
+
+	        $('#dp_uploader_container').show();
+
+	        $('#uploader_trigger').click(function(){
+	    		// alert('Haluuu..jadi tak');
+	    		$('#bg_dp_uploader').fadeToggle('fast');
+
+	    	});
+
+	    	$('.ok_upload_dp').click(function(){
+	    		// $('#bg_dp_uploader').fadeToggle('fast');
+	    		location.reload();
+	    	});
+
+	    	$('#close_uploader_dp').click(function(){
+	    		$('#bg_dp_uploader').fadeToggle('fast');
+	    	});
 
 		});
 
