@@ -13,17 +13,17 @@
       <div class="collapse navbar-collapse" id="main-navbar">
         <ul class="navbar-nav mr-auto w-100 justify-content-end clearfix">
           <li class="nav-item">
-            <a class="nav-link black" href="{{ url('/listvendor') }}" data-list-name="Our Vendors" data-content-category="Header">Vendors</a>
+            <a class="nav-link black" href="{{ url('/listvendor') }}" data-list-name="Vendors" data-content-category="Header">Vendors</a>
           </li> 
 
           <li class="nav-item">
-            <a class="nav-link black" href="{{ url('/packages') }}">
+            <a class="nav-link black" href="{{ url('/packages') }}" data-list-name="Packages" data-content-category="Header">
               Packages
             </a>
           </li> 
 
           <li class="nav-item">
-            <a class="nav-link black" href="{{ url('/events') }}">
+            <a class="nav-link black" href="{{ url('/events') }}" data-list-name="Events" data-content-category="Header">
               Events
             </a>
           </li>            
@@ -50,7 +50,7 @@
                     @if(Auth::user()->role_id == 3)
 
                     <li class="nav-item">
-                      <a class="nav-link black" href="{{ url('/insider') }}">
+                      <a class="nav-link black" href="{{ url('/insider') }}" data-list-name="Insider" data-content-category="Header">
                         <i class="fas fa-sitemap"></i> 
                         Insider
                       </a>
@@ -59,7 +59,7 @@
                     @endif
 
                     <li class="nav-item">
-                      <a class="nav-link black" href="{{ url('/contact') }}">
+                      <a class="nav-link black" href="{{ url('/contact') }}" data-list-name="Contact" data-content-category="Header">
                         <i class="fas fa-address-book"></i>  
                         Contact
                       </a>
@@ -142,13 +142,13 @@
           @endauth
 
           @endif
-          <div id="vendor_page">Our Vendors</div>
-          <div id="package_page">Packages</div>
-          <div id="event_page">Events</div>
-          <div id="islamic_page">Islamic Affair</div>
+          <div id="vendor_page" class="m_menu" data-list-name="Vendors" data-content-category="Mobile Header">Our Vendors</div>
+          <div id="package_page" class="m_menu" data-list-name="Packages" data-content-category="Mobile Header">Packages</div>
+          <div id="event_page" class="m_menu" data-list-name="Events" data-content-category="Mobile Header">Events</div>
+          <div id="islamic_page" class="m_menu" data-list-name="iAffair" data-content-category="Mobile Header">Islamic Affair</div>
           <div style="height: 15px;width:100%;border-bottom: 0.05em solid white;"></div>
-          <div id="features">How It Works</div>
-          <div id="about_page">About</div>
+          <div id="features" class="m_menu" data-list-name="How It Works" data-content-category="Mobile Header">How It Works</div>
+          <div id="about_page" class="m_menu" data-list-name="About" data-content-category="Mobile Header">About</div>
           <!-- <div id="feature_page">Features</div>
           <div id="member_page">Members</div> -->
           @if (Route::has('login'))  

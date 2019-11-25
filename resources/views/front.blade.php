@@ -230,13 +230,13 @@
           @endauth
 
           @endif
-          <div id="vendor_page">Our Vendors</div>
-          <div id="package_page">Packages</div>
-          <div id="event_page">Events</div>
-          <div id="islamic_page">Islamic Affair</div>
+          <div id="vendor_page" class="m_menu" data-list-name="Vendors" data-content-category="Mobile Header">Our Vendors</div>
+          <div id="package_page" class="m_menu" data-list-name="Packages" data-content-category="Mobile Header">Packages</div>
+          <div id="event_page" class="m_menu" data-list-name="Events" data-content-category="Mobile Header">Events</div>
+          <div id="islamic_page" class="m_menu" data-list-name="iAffair" data-content-category="Mobile Header">Islamic Affair</div>
           <div style="height: 15px;width:100%;border-bottom: 0.05em solid white;"></div>
-          <div id="features">How It Works</div>
-          <div id="about_page">About</div>
+          <div id="features" class="m_menu" data-list-name="How It Works" data-content-category="Mobile Header">How It Works</div>
+          <div id="about_page" class="m_menu" data-list-name="About" data-content-category="Mobile Header">About</div>
           @if (Route::has('login'))  
 
           @auth
