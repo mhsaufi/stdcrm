@@ -5,6 +5,12 @@
   <title>Save The Date | Packages</title>
    @include('templates.header')
 
+  <meta name="page_site" content="savethedate-my.com">
+  <meta name="page_language" content="English">
+  <meta name="page_type" content="List Packages">
+  <meta name="page_title" content="List Packages">
+  <meta name="page_content" content="Packages List">
+
    <link rel="stylesheet" type="text/css" href="{{asset('myasset/select2/dist/css/select23.css')}}">
 
    <style>

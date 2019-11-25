@@ -371,8 +371,13 @@
     		<div class="user_promotion_modal_content">
     			<div>Promotion Package</div>
     			<div>
-    				<select class="promotion_select extra_mg" id="promotion">
+    				<select class="promotion_select extra_mg" id="promotion" style="width: auto;">
     					<option>- select promotion -</option>
+    					@foreach($promotion_data as $promotion)
+
+    					<option value="{{ $promotion['promotion_id'] }}">{{ $promotion['promotion_title'] }}</option>
+
+    					@endforeach
     				</select>
     			</div>
     			<div><input type="checkbox" name=""> Email this user each time new Promotion released</div>

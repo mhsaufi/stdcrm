@@ -4,7 +4,11 @@
 <head>
 	<title>Save The Date | Events</title>
 	 @include('templates.header')
-
+  <meta name="page_site" content="savethedate-my.com">
+  <meta name="page_language" content="English">
+  <meta name="page_type" content="Events">
+  <meta name="page_title" content="Events">
+  <meta name="page_content" content="Events List">
 
    <link rel="stylesheet" href="{{ asset('myasset/socialsharekit/dist/css/social-share-kit.css') }}" type="text/css">
    <link rel="stylesheet" href="{{ asset('myasset/swiper/css/swiper.min.css') }}" type="text/css">

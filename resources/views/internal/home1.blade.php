@@ -31,9 +31,6 @@
       .pattern{
         background-image: url("{{asset('myasset/img/hy.png')}}");
         background-repeat: repeat;
-        /*background-size: cover;*/
-        /*background: rgba(0,0,0,0.2);*/
-        /*background: #FFFBE5;*/
         height: 250px !important;
       }
 
@@ -226,12 +223,12 @@
 
       $('#dashboard_loading').show();
 
-      $('.view-btn-history').each(function(){
+      // $('.view-btn-history').each(function(){
 
-        var btn = $(this);
+      //   var btn = $(this);
 
-        btn.addClass('jelly');
-      });
+      //   btn.addClass('jelly');
+      // });
       
       $(document).ready(function(){
 

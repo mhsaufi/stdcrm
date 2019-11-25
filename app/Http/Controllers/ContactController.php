@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Company;
 use App\CompanyContact;
+use App\CompanyPromotion;
 use App\User;
 use App\WEvent;
 use Illuminate\Http\Request;
@@ -57,7 +58,13 @@ class ContactController extends Controller
 			$j++;
 		}
 
-		return view('internal.contact',compact('users','companies'));
+		// ------------------------------------------------------------------------------------------------------------------
+
+		$promotion = new CompanyPromotion;
+
+		$promotion_data = $promotion->where('company_id',Auth::user()->company_id)->get();
+
+		return view('internal.contact',compact('users','companies','promotion_data'));
 	}
 
     public function addContact(Request $request){

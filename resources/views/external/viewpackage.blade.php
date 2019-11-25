@@ -244,7 +244,7 @@
             </div>
 
             
-            <div id="book_now">
+            <div id="book_now" data-title="{{ $result['package_title'] }}">
               BOOK NOW
             </div>
             <div id="ask_vendor" onclick="contactUs('{{ $result['company']['company_id'] }}','{{ $result['company']['company_name']}}')">
