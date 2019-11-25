@@ -437,7 +437,7 @@
         <label>Select Package</label>
         <select class="form-std" id="package">
           <option value=""></option>
-          <option value="C">Custom</option>
+          <option value="C" selected="selected">Custom</option>
           @foreach($package_data as $package)
           <option value="{{ $package['package_id'] }}">{{ $package['package_title'] }}</option>
           @endforeach

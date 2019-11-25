@@ -68,11 +68,9 @@
       }
 
       .pattern{
-      	/*background-image: url("{{asset('myasset/img/bg1.jpg')}}");*/
-      	background-repeat: no-repeat;
-        background-attachment: fixed;
-      	background-size: cover;
-      	height: 250px !important;
+      	background-image: url("{{asset('myasset/img/hy.png')}}");
+        background-repeat: repeat;
+        height: 250px !important;
       }
 
       .no_timeline {

@@ -13,6 +13,7 @@
 			background: url("{{asset('myasset/img/bg1y.jpg')}}");
 			background-repeat: no-repeat;
         	background-size: cover;
+        	background-attachment: fixed;
 		}
 		.half-vertical {
 			width: 100%;
