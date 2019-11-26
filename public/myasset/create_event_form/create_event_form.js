@@ -36,6 +36,11 @@ $('#reg_event').click(function(){
     $( "#timepicker2" ).effect( "shake",{'direction':'up','distance':'3'} );
   }else{
 
+    dataLayer.push({
+      'event': 'create_event',
+      'wetitle':title
+    });
+
     $.ajax({
       url:url,
       type:'POST',

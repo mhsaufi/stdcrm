@@ -4,7 +4,12 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <meta name="site_name" content="Save The Date My">
+    <meta name="page_site" content="savethedate-my.com">
+    <meta name="page_language" content="English">
+    <meta name="page_type" content="About">
+    <meta name="page_title" content="Save The Date My">
+    <meta name="page_content" content="Save The Date My About">
     <title>Save The Date | About</title>
 
     @include('templates.header')

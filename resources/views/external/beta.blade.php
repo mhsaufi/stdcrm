@@ -4,6 +4,7 @@
 	<title>Save The Date | Vendors</title>
 	 @include('templates.header')
 
+  <meta name="site_name" content="Save The Date My">
   <meta name="page_site" content="savethedate-my.com">
   <meta name="page_language" content="English">
   <meta name="page_type" content="List">

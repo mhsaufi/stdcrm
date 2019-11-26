@@ -5,7 +5,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta http-equiv="imagetoolbar" content="no" />
-    <title>Save The Date</title>
+    <meta name="site_name" content="Save The Date My">
+    <meta name="page_site" content="savethedate-my.com">
+    <meta name="page_language" content="English">
+    <meta name="page_type" content="Landing Page">
+    <meta name="page_title" content="Save The Date My">
+    <meta name="page_content" content="PSave The Date My Homepage">
+    <title>Save The Date My</title>
 
     @include('templates.header')
 

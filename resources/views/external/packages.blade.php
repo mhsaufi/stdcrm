@@ -4,7 +4,7 @@
 <head>
   <title>Save The Date | Packages</title>
    @include('templates.header')
-
+  <meta name="site_name" content="Save The Date My">
   <meta name="page_site" content="savethedate-my.com">
   <meta name="page_language" content="English">
   <meta name="page_type" content="List Packages">
@@ -278,7 +278,11 @@
     }
 
     .above_2 {
-      justify-content: space-between;
+      justify-content: flex-start;
+    }
+
+    .above_2 > div {
+      margin-right: 20px;
     }
 
     .below_2 {
@@ -348,6 +352,10 @@
 
       .below_2 > .package_cards {
         margin-right: 0!important;
+      }
+
+      .above_2 > div {
+        margin-right: 0px!important;
       }
     }
    </style>

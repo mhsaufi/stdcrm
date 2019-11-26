@@ -3,6 +3,7 @@
 <html>
 <head>
 	<title>Package | {{ $result['package_title'] }}</title>
+  <meta name="site_name" content="Save The Date My">
    <meta name="page_site" content="savethedate-my.com">
    <meta name="page_language" content="English">
    <meta name="page_type" content="Package View">
