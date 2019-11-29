@@ -38,20 +38,29 @@ Route::get('/iaffair',function(){
 });
 Route::get('/downloads','PublicController@iaffairDownload');
 
-// ---------------------------------------  FOOTER ROUTE
+// --------------------------------------- Navigation header
 
-Route::get('/aboutSTD',function(){
-    return view('external.about');
-});
 Route::get('/features',function(){
     return view('external.features');
 });
 Route::get('/vendorfeatures',function(){
     return view('external.features_vendor');
 });
+
+// ---------------------------------------  FOOTER ROUTE
+
+Route::get('/aboutSTD',function(){
+    return view('external.about');
+});
+
+Route::get('/subscription',function(){
+    return view('external.subscribe');
+});
+
 Route::get('/members',function(){
     return view('external.members');
 });
+
 Route::get('/terms',function(){
     return view('external.terms');
 });
@@ -162,21 +171,23 @@ Route::get('/all','EventController@index');
 
 Route::get('/past','EventController@pastEvent');
 
-// ---------------------------------------  CONTACT
+// ---------------------------------------------------------------------------------  CONTACT
 
 Route::get('/contact','ContactController@index')->middleware('auth');
 Route::post('/infouser','ContactController@infoUser');
 
-// ---------------------------------------  INSIDER
+// ---------------------------------------------------------------------------------  INSIDER
 
 Route::get('/insider','InsiderController@index')->middleware('auth');
 Route::post('/activation','InsiderController@activationStaff');
 
-// ---------------------------------------  ADMIN SECTION
+// ------------------------------------------------------------------------------  ADMIN SECTION
 
 Route::get('/controlcenter',function(){
     return view('admin.auth.login');
 });
+
+Route::post('/subsrip','AdminControllerEvents@receive');
 
 Route::get('/recordusers','AdminControllerUsers@index');
 Route::get('/recordvendors','AdminControllerVendors@index');

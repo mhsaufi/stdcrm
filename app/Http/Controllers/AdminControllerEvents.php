@@ -167,4 +167,8 @@ class AdminControllerEvents extends Controller
         return json_encode($main_array);
 
     }
+
+    public function receive(Request $request){
+        return "Terima KAsih";
+    }
 }

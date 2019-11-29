@@ -28,6 +28,7 @@
 				<img class="vend_pic" src="{{asset('storage/'.Auth::user()->dp)}}">
 				@endif
 			</div>
+			
 	    	<div class="section-sub-header">
 	    		<div class="half-vertical" style="background: #fff;">
 	    			

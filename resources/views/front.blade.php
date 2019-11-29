@@ -583,7 +583,7 @@
               PRODUCT
               </h5>
               <ul>
-                <li><a href="{{ url('/features') }}" class="small-isi">Features</a></li>
+                <li><a href="{{ url('/subscription') }}" class="small-isi">Features</a></li>
                 <!-- <li><a href=""class="small-isi">Marketplace</a></li> -->
               </ul>            
                           
@@ -593,6 +593,7 @@
             <!-- Footer Widget Starts -->
             <div class="footer-widget col-lg-3 col-md-6 col-xs-12 wow fadeIn">
               <h5 class="small-tajuk">
+              
               DISCOVER
               </h5>
               <ul>

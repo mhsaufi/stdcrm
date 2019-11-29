@@ -271,7 +271,7 @@
 				margin-top: 20%;
 				margin-bottom: 10px!important;
 				padding-top: 7%; 
-				background: url("{{asset('myasset/img/babout.jpg')}}");
+				background: url("{{asset('myasset/img/ll.jpg')}}");
 				background-repeat: no-repeat;
 	        	background-size: cover;
 			}

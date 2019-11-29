@@ -3,8 +3,7 @@
     <div>
       <a href="{{ url('/') }}">Save The Date My</a>
       <a href="{{ url('/features') }}">How it works?</a>
-      <a href="{{ route('login') }}">Sign In</a>
-      <a href="{{ route('register') }}">Free Registration</a>
+      <a href="{{ url('/subscription') }}">Features</a>
       <a href="{{ url('/aboutSTD') }}">About Us</a>
       <a href="{{ url('/members') }}">Members</a>
       <a href="{{ url('/terms') }}">Terms And Conditions</a>
@@ -35,7 +34,8 @@
   </div>
 
   <div class="external_footer_bottom">
-    <div><p class="small-p">All copyrights reserved © SaveTheDate 2019 - Designed &amp; Developed by <a rel="" href="">AlynAzren</a>
-        </p></div>
+    <div>
+      <p class="small-p">All copyrights reserved © SaveTheDate 2019 - Designed &amp; Developed by <a rel="" href="">AlynAzren</a></p>
+    </div>
   </div>
 </div>
