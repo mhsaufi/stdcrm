@@ -87,13 +87,13 @@ class PackageController extends Controller
         $pax = $request->input('pax');
         $category = $request->input('category');
         $detail = $request->input('detail');
-        $package_id = $request->input('p_id');
+        $package_id = $request->input('package_id');
         
         $company_package = new CompanyPackage;
 
         $update = $company_package
-                    ->where('package_id', $p_id)
-                    ->update(['package_title'=>$title,'package_price'=>$price,'package_pax'=>$pax,'package_category'=>$category,'package_detail'=>base64_encode($detail),'package_id'=>$package_id]);
+                    ->where('package_id', $package_id)
+                    ->update(['package_title'=>$title,'package_price'=>$price,'package_pax'=>$pax,'package_category'=>$category,'package_detail'=>base64_encode($detail)]);
 
        
         return "Successful";

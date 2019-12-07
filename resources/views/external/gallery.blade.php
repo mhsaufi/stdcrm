@@ -2,6 +2,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="site_name" content="Save The Date My">
+  <meta name="page_site" content="savethedate-my.com">
+  <meta name="page_language" content="English">
+  <meta name="page_type" content="Gallery Vendor">
+  <meta name="page_title" content="Gallery Vendor">
+  <meta name="page_content" content="Gallery">
+
 	<title>{{ $result['company_name'] }} | Gallery</title>
 	 @include('templates.header')
 

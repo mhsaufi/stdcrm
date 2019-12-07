@@ -2,6 +2,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="site_name" content="Save The Date My">
+  <meta name="page_site" content="savethedate-my.com">
+  <meta name="page_language" content="English">
+  <meta name="page_type" content="Review Vendor">
+  <meta name="page_title" content="Review Vendor">
+  <meta name="page_content" content="Review Vendor">
 	<title>{{ $result['company_name'] }} | Review</title>
 	 @include('templates.header')
    <link rel="stylesheet" type="text/css" href="{{asset('myasset/std_rating/std_rating.css')}}">

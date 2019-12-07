@@ -8,6 +8,12 @@
     <title>Save The Date | Features </title>
 
     @include('templates.header')
+    <meta name="site_name" content="Save The Date My">
+    <meta name="page_site" content="savethedate-my.com">
+    <meta name="page_language" content="English">
+    <meta name="page_type" content="Features">
+    <meta name="page_title" content="How It Works">
+    <meta name="page_content" content="How It Works">
 
     <style type="text/css">
       .features_container {

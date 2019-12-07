@@ -4,6 +4,12 @@
 <head>
   <title>Save The Date | Packages</title>
    @include('templates.header')
+  <meta name="site_name" content="Save The Date My">
+  <meta name="page_site" content="savethedate-my.com">
+  <meta name="page_language" content="English">
+  <meta name="page_type" content="List Packages">
+  <meta name="page_title" content="List Packages">
+  <meta name="page_content" content="Packages List">
 
    <link rel="stylesheet" type="text/css" href="{{asset('myasset/select2/dist/css/select23.css')}}">
 
@@ -272,7 +278,11 @@
     }
 
     .above_2 {
-      justify-content: space-between;
+      justify-content: flex-start;
+    }
+
+    .above_2 > div {
+      margin-right: 20px;
     }
 
     .below_2 {
@@ -342,6 +352,10 @@
 
       .below_2 > .package_cards {
         margin-right: 0!important;
+      }
+
+      .above_2 > div {
+        margin-right: 0px!important;
       }
     }
    </style>

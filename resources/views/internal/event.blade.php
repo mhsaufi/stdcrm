@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> 
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -76,9 +76,8 @@
       }
 
       .pattern{
-        /*background-image: url("{{asset('myasset/img/bg1.jpg')}}");*/
-        background-repeat: no-repeat;
-        background-size: cover;
+        background-image: url("{{asset('myasset/img/hy.png')}}");
+        background-repeat: repeat;
         height: 250px !important;
       }
 
@@ -531,12 +530,12 @@
       
       $(document).ready(function(){
 
-        $('.view-btn-history').each(function(){
+        // $('.view-btn-history').each(function(){
 
-          var btn = $(this);
+        //   var btn = $(this);
 
-          btn.addClass('jelly');
-        });
+        //   btn.addClass('jelly');
+        // });
 
         $('.ani_row').each(function(i){
 

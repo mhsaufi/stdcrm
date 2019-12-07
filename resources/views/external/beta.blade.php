@@ -4,6 +4,13 @@
 	<title>Save The Date | Vendors</title>
 	 @include('templates.header')
 
+  <meta name="site_name" content="Save The Date My">
+  <meta name="page_site" content="savethedate-my.com">
+  <meta name="page_language" content="English">
+  <meta name="page_type" content="List">
+  <meta name="page_title" content="List Vendors">
+  <meta name="page_content" content="List Vendors">
+
    <link rel="stylesheet" type="text/css" href="{{asset('myasset/select2/dist/css/select23.css')}}">
    <link rel="stylesheet" type="text/css" href="{{asset('myasset/std_rating/std_rating.css')}}">
 
@@ -86,9 +93,8 @@
 
     .vendor_cards {
       position: relative;
-      width: 350px;
-      height: 210px;
-      min-height: 220px;
+      width: 300px;
+      height: 190px;
       /*background: yellow;*/
       margin: 15px 10px;
       display: flex;
@@ -96,9 +102,6 @@
       justify-content: flex-start;
       border-radius: 5px;
       border: 0.05em solid #dcdcdc;
-      /*-moz-box-shadow: 0 0 6px #888;
-      -webkit-box-shadow: 0 0 6px#888;
-      box-shadow: 0 0 4px #888;*/
       transition: margin-top 0.1s;
     }
 
@@ -107,7 +110,7 @@
       height: 80%;
       display: flex;
       flex-direction: column;
-      justify-content: space-around;
+      justify-content: flex-start;
       padding: 15px 15px;
     }
 
@@ -115,7 +118,6 @@
       -moz-box-shadow: 0 0 5px #888;
       -webkit-box-shadow: 0 0 5px#888;
       box-shadow: 0 0 5px #888;
-      /*margin-top: 5px;*/
     }
 
     .company_logo_list {
@@ -124,7 +126,7 @@
       border: 0.05em solid white;
       height: 50px;
       width: 50px;
-      top: 150px;
+      top: 130px;
       right: 10px;
       z-index: 81;
     }
@@ -135,8 +137,8 @@
       border: 0.05em solid white;
       height: 50px;
       width: 50px;
-      background: white;
-      top: 150px;
+      background: #000;
+      top: 130px;
       right: 10px;
       z-index: 80;
     }
@@ -145,13 +147,15 @@
       height: 90%;
     }
 
-    .vendor_cards_info div h4 {
-      color: white;
-      text-shadow: 1px 1px 2px black;
+    .vendor_cards_info div h5 {
+      color: #fff!important;
+      /*text-shadow: 1px 1px 2px black;*/
     }
 
     .vendor_cards_info div p {
       color: white;
+      font-size: 12px;
+      line-height: 1.4em;
       text-shadow: 5px 5px 10px black!important;
     }
 
@@ -181,7 +185,6 @@
     }
 
     #std_search_btn:hover {
-      /*opacity: 0.9;*/
       background: #7cb342;
     }
 
@@ -334,11 +337,8 @@
             @foreach($p_result as $r)
             <div class="vendor_cards" onclick="viewVendors('{{ $r['company_id'] }}','{{ $r['company_name']}}')">
               <div class="vendor_cards_info" style="background: url('{{ asset('myasset/img/back.jpg') }}');background-size: cover;">
-                <div style="height: 25%;">
-                  
-                </div>
                 <div>
-                  <h4>{{ $r['company_name'] }}</h4>
+                  <h5>{{ $r['company_name'] }}</h5>
                 </div>
                 <div style="width: 80%;">
                   <p>{{ $r['company_address'] }}</p>

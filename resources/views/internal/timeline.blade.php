@@ -27,19 +27,8 @@
       .pattern{
         background-image: url("{{asset('myasset/img/hy.png')}}");
         background-repeat: repeat;
-        /*background-size: cover;*/
-        /*background: rgba(0,0,0,0.2);*/
-        /*background: #FFFBE5;*/
         height: 250px !important;
       }
-      
-/*      .pattern {
-        /*background: #FFFBE5!important;*/
-        background-image: url("{{asset('myasset/img/bg1y.jpg')}}");
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-attachment: fixed;
-      }*/
 
       #std_timline_form {
         display: none;
@@ -448,7 +437,7 @@
         <label>Select Package</label>
         <select class="form-std" id="package">
           <option value=""></option>
-          <option value="C">Custom</option>
+          <option value="C" selected="selected">Custom</option>
           @foreach($package_data as $package)
           <option value="{{ $package['package_id'] }}">{{ $package['package_title'] }}</option>
           @endforeach

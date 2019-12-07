@@ -10,9 +10,10 @@
 	<style type="text/css">
 		.grey-background {
 			/*background: #EEE;*/
-			background: url("{{asset('myasset/img/babout.jpg')}}");
+			background: url("{{asset('myasset/img/bg1y.jpg')}}");
 			background-repeat: no-repeat;
         	background-size: cover;
+        	background-attachment: fixed;
 		}
 		.half-vertical {
 			width: 100%;
@@ -23,6 +24,7 @@
 			padding: 20px 40px;
 			background: #fff;
 			display: flex;
+			flex-direction: column;
 			justify-content: space-between;
 		}
 		.info-content {
@@ -64,6 +66,7 @@
 	    	width: 100%;
 	    	border-bottom: 0.05em solid #d4af37;
 	    	padding: 10px 0;
+	    	margin-bottom: 20px;
 	    }
 	    .add_promotion_container {
 	    	display: none;
@@ -100,7 +103,7 @@
 	        flex-direction: column;
 	        justify-content: flex-start;
 	        padding: 5px 15px;
-	    	z-index: 999999;
+	    	z-index: 99999999999999999999999;
 	    }
 	    .add_promotion_form_header {
 	    	width: 100%;
@@ -188,6 +191,21 @@
 	    	transform: translate(-50%,-50%);
 	    	width: 4%!important;
 	    }
+	    .promotion_list_tbl {
+	    	width: 100%;
+	    	margin-bottom: 20px;
+	    }
+
+	    .promotion_list_tbl td {
+	    	border: 0.05em solid #dcdcdc;
+	    	padding: 5px 10px;
+	    }
+	    .promotion_list_tbl_row {
+	    	cursor: pointer;
+	    }
+	    .promotion_list_tbl_row:hover {
+	    	background: #f1f1f1;
+	    }
 	</style>
 </head>
 <body class="grey-background">
@@ -214,9 +232,34 @@
 
 	    			<div class="header_content">
 	    				<div></div>
-	    				<div><button class="btn_style btn-six" id="open_promotion_form"><i class="fas fa-bullhorn"></i>&nbspADD PROMOTION</button></div>
+	    				<div>
+	    					<button class="btn_style btn-six" id="open_promotion_form"><i class="fas fa-bullhorn"></i>&nbspADD PROMOTION</button>
+	    				</div>
 	    			</div>
-	    			
+	    			@php
+
+	    			$i = 1;
+
+	    			@endphp
+	    			<div class="body_content">
+	    				<table class="promotion_list_tbl">
+	    					@foreach($promotion_data as $promotion)
+	    					<tr class="promotion_list_tbl_row">
+	    						<td>{{ $i }}</td>
+	    						<td>{{ $promotion['promotion_title'] }}</td>
+	    						<td>{{ $promotion['promotion_price'] }}</td>
+	    						<td>{{ $promotion['promotion_pax'] }}</td>
+	    						<td>{{ $promotion['created_at'] }}</td>
+	    					</tr>
+
+	    					@php
+
+			    			$i++;
+
+			    			@endphp
+	    					@endforeach
+	    				</table>
+	    			</div>
 	    		</div>
 	    	</div>
 	    </div>

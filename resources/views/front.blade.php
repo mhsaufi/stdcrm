@@ -5,7 +5,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta http-equiv="imagetoolbar" content="no" />
-    <title>Save The Date</title>
+    <meta name="site_name" content="Save The Date My">
+    <meta name="page_site" content="savethedate-my.com">
+    <meta name="page_language" content="English">
+    <meta name="page_type" content="Landing Page">
+    <meta name="page_title" content="Save The Date My">
+    <meta name="page_content" content="PSave The Date My Homepage">
+    <title>Save The Date My</title>
 
     @include('templates.header')
 
@@ -230,13 +236,13 @@
           @endauth
 
           @endif
-          <div id="vendor_page">Our Vendors</div>
-          <div id="package_page">Packages</div>
-          <div id="event_page">Events</div>
-          <div id="islamic_page">Islamic Affair</div>
+          <div id="vendor_page" class="m_menu" data-list-name="Vendors" data-content-category="Mobile Header">Our Vendors</div>
+          <div id="package_page" class="m_menu" data-list-name="Packages" data-content-category="Mobile Header">Packages</div>
+          <div id="event_page" class="m_menu" data-list-name="Events" data-content-category="Mobile Header">Events</div>
+          <div id="islamic_page" class="m_menu" data-list-name="iAffair" data-content-category="Mobile Header">Islamic Affair</div>
           <div style="height: 15px;width:100%;border-bottom: 0.05em solid white;"></div>
-          <div id="features">How It Works</div>
-          <div id="about_page">About</div>
+          <div id="features" class="m_menu" data-list-name="How It Works" data-content-category="Mobile Header">How It Works</div>
+          <div id="about_page" class="m_menu" data-list-name="About" data-content-category="Mobile Header">About</div>
           @if (Route::has('login'))  
 
           @auth

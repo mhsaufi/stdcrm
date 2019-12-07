@@ -485,7 +485,7 @@
 						<p><b>Step #2</b><br>Booking your package manually or online.</p>								
 						<p><b>Step #3</b><br>Wait for approval from the vendor.</p>								
 						<p><b>Step #4</b><br>If aprroved! You can start planning your wedding at your dashboard.</p>
-						<p><em>** visit <b>How it Works</b> tab for more explanation. **</em></p>							
+						<p><em>** visit <b><a href="{{ url('/features') }}">How it Works</a></b> tab for more explanation. **</em></p>							
 					</div> 
 				</div>
 				

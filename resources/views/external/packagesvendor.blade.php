@@ -3,6 +3,12 @@
 <html>
 <head>
 	<title>{{ $result['company_name'] }} | Packages</title>
+  <meta name="site_name" content="Save The Date My">
+  <meta name="page_site" content="savethedate-my.com">
+  <meta name="page_language" content="English">
+  <meta name="page_type" content="Package Vendor">
+  <meta name="page_title" content="Package | {{ $result['company_name'] }}">
+  <meta name="page_content" content="Package | {{ $result['company_name'] }}">
 	 @include('templates.header')
    <link rel="stylesheet" href="{{ asset('myasset/socialsharekit/dist/css/social-share-kit.css') }}" type="text/css">
 	 <style>

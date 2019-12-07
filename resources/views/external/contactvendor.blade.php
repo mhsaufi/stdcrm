@@ -2,6 +2,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="site_name" content="Save The Date My">
+    <meta name="page_site" content="savethedate-my.com">
+    <meta name="page_language" content="English">
+    <meta name="page_type" content="Contact Us">
+    <meta name="page_title" content="Save The Date My">
+    <meta name="page_content" content="Save The Date My Contact Vendor">
 	<title>{{ $result['company_name'] }} | Contact Us</title>
 	 @include('templates.header')
 
@@ -252,7 +258,7 @@
                 <label>Your content or questionaire</label><br>
                 <textarea class="form-std det" id="content" required></textarea>
               </div>
-              <div id="book_now" class="book_now_disabled">
+              <div id="contact_now" class="book_now_disabled" data-company="{{ $result['company_name'] }}">
                 SUBMIT
               </div>
             </div>
@@ -285,6 +291,8 @@
 
           if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)){
 
+            $('#contact_now').attr('data-email',email);
+
           }else{
 
             error_int += 1;
@@ -304,13 +312,15 @@
 
         if(error_int == 0){
 
-          $('#book_now').removeClass('book_now_disabled');
-          $('#book_now').addClass('book_now_enabled');
+          $('#contact_now').attr('data-email',email);
+
+          $('#contact_now').removeClass('book_now_disabled');
+          $('#contact_now').addClass('book_now_enabled');
 
         }else{
 
-          $('#book_now').removeClass('book_now_enabled');
-          $('#book_now').addClass('book_now_disabled');
+          $('#contact_now').removeClass('book_now_enabled');
+          $('#contact_now').addClass('book_now_disabled');
         }
       });
 
@@ -329,6 +339,8 @@
 
           if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)){
 
+            $('#contact_now').attr('data-email',email);
+
           }else{
 
             error_int += 1;
@@ -348,18 +360,20 @@
 
         if(error_int == 0){
 
-          $('#book_now').removeClass('book_now_disabled');
-          $('#book_now').addClass('book_now_enabled');
+          $('#contact_now').attr('data-email',email);
+
+          $('#contact_now').removeClass('book_now_disabled');
+          $('#contact_now').addClass('book_now_enabled');
 
         }else{
 
-          $('#book_now').removeClass('book_now_enabled');
-          $('#book_now').addClass('book_now_disabled');
+          $('#contact_now').removeClass('book_now_enabled');
+          $('#contact_now').addClass('book_now_disabled');
         }
 
       });
 
-      $('#book_now').click(function(){
+      $('#contact_now').click(function(){
 
         var email = $('#email').val();
         var subject = $('#subject').val();

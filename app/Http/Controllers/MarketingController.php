@@ -24,7 +24,11 @@ class MarketingController extends Controller
 
         $result = $company_package->where("company_id",Auth::user()->company_id)->get();
 
-    	return view('internal.marketing',compact('tag_list','rate','result'));
+        $promotion = new CompanyPromotion;
+
+        $promotion_data = $promotion->where('company_id',Auth::user()->company_id)->get();
+
+    	return view('internal.marketing',compact('tag_list','rate','result','promotion_data'));
     }
 
     public function packageData(Request $request){
@@ -57,6 +61,10 @@ class MarketingController extends Controller
     	$promotion->save();
 
     	return "success";
+    }
+
+    public function companyPromotion(Request $request){
+
 
     }
 } 
