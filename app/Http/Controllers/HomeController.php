@@ -118,17 +118,14 @@ class HomeController extends Controller
         if(in_array(Auth::user()->role_id,array('3','4'))){
 
             $company = new Company;
-
             $c_info = $company->where('company_id',Auth::user()->company_id)->get();
 
             $logo = $c_info[0]['company_logo'];
 
             $tag = new CompanyCategoryTag;
-
             $tag_list = $tag->where('company_id',Auth::user()->company_id)->get();
 
             $utilities = new UtilitiesController;
-
             $rate = $utilities->companyRating(Auth::user()->company_id);
 
             return view('internal.beta',compact('c_info','logo','tag_list','rate'));
