@@ -142,7 +142,7 @@
     .ocard-content{
       position:absolute;
       top:10%;
-      left:28%;
+      left:25%;
       width:50%;
       height:30%;
       display: flex;
@@ -164,7 +164,7 @@
     .ocard-left {
       position:absolute;
       top: 18%;
-      left: 33.3%;  
+      left: 25%;
       transition: 0.3s;
       width: 10%;
       border-radius:10%;
@@ -229,7 +229,6 @@
     .small-p{
     font-size:13px;
     color: #d4af37;
-    margin-left:33%;
     }
 
     @media (max-width: 600px){

@@ -166,10 +166,10 @@
         </div>
         <div class="features_container_body">
           <div class="features_directory animated fadeInLeft fast">
-            <div class="features_directory_main">
+            <!-- <div class="features_directory_main">
               <div class="directory_active"><a href="{{ url('/features') }}">Customers</a></div>
               <div><a href="{{ url('/vendorfeatures') }}">Vendors</a></div>
-            </div>
+            </div> -->
             <div class="features_directory_child">
               <div id="registration" class="directory">Registration</div>
               <div id="login" class="directory">Login</div>

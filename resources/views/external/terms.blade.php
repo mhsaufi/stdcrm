@@ -186,7 +186,6 @@
     .small-p{
     font-size:13px;
     color: #d4af37;
-    margin-left:33%;
     }
     </style>
   </head>
