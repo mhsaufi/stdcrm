@@ -292,7 +292,7 @@
         </div>
 
         <div class="rightlayer">
-          <div class="ocard-right">
+          <div class="ocard-right" onclick="sir()">
             <img src="{{asset('myasset/img/4177.jpg')}}" alt="Avatar" style="width:100%" class="oimg">
             <div class="ocontainer">
               <h4><b>Dr Aznan Zuhid</b></h4> 
@@ -416,6 +416,10 @@
         $('#btn-islcenter').click(function(){
           window.location.replace("{{ url('/islamic_center') }}");
         });
+
+        function sir(){
+          window.open('http://www.iium.edu.my/staff/show/4177');
+        }
      
     </script>
 

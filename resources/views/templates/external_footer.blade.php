@@ -1,14 +1,6 @@
 <div style="width: 100%;display: flex;flex-direction: column;justify-content: flex-start;">
   <div class="external_footer animated fadeInUp fast">
     <div>
-<<<<<<< HEAD
-      <a href="{{ url('/') }}">Save The Date My</a>
-      <a href="{{ url('/features') }}">How it works?</a>
-      <a href="{{ url('/subscription') }}">Features</a>
-      <a href="{{ url('/aboutSTD') }}">About Us</a>
-      <a href="{{ url('/members') }}">Members</a>
-      <a href="{{ url('/terms') }}">Terms And Conditions</a>
-=======
       <a href="{{ url('/') }}" class="foot_menu" data-list-name="Save The Date" data-content-category="Footer Navigation">Save The Date My</a>
       <a href="{{ url('/features') }}" class="foot_menu" data-list-name="How It Works" data-content-category="Footer Navigation">How it works?</a>
       <a href="{{ route('login') }}" class="foot_menu" data-list-name="Sign In" data-content-category="Footer Navigation">Sign In</a>
@@ -16,7 +8,6 @@
       <a href="{{ url('/aboutSTD') }}" class="foot_menu" data-list-name="About Us" data-content-category="Footer Navigation">About Us</a>
       <a href="{{ url('/members') }}" class="foot_menu" data-list-name="Members" data-content-category="Footer Navigation">Members</a>
       <a href="{{ url('/terms') }}" class="foot_menu" data-list-name="Terms And Condition" data-content-category="Footer Navigation">Terms And Conditions</a>
->>>>>>> ddee08f3c6c00cb07a4ba9dd7f9e7fe06d12bbbe
     </div>
     <div>
       <a href="{{ url('/events') }}" class="foot_menu" data-list-name="Events" data-content-category="Footer Navigation">Happening!</a>
