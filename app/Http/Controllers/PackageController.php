@@ -76,8 +76,8 @@ class PackageController extends Controller
         $package = new CompanyPackage;
         $data = $package->where('package_id', $package_id)->first();
 
-        // return json_encode($edit);
-        return view('namaview',compact('data'));
+        return json_encode($data);
+        // return view('namaview',compact('data'));
     }
 
     public function update(Request $request){

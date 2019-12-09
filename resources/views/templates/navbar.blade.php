@@ -58,12 +58,12 @@
 
                     @endif
 
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                       <a class="nav-link black" href="{{ url('/contact') }}" data-list-name="Contact" data-content-category="Header">
                         <i class="fas fa-address-book"></i>  
                         Contact
                       </a>
-                    </li>
+                    </li> -->
 
                   @endif   
 

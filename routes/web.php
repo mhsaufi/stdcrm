@@ -171,17 +171,17 @@ Route::get('/all','EventController@index');
 
 Route::get('/past','EventController@pastEvent');
 
-// ---------------------------------------------------------------------------------  CONTACT
+// ----------------------------------------------  CONTACT
 
 Route::get('/contact','ContactController@index')->middleware('auth');
 Route::post('/infouser','ContactController@infoUser');
 
-// ---------------------------------------------------------------------------------  INSIDER
+// ---------------------------------------------------  INSIDER
 
 Route::get('/insider','InsiderController@index')->middleware('auth');
 Route::post('/activation','InsiderController@activationStaff');
 
-// ------------------------------------------------------------------------------  ADMIN SECTION
+// -------------------------------------------  ADMIN SECTION
 
 Route::get('/controlcenter',function(){
     return view('admin.auth.login');

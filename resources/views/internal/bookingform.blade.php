@@ -418,8 +418,9 @@
         var id = '{{ $package_data["package_id"] }}';
         var name = '{{ $package_data["package_title"] }}';
         var url = '{{ url("/packages") }}' + '/' + name.split(' ').join('_') + '/' + id;
+        var url2 = '{{ url("/dashboard") }}';
 
-        window.location.replace(url);
+        window.location.replace(url2);
       });
     </script>
 </body>

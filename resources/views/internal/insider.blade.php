@@ -391,9 +391,11 @@
     								<th style="text-align: center;">
     									Status
     								</th>
+									@if(Auth::user()->id == $company_info["user_id"])
     								<th>
     									
     								</th>
+									@endif
     							</tr>
     						</thead>
     						<tbody>
@@ -417,9 +419,11 @@
     								<td style="text-align: center;">
     									{{ $user['status_id'] }}
     								</td>
+									@if(Auth::user()->id == $company_info["user_id"])
     								<td class="action_col_deactivate" data-id="{{ $user['id'] }}">
     									Deactivate
     								</td>
+									@endif
     							</tr>
     							@endforeach
     						</tbody>
@@ -448,9 +452,11 @@
     								<th style="text-align: center;">
     									Status
     								</th>
+									@if(Auth::user()->id == $company_info["user_id"])
     								<th colspan="2" style="text-align: center;">
     									Action
     								</th>
+									@endif
     							</tr>
     						</thead>
     						<tbody>
@@ -474,12 +480,14 @@
     								<td style="text-align: center;">
     									{{ $user['status_id'] }}
     								</td>
+									@if(Auth::user()->id == $company_info["user_id"])
     								<td class="action_col_approve" data-id="{{ $user['id'] }}">
     									Approve
     								</td>
     								<td class="action_col_reject" data-id="{{ $user['id'] }}">
     									Reject
     								</td>
+									@endif
     							</tr>
     							@endforeach
     						</tbody>
@@ -509,9 +517,11 @@
     								<th style="text-align: center;">
     									Status
     								</th>
+									@if(Auth::user()->id == $company_info["user_id"])
     								<th>
     									
     								</th>
+									@endif
     							</tr>
     						</thead>
     						<tbody>
@@ -535,9 +545,11 @@
     								<td style="text-align: center;">
     									{{ $user['status_id'] }}
     								</td>
+									@if(Auth::user()->id == $company_info["user_id"])
     								<td class="action_col_activate" data-id="{{ $user['id'] }}">
     									Activate
     								</td>
+									@endif
     							</tr>
     							@endforeach
     						</tbody>

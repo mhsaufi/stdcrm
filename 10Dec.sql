@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2019 at 04:09 PM
--- Server version: 10.1.26-MariaDB
--- PHP Version: 7.1.8
+-- Generation Time: Dec 09, 2019 at 05:12 PM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.3.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -35,8 +35,8 @@ CREATE TABLE `attachment` (
   `att_path` text NOT NULL,
   `item_type` text NOT NULL,
   `item_id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -63,7 +63,9 @@ INSERT INTO `attachment` (`att_id`, `att_name`, `att_filename`, `att_path`, `ite
 (17, 'img10.jpg', 'img10.jpg', 'gallery/company/4/HPY9Yz7UHTfMigjz6BZ9T3aMEpmHtqs9nCP8pHl5.jpeg', 'gallery', 4, '2019-12-08 07:07:03', '2019-12-08 07:07:03'),
 (18, 'ip3.JPG', 'ip3.JPG', 'gallery/company/4/eliKa6QPezUvKQ7pwP7jZvmhrcjAgBn5mwYJI4H5.jpeg', 'gallery', 4, '2019-12-08 07:07:03', '2019-12-08 07:07:03'),
 (19, 'ip8.JPG', 'ip8.JPG', 'gallery/company/4/C8gkY76mx9TbsFUBD6wel7yD7BD0HtpiRzFd6QhH.jpeg', 'gallery', 4, '2019-12-08 07:07:03', '2019-12-08 07:07:03'),
-(20, 'ip9.JPG', 'ip9.JPG', 'gallery/company/4/eOuTeaWkrCeE1ouRiyeGJKJiP1HWFx2CqRXQdwkp.jpeg', 'gallery', 4, '2019-12-08 07:07:04', '2019-12-08 07:07:04');
+(20, 'ip9.JPG', 'ip9.JPG', 'gallery/company/4/eOuTeaWkrCeE1ouRiyeGJKJiP1HWFx2CqRXQdwkp.jpeg', 'gallery', 4, '2019-12-08 07:07:04', '2019-12-08 07:07:04'),
+(21, 'buffet.jpg', 'buffet.jpg', 'gallery/company/3/hZ9LQlGMLvcfenM8AdHBAfkQcHPi5Hlg7k9QgVTk.jpeg', 'gallery', 3, '2019-12-09 07:27:15', '2019-12-09 07:27:15'),
+(22, 'Catering0.jpg', 'Catering0.jpg', 'gallery/company/3/8fm7f6BoAkputZIBGULkuWU4v8YuEruMocF7eslT.jpeg', 'gallery', 3, '2019-12-09 07:27:16', '2019-12-09 07:27:16');
 
 -- --------------------------------------------------------
 
@@ -74,16 +76,16 @@ INSERT INTO `attachment` (`att_id`, `att_name`, `att_filename`, `att_path`, `ite
 CREATE TABLE `company` (
   `company_id` int(11) NOT NULL,
   `company_name` text NOT NULL,
-  `company_contact` text,
-  `company_email` text,
-  `company_ssm` text,
-  `company_website` text,
-  `company_address` text,
-  `company_logo` text,
+  `company_contact` text DEFAULT NULL,
+  `company_email` text DEFAULT NULL,
+  `company_ssm` text DEFAULT NULL,
+  `company_website` text DEFAULT NULL,
+  `company_address` text DEFAULT NULL,
+  `company_logo` text DEFAULT NULL,
   `company_type_id` text NOT NULL,
   `user_id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -216,8 +218,8 @@ CREATE TABLE `company_crm` (
   `crm_id` int(11) NOT NULL,
   `promotion_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -230,14 +232,26 @@ CREATE TABLE `company_package` (
   `package_id` int(11) NOT NULL,
   `package_title` text NOT NULL,
   `package_detail` text NOT NULL,
-  `package_price` int(11) NOT NULL DEFAULT '0',
-  `package_pax` int(11) NOT NULL DEFAULT '0',
-  `package_category` text COMMENT 'company_category',
-  `package_post` int(11) NOT NULL DEFAULT '0',
+  `package_price` int(11) NOT NULL DEFAULT 0,
+  `package_pax` int(11) NOT NULL DEFAULT 0,
+  `package_category` text DEFAULT NULL COMMENT 'company_category',
+  `package_post` int(11) NOT NULL DEFAULT 0,
   `company_id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `company_package`
+--
+
+INSERT INTO `company_package` (`package_id`, `package_title`, `package_detail`, `package_price`, `package_pax`, `package_category`, `package_post`, `company_id`, `created_at`, `updated_at`) VALUES
+(1, 'Mahligai Pengantin Mawar', 'PHA+PHNwYW4+77u/PC9zcGFuPjxiPk1lbnU8L2I+PGJyPjMgSmVuaXMgVWxhbWFuIEthbXB1bmcgKyBTYW1iYWwgQmVsYWNhbjxicj5Ja2FuIE1hc2luPGJyPk5hc2kgTWlueWFrL05hc2kgUHV0aWg8YnI+QXlhbSBNQXNhayBNZXJhaDxicj5EYWdpbmcgUmVuZGFuZzxicj5QYWplcmkgVGVydW5nPGJyPlBhcGVkb208YnI+QWNhciBNZW50YWg8YnI+QnVhaC1idWFoYW48YnI+UHVkaW5nPGJyPkFpciBrb3JkaWFsPGJyPlRlaCdvPGJyPjxicj5IaWFzYW4gRGV3YW48YnI+U2V0IFBlbGFtaW48YnI+SGlhc2FuIFBpbnR1IEdlcmJhbmc8YnI+S2FycGV0IE1lcmFoPGJyPlNldCBMZW5na2FwIE1lamEgJmFtcDsgS2VydXNpPGJyPk1lamEgTWFrYW4gQmVyYWRhcDxicj5LZWsgNSBUaW5na2F0PGJyPjxicj5Fa3NrbHVzaWYgUmFqYSBTZWhhcmk8YnI+U2F0dSBNYWxhbSBQZW5naW5hcGFuIFBlcmN1bWE8YnI+QmVyc2VydGEgRGVrb3Jhc2kgQmlsaWs8YnI+SGFyZ2EgQmlsaWsgSXN0aW1ld2EgdW50dWsgQWhsaSBLZWx1YXJnYTxicj48YnI+PGI+PHNwYW4gc3R5bGU9ImZvbnQtc2l6ZTogMThweDsiPlBlcmN1bWE8L3NwYW4+PC9iPjxicj5TZXQgJ1Rha2UgQXdheSBCb3gnIHV0ayBBaGxpIEtlbHVhcmdhPGJyPkRvb3JnaWZ0PGJyPkJpbGlrIG1lbnVuZ2d1IHV0ayBUZXRhbXUgVklQPGJyPkZvb2QgVGFzdGluZyB1dGsgMTAgb3JnPGJyPlNwb3RsaWdodDxicj5TaXN0ZW0gU2lhciByYXlhIGJlcnNlcnRhIE1pYzxicj5QYXJraW5nIFZJUDxicj48L3A+', 28000, 1000, 'catering', 0, 3, '2019-12-09 15:30:18', '2019-12-09 07:30:18'),
+(2, 'Pakej Lengkap GOLD', 'PHA+TWVudTxicj5OYXNpIE1pbnlhay9OYXNpIFRvbWF0by9OYXNpIFB1dGloPGJyPkF5YW0gTWFzYWsgTWVyYWgvR29yZW5nIEJlcmVtcGFoPGJyPkRhZ2luZyBSZW5kYW5nL01hc2FrIEhpdGFtPGJyPlBhamVyaSBUZXJ1bmcvTmVuYXM8YnI+UGFwZWRvbTxicj5EYWxjYSBTYXl1cjxicj5CdWFoLWJ1YWhhbjxicj5BaXIga29yZGlhbDxicj4xMiBQZWxheWFuIEJlcnVuaWZvcm08YnI+PGJyPlBlcmN1bWE8YnI+QnVidXIgS2FjYW5nL1B1bHV0IEhpdGFtPGJyPkt1aWggMiBqZW5pcyAoMzAwcGF4KTxicj5UZWggVGFyaWsgKDMwMHBheCk8YnI+PGJyPkhpYXNhbiBEZXdhbjxicj5TZXQgUGVsYW1pbjxicj5TZXQgUmVuamlzICsgS2lwYXM8YnI+S2FycGV0IE1lcmFoPGJyPkJ1bmdhIFRhbmdhbiBGcmVzaCBGbG93ZXI8YnI+U2V0IExlbmdrYXAgTWVqYSAmYW1wOyBLZXJ1c2k8YnI+TWVqYSBNYWthbiBCZXJhZGFwPGJyPktlayAzIFRpbmdrYXQ8YnI+PGJyPlBBIFNpc3RlbTxicj5ESiAmYW1wOyBNQzxicj5LYXJhb2tlPGJyPjxicj5NYWtlLVVwICZhbXA7IEJ1c2FuYTxicj5NYWtlLVVwIFNhbmRpbmcgMXg8YnI+U2VwYXNhbmcgQmFqdSAoTCZhbXA7UCk8YnI+QWtzZXNvcmk8YnI+PGJyPlBob3RvZ3JhcGh5PGJyPlNhbmRpbmc8YnI+T3V0ZG9vcjxicj5BbGJ1bTxicj40R0IgVGh1bWJkcml2ZShFZGl0ZWQgUGljdHVyZXMpPGJyPjwvcD4=', 25900, 1000, NULL, 0, 6, '2019-12-09 06:38:55', '2019-12-09 06:38:55'),
+(3, 'Photo Bjaet', 'PHA+PGI+MSBFVkVOVDwvYj48L3A+PHA+MSBQaG90b2dyYXBoZXI8YnI+MSBBbGJ1bSAoMTB4MTIpPGJyPjIgUG9zdGVyIEZyYW1lICg4eDEyLDE2eDI0KTxicj5GbGFzaCBkcml2ZSwgQWxidW0gYm94PGJyPkZSRUUgc2FtZSBkYXkgb3V0ZG9vcjxicj48L3A+', 1480, 2, NULL, 0, 1, '2019-12-09 06:42:26', '2019-12-09 06:42:26'),
+(4, 'Video Bajet', 'PHA+MSBFVkVOVDwvcD48cD4xIFZpZGVvZ3JhcGhlcjwvcD48cD5WaWRlbyBkdXJhdGlvbjogMTBtaW51dGVzIChtYXgpPGJyPkZsYXNoIGRyaXZlcjxicj5GUkVFIHNhbWUgZGF5IG91dGRvb3I8YnI+PC9wPg==', 1480, 2, NULL, 0, 1, '2019-12-09 06:44:28', '2019-12-09 06:44:28'),
+(5, 'Akustika Tradisional', 'PHA+RHVyYXRpb246IDMgaG91cnM8L3A+PHA+VGhlbWU6IFRyYWRpdGlvbmFsPC9wPjxwPk11c2ljaWFuczogODwvcD48cD48YnI+PC9wPjxwPioqbm90IGluY2x1ZGluZyBQQSBTeXN0ZW0qKjwvcD48cD5hZGQgb24gUk01MDAgZm9yIFBBIFN5c3RlbTxicj48L3A+', 2000, 8, NULL, 0, 5, '2019-12-09 06:48:21', '2019-12-09 06:48:21'),
+(6, 'Pelamin Idaman', 'PGRpdiBkYXRhLXRlc3RpZD0icG9zdF9tZXNzYWdlIiBjbGFzcz0iXzVwYnggdXNlckNvbnRlbnQgXzM1NzYiIGRhdGEtZnQ9InsmcXVvdDt0biZxdW90OzomcXVvdDtLJnF1b3Q7fSIgaWQ9ImpzXzYiPjxwPlBST01PIFBBS0VKIFBFTEFNSU4gREVXQU4gUk0zMDAwISEhPHNwYW4gY2xhc3M9Il81bWZyIj48c3BhbiBjbGFzcz0iXzZxZG0iIHN0eWxlPSJoZWlnaHQ6IDE2cHg7IHdpZHRoOiAxNnB4OyBmb250LXNpemU6IDE2cHg7IGJhY2tncm91bmQtaW1hZ2U6IHVybCgmcXVvdDtodHRwczovL3N0YXRpYy54eC5mYmNkbi5uZXQvaW1hZ2VzL2Vtb2ppLnBocC92OS90MmMvMS8xNi8xZjYzMS5wbmcmcXVvdDspIj7wn5ixPC9zcGFuPjwvc3Bhbj48c3BhbiBjbGFzcz0iXzVtZnIiPjxzcGFuIGNsYXNzPSJfNnFkbSIgc3R5bGU9ImhlaWdodDogMTZweDsgd2lkdGg6IDE2cHg7IGZvbnQtc2l6ZTogMTZweDsgYmFja2dyb3VuZC1pbWFnZTogdXJsKCZxdW90O2h0dHBzOi8vc3RhdGljLnh4LmZiY2RuLm5ldC9pbWFnZXMvZW1vamkucGhwL3Y5L3QyYy8xLzE2LzFmNjMxLnBuZyZxdW90OykiPvCfmLE8L3NwYW4+PC9zcGFuPjxzcGFuIGNsYXNzPSJfNW1mciI+PHNwYW4gY2xhc3M9Il82cWRtIiBzdHlsZT0iaGVpZ2h0OiAxNnB4OyB3aWR0aDogMTZweDsgZm9udC1zaXplOiAxNnB4OyBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoJnF1b3Q7aHR0cHM6Ly9zdGF0aWMueHguZmJjZG4ubmV0L2ltYWdlcy9lbW9qaS5waHAvdjkvdDJjLzEvMTYvMWY2MzEucG5nJnF1b3Q7KSI+8J+YsTwvc3Bhbj48L3NwYW4+PC9wPjxwPiBCaXNtaWxsYWhpcnJhaG1hbmlycmFoaW0uLjwvcD48cD4gSGFhIHV0ayBiYWthbCBwZW5nYW50aW4gZGkgbHVhciBzYW5hLi5IQVJHQSBSVU5UVUgga2FtaSBuYWsgYmFnaSBuaS4uYnVrYW4gc2V0YWthdCBkYXBhdCBwZWxhbWluIGplIFRBUEkgU0VNVUEgRElCQVdBSDxzcGFuIGNsYXNzPSJfNW1mciI+PHNwYW4gY2xhc3M9Il82cWRtIiBzdHlsZT0iaGVpZ2h0OiAxNnB4OyB3aWR0aDogMTZweDsgZm9udC1zaXplOiAxNnB4OyBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoJnF1b3Q7aHR0cHM6Ly9zdGF0aWMueHguZmJjZG4ubmV0L2ltYWdlcy9lbW9qaS5waHAvdjkvdDRmLzEvMTYvMWY0NDcucG5nJnF1b3Q7KSI+8J+Rhzwvc3Bhbj48L3NwYW4+PHNwYW4gY2xhc3M9Il81bWZyIj48c3BhbiBjbGFzcz0iXzZxZG0iIHN0eWxlPSJoZWlnaHQ6IDE2cHg7IHdpZHRoOiAxNnB4OyBmb250LXNpemU6IDE2cHg7IGJhY2tncm91bmQtaW1hZ2U6IHVybCgmcXVvdDtodHRwczovL3N0YXRpYy54eC5mYmNkbi5uZXQvaW1hZ2VzL2Vtb2ppLnBocC92OS90NGYvMS8xNi8xZjQ0Ny5wbmcmcXVvdDspIj7wn5GHPC9zcGFuPjwvc3Bhbj48c3BhbiBjbGFzcz0iXzVtZnIiPjxzcGFuIGNsYXNzPSJfNnFkbSIgc3R5bGU9ImhlaWdodDogMTZweDsgd2lkdGg6IDE2cHg7IGZvbnQtc2l6ZTogMTZweDsgYmFja2dyb3VuZC1pbWFnZTogdXJsKCZxdW90O2h0dHBzOi8vc3RhdGljLnh4LmZiY2RuLm5ldC9pbWFnZXMvZW1vamkucGhwL3Y5L3Q0Zi8xLzE2LzFmNDQ3LnBuZyZxdW90OykiPvCfkYc8L3NwYW4+PC9zcGFuPjwvcD48cD4gPHNwYW4gY2xhc3M9Il81bWZyIj48c3BhbiBjbGFzcz0iXzZxZG0iIHN0eWxlPSJoZWlnaHQ6IDE2cHg7IHdpZHRoOiAxNnB4OyBmb250LXNpemU6IDE2cHg7IGJhY2tncm91bmQtaW1hZ2U6IHVybCgmcXVvdDtodHRwczovL3N0YXRpYy54eC5mYmNkbi5uZXQvaW1hZ2VzL2Vtb2ppLnBocC92OS90NTEvMS8xNi8yNzE0LnBuZyZxdW90OykiPuKclDwvc3Bhbj48L3NwYW4+IFNldCBwZWxhbWluIGRld2FuIDMwLTQwZnQ8YnI+IDxzcGFuIGNsYXNzPSJfNW1mciI+PHNwYW4gY2xhc3M9Il82cWRtIiBzdHlsZT0iaGVpZ2h0OiAxNnB4OyB3aWR0aDogMTZweDsgZm9udC1zaXplOiAxNnB4OyBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoJnF1b3Q7aHR0cHM6Ly9zdGF0aWMueHguZmJjZG4ubmV0L2ltYWdlcy9lbW9qaS5waHAvdjkvdDUxLzEvMTYvMjcxNC5wbmcmcXVvdDspIj7inJQ8L3NwYW4+PC9zcGFuPiBXYWxrd2F5IHggNnBjczxicj4gPHNwYW4gY2xhc3M9Il81bWZyIj48c3BhbiBjbGFzcz0iXzZxZG0iIHN0eWxlPSJoZWlnaHQ6IDE2cHg7IHdpZHRoOiAxNnB4OyBmb250LXNpemU6IDE2cHg7IGJhY2tncm91bmQtaW1hZ2U6IHVybCgmcXVvdDtodHRwczovL3N0YXRpYy54eC5mYmNkbi5uZXQvaW1hZ2VzL2Vtb2ppLnBocC92OS90NTEvMS8xNi8yNzE0LnBuZyZxdW90OykiPuKclDwvc3Bhbj48L3NwYW4+IFJlZCBjYXJwZXQ8YnI+IDxzcGFuIGNsYXNzPSJfNW1mciI+PHNwYW4gY2xhc3M9Il82cWRtIiBzdHlsZT0iaGVpZ2h0OiAxNnB4OyB3aWR0aDogMTZweDsgZm9udC1zaXplOiAxNnB4OyBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoJnF1b3Q7aHR0cHM6Ly9zdGF0aWMueHguZmJjZG4ubmV0L2ltYWdlcy9lbW9qaS5waHAvdjkvdDUxLzEvMTYvMjcxNC5wbmcmcXVvdDspIj7inJQ8L3NwYW4+PC9zcGFuPiBFbnRyYW5jZSBkZWNvPGJyPiA8c3BhbiBjbGFzcz0iXzVtZnIiPjxzcGFuIGNsYXNzPSJfNnFkbSIgc3R5bGU9ImhlaWdodDogMTZweDsgd2lkdGg6IDE2cHg7IGZvbnQtc2l6ZTogMTZweDsgYmFja2dyb3VuZC1pbWFnZTogdXJsKCZxdW90O2h0dHBzOi8vc3RhdGljLnh4LmZiY2RuLm5ldC9pbWFnZXMvZW1vamkucGhwL3Y5L3RiZC8xLzE2LzFmNGEyLnBuZyZxdW90OykiPvCfkqI8L3NwYW4+PC9zcGFuPiBGUkVFIFNld2FhbiBCVVNBTkEgTCZhbXA7UCAoV09SVEggUk04MDAhKTxicj4gPHNwYW4gY2xhc3M9Il81bWZyIj48c3BhbiBjbGFzcz0iXzZxZG0iIHN0eWxlPSJoZWlnaHQ6IDE2cHg7IHdpZHRoOiAxNnB4OyBmb250LXNpemU6IDE2cHg7IGJhY2tncm91bmQtaW1hZ2U6IHVybCgmcXVvdDtodHRwczovL3N0YXRpYy54eC5mYmNkbi5uZXQvaW1hZ2VzL2Vtb2ppLnBocC92OS90YmQvMS8xNi8xZjRhMi5wbmcmcXVvdDspIj7wn5KiPC9zcGFuPjwvc3Bhbj4gRlJFRSBEZWNvIE1lamEgQmVyYWRhYiAoV09SVEggUk0yNTAhKTwvcD48cD4KIEpJTUFUIGxhZ2kgYmVyYmFsb2kga2Fubm4uLnByb21vc2kgaGFueWEgdXRrIDUgc2xvdCBzZXRpYXAgbWluZ2d1LiBTbyAKY2VjZXBhdCBsZWthaWggaHVidW5naSBrYW1pIHV0ayBib29raW5nLiBCb29raW5nIGhhbnlhIFJNMjAwIGplciEgPC9wPjxwPiBXaGF0c2FwcCBrYXQgc2luaTxzcGFuIGNsYXNzPSJfNW1mciI+PHNwYW4gY2xhc3M9Il82cWRtIiBzdHlsZT0iaGVpZ2h0OiAxNnB4OyB3aWR0aDogMTZweDsgZm9udC1zaXplOiAxNnB4OyBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoJnF1b3Q7aHR0cHM6Ly9zdGF0aWMueHguZmJjZG4ubmV0L2ltYWdlcy9lbW9qaS5waHAvdjkvdDRmLzEvMTYvMWY0NDcucG5nJnF1b3Q7KSI+8J+Rhzwvc3Bhbj48L3NwYW4+PHNwYW4gY2xhc3M9Il81bWZyIj48c3BhbiBjbGFzcz0iXzZxZG0iIHN0eWxlPSJoZWlnaHQ6IDE2cHg7IHdpZHRoOiAxNnB4OyBmb250LXNpemU6IDE2cHg7IGJhY2tncm91bmQtaW1hZ2U6IHVybCgmcXVvdDtodHRwczovL3N0YXRpYy54eC5mYmNkbi5uZXQvaW1hZ2VzL2Vtb2ppLnBocC92OS90NGYvMS8xNi8xZjQ0Ny5wbmcmcXVvdDspIj7wn5GHPC9zcGFuPjwvc3Bhbj48c3BhbiBjbGFzcz0iXzVtZnIiPjxzcGFuIGNsYXNzPSJfNnFkbSIgc3R5bGU9ImhlaWdodDogMTZweDsgd2lkdGg6IDE2cHg7IGZvbnQtc2l6ZTogMTZweDsgYmFja2dyb3VuZC1pbWFnZTogdXJsKCZxdW90O2h0dHBzOi8vc3RhdGljLnh4LmZiY2RuLm5ldC9pbWFnZXMvZW1vamkucGhwL3Y5L3Q0Zi8xLzE2LzFmNDQ3LnBuZyZxdW90OykiPvCfkYc8L3NwYW4+PC9zcGFuPjxicj4wMTIyMjIyMjIyPC9wPjxwPiAqdGVydGFrbHVrIHBhZGEgdGVybWEgJmFtcDsgc3lhcmF0KjwvcD48L2Rpdj4=', 3000, 0, NULL, 0, 2, '2019-12-09 06:52:14', '2019-12-09 06:52:14');
 
 -- --------------------------------------------------------
 
@@ -251,6 +265,27 @@ CREATE TABLE `company_package_category_tag` (
   `cc_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `company_package_category_tag`
+--
+
+INSERT INTO `company_package_category_tag` (`cpct_id`, `package_id`, `cc_id`) VALUES
+(1, 1, 8),
+(2, 1, 12),
+(3, 1, 28),
+(4, 2, 8),
+(5, 2, 13),
+(6, 2, 19),
+(7, 2, 22),
+(8, 2, 29),
+(9, 3, 1),
+(10, 3, 2),
+(11, 4, 2),
+(12, 5, 3),
+(13, 6, 9),
+(14, 6, 28),
+(15, 7, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -260,9 +295,9 @@ CREATE TABLE `company_package_category_tag` (
 CREATE TABLE `company_package_post` (
   `pp_id` int(11) NOT NULL,
   `pp_content` text NOT NULL,
-  `pp_attachment` int(11) NOT NULL DEFAULT '0' COMMENT 'att_id',
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `pp_attachment` int(11) NOT NULL DEFAULT 0 COMMENT 'att_id',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -277,11 +312,18 @@ CREATE TABLE `company_promotion` (
   `promotion_price` text NOT NULL,
   `promotion_pax` text NOT NULL,
   `promotion_detail` text NOT NULL,
-  `promotion_post` int(11) DEFAULT '0' COMMENT 'pp_id',
+  `promotion_post` int(11) DEFAULT 0 COMMENT 'pp_id',
   `company_id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `company_promotion`
+--
+
+INSERT INTO `company_promotion` (`promotion_id`, `promotion_title`, `promotion_price`, `promotion_pax`, `promotion_detail`, `promotion_post`, `company_id`, `created_at`, `updated_at`) VALUES
+(1, 'Mahligai Pengantin Mawar', '28000', '1000', 'PHA+PGI+PHNwYW4gc3R5bGU9ImZvbnQtc2l6ZTogMThweDsiPkZyZWUgQWRkIE9uPC9zcGFuPjwvYj48YnI+Y2F0ZXJpbmcgTmlrYWggZm9yIDMwcGF4PGJyPjwvcD4=', 0, 3, '2019-12-09 07:32:23', '2019-12-09 07:32:23');
 
 -- --------------------------------------------------------
 
@@ -296,7 +338,7 @@ CREATE TABLE `company_reviews` (
   `review_rate` int(11) NOT NULL,
   `review_text` text NOT NULL,
   `company_id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -309,17 +351,17 @@ CREATE TABLE `company_reviews` (
 CREATE TABLE `event_external` (
   `ee_id` int(11) NOT NULL,
   `ee_title` text NOT NULL,
-  `location` text,
-  `description` text,
+  `location` text DEFAULT NULL,
+  `description` text DEFAULT NULL,
   `date_start` date DEFAULT NULL,
   `date_end` date DEFAULT NULL,
   `time_start` time DEFAULT NULL,
   `time_end` time DEFAULT NULL,
-  `poster` text,
-  `url` text,
+  `poster` text DEFAULT NULL,
+  `url` text DEFAULT NULL,
   `posted_by` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -443,20 +485,20 @@ CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `phone` text COLLATE utf8mb4_unicode_ci,
-  `fullname` text COLLATE utf8mb4_unicode_ci,
+  `phone` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `fullname` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `dob` date DEFAULT NULL,
-  `address` text COLLATE utf8mb4_unicode_ci,
-  `state` text COLLATE utf8mb4_unicode_ci,
+  `address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `state` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `dp` text COLLATE utf8mb4_unicode_ci,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `dp` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp(),
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '1',
-  `role_id` int(11) DEFAULT '5',
-  `company_id` int(11) NOT NULL DEFAULT '0' COMMENT '0= for client user'
+  `role_id` int(11) DEFAULT 5,
+  `company_id` int(11) NOT NULL DEFAULT 0 COMMENT '0= for client user'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -467,14 +509,16 @@ INSERT INTO `users` (`id`, `name`, `email`, `phone`, `fullname`, `dob`, `address
 (5, 'Amalina', 'online.support@savethedate-my.com', '0172193819', 'Amalina Azren', NULL, NULL, NULL, NULL, '$2y$10$c0.2XaxD/ZanP4IkCbRTy.3/ZIg5RhK9hwEIjIPxA1HJCAhmD/h8.', NULL, '2019-11-25 15:11:39', '2019-11-25 15:11:39', NULL, '1', 0, 0),
 (6, 'Ain Ayuni', 'ainayuni@gmail.com', '0125586594', 'Ain Ayuni', NULL, NULL, NULL, NULL, '$2y$10$sfufKHtMvJ4vUArGtUZLpuIB5ZeZ03uGqQmYtW87.XqpOWu4qOl22', NULL, '2019-12-08 06:30:19', '2019-12-08 06:30:19', NULL, '1', 3, 1),
 (7, 'Khadijah', 'khadijah@gmail.com', '0132526556', 'Khadijah Yaakob', NULL, NULL, NULL, NULL, '$2y$10$hgZXjXtxjG9xdKC60XL7k.plRKgUpsczX1SEganPo1pzhYTgGI3Ji', 'avatar/user/7/fRAGOdJEui2GWdIanwrNL6X1HGMX6c8vSkCwzqXb.jpeg', '2019-12-08 06:33:43', '2019-12-08 06:55:16', NULL, '1', 3, 2),
-(8, 'Kamil', 'kamil90@gmail.com', '0145524123', 'Jamal Dzulkifli', NULL, NULL, NULL, NULL, '$2y$10$sqEQ4fk/NOuCOnE0ZQJbguwsKgCMpF1t4EqiiePj7OKXPSbrM3V3O', NULL, '2019-12-08 06:37:09', '2019-12-08 06:37:09', NULL, '1', 3, 3),
+(8, 'Kamil', 'kamil90@gmail.com', '0145524123', 'Kamil Dzulkifli', '1990-12-31', 'Kuala Lumpur City', 'Terengganu', NULL, '$2y$10$sqEQ4fk/NOuCOnE0ZQJbguwsKgCMpF1t4EqiiePj7OKXPSbrM3V3O', 'avatar/user/8/jdaqjCIGIV3xaKqfotoP8azKR0tVEeegnH3TGJsq.jpeg', '2019-12-08 06:37:09', '2019-12-09 07:26:12', NULL, '1', 3, 3),
 (9, 'Nisa Sakinah', 'khairunnisa@gmail.com', '0102356654', 'Khairunnisa Sakinah', NULL, NULL, NULL, NULL, '$2y$10$yNaVIX9.F5BEm3xuNGAAr.vzDNVmqzr5Wl7edtWnsIjS8hcVQYeSC', 'avatar/user/9/O3zDqkj8XWoZEK3bM4xEyrEbxONF3XyCAZhCabZH.png', '2019-12-08 06:39:44', '2019-12-08 06:58:28', NULL, '1', 3, 4),
 (10, 'Mukhlis', 'mukhlis@gmail.com', '0109897854', 'Mukhlis Farhan bin Johan', NULL, NULL, NULL, NULL, '$2y$10$ryUqh7A8Z75glSfC4Os.cOTL6RnafASJFd1l/AwRvNYplG0KZIcD6', 'avatar/user/10/tvdwww07nBbn54P9ZDKEwCdQr8Q1CUvz9p3XQUJl.png', '2019-12-08 06:41:34', '2019-12-08 07:01:01', NULL, '1', 3, 5),
 (11, 'Ramlah90', 'ramlah90@gmail.com', '0132586547', 'Ramlah Saad', NULL, NULL, NULL, NULL, '$2y$10$ccBQhAI84KrRVYMVtex/F.P1tZqD43OI6zvolVpEahEbXSghmfJTO', 'avatar/user/11/hVwzKqL4I79ZajdsP22pRYoPyjNg7zOFgymhA6M0.jpeg', '2019-12-08 06:44:16', '2019-12-08 07:02:52', NULL, '1', 3, 6),
-(12, 'Alyn Azren', 'alynazren@gmail.com', '0172193819', 'Nur Amalina binti Azren', NULL, NULL, NULL, NULL, '$2y$10$f.AxEB/X1Aem20YODiFky.KWUy0EwglFBUnbFHxNdZHvLiqdWMgp.', NULL, '2019-12-08 06:49:44', '2019-12-08 06:49:44', NULL, '1', 5, 0),
+(12, 'Alyn Azren', 'alynazren@gmail.com', '0172193819', 'Nur Amalina binti Azren', '1993-12-27', 'Sri Serdang', 'Selangor', NULL, '$2y$10$f.AxEB/X1Aem20YODiFky.KWUy0EwglFBUnbFHxNdZHvLiqdWMgp.', NULL, '2019-12-08 06:49:44', '2019-12-09 06:57:28', NULL, '1', 5, 0),
 (13, 'Habib Saufi', 'habibmohdsaufi@gmail.com', '0173685866', 'Muhammad Habib Saufi', NULL, NULL, NULL, NULL, '$2y$10$YEu1xHHutTsK9lIWzphHMeH7sMleSTYjdv4lxUh/bapGukQQySPwm', NULL, '2019-12-08 06:50:33', '2019-12-08 06:50:33', NULL, '1', 5, 0),
 (14, 'Rozita Kassim', 'rozita.azren@gmail.com', '0132568848', 'Puan Rozita', NULL, NULL, NULL, NULL, '$2y$10$q47ZSdnhucfM4B.ij2dm7.nG89k7g4mlTghj3ALZSJH8w5OJTRMgK', NULL, '2019-12-08 06:51:21', '2019-12-08 06:51:21', NULL, '1', 5, 0),
-(15, 'Sabrina', 'sabreena@gmail.com', '0123356545', 'Sabrina', NULL, NULL, NULL, NULL, '$2y$10$7z8X2u50PFCiQFTRXnzcl.s0TapyOnO.68e0B6eKr4HyTGhLIZnGq', NULL, '2019-12-08 06:52:57', '2019-12-08 06:52:57', NULL, '1', 5, 0);
+(15, 'Sabrina', 'sabreena@gmail.com', '0123356545', 'Sabrina', NULL, NULL, NULL, NULL, '$2y$10$7z8X2u50PFCiQFTRXnzcl.s0TapyOnO.68e0B6eKr4HyTGhLIZnGq', NULL, '2019-12-08 06:52:57', '2019-12-08 06:52:57', NULL, '1', 5, 0),
+(16, 'Syawal', 'asyawal90@gmail.com', '0123454323', 'Ahmad Syawal', NULL, NULL, NULL, NULL, '$2y$10$scbMBeQagnLnB881811bW.QkXcJkQ8ivupiTfqGBIRQvgorWfi0IC', NULL, '2019-12-09 07:35:19', '2019-12-09 07:35:19', NULL, '4', 3, 3),
+(17, 'Kak Z', 'zubaidah77@gmail.com', '0192123433', 'Siti Zubaidah Ahmad', NULL, NULL, NULL, NULL, '$2y$10$kSaVRjh8g.uGCRUv.D7mEu35RaJdCIEkG2Tb.jzBQ.0gLE1wU3JHS', NULL, '2019-12-09 07:37:12', '2019-12-09 07:40:39', NULL, '1', 3, 3);
 
 -- --------------------------------------------------------
 
@@ -529,16 +573,23 @@ CREATE TABLE `wevent` (
   `we_date` date NOT NULL,
   `we_time1` time NOT NULL DEFAULT '00:00:00',
   `we_time2` time NOT NULL DEFAULT '00:00:00',
-  `we_venue` text,
-  `we_desc` text,
-  `we_remark` text,
-  `package_id` int(11) NOT NULL DEFAULT '0',
+  `we_venue` text DEFAULT NULL,
+  `we_desc` text DEFAULT NULL,
+  `we_remark` text DEFAULT NULL,
+  `package_id` int(11) NOT NULL DEFAULT 0,
   `company_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL DEFAULT '0',
+  `user_id` int(11) NOT NULL DEFAULT 0,
   `wes_id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `wevent`
+--
+
+INSERT INTO `wevent` (`we_id`, `we_title`, `we_date`, `we_time1`, `we_time2`, `we_venue`, `we_desc`, `we_remark`, `package_id`, `company_id`, `user_id`, `wes_id`, `created_at`, `updated_at`) VALUES
+(1, 'Alyn & Muhammad', '2020-08-28', '16:00:00', '00:00:00', 'Veillaris Bangi', NULL, NULL, 1, 3, 12, 1, '2019-12-09 15:22:46', '2019-12-09 07:22:46');
 
 -- --------------------------------------------------------
 
@@ -551,9 +602,18 @@ CREATE TABLE `wevent_agreement` (
   `we_id` int(11) NOT NULL,
   `party_id` int(11) NOT NULL,
   `party_type` text NOT NULL,
-  `party_agree` int(1) NOT NULL DEFAULT '0',
-  `remark` text
+  `party_agree` int(1) NOT NULL DEFAULT 0,
+  `remark` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `wevent_agreement`
+--
+
+INSERT INTO `wevent_agreement` (`a_id`, `we_id`, `party_id`, `party_type`, `party_agree`, `remark`) VALUES
+(1, 1, 3, 'company', 0, NULL),
+(2, 1, 1, 'company', 0, NULL),
+(3, 1, 12, 'client', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -566,13 +626,21 @@ CREATE TABLE `wevent_inbox` (
   `i_sender_id` text NOT NULL,
   `i_recipient_id` int(11) NOT NULL,
   `i_type_id` int(11) NOT NULL,
-  `i_subject` text,
-  `i_content` text,
+  `i_subject` text DEFAULT NULL,
+  `i_content` text DEFAULT NULL,
   `i_item_id` int(11) DEFAULT NULL,
-  `i_status_id` int(11) NOT NULL DEFAULT '0',
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP
+  `i_status_id` int(11) NOT NULL DEFAULT 0,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `wevent_inbox`
+--
+
+INSERT INTO `wevent_inbox` (`i_id`, `i_sender_id`, `i_recipient_id`, `i_type_id`, `i_subject`, `i_content`, `i_item_id`, `i_status_id`, `created_at`, `updated_at`) VALUES
+(1, '0', 1, 4, '', '', 1, 1, '2019-12-09 15:19:00', '2019-12-09 07:19:00'),
+(2, '3', 5, 4, '', '', 1, 2, '2019-12-09 07:19:55', '2019-12-09 07:19:55');
 
 -- --------------------------------------------------------
 
@@ -608,13 +676,23 @@ CREATE TABLE `wevent_timeline` (
   `we_id` int(11) NOT NULL,
   `wet_owner` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `wet_payment` int(11) NOT NULL DEFAULT '0',
+  `wet_payment` int(11) DEFAULT 0,
   `tc_id` int(11) NOT NULL,
   `ts_id` int(11) NOT NULL,
-  `wet_remark` text,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP
+  `wet_remark` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `wevent_timeline`
+--
+
+INSERT INTO `wevent_timeline` (`wet_id`, `wet_subject`, `wet_desc`, `wet_datetime`, `we_id`, `wet_owner`, `user_id`, `wet_payment`, `tc_id`, `ts_id`, `wet_remark`, `created_at`, `updated_at`) VALUES
+(1, 'First Meeting', 'PHA+TGV0J3MgbWVldCB1cCBhdCBvdXIgb2ZmaWNlIGZvciBvdXIgZmlyc3QgbWVldGluZyB0byBjb25maXJtIHlvdXIgYm9va2luZyB3aXRoIHVzLjxicj48L3A+', '2019-11-01 11:11:00', 1, 8, 12, NULL, 1, 2, 'i\'m not available that day', '2019-12-09 15:06:55', '2019-12-09 07:17:20'),
+(2, 'Set Next Appointment', 'PHA+Q2FsbGluZyB0byBzZXQgdXAgZm9yIG91ciBuZXh0IG1lZXRpbmcuPGJyPjwvcD4=', '2019-12-10 09:11:00', 1, 8, 12, 0, 3, 3, 'I have meeting at that time. We can meet later', '2019-12-09 07:13:03', '2019-12-09 07:17:50'),
+(3, 'Food Testing Selection Menu', 'PHA+Q29tZSB0byBvdXIgb2ZmaWNlIHRvIGhhdmUgYSBmb29kIHRlc3RpbmcgZm9yIDEwIHBlcnNvbiBvZiB5b3VyIGNob3NlbiBtZW51Ljxicj48L3A+', '2020-02-22 12:13:00', 1, 8, 12, 0, 4, 1, NULL, '2019-12-09 07:14:44', '2019-12-09 07:14:44'),
+(4, 'Choose your Dress', 'PHA+WW91IG5lZWQgdG8gZ28gdG8gTWFobGlnYWkgQm91dGlxdWUgdG8gY2hvb3NlIHlvdXIgZHJlc3MgZnJvbSBhdmFpbGFibGUgY29sbGVjdGlvbi48YnI+PC9wPg==', '2020-01-31 21:14:00', 1, 8, 12, 0, 2, 1, NULL, '2019-12-09 07:16:27', '2019-12-09 07:16:27');
 
 -- --------------------------------------------------------
 
@@ -633,8 +711,8 @@ CREATE TABLE `wevent_vendors` (
 --
 
 INSERT INTO `wevent_vendors` (`wev_id`, `company_id`, `we_id`) VALUES
-(1, 1, 1),
-(2, 2, 1);
+(3, 3, 1),
+(4, 1, 1);
 
 --
 -- Indexes for dumped tables
@@ -804,132 +882,158 @@ ALTER TABLE `wevent_vendors`
 -- AUTO_INCREMENT for table `attachment`
 --
 ALTER TABLE `attachment`
-  MODIFY `att_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `att_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
 --
 -- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
   MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT for table `company_category`
 --
 ALTER TABLE `company_category`
   MODIFY `cc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
 --
 -- AUTO_INCREMENT for table `company_category_tag`
 --
 ALTER TABLE `company_category_tag`
   MODIFY `cct_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
 --
 -- AUTO_INCREMENT for table `company_contact`
 --
 ALTER TABLE `company_contact`
   MODIFY `company_contact_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `company_crm`
 --
 ALTER TABLE `company_crm`
   MODIFY `crm_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `company_package`
 --
 ALTER TABLE `company_package`
-  MODIFY `package_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `package_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
 --
 -- AUTO_INCREMENT for table `company_package_category_tag`
 --
 ALTER TABLE `company_package_category_tag`
-  MODIFY `cpct_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cpct_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
 --
 -- AUTO_INCREMENT for table `company_package_post`
 --
 ALTER TABLE `company_package_post`
   MODIFY `pp_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `company_promotion`
 --
 ALTER TABLE `company_promotion`
-  MODIFY `promotion_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `promotion_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `company_reviews`
 --
 ALTER TABLE `company_reviews`
   MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `event_external`
 --
 ALTER TABLE `event_external`
   MODIFY `ee_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `inbox_type`
 --
 ALTER TABLE `inbox_type`
   MODIFY `i_type_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `template`
 --
 ALTER TABLE `template`
   MODIFY `template_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `timeline_category`
 --
 ALTER TABLE `timeline_category`
   MODIFY `tc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
 --
 -- AUTO_INCREMENT for table `timeline_status`
 --
 ALTER TABLE `timeline_status`
   MODIFY `ts_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
 --
 -- AUTO_INCREMENT for table `users_role`
 --
 ALTER TABLE `users_role`
   MODIFY `role_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `users_status`
 --
 ALTER TABLE `users_status`
   MODIFY `status_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `wevent`
 --
 ALTER TABLE `wevent`
-  MODIFY `we_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `we_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `wevent_agreement`
 --
 ALTER TABLE `wevent_agreement`
-  MODIFY `a_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `a_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `wevent_inbox`
 --
 ALTER TABLE `wevent_inbox`
-  MODIFY `i_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `i_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `wevent_status`
 --
 ALTER TABLE `wevent_status`
   MODIFY `wes_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `wevent_timeline`
 --
 ALTER TABLE `wevent_timeline`
-  MODIFY `wet_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `wet_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `wevent_vendors`
 --
 ALTER TABLE `wevent_vendors`
-  MODIFY `wev_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;COMMIT;
+  MODIFY `wev_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

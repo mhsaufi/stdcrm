@@ -21,11 +21,11 @@ class InsiderController extends Controller
 
     	$user = new User;
 
-    	$users = $user->where('company_id', Auth::user()->company_id)->where('status_id','1')->whereNotIn('id',[Auth::user()->id])->get();
+    	$users = $user->where('company_id', Auth::user()->company_id)->where('status_id','1')->get();
 
     	$users_inactive = $user->where('company_id', Auth::user()->company_id)->where('status_id','2')->whereNotIn('id',[Auth::user()->id])->get();
 
-        $users_pending = $user->where('company_id', Auth::user()->company_id)->where('status_id','3')->whereNotIn('id',[Auth::user()->id])->get();
+        $users_pending = $user->where('company_id', Auth::user()->company_id)->where('status_id','4')->whereNotIn('id',[Auth::user()->id])->get();
 
     	return view('internal.insider',compact('company_info','users','users_inactive','users_pending'));
     }
